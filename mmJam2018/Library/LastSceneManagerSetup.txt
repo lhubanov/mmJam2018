@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/GameplaySandbox.unity
+- path: Assets/Scenes/MikeIsMakingAScene.unity
   isLoaded: 1
   isActive: 1
