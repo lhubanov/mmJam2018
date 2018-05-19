@@ -45,17 +45,21 @@ public class PlayerController : MonoBehaviour
 
         //Store the current vertical input in the float moveVertical.
         float moveVertical = Input.GetAxis("Vertical");
-        //Use the two store floats to create a new Vector2 variable movement.
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
-        rigidbody.AddForce(movement * speed);
 
+        if (!Input.GetButton("Fire2")) {
+            //Use the two store floats to create a new Vector2 variable movement.
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
-        // This seems primitive, especially when done so many times :D
-        if (Input.GetButton("Fire1")) {
-            ActionButtonPressed = true;
-        } else {
-            ActionButtonPressed = false;
+            //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
+            rigidbody.AddForce(movement * speed);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy") {
+            Debug.Log("I'm-a dying!");
+            //reduce player health
         }
     }
 }

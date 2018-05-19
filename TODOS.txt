@@ -6,7 +6,7 @@ mmJam 2018 To-Dos:
 -Player idle animation
 -Enemy idle behaviour
 	-Enemy idle animation
-	-Random-ish movement within an area
+	//-Random-ish movement within an area
 -Player movement animation
 -Branch interaction animation
 -Branch retreat animation
@@ -17,13 +17,19 @@ mmJam 2018 To-Dos:
 	-animation change enemy
 		//-change enemy color
 	-hold enemy in place for some time
+	-hold player in place for some time
 	-update UI ?
+		-energy
+		-player stops moving
 -Disappearing land mechanic on button press
 	-animation player (may be same or very similar to enemy interaction animation)
 	-land animation?
 	//-sprite change or sprite disappear
 	
 -Dialogue system (God object keeping track of game state)
+	-God object
 	-UI prefab w/ dark gradient background to reuse to show dialogue
 	-Trigger dialogue script
 	-Keep track of dialogue bit to start
+	
+-All the sound stuff!

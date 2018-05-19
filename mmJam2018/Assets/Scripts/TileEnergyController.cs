@@ -17,7 +17,7 @@ public class TileEnergyController : MonoBehaviour
     {
         if(other.tag == "Player") {
             PlayerController player = other.GetComponent<PlayerController>();
-            if (player.ActionButtonPressed && !alreadyDead) {
+            if (Input.GetButton("Fire1") && !alreadyDead) {
                 //play animation
                 //when animation done
 
