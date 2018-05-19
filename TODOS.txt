@@ -1,0 +1,12 @@
+mmJam 2018 To-Dos:
+
+-Enemy-player interaction
+	-button press
+	-animation change player
+	-animation change enemy
+	-hold enemy in place for some time
+	-update UI ?
+-Disappearing land mechanic on button press
+	-animation player (may be same or very similar to enemy interaction animation)
+	-land animation?
+	-sprite change or sprite disappear
