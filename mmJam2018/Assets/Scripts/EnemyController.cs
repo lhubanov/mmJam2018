@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     private SpriteRenderer sprite;
     private BoxCollider idleMovementRange;
+    private Vector3 NextIdleMovementPosition;
 
     private float   NextIdleMovement = 0;
     public  float   IdleMovementCooldown = 5f;
@@ -16,19 +17,23 @@ public class EnemyController : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         idleMovementRange = GetComponentInParent<BoxCollider>();
+        NextIdleMovement = IdleMovementCooldown;
+        NextIdleMovementPosition = new Vector3(transform.position.x + Random.Range(-5, 5), transform.position.y + Random.Range(-5, 5), 0);
     }
 
     private void Update()
     {
-        if (idleMovementRange.bounds.Contains(this.transform.position)) {
-            if(Time.time <= NextIdleMovement) {
-                //FIXME: Play movement animation
-                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + Random.Range(0, 2), transform.position.y + Random.Range(0, 2), 0), Time.deltaTime * SmoothFactor);
-            } else {
-
-            }
+        if(Time.time <= NextIdleMovement) {
+            //FIXME: Play movement animation
+            transform.position = Vector3.Lerp(transform.position, NextIdleMovementPosition, Time.deltaTime * SmoothFactor);
         } else {
-            transform.position = Vector3.Lerp(transform.position, idleMovementRange.center, Time.deltaTime * SmoothFactor);
+            NextIdleMovement = Time.time + IdleMovementCooldown;
+            if (idleMovementRange.bounds.Contains(this.transform.position)) {
+                NextIdleMovementPosition = new Vector3(transform.position.x + Random.Range(-5, 5), transform.position.y + Random.Range(-5, 5), 0);
+            } else {
+                //transform.position = Vector3.Lerp(transform.position, idleMovementRange.transform.position, Time.deltaTime * SmoothFactor);
+                NextIdleMovementPosition = idleMovementRange.transform.position;
+            }
         }
     }
 
