@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 282840814}
   - component: {fileID: 282840813}
   - component: {fileID: 282840811}
+  - component: {fileID: 282840812}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -202,6 +203,18 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 282840810}
   m_Enabled: 1
+--- !u!114 &282840812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 282840810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012fcc0b1d3b1624589be201db56dc58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2028235538}
 --- !u!20 &282840813
 Camera:
   m_ObjectHideFlags: 0
@@ -245,7 +258,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 282840810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalPosition: {x: 0, y: 0, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -783,7 +796,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1312805767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.383286, y: -0.28390503, z: 5.002365}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 790422305}
@@ -1408,8 +1421,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2028235540}
   - component: {fileID: 2028235539}
-  - component: {fileID: 2028235541}
   - component: {fileID: 2028235542}
+  - component: {fileID: 2028235541}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1483,16 +1496,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2028235538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d517837d1b0bfb74891c2042f84077aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d8acf0084c8cbe48ad930ba953f16d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  accelerationForce: 10
-  rotationForce: 3
-  rotationForceLimit: 7
-  accelerationIncrement: 0.05
-  accelerationDecrement: 0.05
-  maxSpeed: 8
+  speed: 10
+  TurningCooldown: 0.5
 --- !u!50 &2028235542
 Rigidbody2D:
   serializedVersion: 4
