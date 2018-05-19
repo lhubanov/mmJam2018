@@ -16,15 +16,16 @@ public class MommaPower : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		mommaCurrentHealth = MommaFulfilmentBar.value;
+		if (mommaCurrentHealth > 0)
+		{
+        StartCoroutine(poisonHealth());//Starts the loss of health process.
+		}
 	}
 
 	// Update is called once per frame
 	void Update () {
 
-		if (mommaCurrentHealth > 0)
-		{
-        StartCoroutine(poisonHealth());//Starts the loss of health process.
-		}
+		
 
 		if (Input.GetKeyDown(KeyCode.A))
 		{
@@ -42,9 +43,9 @@ public class MommaPower : MonoBehaviour {
      {
          while(mommaCurrentHealth > 0)//While momma ain't ded
 		 {
-             mommaCurrentHealth -= 1;    //lose this health per step.
+             mommaCurrentHealth -= 5;    //lose this health per step.
 			 MommaFulfilmentBar.value = mommaCurrentHealth;
-             yield return new WaitForSeconds(100);//sets the time to lose health over.
+             yield return new WaitForSeconds(1);//sets the time to lose health over.
 		 }
              
 	 }
