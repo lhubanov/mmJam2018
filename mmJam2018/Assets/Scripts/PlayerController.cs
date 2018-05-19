@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
         //Get and store a reference to the Rigidbody2D component so that we can access it.
         rigidbody = GetComponent<Rigidbody>();
         sprite = GetComponent<SpriteRenderer>();
+
+        GetComponent<Animator>().Play("playerIdle");
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.

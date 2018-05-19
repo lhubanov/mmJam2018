@@ -70,8 +70,16 @@ public class EnemyController : MonoBehaviour
                 playerAnimator.Play("attack");
 
                 //play dying animation here
-                sprite.color = new Color32(0, 0, 0, 255);  
+                sprite.color = new Color32(0, 0, 0, 255);
+
+                resetToIdle(playerAnimator);
             } 
         }
+    }
+
+    IEnumerator resetToIdle(Animator playerAnimator)
+    {
+        yield return new WaitForSeconds(0.5f);
+        playerAnimator.Play("playerIdle");
     }
 }
