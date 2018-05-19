@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 0b3beb1f8874941959b3c5d54def429e
+guid: 6ac465e2d0c78441e87a4fe9ef7c6297
 TextureImporter:
   fileIDToRecycleName:
-    21300000: flowers dead_0
-    21300002: flowers dead_1
-    21300004: flowers dead_2
-    21300006: flowers dead_3
+    21300000: bushes_0
+    21300002: bushes_1
+    21300004: bushes_2
+    21300006: bushes_3
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flowers dead_0
+      name: bushes_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 128
-        height: 119
+        y: 256
+        width: 353
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,19 +111,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d385eebfadaa41e78b018114b2d7ce1
+      spriteID: 132f768b65a734d6c8b6da1160310efb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowers dead_1
+      name: bushes_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
+        x: 384
+        y: 264
+        width: 110
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,19 +131,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c53cc783a642b44fca67b8ae77442cba
+      spriteID: 4bceba0855c174bda8c20dd3ddfef036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowers dead_2
+      name: bushes_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
+        x: 20
+        y: 8
+        width: 223
+        height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,19 +151,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88f25e3b36a884961b0f8edeed091617
+      spriteID: d3cf5e32b499d43ba8458b6f6998d5f8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flowers dead_3
+      name: bushes_3
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
+        x: 312
+        y: 9
+        width: 183
+        height: 229
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,7 +171,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7220d169892a545d194152a5d8f2d8aa
+      spriteID: ef29cd0eecc9a4ac4a5530e0558904e0
       vertices: []
       indices: 
       edges: []
@@ -179,7 +179,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 56af6f31984e6485a8b446550dda1704
+    spriteID: 00c162634cc3441c885ce262be9df095
     vertices: []
     indices: 
     edges: []
