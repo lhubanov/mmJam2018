@@ -4,19 +4,24 @@ mmJam 2018 To-Dos:
 	-Create multiple prefabs of basic elements - grass flowers etc., both ok & drained versions
 
 -Player idle animation
--Enemy idle animation
+-Enemy idle behaviour
+	-Enemy idle animation
+	-Random-ish movement within an area
 -Player movement animation
+-Branch interaction animation
+-Branch retreat animation
 
 -Enemy-player interaction
-	-button press
+	//-button press
 	-animation change player
 	-animation change enemy
+		//-change enemy color
 	-hold enemy in place for some time
 	-update UI ?
 -Disappearing land mechanic on button press
 	-animation player (may be same or very similar to enemy interaction animation)
 	-land animation?
-	-sprite change or sprite disappear
+	//-sprite change or sprite disappear
 	
 -Dialogue system (God object keeping track of game state)
 	-UI prefab w/ dark gradient background to reuse to show dialogue

@@ -6,6 +6,7 @@ public class TileEnergyController : MonoBehaviour
 {
     //maybe add a var keeping track of land tile energy
     private Color startingTileColor;
+    private bool alreadyDead = false;
 
     void Start()
     {
@@ -16,9 +17,12 @@ public class TileEnergyController : MonoBehaviour
     {
         if(other.tag == "Player") {
             PlayerController player = other.GetComponent<PlayerController>();
-            if (player.ActionButtonPressed) {
-                GetComponentInParent<Renderer>().material.color = new Color(startingTileColor.r - 0.05f, startingTileColor.g - 0.05f, startingTileColor.b - 0.05f);
-                //startingTileColor = 
+            if (player.ActionButtonPressed && !alreadyDead) {
+                //play animation
+                //when animation done
+
+                alreadyDead = true;
+                GetComponentInParent<Renderer>().material.color = new Color32(60, 60, 60, 220);
             }
         }
     }
