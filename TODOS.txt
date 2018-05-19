@@ -16,20 +16,24 @@ mmJam 2018 To-Dos:
 	-animation change player
 	-animation change enemy
 		//-change enemy color
-	-hold enemy in place for some time
-	-hold player in place for some time
+	-stagger enemy when under attack?
+	//-hold player in place for some time
+		//-player force adding gets disabled for the time being
+	//-chasing
+	//-leash and reset idling
 	-update UI ?
 		-energy
-		-player stops moving
 -Disappearing land mechanic on button press
 	-animation player (may be same or very similar to enemy interaction animation)
 	-land animation?
+		-instead of animation, change sprite in script, based on tag (e.g. tree, bush etc.)
+		-add flash or some equivalent effect when player animation is done to conceal sprite transition
 	//-sprite change or sprite disappear
 	
 -Dialogue system (God object keeping track of game state)
-	-God object
-	-UI prefab w/ dark gradient background to reuse to show dialogue
-	-Trigger dialogue script
+	-Audio Mixer
+	-Audio manager
+		-Dialogue coroutines for different points of the story (in coroutines)
+	//-Trigger dialogue script
 	-Keep track of dialogue bit to start
-	
--All the sound stuff!
+

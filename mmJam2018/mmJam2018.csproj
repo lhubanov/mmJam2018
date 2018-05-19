@@ -302,6 +302,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AttackPlayer.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\DialogueAnimationHandler.cs" />
+    <Compile Include="Assets\Scripts\DialogueAudioHandler.cs" />
+    <Compile Include="Assets\Scripts\DialogueHandler.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\InputController.cs" />
     <Compile Include="Assets\Scripts\MommaPower.cs" />
