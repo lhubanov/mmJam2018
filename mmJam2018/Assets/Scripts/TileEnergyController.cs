@@ -18,7 +18,7 @@ public class TileEnergyController : MonoBehaviour
             PlayerController player = other.GetComponent<PlayerController>();
             if (player.ActionButtonPressed) {
                 GetComponentInParent<Renderer>().material.color = new Color(startingTileColor.r - 0.05f, startingTileColor.g - 0.05f, startingTileColor.b - 0.05f);
-                startingTileColor = 
+                //startingTileColor = 
             }
         }
     }

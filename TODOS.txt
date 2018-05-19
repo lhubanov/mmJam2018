@@ -1,5 +1,12 @@
 mmJam 2018 To-Dos:
 
+-Add separate scene for main world building
+	-Create multiple prefabs of basic elements - grass flowers etc., both ok & drained versions
+
+-Player idle animation
+-Enemy idle animation
+-Player movement animation
+
 -Enemy-player interaction
 	-button press
 	-animation change player
@@ -10,3 +17,8 @@ mmJam 2018 To-Dos:
 	-animation player (may be same or very similar to enemy interaction animation)
 	-land animation?
 	-sprite change or sprite disappear
+	
+-Dialogue system (God object keeping track of game state)
+	-UI prefab w/ dark gradient background to reuse to show dialogue
+	-Trigger dialogue script
+	-Keep track of dialogue bit to start

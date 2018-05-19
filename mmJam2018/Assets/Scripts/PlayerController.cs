@@ -6,20 +6,20 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed;             //Floating point variable to store the player's movement speed.
-    private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
-    private SpriteRenderer sprite;
-    //private bool turnLeft = false;
-    //private bool turnRight = false;
 
+    private Rigidbody rigidbody;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
+    private SpriteRenderer sprite;
     private bool keyPressed = false;
     private float NextTurn = 0;
     public float TurningCooldown = 0.5f;
+    public bool ActionButtonPressed = false;
+
 
     // Use this for initialization
     void Start()
     {
         //Get and store a reference to the Rigidbody2D component so that we can access it.
-        rb2d = GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -45,11 +45,17 @@ public class PlayerController : MonoBehaviour
 
         //Store the current vertical input in the float moveVertical.
         float moveVertical = Input.GetAxis("Vertical");
-
         //Use the two store floats to create a new Vector2 variable movement.
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
         //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
-        rb2d.AddForce(movement * speed);
+        rigidbody.AddForce(movement * speed);
+
+
+        // This seems primitive, especially when done so many times :D
+        if (Input.GetButton("Fire1")) {
+            ActionButtonPressed = true;
+        } else {
+            ActionButtonPressed = false;
+        }
     }
 }
