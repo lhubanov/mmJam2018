@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool keyPressed = false;
     private float NextTurn = 0;
     public float TurningCooldown = 0.5f;
-    public bool ActionButtonPressed = false;
+    public bool Talking = false;
 
 
     // Use this for initialization
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         //Store the current vertical input in the float moveVertical.
         float moveVertical = Input.GetAxis("Vertical");
 
-        if (!Input.GetButton("Fire2")) {
+        if (!Input.GetButton("Fire2") && !Talking) {
             //Use the two store floats to create a new Vector2 variable movement.
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 

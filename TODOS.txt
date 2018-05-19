@@ -3,13 +3,23 @@ mmJam 2018 To-Dos:
 -Add separate scene for main world building
 	-Create multiple prefabs of basic elements - grass flowers etc., both ok & drained versions
 
--Player idle animation
+	
+-Sort out animation states!!
+
+//-Player idle animation
+	-can tweak timing
+	
 -Enemy idle behaviour
 	-Enemy idle animation
 	//-Random-ish movement within an area
 -Player movement animation
+	-Walking up (same as turning)
+	-Walking down
+	-Walking to side (add on top of existing turning)
 -Branch interaction animation
 -Branch retreat animation
+
+-Momma animation (maybe just one, same for idle and non-idle)
 
 -Enemy-player interaction
 	//-button press
@@ -35,5 +45,6 @@ mmJam 2018 To-Dos:
 	-Audio manager
 		-Dialogue coroutines for different points of the story (in coroutines)
 	//-Trigger dialogue script
+	//-disable player movement when talking
 	-Keep track of dialogue bit to start
 

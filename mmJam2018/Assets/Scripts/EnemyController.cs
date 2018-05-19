@@ -65,6 +65,10 @@ public class EnemyController : MonoBehaviour
         if(other.tag == "Player") {
             // This seems primitive, especially when done so many times :D
             if (Input.GetButton("Fire2")) {
+
+                var playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
+                playerAnimator.Play("attack");
+
                 //play dying animation here
                 sprite.color = new Color32(0, 0, 0, 255);  
             } 

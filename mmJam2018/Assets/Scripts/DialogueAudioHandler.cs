@@ -6,18 +6,23 @@ public class DialogueAudioHandler : MonoBehaviour {
 
     public  AudioClip momLine1;
     public  AudioClip childLine1;
+
     private AudioSource audio;
+    private PlayerController player;
+
     void Start()
     {
         audio = GetComponent<AudioSource>();
         audio.loop = false;
         //StartCoroutine(playDialogue());
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
+            player.Talking = true;
             //&& at whatever point of the story
             StartCoroutine(playDialogue());
         }
@@ -36,5 +41,7 @@ public class DialogueAudioHandler : MonoBehaviour {
         yield return new WaitForSeconds(audio.clip.length);
         audio.clip = childLine1;
         audio.Play();
+
+        player.Talking = false;
     }
 }
