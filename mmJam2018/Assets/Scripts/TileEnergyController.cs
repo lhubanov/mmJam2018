@@ -10,19 +10,19 @@ public class TileEnergyController : MonoBehaviour
 
     void Start()
     {
-        startingTileColor = GetComponent<Renderer>().material.color;
+        startingTileColor = GetComponentInChildren<SpriteRenderer>().color;
     }
 
     private void OnTriggerStay(Collider other)
     {
         if(other.tag == "Player") {
             PlayerController player = other.GetComponent<PlayerController>();
-            if (player.ActionButtonPressed && !alreadyDead) {
+            if (Input.GetButton("Fire1") && !alreadyDead) {
                 //play animation
                 //when animation done
 
                 alreadyDead = true;
-                GetComponentInParent<Renderer>().material.color = new Color32(60, 60, 60, 220);
+                GetComponentInChildren<SpriteRenderer>().color = new Color32(60, 60, 60, 220);
             }
         }
     }
