@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="Workspace" id="{5332e26d-2eba-4b39-a574-8ce4f8ac6006}">
+        <property name="builtBanksOutputDirectory">
+            <value>../../mmJam2018/Assets/Audio</value>
+        </property>
+        <relationship name="masterEventFolder">
+            <destination>{4c5146c1-0d7e-4788-8db2-153016f8e93f}</destination>
+        </relationship>
+        <relationship name="masterTagFolder">
+            <destination>{8a0ff30f-49bc-4be6-9dde-a2668a408160}</destination>
+        </relationship>
+        <relationship name="masterEffectPresetFolder">
+            <destination>{3102ce4f-f179-4d38-86d5-a2b6e2679b46}</destination>
+        </relationship>
+        <relationship name="masterParameterPresetFolder">
+            <destination>{9421e3fc-0f98-4aa1-b283-88defd653d52}</destination>
+        </relationship>
+        <relationship name="masterBankFolder">
+            <destination>{3cf874ed-25d1-44b1-afcd-9a9589b15c38}</destination>
+        </relationship>
+        <relationship name="masterAssetFolder">
+            <destination>{70caf368-b11e-401f-a38c-52b0d7ccce1c}</destination>
+        </relationship>
+        <relationship name="mixer">
+            <destination>{481d73e8-bde7-4002-89c4-a9d6233b7d3a}</destination>
+        </relationship>
+        <relationship name="platforms">
+            <destination>{b284379c-98f1-4bb3-9431-df0a2bfbb6ae}</destination>
+        </relationship>
+    </object>
+</objects>
