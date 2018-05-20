@@ -20,19 +20,20 @@ mmJam 2018 To-Dos:
 -Branch interaction animation
 -Branch retreat animation
 
--Momma animation (maybe just one, same for idle and non-idle)
+//-Momma animation (maybe just one, same for idle and non-idle)
 
 -Enemy-player interaction
 	//-button press
 	//-animation change player
 		//-change enemy color
-	-enemy die animation - turn completely black and disable object once animation is done?
+	//-enemy die animation - turn completely black and disable object once animation is done?
 	//-hold player in place for some time
 		//-player force adding gets disabled for the time being
 	//-chasing
 	//-leash and reset idling
 	-update UI ?
 		-energy
+		
 -Disappearing land mechanic on button press
 	//-animation player (may be same or very similar to enemy interaction animation)
 	-land animation?
@@ -48,3 +49,4 @@ mmJam 2018 To-Dos:
 	//-disable player movement when talking
 	-Keep track of dialogue bit to start
 
+-EVERYTHING LEFT IS MERGING MORE OR LESS
