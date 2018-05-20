@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MommaPower : MonoBehaviour {
-
-	
-	
+public class MommaPower : MonoBehaviour
+{	
 	public Slider PupSlider;
 	public Slider MommaSlider;
 
@@ -14,8 +12,6 @@ public class MommaPower : MonoBehaviour {
 	private float pupCurrentHealth;
 	private float mommaStartingHealth;
 	private float mommaCurrentHealth;
-	
-
 
 	// Use this for initialization
 	void Start () {

@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     [EventRef]
     public string CloakSound;
-
     private EventInstance walkingInstance;
 
 
@@ -87,10 +86,9 @@ public class PlayerController : MonoBehaviour
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             rigidbody.AddForce(movement * speed);
 
-            FMOD.Studio.PLAYBACK_STATE state;
-            walkingInstance.getPlaybackState(out state);
-            if (state != PLAYBACK_STATE.PLAYING) {
-                //RuntimeManager.PlayOneShot(CloakSound);
+            FMOD.Studio.PLAYBACK_STATE walkingSoundState;
+            walkingInstance.getPlaybackState(out walkingSoundState);
+            if (walkingSoundState != PLAYBACK_STATE.PLAYING) {
                 walkingInstance.start();
             }
         }

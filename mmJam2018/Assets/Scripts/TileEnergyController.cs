@@ -1,9 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class TileEnergyController : MonoBehaviour
 {
+    [EventRef]
+    public string DrainSound;
+    private EventInstance drainInstance;
+
     //maybe add a var keeping track of land tile energy
     private Color startingTileColor;
     public bool alreadyDead = false;
