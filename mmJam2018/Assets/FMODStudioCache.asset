@@ -34,9 +34,10 @@ MonoBehaviour:
   - {fileID: 114703989273277850}
   - {fileID: 114159570355382808}
   - {fileID: 114847522877108152}
+  - {fileID: 114814724239094564}
   MasterBankRef: {fileID: 114420192119420974}
   StringsBankRef: {fileID: 114678061698506860}
-  stringsBankWriteTime: 636624269215957326
+  stringsBankWriteTime: 636624322595940487
   cacheVersion: 2
 --- !u!114 &114008602774640680
 MonoBehaviour:
@@ -59,7 +60,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 1166
+  Length: 471
 --- !u!114 &114101727525683794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,11 +268,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\Assets\Audio\Desktop\Master
     Bank.bank
-  lastModified: 636624269215937325
+  lastModified: 636624327220595002
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 5298240
+    Value: 5304160
   Exists: 1
 --- !u!114 &114435327199172804
 MonoBehaviour:
@@ -479,11 +480,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\Desktop\Master Bank.strings.bank
-  lastModified: 636624269215957326
+  lastModified: 636624322595940487
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 1780
+    Value: 1838
   Exists: 1
 --- !u!114 &114700883163791946
 MonoBehaviour:
@@ -591,6 +592,28 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1092
   Exists: 1
+--- !u!114 &114814724239094564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: snapshot:/DialogueHappening
+  guid: 83c3c3a69ae04742a0a97409c811d263
+  Banks:
+  - {fileID: 114420192119420974}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &114847522877108152
 MonoBehaviour:
   m_ObjectHideFlags: 0
