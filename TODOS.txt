@@ -4,17 +4,18 @@ mmJam 2018 To-Dos:
 	-Create multiple prefabs of basic elements - grass flowers etc., both ok & drained versions
 
 	
--Sort out animation states!!
+//-Sort out animation states!!	
 
 //-Player idle animation
 	-can tweak timing
 	
--Enemy idle behaviour
+(TRY COPYING player prefab w/ different colors and only sideways animations, upon motion)
+//-Enemy idle behaviour
 	-Enemy idle animation
 	//-Random-ish movement within an area
 -Player movement animation
-	-Walking up (same as turning)
-	-Walking down
+	//-Walking up (same as turning)
+	//-Walking down
 	-Walking to side (add on top of existing turning)
 -Branch interaction animation
 -Branch retreat animation
@@ -23,10 +24,9 @@ mmJam 2018 To-Dos:
 
 -Enemy-player interaction
 	//-button press
-	-animation change player
-	-animation change enemy
+	//-animation change player
 		//-change enemy color
-	-stagger enemy when under attack?
+	-enemy die animation - turn completely black and disable object once animation is done?
 	//-hold player in place for some time
 		//-player force adding gets disabled for the time being
 	//-chasing
@@ -34,9 +34,9 @@ mmJam 2018 To-Dos:
 	-update UI ?
 		-energy
 -Disappearing land mechanic on button press
-	-animation player (may be same or very similar to enemy interaction animation)
+	//-animation player (may be same or very similar to enemy interaction animation)
 	-land animation?
-		-instead of animation, change sprite in script, based on tag (e.g. tree, bush etc.)
+		//-instead of animation, change sprite in script, based on tag (e.g. tree, bush etc.)
 		-add flash or some equivalent effect when player animation is done to conceal sprite transition
 	//-sprite change or sprite disappear
 	

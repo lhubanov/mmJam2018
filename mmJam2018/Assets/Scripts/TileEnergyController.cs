@@ -6,7 +6,7 @@ public class TileEnergyController : MonoBehaviour
 {
     //maybe add a var keeping track of land tile energy
     private Color startingTileColor;
-    private bool alreadyDead = false;
+    public bool alreadyDead = false;
 
     void Start()
     {
@@ -18,12 +18,39 @@ public class TileEnergyController : MonoBehaviour
         if(other.tag == "Player") {
             PlayerController player = other.GetComponent<PlayerController>();
             if (Input.GetButton("Fire1") && !alreadyDead) {
+
+
                 //play animation
+                var playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
+                playerAnimator.Play("drainLife");
+                //WaitForAnimation(playerAnimator);
                 //when animation done
 
                 alreadyDead = true;
-                GetComponentInChildren<SpriteRenderer>().color = new Color32(60, 60, 60, 220);
+                //GameObject.Find("Player").energy
+
+
+                foreach (Transform t in transform)
+                {
+                    if((t.GetComponent<SpriteRenderer>()) != null) { 
+                        if (t.GetComponent<SpriteRenderer>().sprite.name == "grass pattern"){ 
+                            Sprite resource = Resources.Load<Sprite>("grass_pattern_dead");
+                            t.GetComponent<SpriteRenderer>().sprite = resource;
+                        }
+
+                        //add tree check w/ live and dead
+                        //add bush check w/ live and dead
+                        
+                    }
+                }
             }
         }
     }
+
+    //private IEnumerator WaitForAnimation(Animator playerAnimator)
+    //{
+    //    playerAnimator.Play("drainLife");
+    //    AnimatorClipInfo[] clipInfo = playerAnimator.GetCurrentAnimatorClipInfo(0);
+    //    yield return new WaitForSeconds(clipInfo[0].clip.length);
+    //}
 }

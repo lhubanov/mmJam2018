@@ -67,19 +67,22 @@ public class EnemyController : MonoBehaviour
             if (Input.GetButton("Fire2")) {
 
                 var playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
-                playerAnimator.Play("attack");
+                playerAnimator.Play("drainLife");
 
                 //play dying animation here
                 sprite.color = new Color32(0, 0, 0, 255);
 
-                resetToIdle(playerAnimator);
+                //resetToIdle(playerAnimator);
+
+                StartCoroutine(disappearIntoTheVoid(1.5f));
             } 
         }
     }
 
-    IEnumerator resetToIdle(Animator playerAnimator)
+    IEnumerator disappearIntoTheVoid(float delay)
     {
-        yield return new WaitForSeconds(0.5f);
-        playerAnimator.Play("playerIdle");
+        GetComponent<Animator>().Play("enemyDie");
+        yield return new WaitForSeconds(delay);
+        this.gameObject.SetActive(false);
     }
 }

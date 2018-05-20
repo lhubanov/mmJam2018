@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb57e4ace63a7594ab0cc8b14ebf05d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alreadyDead: 0
 --- !u!65 &108557216
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -524,6 +525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 483270537}
   - component: {fileID: 483270536}
+  - component: {fileID: 483270538}
   m_Layer: 0
   m_Name: Characeter_Idle Frame 2
   m_TagString: Untagged
@@ -566,7 +568,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b66ff547a99c2754b8db9bbf10cdd4ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0dc8307afe4202942a2d25f74b580da4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -589,6 +591,24 @@ Transform:
   m_Father: {fileID: 2048828895}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &483270538
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 483270535}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7373f4a82d9100f4d9c6a489cf1c7b87, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &531192499
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb57e4ace63a7594ab0cc8b14ebf05d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alreadyDead: 0
 --- !u!65 &692567019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -983,6 +1004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb57e4ace63a7594ab0cc8b14ebf05d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alreadyDead: 0
 --- !u!65 &920902218
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1145,6 +1167,7 @@ GameObject:
   - component: {fileID: 1406418621}
   - component: {fileID: 1406418622}
   - component: {fileID: 1406418623}
+  - component: {fileID: 1406418624}
   m_Layer: 0
   m_Name: Characeter_Idle Frame 1
   m_TagString: Untagged
@@ -1252,6 +1275,24 @@ MonoBehaviour:
   IdleMovementCooldown: 5
   SmoothFactor: 0.5
   AggroSmoothFactor: 0.8
+--- !u!95 &1406418624
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1406418618}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1417416601 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1061441632539052, guid: c37e3ac678088244c888b99e25ece869,
@@ -1268,6 +1309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb57e4ace63a7594ab0cc8b14ebf05d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alreadyDead: 0
 --- !u!1 &1445684885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,6 +1370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb57e4ace63a7594ab0cc8b14ebf05d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alreadyDead: 0
 --- !u!65 &1749089233
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1596,7 +1639,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &2028235543
 BoxCollider:
@@ -1656,8 +1699,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.8649687
-  m_Center: {x: 0.4578794, y: 0, z: 0}
+  m_Radius: 11.29752
+  m_Center: {x: 5.739029, y: 0, z: 0}
 --- !u!4 &2048828895
 Transform:
   m_ObjectHideFlags: 0
@@ -1666,7 +1709,7 @@ Transform:
   m_GameObject: {fileID: 2048828893}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -50, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 483270537}
   m_Father: {fileID: 0}

@@ -30,6 +30,8 @@ public class DialogueAudioHandler : MonoBehaviour {
 
     IEnumerator playDialogue()
     {
+        var animator = GetComponentInChildren<Animator>();
+        animator.Play("momBeingSuspicious");
         audio.clip = momLine1;
         audio.Play();
         yield return new WaitForSeconds(audio.clip.length);
@@ -42,6 +44,7 @@ public class DialogueAudioHandler : MonoBehaviour {
         audio.clip = childLine1;
         audio.Play();
 
+        animator.Play("momIdle");
         player.Talking = false;
     }
 }
