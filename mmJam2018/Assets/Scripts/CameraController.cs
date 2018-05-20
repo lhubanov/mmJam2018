@@ -14,6 +14,6 @@ public class CameraController : MonoBehaviour {
 	// LateUpdate is called once per frame, but runs after all items in Update() are processed - e.g. after movement
 	void LateUpdate () {
         transform.position = player.transform.position + offset;
-        Debug.Log("Offset: " + offset);
+        //Debug.Log("Offset: " + offset);
 	}
 }

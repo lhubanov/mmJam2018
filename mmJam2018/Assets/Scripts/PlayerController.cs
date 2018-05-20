@@ -9,10 +9,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rigidbody;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
     private SpriteRenderer sprite;
+    private Animator animator;
+
     private bool keyPressed = false;
     private float NextTurn = 0;
+
     public float TurningCooldown = 0.5f;
-    public bool ActionButtonPressed = false;
+    public bool Talking = false;
 
 
     // Use this for initialization
@@ -21,6 +24,9 @@ public class PlayerController : MonoBehaviour
         //Get and store a reference to the Rigidbody2D component so that we can access it.
         rigidbody = GetComponent<Rigidbody>();
         sprite = GetComponent<SpriteRenderer>();
+
+        animator = GetComponent<Animator>();
+        animator.Play("playerIdle");
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -29,7 +35,7 @@ public class PlayerController : MonoBehaviour
         //Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
 
-        if(Input.GetAxisRaw("Horizontal") != 0) {
+        if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
             keyPressed = true;
         } else {
             keyPressed = false;
@@ -38,24 +44,48 @@ public class PlayerController : MonoBehaviour
         if((moveHorizontal < 0) && Time.time > NextTurn && keyPressed) {
             NextTurn = Time.time + TurningCooldown;
             sprite.flipX = true;
-        } else if (moveHorizontal >= 0 && keyPressed) {
+            //FIXME: play animation here
+        } else if (moveHorizontal > 0 && keyPressed && Time.time > NextTurn) {
             NextTurn = Time.time + TurningCooldown;
             sprite.flipX = false;
+            //FIXME: play animation here
         }
 
         //Store the current vertical input in the float moveVertical.
         float moveVertical = Input.GetAxis("Vertical");
-        //Use the two store floats to create a new Vector2 variable movement.
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
-        rigidbody.AddForce(movement * speed);
+        Debug.Log("moveVertical: " + moveVertical);
 
+        if ((moveVertical < 0) && keyPressed && Time.time > NextTurn) {
+            NextTurn = Time.time + TurningCooldown;
 
-        // This seems primitive, especially when done so many times :D
-        if (Input.GetButton("Fire1")) {
-            ActionButtonPressed = true;
-        } else {
-            ActionButtonPressed = false;
+            animator.Play("moveDownwards");
+            sprite.flipY = false;
+            //FIXME: play animation here
+        } else if (moveVertical > 0 && keyPressed && Time.time > NextTurn) {
+            NextTurn = Time.time + TurningCooldown;
+            
+            animator.Play("moveUpwards");
+            //sprite.flipY = true;
+            //FIXME: play animation here
+        }
+
+        if (!Input.GetButton("Fire2") && !Talking) {
+            //Use the two store floats to create a new Vector2 variable movement.
+            Debug.Log("moveHorizontal: " + moveHorizontal);
+            Debug.Log("moveVertical: " + moveVertical);
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+
+            Debug.Log("movement: " + movement);
+            //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
+            rigidbody.AddForce(movement * speed);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy") {
+            Debug.Log("I'm-a dying!");
+            //reduce player health
         }
     }
 }
