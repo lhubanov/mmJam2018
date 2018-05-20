@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
             FMOD.Studio.PLAYBACK_STATE walkingSoundState;
             walkingInstance.getPlaybackState(out walkingSoundState);
             if (walkingSoundState != PLAYBACK_STATE.PLAYING) {
-                walkingInstance.start();
+                //walkingInstance.start();
             }
         }
     }

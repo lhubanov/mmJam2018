@@ -7115,7 +7115,28 @@ Prefab:
       propertyPath: RechargeSound
       value: event:/SFX/PowerGive
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114521937598368382, guid: 2414e626d747f8d4d92245fd091d588e,
+        type: 2}
+      propertyPath: SnoringSound
+      value: event:/SFX/SnoringLoop
+      objectReference: {fileID: 0}
+    - target: {fileID: 114521937598368382, guid: 2414e626d747f8d4d92245fd091d588e,
+        type: 2}
+      propertyPath: SpeechIntro
+      value: event:/Dialogue/OpeningNarrative
+      objectReference: {fileID: 0}
+    - target: {fileID: 114521937598368382, guid: 2414e626d747f8d4d92245fd091d588e,
+        type: 2}
+      propertyPath: Speech1
+      value: event:/Dialogue/OnReturn
+      objectReference: {fileID: 0}
+    - target: {fileID: 114521937598368382, guid: 2414e626d747f8d4d92245fd091d588e,
+        type: 2}
+      propertyPath: Speech2
+      value: event:/Dialogue/OnReturn2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 82185763197571638, guid: 2414e626d747f8d4d92245fd091d588e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2414e626d747f8d4d92245fd091d588e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &752372830 stripped
@@ -11586,6 +11607,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DrainSound: 
   alreadyDead: 0
+--- !u!1 &1243870136 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1738548553813632, guid: 2414e626d747f8d4d92245fd091d588e,
+    type: 2}
+  m_PrefabInternal: {fileID: 751055150}
+--- !u!114 &1243870137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1243870136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/SnoringLoop
+  PlayEvent: 1
+  StopEvent: 0
+  CollisionTag: Player
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1247012794 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1343847797505732, guid: 690fe62958e024ff79c12cbbe0b4f21b,

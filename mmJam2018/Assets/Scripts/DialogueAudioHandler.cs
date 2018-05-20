@@ -51,8 +51,6 @@ public class DialogueAudioHandler : MonoBehaviour {
         //audio = GetComponent<AudioSource>();
         //audio.loop = false;
 
-        snoringInstance.start();
-
         player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
@@ -65,13 +63,15 @@ public class DialogueAudioHandler : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
+        //snoringInstance.start();
+
         FMOD.Studio.PLAYBACK_STATE snoringSoundState;
         FMOD.Studio.PLAYBACK_STATE rechargeSoundState;
 
         if (other.tag == "Player" && Input.GetButton("Fire2"))
         {
             snoringInstance.getPlaybackState(out snoringSoundState);
-            if (snoringSoundState != PLAYBACK_STATE.PLAYING) {
+            if (snoringSoundState == PLAYBACK_STATE.PLAYING) {
                 snoringInstance.stop(STOP_MODE.ALLOWFADEOUT);
             }
 

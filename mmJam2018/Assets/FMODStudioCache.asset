@@ -33,9 +33,10 @@ MonoBehaviour:
   - {fileID: 114151259909075128}
   - {fileID: 114703989273277850}
   - {fileID: 114159570355382808}
+  - {fileID: 114847522877108152}
   MasterBankRef: {fileID: 114420192119420974}
   StringsBankRef: {fileID: 114678061698506860}
-  stringsBankWriteTime: 636624246924432324
+  stringsBankWriteTime: 636624269215957326
   cacheVersion: 2
 --- !u!114 &114008602774640680
 MonoBehaviour:
@@ -142,7 +143,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 8000
+  Length: 1500
 --- !u!114 &114159570355382808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ MonoBehaviour:
   - {fileID: 114420192119420974}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
@@ -266,11 +267,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\Assets\Audio\Desktop\Master
     Bank.bank
-  lastModified: 636624246924402322
+  lastModified: 636624269215937325
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 5050368
+    Value: 5298240
   Exists: 1
 --- !u!114 &114435327199172804
 MonoBehaviour:
@@ -359,7 +360,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 8000
+  Length: 1500
 --- !u!114 &114568651055568260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,11 +479,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\Desktop\Master Bank.strings.bank
-  lastModified: 636624246924432324
+  lastModified: 636624269215957326
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 1738
+    Value: 1780
   Exists: 1
 --- !u!114 &114700883163791946
 MonoBehaviour:
@@ -590,6 +591,28 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1092
   Exists: 1
+--- !u!114 &114847522877108152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/SnoringLoop
+  guid: 239a1551ad33154daa29d5579988fc9f
+  Banks:
+  - {fileID: 114420192119420974}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 19000
 --- !u!114 &114859644083411006
 MonoBehaviour:
   m_ObjectHideFlags: 0
