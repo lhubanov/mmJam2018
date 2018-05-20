@@ -5705,6 +5705,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: b5c79bba2e4b5c24d8cea1037d40b30b,
         type: 3}
+    - target: {fileID: 114095550092785070, guid: 2ee10cf712108e04280762ec57e0a8d4,
+        type: 2}
+      propertyPath: CloakSound
+      value: event:/SFX/Footsteps
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ee10cf712108e04280762ec57e0a8d4, type: 2}
   m_IsPrefabParent: 0
