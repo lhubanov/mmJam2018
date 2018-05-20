@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114678061698506860}
-  - {fileID: 114116222665675582}
+  - {fileID: 114420192119420974}
   EditorEvents:
   - {fileID: 114259532997011378}
   - {fileID: 114440293378263908}
@@ -21,9 +21,9 @@ MonoBehaviour:
   - {fileID: 114605815337506068}
   - {fileID: 114101727525683794}
   - {fileID: 114913586095708372}
-  MasterBankRef: {fileID: 114116222665675582}
+  MasterBankRef: {fileID: 114420192119420974}
   StringsBankRef: {fileID: 114678061698506860}
-  stringsBankWriteTime: 636623678012014480
+  stringsBankWriteTime: 636624119765059224
   cacheVersion: 2
 --- !u!114 &114101727525683794
 MonoBehaviour:
@@ -39,7 +39,7 @@ MonoBehaviour:
   Path: event:/Music/SadderAdventure
   guid: b97ba5296e04b840bc28f2feb7f2609e
   Banks:
-  - {fileID: 114116222665675582}
+  - {fileID: 114420192119420974}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   FileSizes:
   - Name: 
     Value: 2623680
-  Exists: 1
+  Exists: 0
 --- !u!114 &114257406899768362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   Path: event:/Music/IntroCutscene
   guid: 79ef3cedee5a3340a1c4a0e07947f3b2
   Banks:
-  - {fileID: 114116222665675582}
+  - {fileID: 114420192119420974}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   Path: event:/Music/WalkingBackThroughLevel
   guid: 48bc1ac4e28e854a92664ef290ad6375
   Banks:
-  - {fileID: 114116222665675582}
+  - {fileID: 114420192119420974}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -131,6 +131,25 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 54000
+--- !u!114 &114420192119420974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\Assets\Audio\Desktop\Master
+    Bank.bank
+  lastModified: 636624119765039223
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 2623552
+  Exists: 1
 --- !u!114 &114440293378263908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +164,7 @@ MonoBehaviour:
   Path: event:/Music/Combat
   guid: 573e5598fdfa404d8a6828730fd69dc0
   Banks:
-  - {fileID: 114116222665675582}
+  - {fileID: 114420192119420974}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -229,7 +248,7 @@ MonoBehaviour:
   Path: event:/Music/VenturingOut
   guid: 83207a63e42f68428305b901e6a1db91
   Banks:
-  - {fileID: 114116222665675582}
+  - {fileID: 114420192119420974}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -271,11 +290,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\Desktop\Master Bank.strings.bank
-  lastModified: 636623678012014480
+  lastModified: 636624119765059224
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 1092
+    Value: 1046
   Exists: 1
 --- !u!114 &114700883163791946
 MonoBehaviour:
@@ -353,7 +372,7 @@ MonoBehaviour:
   Path: event:/Music/LevelEnd
   guid: e93475b9176fbf458a23b216ea99f71e
   Banks:
-  - {fileID: 114116222665675582}
+  - {fileID: 114420192119420974}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
