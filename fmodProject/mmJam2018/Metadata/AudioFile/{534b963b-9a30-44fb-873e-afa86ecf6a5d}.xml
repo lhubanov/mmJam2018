@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{534b963b-9a30-44fb-873e-afa86ecf6a5d}">
+        <property name="assetPath">
+            <value>snoring_loop.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>19</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{70caf368-b11e-401f-a38c-52b0d7ccce1c}</destination>
+        </relationship>
+    </object>
+</objects>
