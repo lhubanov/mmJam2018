@@ -2,11 +2,14 @@
 using UnityEngine;
 using System.Collections;
 using FMODUnity;
+using FMOD.Studio;
 
 public class PlayerController : MonoBehaviour
 {
     [EventRef]
     public string CloakSound;
+    private EventInstance walkingInstance;
+
 
 
     public float speed;             //Floating point variable to store the player's movement speed.
@@ -29,6 +32,8 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         sprite = GetComponent<SpriteRenderer>();
 
+        walkingInstance = RuntimeManager.CreateInstance(CloakSound);
+
         animator = GetComponent<Animator>();
         animator.Play("playerIdle");
     }
@@ -40,7 +45,6 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
 
         if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
-            RuntimeManager.PlayOneShot(CloakSound);
             keyPressed = true;
         } else {
             keyPressed = false;
@@ -79,14 +83,14 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!Input.GetButton("Fire2") && !Talking) {
-            //Use the two store floats to create a new Vector2 variable movement.
-            Debug.Log("moveHorizontal: " + moveHorizontal);
-            Debug.Log("moveVertical: " + moveVertical);
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
-            Debug.Log("movement: " + movement);
-            //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
             rigidbody.AddForce(movement * speed);
+
+            FMOD.Studio.PLAYBACK_STATE walkingSoundState;
+            walkingInstance.getPlaybackState(out walkingSoundState);
+            if (walkingSoundState != PLAYBACK_STATE.PLAYING) {
+                walkingInstance.start();
+            }
         }
     }
 
