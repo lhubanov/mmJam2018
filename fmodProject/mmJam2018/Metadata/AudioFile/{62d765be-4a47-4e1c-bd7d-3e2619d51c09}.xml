@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{62d765be-4a47-4e1c-bd7d-3e2619d51c09}">
+        <property name="assetPath">
+            <value>Walkpastcertainpoint.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>6.1068480725623582</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{70caf368-b11e-401f-a38c-52b0d7ccce1c}</destination>
+        </relationship>
+    </object>
+</objects>
