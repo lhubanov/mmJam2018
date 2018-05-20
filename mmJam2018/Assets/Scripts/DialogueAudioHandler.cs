@@ -6,7 +6,7 @@ using FMOD.Studio;
 
 public class DialogueAudioHandler : MonoBehaviour {
 
-    public bool Stage1Complete = false;
+    public bool Stage1Complete = true;
     public bool Stage1DialogueDone = false;
     public bool Stage2Complete = false;
     public bool Stage2DialogueDone = false;
@@ -24,34 +24,35 @@ public class DialogueAudioHandler : MonoBehaviour {
     public string RechargeSound;
     private EventInstance rechargeInstance;
 
-    //[EventRef]
-    //public string SnoringSound;
-    //private EventInstance snoringInstance;
+    [EventRef]
+    public string GameplayMusic;
+    private EventInstance gameplayMusicInstance;
 
-    //[EventRef]
-    //public string SpeechIntro;
-    //private EventInstance speechIntroInstance;
+    [EventRef]
+    public string SpeechIntro;
+    private EventInstance speechIntroInstance;
 
-    //[EventRef]
-    //public string Speech1;
-    //private EventInstance speech1Instance;
+    [EventRef]
+    public string Speech1;
+    private EventInstance speech1Instance;
 
-    //[EventRef]
-    //public string Speech2;
-    //private EventInstance speech2Instance;
+    [EventRef]
+    public string Speech2;
+    private EventInstance speech2Instance;
+
+
 
     void Start()
     {
         rechargeInstance = RuntimeManager.CreateInstance(RechargeSound);
-        //snoringInstance = RuntimeManager.CreateInstance(SnoringSound);
-        //speechIntroInstance = RuntimeManager.CreateInstance(SpeechIntro);
-        //speech1Instance = RuntimeManager.CreateInstance(Speech1);
-        //speech2Instance = RuntimeManager.CreateInstance(Speech2);
-
-        //audio = GetComponent<AudioSource>();
-        //audio.loop = false;
+        gameplayMusicInstance = RuntimeManager.CreateInstance(GameplayMusic);
+        speechIntroInstance = RuntimeManager.CreateInstance(SpeechIntro);
+        speech1Instance = RuntimeManager.CreateInstance(Speech1);
+        speech2Instance = RuntimeManager.CreateInstance(Speech2);
 
         player = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        gameplayMusicInstance.start();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,34 +60,23 @@ public class DialogueAudioHandler : MonoBehaviour {
         if(other.tag == "Player") {
             PlayDialogue();
         }
+
+
     }
 
     private void OnTriggerStay(Collider other)
     { 
-        FMOD.Studio.PLAYBACK_STATE snoringSoundState;
         FMOD.Studio.PLAYBACK_STATE rechargeSoundState;
 
         if (other.tag == "Player" && Input.GetButton("Fire2"))
         {
-            //RuntimeManager.PlayOneShot(SnoringSound);
-
-            //snoringInstance.getPlaybackState(out snoringSoundState);
-            //if (snoringSoundState == PLAYBACK_STATE.PLAYING) {
-            //    snoringInstance.stop(STOP_MODE.ALLOWFADEOUT);
-            //}
-
-            //rechargeInstance.getPlaybackState(out rechargeSoundState);
-            //if (rechargeSoundState != PLAYBACK_STATE.PLAYING) {
-            //    rechargeInstance.start();
-            //}
+            rechargeInstance.getPlaybackState(out rechargeSoundState);
+            if (rechargeSoundState != PLAYBACK_STATE.PLAYING) {
+                rechargeInstance.start();
+            }
 
             GameObject.Find("HealthBars").GetComponent<MommaPower>().UpdateMommaCurrentHealth(5);
         }
-
-        //rechargeInstance.getPlaybackState(out rechargeSoundState);
-        //if (rechargeSoundState != PLAYBACK_STATE.PLAYING) {
-        //    snoringInstance.start();
-        //}
     }
 
     private void PlayDialogue()
@@ -94,13 +84,17 @@ public class DialogueAudioHandler : MonoBehaviour {
         if (Stage1Complete && !Stage1DialogueDone) {
             Stage1DialogueDone = true;
             //StartCoroutine(PlayDialogue1());
-
+            RuntimeManager.PlayOneShot(SpeechIntro);
 
         } if (Stage2Complete && !Stage2DialogueDone) {
             Stage2DialogueDone = true;
             //StartCoroutine(PlayDialogue1());
+            RuntimeManager.PlayOneShot(Speech1);
+
         } if (Stage3Complete && !Stage3DialogueDone) {
             Stage3DialogueDone = true;
+            RuntimeManager.PlayOneShot(Speech2);
+
             //StartCoroutine(PlayDialogue1());
         }
     }

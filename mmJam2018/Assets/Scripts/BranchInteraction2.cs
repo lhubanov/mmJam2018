@@ -15,7 +15,7 @@ public class BranchInteraction2 : MonoBehaviour
         {
             GetComponentInParent<Animator>().Play("BranchDisappear2");
             RuntimeManager.PlayOneShot(DestructionSound);
-            GameObject.Find("Mom").GetComponent<DialogueAudioHandler>().Stage2Complete = true;
+            GameObject.Find("Mom").GetComponent<DialogueAudioHandler>().Stage3Complete = true;
         }
     }
 }

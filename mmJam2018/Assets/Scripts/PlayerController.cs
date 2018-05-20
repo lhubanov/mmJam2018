@@ -38,6 +38,15 @@ public class PlayerController : MonoBehaviour
         animator.Play("playerIdle");
     }
 
+    private void Update()
+    {
+        FMOD.Studio.PLAYBACK_STATE walkingSoundState;
+        walkingInstance.getPlaybackState(out walkingSoundState);
+        if (walkingSoundState != PLAYBACK_STATE.STOPPING) {
+            walkingInstance.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
@@ -89,7 +98,7 @@ public class PlayerController : MonoBehaviour
             FMOD.Studio.PLAYBACK_STATE walkingSoundState;
             walkingInstance.getPlaybackState(out walkingSoundState);
             if (walkingSoundState != PLAYBACK_STATE.PLAYING) {
-                //walkingInstance.start();
+                walkingInstance.start();
             }
         }
     }

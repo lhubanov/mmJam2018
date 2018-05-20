@@ -26,14 +26,13 @@ public class TileEnergyController : MonoBehaviour
             if (Input.GetButton("Fire1") && !alreadyDead) {
 
                 GameObject.Find("HealthBars").GetComponent<MommaPower>().UpdatePupCurrentHealth(5);
-                //play animation
+
                 var playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
                 playerAnimator.Play("drainLife");
-                //WaitForAnimation(playerAnimator);
-                //when animation done
+
+                GameObject.Find("WorldDrainSoundManager").GetComponent<WorldDrainSoundManager>().PlayWorldDrainSound();
 
                 alreadyDead = true;
-                //GameObject.Find("Player").energy
 
                 DrainLifeFromChildren(transform);
             }
