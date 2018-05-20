@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{095aab65-7f4c-428d-841a-ef2292a86de2}">
+        <property name="assetPath">
+            <value>Mumgetsmoreill.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>1</value>
+        </property>
+        <property name="length">
+            <value>22.105396825396827</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{70caf368-b11e-401f-a38c-52b0d7ccce1c}</destination>
+        </relationship>
+    </object>
+</objects>

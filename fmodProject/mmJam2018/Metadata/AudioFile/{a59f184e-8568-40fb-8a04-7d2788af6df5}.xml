@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{a59f184e-8568-40fb-8a04-7d2788af6df5}">
+        <property name="assetPath">
+            <value>Cloak_6.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>0.645827664399093</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{70caf368-b11e-401f-a38c-52b0d7ccce1c}</destination>
+        </relationship>
+    </object>
+</objects>
