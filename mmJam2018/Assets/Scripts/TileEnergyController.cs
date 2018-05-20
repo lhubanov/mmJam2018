@@ -19,7 +19,7 @@ public class TileEnergyController : MonoBehaviour
             PlayerController player = other.GetComponent<PlayerController>();
             if (Input.GetButton("Fire1") && !alreadyDead) {
 
-
+                GameObject.Find("HealthBars").GetComponent<MommaPower>().UpdatePupCurrentHealth(5);
                 //play animation
                 var playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
                 playerAnimator.Play("drainLife");
