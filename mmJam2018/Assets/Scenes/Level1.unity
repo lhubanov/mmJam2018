@@ -7135,10 +7135,42 @@ Prefab:
       propertyPath: Speech2
       value: event:/Dialogue/OnReturn2
       objectReference: {fileID: 0}
+    - target: {fileID: 114521937598368382, guid: 2414e626d747f8d4d92245fd091d588e,
+        type: 2}
+      propertyPath: Stage2DialogueDone
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 82185763197571638, guid: 2414e626d747f8d4d92245fd091d588e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2414e626d747f8d4d92245fd091d588e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &751055151 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1738548553813632, guid: 2414e626d747f8d4d92245fd091d588e,
+    type: 2}
+  m_PrefabInternal: {fileID: 751055150}
+--- !u!114 &751055152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 751055151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/SFX/SnoringLoop
+  PlayEvent: 1
+  StopEvent: 3
+  CollisionTag: Player
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 40
 --- !u!1 &752372830 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1323042820546332, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -7855,52 +7887,52 @@ Prefab:
     - target: {fileID: 224597841255860808, guid: fb23230e226464434a0030d526c7ffbf,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224597841255860808, guid: fb23230e226464434a0030d526c7ffbf,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224537554101344174, guid: fb23230e226464434a0030d526c7ffbf,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224537554101344174, guid: fb23230e226464434a0030d526c7ffbf,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224537554101344174, guid: fb23230e226464434a0030d526c7ffbf,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224304977371659110, guid: fb23230e226464434a0030d526c7ffbf,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224304977371659110, guid: fb23230e226464434a0030d526c7ffbf,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224215000382926062, guid: fb23230e226464434a0030d526c7ffbf,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224215000382926062, guid: fb23230e226464434a0030d526c7ffbf,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224215000382926062, guid: fb23230e226464434a0030d526c7ffbf,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224133747567156450, guid: fb23230e226464434a0030d526c7ffbf,
         type: 2}
@@ -7944,7 +7976,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1396081985460116, guid: fb23230e226464434a0030d526c7ffbf, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb23230e226464434a0030d526c7ffbf, type: 2}
@@ -11607,33 +11639,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DrainSound: 
   alreadyDead: 0
---- !u!1 &1243870136 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1738548553813632, guid: 2414e626d747f8d4d92245fd091d588e,
-    type: 2}
-  m_PrefabInternal: {fileID: 751055150}
---- !u!114 &1243870137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1243870136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: event:/SFX/SnoringLoop
-  PlayEvent: 1
-  StopEvent: 0
-  CollisionTag: Player
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1247012794 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1343847797505732, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -12003,6 +12008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4589ed75978d99345b7d1c9ef5debaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestructionSound: event:/SFX/CrumblePowerdown
 --- !u!1 &1272870122 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1503106564570766, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -13303,6 +13309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebeede3b03110fe46b44c7e10e0ba97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestructionSound: event:/SFX/CrumblePowerdown
 --- !u!1 &1399813014 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1036628748447432, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -13744,6 +13751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76835ee5bc965ad43a9a2ed838a65e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestructionSound: event:/SFX/CrumblePowerdown
 --- !u!1 &1449708189 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1445569697895326, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -19656,6 +19664,7 @@ GameObject:
   - component: {fileID: 2047072093}
   - component: {fileID: 2047072092}
   - component: {fileID: 2047072096}
+  - component: {fileID: 2047072097}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -19738,6 +19747,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 889998688}
+--- !u!114 &2047072097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2047072091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!1 &2047136307 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1415692407538924, guid: 690fe62958e024ff79c12cbbe0b4f21b,

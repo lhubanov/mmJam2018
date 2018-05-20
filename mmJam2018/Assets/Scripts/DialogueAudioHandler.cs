@@ -24,29 +24,29 @@ public class DialogueAudioHandler : MonoBehaviour {
     public string RechargeSound;
     private EventInstance rechargeInstance;
 
-    [EventRef]
-    public string SnoringSound;
-    private EventInstance snoringInstance;
+    //[EventRef]
+    //public string SnoringSound;
+    //private EventInstance snoringInstance;
 
-    [EventRef]
-    public string SpeechIntro;
-    private EventInstance speechIntroInstance;
+    //[EventRef]
+    //public string SpeechIntro;
+    //private EventInstance speechIntroInstance;
 
-    [EventRef]
-    public string Speech1;
-    private EventInstance speech1Instance;
+    //[EventRef]
+    //public string Speech1;
+    //private EventInstance speech1Instance;
 
-    [EventRef]
-    public string Speech2;
-    private EventInstance speech2Instance;
+    //[EventRef]
+    //public string Speech2;
+    //private EventInstance speech2Instance;
 
     void Start()
     {
         rechargeInstance = RuntimeManager.CreateInstance(RechargeSound);
-        snoringInstance = RuntimeManager.CreateInstance(SnoringSound);
-        speechIntroInstance = RuntimeManager.CreateInstance(SpeechIntro);
-        speech1Instance = RuntimeManager.CreateInstance(Speech1);
-        speech2Instance = RuntimeManager.CreateInstance(Speech2);
+        //snoringInstance = RuntimeManager.CreateInstance(SnoringSound);
+        //speechIntroInstance = RuntimeManager.CreateInstance(SpeechIntro);
+        //speech1Instance = RuntimeManager.CreateInstance(Speech1);
+        //speech2Instance = RuntimeManager.CreateInstance(Speech2);
 
         //audio = GetComponent<AudioSource>();
         //audio.loop = false;
@@ -62,31 +62,31 @@ public class DialogueAudioHandler : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other)
-    {
-        //snoringInstance.start();
-
+    { 
         FMOD.Studio.PLAYBACK_STATE snoringSoundState;
         FMOD.Studio.PLAYBACK_STATE rechargeSoundState;
 
         if (other.tag == "Player" && Input.GetButton("Fire2"))
         {
-            snoringInstance.getPlaybackState(out snoringSoundState);
-            if (snoringSoundState == PLAYBACK_STATE.PLAYING) {
-                snoringInstance.stop(STOP_MODE.ALLOWFADEOUT);
-            }
+            //RuntimeManager.PlayOneShot(SnoringSound);
 
-            rechargeInstance.getPlaybackState(out rechargeSoundState);
-            if (rechargeSoundState != PLAYBACK_STATE.PLAYING) {
-                rechargeInstance.start();
-            }
+            //snoringInstance.getPlaybackState(out snoringSoundState);
+            //if (snoringSoundState == PLAYBACK_STATE.PLAYING) {
+            //    snoringInstance.stop(STOP_MODE.ALLOWFADEOUT);
+            //}
+
+            //rechargeInstance.getPlaybackState(out rechargeSoundState);
+            //if (rechargeSoundState != PLAYBACK_STATE.PLAYING) {
+            //    rechargeInstance.start();
+            //}
 
             GameObject.Find("HealthBars").GetComponent<MommaPower>().UpdateMommaCurrentHealth(5);
         }
 
-        rechargeInstance.getPlaybackState(out rechargeSoundState);
-        if (rechargeSoundState != PLAYBACK_STATE.PLAYING) {
-            snoringInstance.start();
-        }
+        //rechargeInstance.getPlaybackState(out rechargeSoundState);
+        //if (rechargeSoundState != PLAYBACK_STATE.PLAYING) {
+        //    snoringInstance.start();
+        //}
     }
 
     private void PlayDialogue()
