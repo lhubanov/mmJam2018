@@ -1,9 +1,13 @@
 ﻿
 using UnityEngine;
 using System.Collections;
+using FMODUnity;
 
 public class PlayerController : MonoBehaviour
 {
+    [EventRef]
+    public string CloakSound;
+
 
     public float speed;             //Floating point variable to store the player's movement speed.
 
@@ -36,6 +40,7 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
 
         if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
+            RuntimeManager.PlayOneShot(CloakSound);
             keyPressed = true;
         } else {
             keyPressed = false;
@@ -44,10 +49,14 @@ public class PlayerController : MonoBehaviour
         if((moveHorizontal < 0) && Time.time > NextTurn && keyPressed) {
             NextTurn = Time.time + TurningCooldown;
             sprite.flipX = true;
+            animator.Play("playerSideWalk");
+
             //FIXME: play animation here
         } else if (moveHorizontal > 0 && keyPressed && Time.time > NextTurn) {
             NextTurn = Time.time + TurningCooldown;
             sprite.flipX = false;
+            animator.Play("playerSideWalk");
+
             //FIXME: play animation here
         }
 

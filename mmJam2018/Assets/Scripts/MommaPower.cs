@@ -20,43 +20,40 @@ public class MommaPower : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		mommaCurrentHealth = MommaSlider.value;
-		
 		pupCurrentHealth = PupSlider.value;
+
 		if (mommaCurrentHealth > 0)
 		{
-        StartCoroutine(poisonHealth());//Starts the loss of health process.
+            StartCoroutine(poisonHealth());//Starts the loss of health process.
 		}
 	}
 
-	// Update is called once per frame
-	void Update () {
+    public void UpdatePupCurrentHealth(float value)
+    {
+        pupCurrentHealth += value;
+        PupSlider.value = pupCurrentHealth;
+    }
 
-		if (Input.GetKeyDown(KeyCode.W))
-		{
-			pupCurrentHealth += 10;
-			PupSlider.value = pupCurrentHealth;
-		}
+    public void UpdateMommaCurrentHealth(float value)
+    {
+        mommaCurrentHealth += value;
+        MommaSlider.value = mommaCurrentHealth;
 
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			mommaCurrentHealth += 10;
-			MommaSlider.value = mommaCurrentHealth;
-			
-			pupCurrentHealth -= 10;
-			PupSlider.value = pupCurrentHealth;
-		}
-		if (Input.GetKeyDown(KeyCode.D))
-		{
-			mommaCurrentHealth -= 10;
-			MommaSlider.value = mommaCurrentHealth;
-		}
-	}
+        pupCurrentHealth -= value;
+        PupSlider.value = pupCurrentHealth;
+    }
+
+    //public void ReloadMomma(float value)
+    //{
+    //    mommaCurrentHealth -= 10;
+    //    MommaSlider.value = mommaCurrentHealth;
+    //}
 
 	IEnumerator poisonHealth ()//Lose health momma
      {
          while(mommaCurrentHealth > 0)//While momma ain't ded
 		 {
-             mommaCurrentHealth -= 5;    //lose this health per step.
+             mommaCurrentHealth -= 3;    //lose this health per step.
 			 MommaSlider.value = mommaCurrentHealth;
              yield return new WaitForSeconds(1);//sets the time to lose health over.
 		 }
