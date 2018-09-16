@@ -11,7 +11,8 @@ public class StateMachine : ScriptableObject
 {
     public IState CurrentState;
 
-    // health bar references
+    // Health bar references
+    //TODO: Add
 
     // Audio references
     [EventRef]

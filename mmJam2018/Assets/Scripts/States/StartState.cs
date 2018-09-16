@@ -5,6 +5,8 @@ using Assets.Scripts.States;
 
 public class StartState : StateBase
 {
+    private bool isDialogueDone = false;
+
     public override void OnEnter(StateMachine stateMachine)
     {
         base.OnEnter(stateMachine);
@@ -19,7 +21,10 @@ public class StartState : StateBase
 
     public override void PlayDialogue(StateMachine stateMachine)
     {
-        stateMachine.SpeechIntroInstance.start();
+        if (!isDialogueDone) { 
+            stateMachine.SpeechIntroInstance.start();
+            isDialogueDone = true;
+        }
     }
 
     public override void PlayMusic(StateMachine stateMachine)

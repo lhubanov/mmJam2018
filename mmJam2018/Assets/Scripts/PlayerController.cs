@@ -10,10 +10,6 @@ public class PlayerController : MonoBehaviour
     public string CloakSound;
     private EventInstance walkingInstance;
 
-
-
-    public float speed;             //Floating point variable to store the player's movement speed.
-
     private Rigidbody rigidbody;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
     private SpriteRenderer sprite;
     private Animator animator;
@@ -23,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     public float TurningCooldown = 0.5f;
     public bool Talking = false;
+    public float Speed;             //Floating point variable to store the player's movement speed.
 
 
     // Use this for initialization
@@ -38,62 +35,61 @@ public class PlayerController : MonoBehaviour
         animator.Play("playerIdle");
     }
 
+
+    // This is in heavy need of refactoring
+
     private void Update()
     {
-        FMOD.Studio.PLAYBACK_STATE walkingSoundState;
-        walkingInstance.getPlaybackState(out walkingSoundState);
-        if (walkingSoundState != PLAYBACK_STATE.STOPPING) {
-            walkingInstance.stop(STOP_MODE.ALLOWFADEOUT);
-        }
+        //FMOD.Studio.PLAYBACK_STATE walkingSoundState;
+        //walkingInstance.getPlaybackState(out walkingSoundState);
+        //if (walkingSoundState != PLAYBACK_STATE.STOPPING) {
+        //    walkingInstance.stop(STOP_MODE.ALLOWFADEOUT);
+        //}
     }
 
-    //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
-        //Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = Input.GetAxis("Horizontal");
 
         if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
             keyPressed = true;
         } else {
             keyPressed = false;
         }
-        
-        if((moveHorizontal < 0) && Time.time > NextTurn && keyPressed) {
+
+        //Store the current horizontal input in the float moveHorizontal.
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        if ((moveHorizontal < 0) && Time.time > NextTurn && keyPressed)
+        {
             NextTurn = Time.time + TurningCooldown;
             sprite.flipX = true;
             animator.Play("playerSideWalk");
-
-            //FIXME: play animation here
-        } else if (moveHorizontal > 0 && keyPressed && Time.time > NextTurn) {
+        }
+        else if (moveHorizontal > 0 && keyPressed && Time.time > NextTurn)
+        {
             NextTurn = Time.time + TurningCooldown;
             sprite.flipX = false;
             animator.Play("playerSideWalk");
-
-            //FIXME: play animation here
         }
 
         //Store the current vertical input in the float moveVertical.
         float moveVertical = Input.GetAxis("Vertical");
-        Debug.Log("moveVertical: " + moveVertical);
-
-        if ((moveVertical < 0) && keyPressed && Time.time > NextTurn) {
+        if ((moveVertical < 0) && keyPressed && Time.time > NextTurn)
+        {
             NextTurn = Time.time + TurningCooldown;
-
             animator.Play("moveDownwards");
             sprite.flipY = false;
-            //FIXME: play animation here
-        } else if (moveVertical > 0 && keyPressed && Time.time > NextTurn) {
+        }
+        else if (moveVertical > 0 && keyPressed && Time.time > NextTurn)
+        {
             NextTurn = Time.time + TurningCooldown;
-            
             animator.Play("moveUpwards");
-            //sprite.flipY = true;
-            //FIXME: play animation here
         }
 
-        if (!Input.GetButton("Fire2") && !Talking) {
+
+        if (!Input.GetButton("Fire2") && !Talking)
+        {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-            rigidbody.AddForce(movement * speed);
+            rigidbody.AddForce(movement * Speed);
 
             FMOD.Studio.PLAYBACK_STATE walkingSoundState;
             walkingInstance.getPlaybackState(out walkingSoundState);
@@ -101,6 +97,8 @@ public class PlayerController : MonoBehaviour
                 walkingInstance.start();
             }
         }
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -110,4 +108,5 @@ public class PlayerController : MonoBehaviour
             //reduce player health
         }
     }
+
 }

@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\BranchInteraction2.cs" />
     <Compile Include="Assets\Scripts\BranchInteraction3.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\DeadTileLookup.cs" />
     <Compile Include="Assets\Scripts\DialogueAnimationHandler.cs" />
     <Compile Include="Assets\Scripts\DialogueAudioHandler.cs" />
     <Compile Include="Assets\Scripts\DialogueHandler.cs" />
@@ -82,7 +83,8 @@
     <Compile Include="Assets\Scripts\States\StartState.cs" />
     <Compile Include="Assets\Scripts\States\StateBase.cs" />
     <Compile Include="Assets\Scripts\States\StateMachine.cs" />
-    <Compile Include="Assets\Scripts\TileEnergyController.cs" />
+    <Compile Include="Assets\Scripts\Tile.cs" />
+    <Compile Include="Assets\Scripts\TileScanner.cs" />
     <Compile Include="Assets\Scripts\WorldDrainSoundManager.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Lucho Hubanov/Documents/GitHub/mmJam2018/mmJam2018/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
