@@ -6,21 +6,6 @@ public class TileScanner : MonoBehaviour
 {
     private SphereCollider tileScanner = null;
 
-    //// Resource lookup table; probably a more optimal way to do this
-    //private Dictionary<string, string> deadSprites = new Dictionary<string, string>()
-    //{
-    //    { "grass pattern", "grass pattern dead"},
-    //    { "tree regular", "tree dead"},
-    //    { "bushes_0", "bushes dead"},
-    //    { "bushes_1", "bushes dead"},
-    //    { "bushes_2", "bushes dead"},
-    //    { "bushes_3", "bushes dead"},
-    //    { "flowers_0", "flowers dead"},
-    //    { "flowers_1", "flowers dead"},
-    //    { "flowers_2", "flowers dead"},
-    //    { "flowers_3", "flowers dead"}
-    //};
-
 	void Start ()
     {
         tileScanner = GetComponent<SphereCollider>();
@@ -37,24 +22,12 @@ public class TileScanner : MonoBehaviour
     private void DrainLife()
     {
         AnimateLifeDrain();
-
-        // Get all colliders within tile scanner sphere trigger
         Collider[] tiles = GetAllTiles();
         
         for(int i = 0; i < tiles.Length; i++)
         {
-            if(tiles[i].gameObject.GetComponent<Tile>() != null)
-            {
+            if(tiles[i].gameObject.GetComponent<Tile>() != null) {
                 tiles[i].gameObject.GetComponent<Tile>().DrainTile();
-                //List<string> spriteNames = tiles[i].gameObject.GetComponent<Tile>().GetSpriteNames();
-
-                //foreach(string spriteName in spriteNames) { 
-                //    string deadSprite;
-                //    if (deadSprites.TryGetValue(spriteName, out deadSprite)) {
-                //        tiles[i].gameObject.GetComponent<Tile>().KillTile(deadSprite, GetResourceID(spriteName));
-                //    }
-                //}
-
             }
         }
     }

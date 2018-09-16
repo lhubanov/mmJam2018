@@ -22,29 +22,6 @@ public class Tile : MonoBehaviour
 
     }
 
-    //public string GetSpriteName()
-    //{
-    //    if(GetComponentInChildren<SpriteRenderer>() != null)
-    //    {
-    //        List<string> renderers = new List<string>();
-    //        return GetComponentInChildren<SpriteRenderer>().sprite.name;
-    //    }
-
-    //    return "-1";
-    //}
-
-    //public void KillTile(string newResourceName, int resourceID = 0)
-    //{
-    //    isDead = true;
-    //    Sprite[] resources = Resources.LoadAll<Sprite>(newResourceName);
-
-    //    //GetComponentInChildren<SpriteRenderer>().sprite = resources[resourceID];
-    //    SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
-    //    for(int i = 0; i < renderers.Length; i++) {
-    //        renderers[i].sprite = resources[resourceID];
-    //    }
-    //}
-
     private int GetResourceID(string spriteName)
     {
         char resourceID = spriteName[spriteName.Length - 1];
@@ -96,87 +73,4 @@ public class Tile : MonoBehaviour
             }
         }
     }
-    
-    // I hate myself
-    //private void DrainLifeFromChildren(Transform transform)
-    //{
-    //    foreach (Transform t in transform)
-    //    { 
-    //        if ((t.GetComponent<SpriteRenderer>()) != null)
-    //        {
-    //            if (t.GetComponent<SpriteRenderer>().sprite.name == "grass pattern")
-    //            {
-    //                Sprite resource = Resources.Load<Sprite>("grass pattern dead");
-    //                t.GetComponent<SpriteRenderer>().sprite = resource;
-    //            }
-
-    //            if (t.GetComponent<SpriteRenderer>().sprite.name == "tree regular")
-    //            {
-    //                Sprite resource = Resources.Load<Sprite>("tree dead");
-    //                t.GetComponent<SpriteRenderer>().sprite = resource;
-    //            }
-
-    //            if (t.GetComponent<SpriteRenderer>().sprite.name == "bushes_0")
-    //            {
-    //                Sprite[] resource = Resources.LoadAll<Sprite>("bushes dead");
-    //                t.GetComponent<SpriteRenderer>().sprite = resource[0];
-    //            }
-
-    //            if (t.GetComponent<SpriteRenderer>().sprite.name == "bushes_1")
-    //            {
-    //                Sprite[] resource = Resources.LoadAll<Sprite>("bushes dead");
-    //                t.GetComponent<SpriteRenderer>().sprite = resource[1];
-    //            }
-
-    //            if (t.GetComponent<SpriteRenderer>().sprite.name == "bushes_2")
-    //            {
-    //                Sprite[] resource = Resources.LoadAll<Sprite>("bushes dead");
-    //                t.GetComponent<SpriteRenderer>().sprite = resource[2];
-    //            }
-
-    //            if (t.GetComponent<SpriteRenderer>().sprite.name == "bushes_3")
-    //            {
-    //                Sprite[] resource = Resources.LoadAll<Sprite>("bushes dead");
-    //                t.GetComponent<SpriteRenderer>().sprite = resource[3];
-    //            }
-
-    //            if (t.GetComponent<SpriteRenderer>().sprite.name == "flowers_0")
-    //            {
-    //                Sprite[] resource = Resources.LoadAll<Sprite>("flowers dead");
-    //                t.GetComponent<SpriteRenderer>().sprite = resource[0];
-    //            }
-
-    //            if (t.GetComponent<SpriteRenderer>().sprite.name == "flowers_1")
-    //            {
-    //                Sprite[] resource = Resources.LoadAll<Sprite>("flowers dead");
-    //                t.GetComponent<SpriteRenderer>().sprite = resource[1];
-    //            }
-
-    //            if (t.GetComponent<SpriteRenderer>().sprite.name == "flowers_2")
-    //            {
-    //                Sprite[] resource = Resources.LoadAll<Sprite>("flowers dead");
-    //                t.GetComponent<SpriteRenderer>().sprite = resource[2];
-    //            }
-
-    //            if (t.GetComponent<SpriteRenderer>().sprite.name == "flowers_3")
-    //            {
-    //                Sprite[] resource = Resources.LoadAll<Sprite>("flowers dead");
-    //                t.GetComponent<SpriteRenderer>().sprite = resource[3];
-    //            }
-    //        }
-
-    //        if(t.childCount > 0) { 
-    //            DrainLifeFromChildren(t);
-    //        }
-    //    }
-
-
-    //}
-
-    //private IEnumerator WaitForAnimation(Animator playerAnimator)
-    //{
-    //    playerAnimator.Play("drainLife");
-    //    AnimatorClipInfo[] clipInfo = playerAnimator.GetCurrentAnimatorClipInfo(0);
-    //    yield return new WaitForSeconds(clipInfo[0].clip.length);
-    //}
 }
