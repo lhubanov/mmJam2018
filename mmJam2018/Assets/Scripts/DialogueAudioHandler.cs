@@ -4,7 +4,9 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 
-public class DialogueAudioHandler : MonoBehaviour {
+// The mom, effectively
+public class DialogueAudioHandler : MonoBehaviour
+{
 
     public bool Stage1Complete = true;
     public bool Stage1DialogueDone = false;
@@ -17,7 +19,6 @@ public class DialogueAudioHandler : MonoBehaviour {
     //public  AudioClip childLine1;
 
     //private AudioSource audio;
-    private PlayerController player;
 
 
     [EventRef]
@@ -50,7 +51,7 @@ public class DialogueAudioHandler : MonoBehaviour {
         speech1Instance = RuntimeManager.CreateInstance(Speech1);
         speech2Instance = RuntimeManager.CreateInstance(Speech2);
 
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
+        //player = GameObject.Find("Player").GetComponent<PlayerController>();
 
         gameplayMusicInstance.start();
     }
@@ -60,8 +61,6 @@ public class DialogueAudioHandler : MonoBehaviour {
         if(other.tag == "Player") {
             PlayDialogue();
         }
-
-
     }
 
     private void OnTriggerStay(Collider other)
@@ -98,26 +97,4 @@ public class DialogueAudioHandler : MonoBehaviour {
             //StartCoroutine(PlayDialogue1());
         }
     }
-
-    //IEnumerator PlayDialogue1()
-    //{
-    //    player.Talking = true;
-
-    //    var animator = GetComponentInChildren<Animator>();
-    //    animator.Play("momBeingSuspicious");
-    //    audio.clip = momLine1;
-    //    audio.Play();
-    //    yield return new WaitForSeconds(audio.clip.length);
-    //    audio.clip = childLine1;
-    //    audio.Play();
-    //    yield return new WaitForSeconds(audio.clip.length);
-    //    audio.clip = momLine1;
-    //    audio.Play();
-    //    yield return new WaitForSeconds(audio.clip.length);
-    //    audio.clip = childLine1;
-    //    audio.Play();
-
-    //    animator.Play("momIdle");
-    //    player.Talking = false;
-    //}
 }

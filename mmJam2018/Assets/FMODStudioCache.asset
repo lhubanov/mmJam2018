@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114678061698506860}
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   EditorEvents:
   - {fileID: 114259532997011378}
   - {fileID: 114440293378263908}
@@ -35,14 +35,14 @@ MonoBehaviour:
   - {fileID: 114159570355382808}
   - {fileID: 114847522877108152}
   - {fileID: 114814724239094564}
-  MasterBankRef: {fileID: 114420192119420974}
+  MasterBankRef: {fileID: 114787929902287200}
   StringsBankRef: {fileID: 114678061698506860}
-  stringsBankWriteTime: 636624322595940487
+  stringsBankWriteTime: 636703129311440603
   cacheVersion: 2
 --- !u!114 &114008602774640680
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -53,7 +53,7 @@ MonoBehaviour:
   Path: event:/SFX/Footsteps
   guid: e2215f16ad0c2042843f8582132b558a
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -64,7 +64,7 @@ MonoBehaviour:
 --- !u!114 &114101727525683794
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -75,7 +75,7 @@ MonoBehaviour:
   Path: event:/Music/SadderAdventure
   guid: b97ba5296e04b840bc28f2feb7f2609e
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
 --- !u!114 &114116222665675582
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -104,7 +104,7 @@ MonoBehaviour:
 --- !u!114 &114148800132615388
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -115,7 +115,7 @@ MonoBehaviour:
   Path: event:/Dialogue/SecondEnergySource
   guid: 4d407415c24f2641be28dc98adb24b42
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -126,7 +126,7 @@ MonoBehaviour:
 --- !u!114 &114151259909075128
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -137,7 +137,7 @@ MonoBehaviour:
   Path: event:/SFX/PowerTake
   guid: e6f88b94dd5567419d70a71265a41022
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -148,7 +148,7 @@ MonoBehaviour:
 --- !u!114 &114159570355382808
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -159,7 +159,7 @@ MonoBehaviour:
   Path: event:/Music/VenturingOutWithVocals
   guid: ff5cc58112117e46b5be170d32cfa3bc
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
 --- !u!114 &114257406899768362
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -181,7 +181,7 @@ MonoBehaviour:
   Path: event:/Music/IntroCutscene
   guid: 79ef3cedee5a3340a1c4a0e07947f3b2
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
 --- !u!114 &114259532997011378
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -203,7 +203,7 @@ MonoBehaviour:
   Path: event:/Music/WalkingBackThroughLevel
   guid: 48bc1ac4e28e854a92664ef290ad6375
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
 --- !u!114 &114322153106683840
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -225,7 +225,7 @@ MonoBehaviour:
   Path: event:/Dialogue/OnReturn
   guid: 0e2fc19412e42242950daa5009783223
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -236,7 +236,7 @@ MonoBehaviour:
 --- !u!114 &114363403646519760
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -258,7 +258,7 @@ MonoBehaviour:
 --- !u!114 &114420192119420974
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -273,11 +273,11 @@ MonoBehaviour:
   FileSizes:
   - Name: 
     Value: 5304160
-  Exists: 1
+  Exists: 0
 --- !u!114 &114435327199172804
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -288,7 +288,7 @@ MonoBehaviour:
   Path: event:/Dialogue/FirstEnergySource
   guid: 04dba7a84675de4d9f00a85c9230f6bd
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -299,7 +299,7 @@ MonoBehaviour:
 --- !u!114 &114440293378263908
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -310,7 +310,7 @@ MonoBehaviour:
   Path: event:/Music/Combat
   guid: 573e5598fdfa404d8a6828730fd69dc0
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -321,7 +321,7 @@ MonoBehaviour:
 --- !u!114 &114464552562626368
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -343,7 +343,7 @@ MonoBehaviour:
 --- !u!114 &114470730962715948
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -354,7 +354,7 @@ MonoBehaviour:
   Path: event:/SFX/PowerGive
   guid: 9232b5aa13a09943878ab55e5a2ba44a
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -365,7 +365,7 @@ MonoBehaviour:
 --- !u!114 &114568651055568260
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -383,7 +383,7 @@ MonoBehaviour:
 --- !u!114 &114595673699987970
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -405,7 +405,7 @@ MonoBehaviour:
 --- !u!114 &114605815337506068
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -416,7 +416,7 @@ MonoBehaviour:
   Path: event:/Music/VenturingOut
   guid: 83207a63e42f68428305b901e6a1db91
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -427,7 +427,7 @@ MonoBehaviour:
 --- !u!114 &114650171144672048
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -449,7 +449,7 @@ MonoBehaviour:
 --- !u!114 &114671811669669890
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -460,7 +460,7 @@ MonoBehaviour:
   Path: event:/Dialogue/OpeningNarrative
   guid: 50107be34a31f1449967e05b56af7ee6
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -471,7 +471,7 @@ MonoBehaviour:
 --- !u!114 &114678061698506860
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\Desktop\Master Bank.strings.bank
-  lastModified: 636624322595940487
+  lastModified: 636703129311440603
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -489,7 +489,7 @@ MonoBehaviour:
 --- !u!114 &114700883163791946
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -511,7 +511,7 @@ MonoBehaviour:
 --- !u!114 &114703989273277850
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -522,7 +522,7 @@ MonoBehaviour:
   Path: event:/Dialogue/MumGetsMoreIll
   guid: fe236a9777643f4aa5bb2b8e8ad2a8c8
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -533,7 +533,7 @@ MonoBehaviour:
 --- !u!114 &114722670342827280
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -544,7 +544,7 @@ MonoBehaviour:
   Path: event:/Dialogue/OnReturn2
   guid: a489afbb174b0f468c616b470a91fe8f
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -555,7 +555,7 @@ MonoBehaviour:
 --- !u!114 &114750043821197934
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -566,7 +566,7 @@ MonoBehaviour:
   Path: event:/Dialogue/WalkPastCertainPoint
   guid: 84dc8cd4dcc54e429d7d28294dc8a191
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -574,10 +574,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 6106
+--- !u!114 &114787929902287200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\Assets\Audio\Desktop\Master
+    Bank.bank
+  lastModified: 636703129311430626
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 5304160
+  Exists: 1
 --- !u!114 &114800954205000964
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -595,7 +614,7 @@ MonoBehaviour:
 --- !u!114 &114814724239094564
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -606,7 +625,7 @@ MonoBehaviour:
   Path: snapshot:/DialogueHappening
   guid: 83c3c3a69ae04742a0a97409c811d263
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -617,7 +636,7 @@ MonoBehaviour:
 --- !u!114 &114847522877108152
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -628,7 +647,7 @@ MonoBehaviour:
   Path: event:/SFX/SnoringLoop
   guid: 239a1551ad33154daa29d5579988fc9f
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -639,7 +658,7 @@ MonoBehaviour:
 --- !u!114 &114859644083411006
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -650,7 +669,7 @@ MonoBehaviour:
   Path: event:/SFX/CrumblePowerdown
   guid: bf06ef3c149ff84ea0cb374577abbed6
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -661,7 +680,7 @@ MonoBehaviour:
 --- !u!114 &114886254566334754
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -683,7 +702,7 @@ MonoBehaviour:
 --- !u!114 &114913586095708372
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -694,7 +713,7 @@ MonoBehaviour:
   Path: event:/Music/LevelEnd
   guid: e93475b9176fbf458a23b216ea99f71e
   Banks:
-  - {fileID: 114420192119420974}
+  - {fileID: 114787929902287200}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0

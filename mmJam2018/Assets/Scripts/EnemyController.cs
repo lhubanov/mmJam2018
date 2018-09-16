@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     private SpriteRenderer sprite;
     private BoxCollider idleMovementRange;
-    private Vector3 NextIdleMovementPosition;
+    private Vector3 nextIdleMovementPosition;
 
     private float   NextIdleMovement = 0;
     private bool    idling = true;
@@ -21,21 +21,21 @@ public class EnemyController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         idleMovementRange = GetComponentInParent<BoxCollider>();
         NextIdleMovement = IdleMovementCooldown;
-        NextIdleMovementPosition = new Vector3(transform.position.x + Random.Range(-5, 5), transform.position.y + Random.Range(-5, 5), 0);
+        nextIdleMovementPosition = new Vector3(transform.position.x + Random.Range(-5, 5), transform.position.y + Random.Range(-5, 5), 0);
     }
 
     private void Update()
     {
         if(Time.time <= NextIdleMovement && idling) {
             //FIXME: Play movement animation
-            transform.position = Vector3.Lerp(transform.position, NextIdleMovementPosition, Time.deltaTime * SmoothFactor);
+            transform.position = Vector3.Lerp(transform.position, nextIdleMovementPosition, Time.deltaTime * SmoothFactor);
         } else if (idling) {
             NextIdleMovement = Time.time + IdleMovementCooldown;
             if (idleMovementRange.bounds.Contains(this.transform.position)) {
-                NextIdleMovementPosition = new Vector3(transform.position.x + Random.Range(-5, 5), transform.position.y + Random.Range(-5, 5), 0);
+                nextIdleMovementPosition = new Vector3(transform.position.x + Random.Range(-5, 5), transform.position.y + Random.Range(-5, 5), 0);
             } else {
                 //transform.position = Vector3.Lerp(transform.position, idleMovementRange.transform.position, Time.deltaTime * SmoothFactor);
-                NextIdleMovementPosition = idleMovementRange.transform.position;
+                nextIdleMovementPosition = idleMovementRange.transform.position;
             }
         } else {
             GameObject player = GameObject.Find("Player");
