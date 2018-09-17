@@ -14,11 +14,9 @@ namespace Assets.Scripts.States
         void Update(StateMachine stateMachine);
 
         void ToState(StateMachine stateMachine, IState nextState);
+        void AdvanceState(StateMachine stateMachine);
 
-        // Different from play music, supposedly for when background audio changes
         void PlayMusic(StateMachine stateMachine);
         void PlayDialogue(StateMachine stateMachine);
-
-        //void HandleInput(StateMachine stateMachine, Input input);
     }
 }

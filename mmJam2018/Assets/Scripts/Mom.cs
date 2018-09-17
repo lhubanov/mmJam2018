@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Assets.Scripts.States;
 
-using FMODUnity;
 using FMOD.Studio;
 
 public class Mom : MonoBehaviour

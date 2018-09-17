@@ -6,6 +6,8 @@ using FMOD.Studio;
 
 public class BranchInteraction : MonoBehaviour
 {
+    public StateMachine stateMachine;
+
     [EventRef]
     public string DestructionSound;
 
@@ -15,7 +17,7 @@ public class BranchInteraction : MonoBehaviour
         {
             GetComponentInParent<Animator>().Play("BranchDisappear1");
             RuntimeManager.PlayOneShot(DestructionSound);
-            GameObject.Find("Mom").GetComponent<DialogueAudioHandler>().Stage2Complete = true;
+            stateMachine.CurrentState.AdvanceState(stateMachine);
         }
     }
 }

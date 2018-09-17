@@ -30,8 +30,10 @@ public class Tile : MonoBehaviour
 
     public void DrainTile()
     {
-        DrainTile(transform);
-        isDead = true;
+        if (!isDead) {
+            DrainTile(transform);
+            isDead = true;
+        }
     }
 
     private void DrainTile(Transform transform)
@@ -62,10 +64,10 @@ public class Tile : MonoBehaviour
 
                 GameObject.Find("HealthBars").GetComponent<MommaPower>().UpdatePupCurrentHealth(5);
 
-                var playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
-                playerAnimator.Play("drainLife");
+                //var playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
+                //playerAnimator.Play("drainLife");
 
-                GameObject.Find("WorldDrainSoundManager").GetComponent<WorldDrainSoundManager>().PlayWorldDrainSound();
+                //GameObject.Find("WorldDrainSoundManager").GetComponent<WorldDrainSoundManager>().PlayWorldDrainSound();
 
                 //alreadyDead = true;
 

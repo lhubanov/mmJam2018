@@ -165,4 +165,3 @@ C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-C
 C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp-firstpass.csproj.CopyComplete
 C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp-firstpass.pdb
-C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp-firstpass.csprojAssemblyReference.cache

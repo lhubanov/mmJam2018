@@ -17,13 +17,10 @@ namespace Assets.Scripts.States
             stateMachine.CurrentState = nextState;
             stateMachine.CurrentState.OnEnter(stateMachine);
         }
+        public virtual void PlayMusic(StateMachine stateMachine) { }
+        public virtual void PlayDialogue(StateMachine stateMachine) { }
 
         public abstract void Update(StateMachine stateMachine);
-
-        public abstract void PlayMusic(StateMachine stateMachine);
-        public abstract void PlayDialogue(StateMachine stateMachine);
-
-        // This was in the talk, but not sure if necessary here
-        //public abstract void HandleInput(StateMachine stateMachine, Input Input);
+        public abstract void AdvanceState(StateMachine stateMachine);
     }
 }
