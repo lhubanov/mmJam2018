@@ -38,11 +38,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //FMOD.Studio.PLAYBACK_STATE walkingSoundState;
-        //walkingInstance.getPlaybackState(out walkingSoundState);
-        //if (walkingSoundState != PLAYBACK_STATE.STOPPING) {
-        //    walkingInstance.stop(STOP_MODE.ALLOWFADEOUT);
-        //}
+        FMOD.Studio.PLAYBACK_STATE walkingSoundState;
+        walkingInstance.getPlaybackState(out walkingSoundState);
+        if (walkingSoundState != PLAYBACK_STATE.STOPPING) {
+            walkingInstance.stop(STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     // This is in heavy need of refactoring

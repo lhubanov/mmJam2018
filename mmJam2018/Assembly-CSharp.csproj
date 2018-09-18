@@ -66,8 +66,6 @@
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudio.cs" />
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudioRoom.cs" />
     <Compile Include="Assets\Scripts\BranchInteraction.cs" />
-    <Compile Include="Assets\Scripts\BranchInteraction2.cs" />
-    <Compile Include="Assets\Scripts\BranchInteraction3.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\InputController.cs" />

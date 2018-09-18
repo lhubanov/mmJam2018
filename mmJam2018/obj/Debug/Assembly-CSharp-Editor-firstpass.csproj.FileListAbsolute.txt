@@ -204,3 +204,4 @@ C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-C
 C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp-Editor-firstpass.csproj.CopyComplete
 C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp-Editor-firstpass.dll
 C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp-Editor-firstpass.pdb
+C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
