@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Assets.Scripts.States;
 
 using FMODUnity;
@@ -12,7 +13,8 @@ public class StateMachine : ScriptableObject
     public IState CurrentState;
 
     // Health bar references
-    //TODO: Add
+    public Slider HeldEnergy;
+    public Slider MomHealth;
 
     // Audio references
     [EventRef]
