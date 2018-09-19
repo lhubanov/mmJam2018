@@ -42,10 +42,11 @@ public class Tile : MonoBehaviour
         {
             if (t.GetComponent<SpriteRenderer>() != null)
             {
-                string spriteName;
-                if (DeadTileLookup.deadSprites.TryGetValue(t.GetComponentInChildren<SpriteRenderer>().sprite.name, out spriteName))
+                string spriteSheetName;
+                string spriteName = t.GetComponentInChildren<SpriteRenderer>().sprite.name;
+                if (DeadTileLookup.deadSprites.TryGetValue(spriteName, out spriteSheetName))
                 {
-                    Sprite[] resources = Resources.LoadAll<Sprite>(spriteName);
+                    Sprite[] resources = Resources.LoadAll<Sprite>(spriteSheetName);
                     t.GetComponentInChildren<SpriteRenderer>().sprite = resources[GetResourceID(spriteName)];
                 }
             }
