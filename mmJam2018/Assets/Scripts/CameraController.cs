@@ -7,15 +7,15 @@ public class CameraController : MonoBehaviour
     private Vector3 offset;
 
     //FIXME: Add intro motion here (can just e a left-to-right motion with a vector.lerp?)
-
-
     void Start()
     {
         offset = transform.position - player.transform.position;
 	}
-	
-	void LateUpdate()
+
+    void LateUpdate()
     {
         transform.position = player.transform.position + offset;
 	}
+
+
 }

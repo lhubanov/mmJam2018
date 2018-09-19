@@ -322,3 +322,4 @@ C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\Temp\bin\Debug\UnityEngin
 C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp-firstpass.csproj.CoreCompileInputs.cache
 C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp-firstpass.csprojAssemblyReference.cache
