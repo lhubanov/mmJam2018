@@ -55,15 +55,4 @@ public class Tile : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if(other.tag == "Player") {
-            PlayerController player = other.GetComponent<PlayerController>();
-            if (Input.GetButton("Fire1") && !isDead) {
-
-                GameObject.Find("HealthBars").GetComponent<MommaPower>().UpdatePupCurrentHealth(5);
-            }
-        }
-    }
 }

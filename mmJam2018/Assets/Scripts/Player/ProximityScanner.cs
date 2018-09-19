@@ -5,6 +5,9 @@ using FMOD.Studio;
 public class ProximityScanner : MonoBehaviour
 {
     private SphereCollider tileScanner = null;
+    public float EnergyGainRateTile = 0.5f;
+    public float EnergyGainRateEnemy = 2f;
+
 
     void Start()
     {
@@ -31,8 +34,10 @@ public class ProximityScanner : MonoBehaviour
             {
                 case "Terrain":
                     objectsInProximity[i].GetComponent<Tile>().DrainTile();
+                    GetComponentInParent<HeldEnergyManager>().IncreaseHeldEnergy(EnergyGainRateTile);
                     break;
                 case "Enemy":
+                    GetComponentInParent<HeldEnergyManager>().IncreaseHeldEnergy(EnergyGainRateEnemy);
                     objectsInProximity[i].GetComponentInChildren<EnemyAnimationManager>().PlayDeathAnimation();
                     break;
             }

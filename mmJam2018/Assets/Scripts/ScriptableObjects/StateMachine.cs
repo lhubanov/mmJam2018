@@ -13,8 +13,8 @@ public class StateMachine : ScriptableObject
     public IState CurrentState;
 
     // Health bar references
-    public Slider HeldEnergy;
-    public Slider MomHealth;
+    public float HeldEnergy;
+    public float MomHealth;
 
     // Audio references
     [EventRef]

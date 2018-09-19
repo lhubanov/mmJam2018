@@ -67,6 +67,7 @@
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudioRoom.cs" />
     <Compile Include="Assets\Scripts\BranchInteraction.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\EnemyAnimationManager.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\InputController.cs" />
     <Compile Include="Assets\Scripts\Mom.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Assets\Scripts\States\StateBase.cs" />
     <Compile Include="Assets\Scripts\States\TwoBranchesDeadState.cs" />
     <Compile Include="Assets\Scripts\Tile.cs" />
+    <Compile Include="Assets\Scripts\UI\SliderControl.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Lucho Hubanov/Documents/GitHub/mmJam2018/mmJam2018/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

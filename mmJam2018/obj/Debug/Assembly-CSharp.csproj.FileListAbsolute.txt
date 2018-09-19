@@ -166,9 +166,6 @@ C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-C
 C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp.dll
 C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp.pdb
-C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\Temp\bin\Debug\UnityEditor.UI.dll
-C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
-C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\Temp\bin\Debug\UnityEditor.UI.xml
 C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\Temp\bin\Debug\Assembly-CSharp.dll
 C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\Temp\bin\Debug\Assembly-CSharp.pdb
 C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\Temp\bin\Debug\Boo.Lang.dll
@@ -327,3 +324,4 @@ C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp
 C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp.dll
 C:\Users\lhubanov\Documents\GitHub\mmJam2018\mmJam2018\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Lucho Hubanov\Documents\GitHub\mmJam2018\mmJam2018\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb

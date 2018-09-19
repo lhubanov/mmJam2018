@@ -10,23 +10,20 @@ public class PlayerController : MonoBehaviour
     public string CloakSound;
     private EventInstance walkingInstance;
 
-    private Rigidbody rigidbody;
+    private Rigidbody rbody;
     private SpriteRenderer sprite;
     private Animator animator;
 
     private bool keyPressed = false;
     private float NextTurn = 0;
+    private bool Talking = false;
 
     public float TurningCooldown = 0.5f;
-    public bool Talking = false;
     public float Speed;
 
-
-    // Use this for initialization
     void Start()
     {
-        //Get and store a reference to the Rigidbody2D component so that we can access it.
-        rigidbody = GetComponent<Rigidbody>();
+        rbody = GetComponent<Rigidbody>();
         sprite = GetComponent<SpriteRenderer>();
 
         walkingInstance = RuntimeManager.CreateInstance(CloakSound);
@@ -38,17 +35,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        FMOD.Studio.PLAYBACK_STATE walkingSoundState;
-        walkingInstance.getPlaybackState(out walkingSoundState);
-        if (walkingSoundState != PLAYBACK_STATE.STOPPING) {
-            walkingInstance.stop(STOP_MODE.ALLOWFADEOUT);
-        }
+
     }
 
     // This is in heavy need of refactoring
     void FixedUpdate()
     {
-
         if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
             keyPressed = true;
         } else {
@@ -88,24 +80,7 @@ public class PlayerController : MonoBehaviour
         if (!Input.GetButton("Fire2") && !Talking)
         {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-            rigidbody.AddForce(movement * Speed);
-
-            FMOD.Studio.PLAYBACK_STATE walkingSoundState;
-            walkingInstance.getPlaybackState(out walkingSoundState);
-            if (walkingSoundState != PLAYBACK_STATE.PLAYING) {
-                walkingInstance.start();
-            }
-        }
-
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Enemy") {
-            Debug.Log("I'm-a dying!");
-            //reduce gathered energy
+            rbody.AddForce(movement * Speed);
         }
     }
-
 }
