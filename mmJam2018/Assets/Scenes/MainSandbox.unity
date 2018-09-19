@@ -4104,28 +4104,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1738548553813632, guid: 2414e626d747f8d4d92245fd091d588e,
     type: 2}
   m_PrefabInternal: {fileID: 751055150}
---- !u!114 &751055152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 751055151}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: event:/SFX/SnoringLoop
-  PlayEvent: 1
-  StopEvent: 3
-  CollisionTag: Player
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 1
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 40
 --- !u!114 &751055153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4138,6 +4116,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   World: {fileID: 11400000, guid: 1298533f4594bc943a135c1714cc4490, type: 2}
+  RechargeSpeed: 5
+  DrainAmount: 3
+  DrainSpeed: 2
 --- !u!1 &754492417 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1282458482284400, guid: 690fe62958e024ff79c12cbbe0b4f21b,
