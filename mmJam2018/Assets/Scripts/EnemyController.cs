@@ -57,33 +57,9 @@ public class EnemyController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if(other.tag == "Player") {
-            idling = true;
             NextIdleMovement = Time.time + 1f;
             playerPosition = null;
+            idling = true;
         }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        // FIXME: all of this should happen in the other script, where enemy animate gets called
-        if(other.tag == "Player")
-        {
-            if (Input.GetButton("Fire2"))
-            {
-                PlayDeathAnimation();
-            } 
-        }
-    }
-
-    public void PlayDeathAnimation()
-    {
-        StartCoroutine(disappearIntoTheVoid(0.75f));
-    }
-
-    IEnumerator disappearIntoTheVoid(float delay)
-    {
-        GetComponent<Animator>().Play("enemyDie");
-        yield return new WaitForSeconds(delay);
-        this.gameObject.SetActive(false);
     }
 }

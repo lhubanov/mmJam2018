@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 65580519743052300}
   m_Layer: 0
   m_Name: SphereEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 135965398891752874}
   - component: {fileID: 114155695222780042}
   - component: {fileID: 95876715553017160}
+  - component: {fileID: 114010729742157944}
   m_Layer: 0
   m_Name: AttackRange
   m_TagString: Untagged
@@ -179,6 +180,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114010729742157944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870434065539196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56cfc6b7bd301f4788b8c277be219ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114155695222780042
 MonoBehaviour:
   m_ObjectHideFlags: 1

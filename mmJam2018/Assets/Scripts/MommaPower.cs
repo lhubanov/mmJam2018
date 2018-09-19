@@ -20,7 +20,7 @@ public class MommaPower : MonoBehaviour
 
 		if (mommaCurrentHealth > 0)
 		{
-            StartCoroutine(poisonHealth());//Starts the loss of health process.
+            StartCoroutine(poisonHealth()); //Starts the loss of health process.
 		}
 	}
 
@@ -39,19 +39,14 @@ public class MommaPower : MonoBehaviour
         PupSlider.value = pupCurrentHealth;
     }
 
-    //public void ReloadMomma(float value)
-    //{
-    //    mommaCurrentHealth -= 10;
-    //    MommaSlider.value = mommaCurrentHealth;
-    //}
 
-	IEnumerator poisonHealth ()//Lose health momma
+	IEnumerator poisonHealth()
      {
-         while(mommaCurrentHealth > 0)//While momma ain't ded
+         while(mommaCurrentHealth > 0)
 		 {
-             mommaCurrentHealth -= 3;    //lose this health per step.
+             mommaCurrentHealth -= 3;
 			 MommaSlider.value = mommaCurrentHealth;
-             yield return new WaitForSeconds(1);//sets the time to lose health over.
+             yield return new WaitForSeconds(1);
 		 }
              
 	 }

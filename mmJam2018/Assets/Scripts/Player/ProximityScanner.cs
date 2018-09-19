@@ -24,16 +24,22 @@ public class ProximityScanner : MonoBehaviour
         GetComponentInParent<PlayerAnimationManager>().AnimateLifeDrain();
         GetComponentInParent<PlayerSFXManager>().PlayLifeDrainSound();
 
-        Collider[] tiles = GetAllTiles();
-        for(int i = 0; i < tiles.Length; i++)
+        Collider[] objectsInProximity = GetAllObjectsInProximity();
+        for(int i = 0; i < objectsInProximity.Length; i++)
         {
-            if(tiles[i].gameObject.GetComponent<Tile>() != null) {
-                tiles[i].gameObject.GetComponent<Tile>().DrainTile();
+            switch (objectsInProximity[i].tag)
+            {
+                case "Terrain":
+                    objectsInProximity[i].GetComponent<Tile>().DrainTile();
+                    break;
+                case "Enemy":
+                    objectsInProximity[i].GetComponentInChildren<EnemyAnimationManager>().PlayDeathAnimation();
+                    break;
             }
         }
     }
 
-    private Collider[] GetAllTiles()
+    private Collider[] GetAllObjectsInProximity()
     {
         return Physics.OverlapSphere(tileScanner.transform.position, tileScanner.radius);
     }

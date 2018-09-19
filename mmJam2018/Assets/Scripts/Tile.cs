@@ -63,15 +63,6 @@ public class Tile : MonoBehaviour
             if (Input.GetButton("Fire1") && !isDead) {
 
                 GameObject.Find("HealthBars").GetComponent<MommaPower>().UpdatePupCurrentHealth(5);
-
-                //var playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
-                //playerAnimator.Play("drainLife");
-
-                //GameObject.Find("WorldDrainSoundManager").GetComponent<WorldDrainSoundManager>().PlayWorldDrainSound();
-
-                //alreadyDead = true;
-
-                //DrainLifeFromChildren(transform);
             }
         }
     }
