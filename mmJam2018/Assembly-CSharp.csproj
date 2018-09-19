@@ -67,11 +67,9 @@
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudioRoom.cs" />
     <Compile Include="Assets\Scripts\BranchInteraction.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\EnemyAnimationManager.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\InputController.cs" />
     <Compile Include="Assets\Scripts\Mom.cs" />
-    <Compile Include="Assets\Scripts\MommaPower.cs" />
     <Compile Include="Assets\Scripts\Player\HeldEnergyManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
