@@ -79,12 +79,17 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\DeadTileLookup.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\StateMachine.cs" />
     <Compile Include="Assets\Scripts\States\Ending.cs" />
-    <Compile Include="Assets\Scripts\States\IState.cs" />
+    <Compile Include="Assets\Scripts\States\Interface\IState.cs" />
+    <Compile Include="Assets\Scripts\States\Interface\StateBase.cs" />
     <Compile Include="Assets\Scripts\States\OneBranchDeadState.cs" />
     <Compile Include="Assets\Scripts\States\StartState.cs" />
-    <Compile Include="Assets\Scripts\States\StateBase.cs" />
     <Compile Include="Assets\Scripts\States\TwoBranchesDeadState.cs" />
     <Compile Include="Assets\Scripts\Tile.cs" />
+    <Compile Include="Assets\Scripts\UI\HeldEnergyUI.cs" />
+    <Compile Include="Assets\Scripts\UI\Interface\IUpdateHeldEnergy.cs" />
+    <Compile Include="Assets\Scripts\UI\Interface\IUpdateMotherHealth.cs" />
+    <Compile Include="Assets\Scripts\UI\Interface\IUpdateUIFromStateMachine.cs" />
+    <Compile Include="Assets\Scripts\UI\MomHealthUI.cs" />
     <Compile Include="Assets\Scripts\UI\SliderControl.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Lucho Hubanov/Documents/GitHub/mmJam2018/mmJam2018/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

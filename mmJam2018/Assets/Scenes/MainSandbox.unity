@@ -2175,7 +2175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &382943282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3114,6 +3114,7 @@ GameObject:
   - component: {fileID: 563922221}
   - component: {fileID: 858837447}
   - component: {fileID: 563922222}
+  - component: {fileID: 563922223}
   m_Layer: 5
   m_Name: MomHealth
   m_TagString: Untagged
@@ -3152,6 +3153,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 467add1c19910c643b6d775a1548dfd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &563922223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 563922220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d079a3b757749e42b04a04b2070f38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   World: {fileID: 11400000, guid: 1298533f4594bc943a135c1714cc4490, type: 2}
@@ -7391,6 +7403,7 @@ GameObject:
   - component: {fileID: 1081904601}
   - component: {fileID: 858837448}
   - component: {fileID: 1081904602}
+  - component: {fileID: 1081904603}
   m_Layer: 5
   m_Name: HeldEnergy
   m_TagString: Player
@@ -7429,6 +7442,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 467add1c19910c643b6d775a1548dfd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1081904603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1081904600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a1e0182b7599f469da84f7e5bd2a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   World: {fileID: 11400000, guid: 1298533f4594bc943a135c1714cc4490, type: 2}
