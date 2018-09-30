@@ -4,14 +4,20 @@ using FMOD.Studio;
 
 public class ProximityScanner : MonoBehaviour
 {
-    private SphereCollider tileScanner = null;
+    private SphereCollider          tileScanner;
+    private PlayerAnimationManager  playerAnimationManager;
+    private PlayerSFXManager        playerSFXManager;
+    private HeldEnergyManager       heldEnergyManager;
+
     public float EnergyGainRateTile = 0.5f;
     public float EnergyGainRateEnemy = 2f;
 
-
     void Start()
     {
-        tileScanner = GetComponent<SphereCollider>();
+        tileScanner             = GetComponent<SphereCollider>();
+        playerAnimationManager  = GetComponentInParent<PlayerAnimationManager>();
+        playerSFXManager        = GetComponentInParent<PlayerSFXManager>();
+        heldEnergyManager       = GetComponentInParent<HeldEnergyManager>();
     }
 	
 	void Update()
@@ -21,11 +27,10 @@ public class ProximityScanner : MonoBehaviour
         }
     }
 
-    // This can include enemies as well
     private void DrainLife()
     {
-        GetComponentInParent<PlayerAnimationManager>().AnimateLifeDrain();
-        GetComponentInParent<PlayerSFXManager>().PlayLifeDrainSound();
+        playerAnimationManager.AnimateLifeDrain();
+        playerSFXManager.PlayLifeDrainSound();
 
         Collider[] objectsInProximity = GetAllObjectsInProximity();
         for(int i = 0; i < objectsInProximity.Length; i++)
@@ -34,11 +39,11 @@ public class ProximityScanner : MonoBehaviour
             {
                 case "Terrain":
                     objectsInProximity[i].GetComponent<Tile>().DrainTile();
-                    GetComponentInParent<HeldEnergyManager>().IncreaseHeldEnergy(EnergyGainRateTile);
+                    heldEnergyManager.IncreaseHeldEnergy(EnergyGainRateTile);
                     break;
                 case "Enemy":
-                    GetComponentInParent<HeldEnergyManager>().IncreaseHeldEnergy(EnergyGainRateEnemy);
                     objectsInProximity[i].GetComponentInChildren<EnemyAnimationManager>().PlayDeathAnimation();
+                    heldEnergyManager.IncreaseHeldEnergy(EnergyGainRateEnemy);
                     break;
             }
         }
@@ -47,11 +52,5 @@ public class ProximityScanner : MonoBehaviour
     private Collider[] GetAllObjectsInProximity()
     {
         return Physics.OverlapSphere(tileScanner.transform.position, tileScanner.radius);
-    }
-
-    private int GetResourceID(string spriteName)
-    {
-        char resourceID = spriteName[spriteName.Length - 1];
-        return (char.GetNumericValue(resourceID) != -1) ? (int)char.GetNumericValue(resourceID) : 0;
     }
 }

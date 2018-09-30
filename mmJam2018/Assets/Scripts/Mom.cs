@@ -18,15 +18,9 @@ public class Mom : MonoBehaviour
         World.CurrentState.OnEnter(World);
         World.MomHealth = 100;
 
-        // TODO FROM BEFORE: Disable UI until passing through a collider- exit of cave or sth like that
-        // FIXME: This should be triggered after initial monologue is done (when UI is enabled after passing that collider)
+        // TODO FROM BEFORE: Disable UI and start this after passing through a collider- exit of cave or sth like that - point post-speech when main gameplay starts
         StartCoroutine(LoseHealthIdly());
     }
-	
-	void Update ()
-    {
-		
-	}
 
     private void OnTriggerEnter(Collider other)
     {

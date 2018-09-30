@@ -17,11 +17,8 @@ public class Tile : MonoBehaviour
     private bool isDead = false;
     public DeadTileLookup DeadTileLookup;
 
-    void Start()
-    {
-
-    }
-
+    // All to do with the way the spritesheet gets broken down into child sprites;
+    // Need to figure out a different way to get these at run time; this string parsing is not great
     private int GetResourceID(string spriteName)
     {
         char resourceID = spriteName[spriteName.Length - 1];

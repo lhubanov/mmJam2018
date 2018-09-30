@@ -36,7 +36,7 @@ public class HeldEnergyManager : MonoBehaviour
             if(Time.time > NextTick)
             {
                 NextTick = Time.time + EnergyLoseDelay;
-                GetComponent<HeldEnergyManager>().DecreaseHeldEnergy(EnergyLoseRate);
+                DecreaseHeldEnergy(EnergyLoseRate);
             }
         }
     }

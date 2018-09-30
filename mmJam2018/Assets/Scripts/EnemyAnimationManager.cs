@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class EnemyAnimationManager : MonoBehaviour
 {
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void PlayDeathAnimation()
     {
         StartCoroutine(DisappearIntoTheVoid(0.75f));
@@ -11,7 +18,7 @@ public class EnemyAnimationManager : MonoBehaviour
 
     private IEnumerator DisappearIntoTheVoid(float delay)
     {
-        GetComponent<Animator>().Play("enemyDie");
+        animator.Play("enemyDie");
         yield return new WaitForSeconds(delay);
         this.gameObject.SetActive(false);
         Object.Destroy(this.transform.parent.gameObject);

@@ -24,16 +24,12 @@ public class InputController : MonoBehaviour {
         forwardMotion = Vector3.zero;
     }
 
-    //Note: this only gets called when interacting with player via keyboard
-    //      input; does not get called continuously;
-	void FixedUpdate ()
+    // TODO: all of this needs refactoring; only works with keyboard i/p
+    void FixedUpdate ()
     {
-        // horizontal and vertical movement keys set by default in input manager
         float rotation = Input.GetAxis("Horizontal");
 
-        // deceleration is handled by the rigidbody's drag property (kind of; TODO: further investigate!)
         if (Input.GetKey("up")) {
-            //this.GetComponentInChildren<ParticleSystem>().Emit(5);
             if (acceleration <= maxSpeed) {
                 acceleration += accelerationIncrement;
             }
@@ -41,9 +37,7 @@ public class InputController : MonoBehaviour {
             acceleration -= accelerationDecrement;
         }
 
-        //Debug.Log("Acceleration: " + acceleration);
-
-        //TODO: rework & investigate drag thing! this is rough
+        // Debug.Log("Acceleration: " + acceleration);
         if (acceleration < 0) { 
             acceleration = 0;
         }
@@ -51,12 +45,7 @@ public class InputController : MonoBehaviour {
         forwardMotion = transform.forward * acceleration * accelerationForce;
         player.AddForce(forwardMotion);
 
-
-        //Debug.Log("Rotation force: " + rotation * rotationForce);
-
-        //rigidbody rotation only around y axis
         if((rotation * rotationForce) < rotationForceLimit) {
-            //Vector3 torque = new Vector3(0, rotation * rotationForce, 0);
             float torque = rotation * rotationForce;
             player.AddTorque(torque);
         }

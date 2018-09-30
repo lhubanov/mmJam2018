@@ -1,11 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerAnimationManager : MonoBehaviour
 {
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponentInParent<Animator>();
+    }
+
     public void AnimateLifeDrain()
     {
-        GetComponentInParent<Animator>().Play("drainLife");
+        animator.Play("drainLife");
     }
 }
