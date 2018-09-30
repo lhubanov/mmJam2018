@@ -15,7 +15,7 @@ public class Tile : MonoBehaviour
     private EventInstance drainInstance;
 
     private bool isDead = false;
-    public DeadTileLookup DeadTileLookup;
+    public TileLookup DeadTileLookup;
 
     // All to do with the way the spritesheet gets broken down into child sprites;
     // Need to figure out a different way to get these at run time; this string parsing is not great
@@ -41,7 +41,7 @@ public class Tile : MonoBehaviour
             {
                 string spriteSheetName;
                 string spriteName = t.GetComponentInChildren<SpriteRenderer>().sprite.name;
-                if (DeadTileLookup.deadSprites.TryGetValue(spriteName, out spriteSheetName))
+                if (DeadTileLookup.DeadSprites.TryGetValue(spriteName, out spriteSheetName))
                 {
                     Sprite[] resources = Resources.LoadAll<Sprite>(spriteSheetName);
                     t.GetComponentInChildren<SpriteRenderer>().sprite = resources[GetResourceID(spriteName)];

@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 289fa29f137a3b54a8c60e097f939f27
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - GrassTilePrefab: {fileID: 1540279273266704, guid: 60d0bb0a9843da14bb15b9e14ba44c15,
+      type: 2}
+  - ColumnTilePrefab: {fileID: 1828673470050604, guid: ec42d97bf7f918b4bab75a24fb69dbaf,
+      type: 2}
+  - OneGreenBushTilePrefab: {fileID: 1437819127527024, guid: b304cb7504683784c95294b7536d839c,
+      type: 2}
+  - OnePurpleBushTilePrefab: {fileID: 1907386570932606, guid: 4e1365cc0f141b64189e18036d692517,
+      type: 2}
+  - SeveralPurpleBushTilePrefab: {fileID: 1159447654470796, guid: 2e1bca88687d0824c8ae951e37120adf,
+      type: 2}
+  - TreePrefab: {fileID: 1125931901691560, guid: e9f324e6530d84126ac06cd3228bd996,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -11,11 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5139eeb60356494a8e3956ac298a7e6, type: 3}
   m_Name: World
   m_EditorClassIdentifier: 
-  HeldEnergy: {fileID: 0}
-  MomHealth: {fileID: 0}
+  HeldEnergy: 0
+  MomHealth: 73
   SnoringSound: event:/SFX/SnoringLoop
   RechargeSound: event:/SFX/PowerGive
-  GameplayMusic: event:/Music/VenturingOutWithVocals
+  GameplayMusic: 
   SpeechIntro: event:/Dialogue/OpeningNarrative
   Speech1: event:/Dialogue/OnReturn
   Speech2: event:/Dialogue/OnReturn2

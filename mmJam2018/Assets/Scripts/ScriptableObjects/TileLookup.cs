@@ -7,11 +7,19 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    [CreateAssetMenu(menuName = "Dead Tile Lookup Table")]
-    public class DeadTileLookup : ScriptableObject
+    [CreateAssetMenu(menuName = "Tile Lookup Table")]
+    public class TileLookup : ScriptableObject
     {
+        // Tile prefabs used for procedurally generated region
+        public GameObject GrassTilePrefab;
+        public GameObject ColumnTilePrefab;
+        public GameObject OneGreenBushTilePrefab;
+        public GameObject OnePurpleBushTilePrefab;
+        public GameObject SeveralPurpleBushTilePrefab;
+        public GameObject TreePrefab;
+
         // Resource lookup table; probably a more optimal way to do this
-        public Dictionary<string, string> deadSprites = new Dictionary<string, string>()
+        public Dictionary<string, string> DeadSprites = new Dictionary<string, string>()
         {
             { "grass pattern", "grass pattern dead"},
             { "tree regular", "tree dead"},
