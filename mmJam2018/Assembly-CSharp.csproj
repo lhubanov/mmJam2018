@@ -85,6 +85,12 @@
     <Compile Include="Assets\Scripts\States\OneBranchDeadState.cs" />
     <Compile Include="Assets\Scripts\States\StartState.cs" />
     <Compile Include="Assets\Scripts\States\TwoBranchesDeadState.cs" />
+    <Compile Include="Assets\Scripts\Steering\Arrive.cs" />
+    <Compile Include="Assets\Scripts\Steering\Flee.cs" />
+    <Compile Include="Assets\Scripts\Steering\ISteer.cs" />
+    <Compile Include="Assets\Scripts\Steering\Seek.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringBase.cs" />
+    <Compile Include="Assets\Scripts\Steering\Wander.cs" />
     <Compile Include="Assets\Scripts\Tile.cs" />
     <Compile Include="Assets\Scripts\UI\HeldEnergyUI.cs" />
     <Compile Include="Assets\Scripts\UI\Interface\IUpdateHeldEnergy.cs" />
