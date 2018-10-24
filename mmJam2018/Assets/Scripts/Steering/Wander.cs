@@ -21,7 +21,7 @@ namespace Assets.Scripts.Steering
 
         private void Start()
         {
-            wanderAngle = Random.Range(0, 6.28f);
+            wanderAngle = Random.Range(-3.14f, 3.14f);
         }
 
         private Vector3 GetCircleDistance(Vector3 velocity)
@@ -45,7 +45,7 @@ namespace Assets.Scripts.Steering
             displacement.y = Mathf.Sin(wanderAngle) * magnitude;
 
             // update wanderangle by a little bit
-            wanderAngle += (Random.Range(0, 6.28f) * wanderAngleChangeRate) - (wanderAngleChangeRate * 0.5f);
+            wanderAngle += (Random.Range(-3.14f, 3.14f) * wanderAngleChangeRate) - (wanderAngleChangeRate * 0.5f);
 
             return displacement;
         }

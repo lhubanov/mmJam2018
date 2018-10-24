@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     private Seek        Seeker;
     private Arrive      Arrive;
     private Flee        Flee;
+    private Wander      Wander;
 
     private float       NextIdleMovement = 0;
     private bool        idling = true;
@@ -31,6 +32,7 @@ public class EnemyController : MonoBehaviour
         idleMovementRange = GetComponentInParent<BoxCollider>();
         Seeker = GetComponent<Seek>();
         Flee = GetComponent<Flee>();
+        Wander = GetComponent<Wander>();
         player = null;
 
         NextIdleMovement = IdleMovementCooldown;
@@ -41,18 +43,29 @@ public class EnemyController : MonoBehaviour
     {
         if (idling)
         {
-            if(Time.time <= NextIdleMovement)
+
+            if (Wander != null)
             {
-                //transform.position = Vector3.Lerp(transform.position, nextIdleMovementPosition, Time.deltaTime * SmoothFactor);
-                transform.position += Seeker.GetSteering(transform.position, velocity, nextIdleMovementPosition);
-            }
-            else
-            { 
-                NextIdleMovement = Time.time + IdleMovementCooldown;
-                if (idleMovementRange.bounds.Contains(this.transform.position)) {                    
-                    nextIdleMovementPosition = new Vector3(transform.position.x + Random.Range(-5, 5), transform.position.y + Random.Range(-5, 5), 0);
-                } else {
-                    nextIdleMovementPosition = idleMovementRange.transform.position;
+                //Wander
+                transform.position += Wander.GetSteering(transform.position, velocity);
+
+                Debug.Log(GetComponentInParent<Transform>().name);
+                Debug.Log(string.Format("Last wander pos: {0}, {1}, {2}", transform.position.x, transform.position.y, transform.position.z));
+            } else {
+
+                if (Time.time <= NextIdleMovement)
+                {
+                    //transform.position = Vector3.Lerp(transform.position, nextIdleMovementPosition, Time.deltaTime * SmoothFactor);
+                    transform.position += Seeker.GetSteering(transform.position, velocity, nextIdleMovementPosition);
+                }
+                else
+                {
+                    NextIdleMovement = Time.time + IdleMovementCooldown;
+                    if (idleMovementRange.bounds.Contains(this.transform.position)) {
+                        nextIdleMovementPosition = new Vector3(transform.position.x + Random.Range(-5, 5), transform.position.y + Random.Range(-5, 5), 0);
+                    } else {
+                        nextIdleMovementPosition = idleMovementRange.transform.position;
+                    }
                 }
             }
         }
@@ -63,9 +76,11 @@ public class EnemyController : MonoBehaviour
             // Seek player (not really chasing)
             //transform.position += Seeker.GetSteering(transform.position, velocity, player.transform.position);
 
+            // FIXME: Move these to interface and call GetIdleAction(); or whatever!
+
+
             // Flee from player
             transform.position += Flee.GetSteering(transform.position, velocity, player.transform.position);
-
         }
     }
 

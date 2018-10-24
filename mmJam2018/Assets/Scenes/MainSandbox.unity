@@ -1832,9 +1832,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.7
   maxForce: 0.5
-  mass: 2
   maxVelocity: 0.5
---- !u!114 &320951672
+  mass: 2
+--- !u!114 &320951677
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1847,7 +1847,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.2
   maxForce: 0.2
+  maxVelocity: 0.2
   mass: 1
+  Seeker: {fileID: 0}
 --- !u!1 &322744169 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1453614394164314, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -3588,9 +3590,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.7
   maxForce: 0.5
-  mass: 2
   maxVelocity: 0.5
---- !u!114 &602017254
+  mass: 2
+--- !u!114 &602017259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3603,7 +3605,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.2
   maxForce: 0.2
+  maxVelocity: 0.2
   mass: 1
+  Seeker: {fileID: 0}
 --- !u!1 &603198894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1841161783441914, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -6062,9 +6066,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.7
   maxForce: 0.5
-  mass: 2
   maxVelocity: 0.5
---- !u!114 &1022454146
+  mass: 2
+--- !u!114 &1022454151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6077,7 +6081,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.2
   maxForce: 0.2
+  maxVelocity: 0.2
   mass: 1
+  Seeker: {fileID: 0}
 --- !u!1 &1022460042 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1236523016984672, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -6424,9 +6430,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.7
   maxForce: 0.5
-  mass: 2
   maxVelocity: 0.5
---- !u!114 &1063256936
+  mass: 2
+--- !u!114 &1063256941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6439,7 +6445,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.2
   maxForce: 0.2
+  maxVelocity: 0.2
   mass: 1
+  Seeker: {fileID: 0}
 --- !u!1 &1064892154 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1252781844304300, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -7834,8 +7842,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.7
   maxForce: 0.5
-  mass: 2
   maxVelocity: 0.5
+  mass: 2
+--- !u!114 &1102084620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1102084613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e983d8a72c6449648ae8a0f60f9d2bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0.2
+  maxForce: 0.2
+  maxVelocity: 0.2
+  mass: 2
+  circleDistance: 1
+  circleRadius: 1
+  wanderAngleChangeRate: 0.05
+  wanderAngle: 0
 --- !u!1 &1107661010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1630401876002490, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -9983,8 +10010,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.7
   maxForce: 0.5
-  mass: 2
   maxVelocity: 0.5
+  mass: 2
+--- !u!114 &1493103995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1493103988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e983d8a72c6449648ae8a0f60f9d2bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0.2
+  maxForce: 0.2
+  maxVelocity: 0.2
+  mass: 2
+  circleDistance: 1
+  circleRadius: 1
+  wanderAngleChangeRate: 0.05
+  wanderAngle: 0
 --- !u!1001 &1494310185
 Prefab:
   m_ObjectHideFlags: 0
@@ -10064,8 +10110,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.7
   maxForce: 0.5
-  mass: 2
   maxVelocity: 0.5
+  mass: 2
+--- !u!114 &1494310194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1494310187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e983d8a72c6449648ae8a0f60f9d2bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0.2
+  maxForce: 0.2
+  maxVelocity: 0.2
+  mass: 2
+  circleDistance: 1
+  circleRadius: 1
+  wanderAngleChangeRate: 0.05
+  wanderAngle: 0
 --- !u!1 &1499990493 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1427784448864996, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -10253,8 +10318,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.7
   maxForce: 0.5
-  mass: 2
   maxVelocity: 0.5
+  mass: 2
+--- !u!114 &1519009963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1519009956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e983d8a72c6449648ae8a0f60f9d2bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0.2
+  maxForce: 0.2
+  maxVelocity: 0.2
+  mass: 2
+  circleDistance: 1
+  circleRadius: 1
+  wanderAngleChangeRate: 0.05
+  wanderAngle: 0
 --- !u!1 &1524537444 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1075939481131954, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -11737,8 +11821,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 0.7
   maxForce: 0.5
-  mass: 2
   maxVelocity: 0.5
+  mass: 2
+--- !u!114 &1718685362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1718685355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e983d8a72c6449648ae8a0f60f9d2bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0.2
+  maxForce: 0.2
+  maxVelocity: 0.2
+  mass: 2
+  circleDistance: 1
+  circleRadius: 1
+  wanderAngleChangeRate: 0.05
+  wanderAngle: 0
 --- !u!1 &1723762740 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1274698251237702, guid: 690fe62958e024ff79c12cbbe0b4f21b,
