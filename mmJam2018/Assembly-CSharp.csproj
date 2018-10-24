@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Steering\Arrive.cs" />
     <Compile Include="Assets\Scripts\Steering\Flee.cs" />
     <Compile Include="Assets\Scripts\Steering\ISteer.cs" />
+    <Compile Include="Assets\Scripts\Steering\Pursue.cs" />
     <Compile Include="Assets\Scripts\Steering\Seek.cs" />
     <Compile Include="Assets\Scripts\Steering\SteeringBase.cs" />
     <Compile Include="Assets\Scripts\Steering\Wander.cs" />

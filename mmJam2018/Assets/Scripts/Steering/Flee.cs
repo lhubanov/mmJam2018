@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 namespace Assets.Scripts.Steering
 {
     public class Flee : SteeringBase
