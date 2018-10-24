@@ -5,7 +5,10 @@ using System.Text;
 
 namespace Assets.Scripts.Steering
 {
-    class Wander
+    // FIXME:   This needs some rules to make enemies turn around,
+    //          if at the edge of the map
+    public class Wander : SteeringBase
     {
+
     }
 }

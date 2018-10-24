@@ -7,6 +7,10 @@ namespace Assets.Scripts.Steering
 
         public void Start()
         {
+            // FIXME:   I realized this is bad, as it hides all the constants and just uses the defaults.
+            //          Instead, fetch those from a scriptable object or some separate
+            //          storage for all the constants;
+            //          This approach will also need a way to override them, if needed (or just setters?)
             Seeker = new Seek();
         }
 
