@@ -21,7 +21,7 @@ namespace Assets.Scripts.Steering
 
         private void Start()
         {
-            wanderAngle = Random.Range(-3.14f, 3.14f);
+            wanderAngle = Random.Range(-6.28f, 6.28f);
         }
 
         private Vector3 GetCircleDistance(Vector3 velocity)
@@ -40,14 +40,36 @@ namespace Assets.Scripts.Steering
             // rotations only one way or sth like that
 
             //SetAngle logic
-            float magnitude = displacement.magnitude;
-            displacement.x = Mathf.Cos(wanderAngle) * magnitude;
-            displacement.y = Mathf.Sin(wanderAngle) * magnitude;
+            //float magnitude = displacement.magnitude;
+            //displacement.x = Mathf.Cos(wanderAngle) * magnitude;
+            //displacement.y = Mathf.Sin(wanderAngle) * magnitude;
+            displacement = RotateVector(displacement, wanderAngle);
 
             // update wanderangle by a little bit
-            wanderAngle += (Random.Range(-3.14f, 3.14f) * wanderAngleChangeRate) - (wanderAngleChangeRate * 0.5f);
+            wanderAngle += (Random.Range(-6.28f, 6.28f) * wanderAngleChangeRate); //- (wanderAngleChangeRate * 0.5f);
+            if(wanderAngle > 6.28f)
+            {
+                wanderAngle = -6.28f;
+            }
+            else if(wanderAngle < -6.28f)
+            {
+                wanderAngle = 6.28f;
+            }
 
             return displacement;
+        }
+
+        public Vector3 GetSteering(Transform transform, Vector3 velocity)
+        {
+            Vector3 circleDistance = GetCircleDistance(velocity);
+            wanderAngle += (Random.Range(-180, 180) * wanderAngleChangeRate); //- (wanderAngleChangeRate * 0.5f);
+
+            Vector3 displacement = new Vector3(1, 1, 0);
+            displacement = Vector3.Scale(displacement, new Vector3(circleRadius, circleRadius, circleRadius));
+            displacement = Quaternion.AngleAxis(wanderAngle, new Vector3(0, 0, 1)) * displacement;
+            Vector3 wanderForce = circleDistance + displacement;
+
+            return AddForce(velocity, wanderForce);
         }
 
         public Vector3 GetSteering(Vector3 position, Vector3 velocity)
@@ -56,6 +78,7 @@ namespace Assets.Scripts.Steering
             Vector3 displacement = GetDisplacementVector();
 
             Vector3 wanderForce = circleDistance + displacement;
+            Debug.DrawLine(transform.position, wanderForce);
 
             return AddForce(velocity, wanderForce);
         }

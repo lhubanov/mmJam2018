@@ -86,6 +86,8 @@
     <Compile Include="Assets\Scripts\States\StartState.cs" />
     <Compile Include="Assets\Scripts\States\TwoBranchesDeadState.cs" />
     <Compile Include="Assets\Scripts\Steering\Arrive.cs" />
+    <Compile Include="Assets\Scripts\Steering\CollisionAvoid.cs" />
+    <Compile Include="Assets\Scripts\Steering\Evade.cs" />
     <Compile Include="Assets\Scripts\Steering\Flee.cs" />
     <Compile Include="Assets\Scripts\Steering\ISteer.cs" />
     <Compile Include="Assets\Scripts\Steering\Pursue.cs" />

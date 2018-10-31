@@ -12,6 +12,10 @@ public class EnemyController : MonoBehaviour
     private Arrive      Arrive;
     private Flee        Flee;
     private Wander      Wander;
+    private CollisionAvoid CollisionAvoid;
+    [SerializeField]
+    protected float maxForce = 0.2f;
+
 
     private float       NextIdleMovement = 0;
     private bool        idling = true;
@@ -33,6 +37,7 @@ public class EnemyController : MonoBehaviour
         Seeker = GetComponent<Seek>();
         Flee = GetComponent<Flee>();
         Wander = GetComponent<Wander>();
+        CollisionAvoid = GetComponent<CollisionAvoid>();
         player = null;
 
         NextIdleMovement = IdleMovementCooldown;
@@ -42,15 +47,22 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         if (idling)
-        {
-
+        {           
             if (Wander != null)
             {
                 //Wander
-                transform.position += Wander.GetSteering(transform.position, velocity);
+                //transform.position += Wander.GetSteering(transform.position, velocity);
+                velocity += Wander.GetSteering(transform, velocity);
+                Vector3 newPos = transform.position + velocity;
+                //Debug.DrawLine(transform.position, newPos * 2, Color.red);
 
-                Debug.Log(GetComponentInParent<Transform>().name);
-                Debug.Log(string.Format("Last wander pos: {0}, {1}, {2}", transform.position.x, transform.position.y, transform.position.z));
+                velocity += CollisionAvoid.GetSteering(transform, velocity, newPos);
+                velocity = Vector3.ClampMagnitude(velocity, maxForce);
+
+                newPos = transform.position + velocity;
+                Debug.DrawLine(transform.position, newPos * 2, Color.green);
+
+                transform.position = newPos;
             } else {
 
                 if (Time.time <= NextIdleMovement)

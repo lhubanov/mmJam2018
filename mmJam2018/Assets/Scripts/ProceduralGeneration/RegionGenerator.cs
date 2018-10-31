@@ -49,7 +49,8 @@ public class RegionGenerator : MonoBehaviour
                     prefabToCreate = TileLookup.SeveralPurpleBushTilePrefab;
                 }
 
-                Instantiate(prefabToCreate, pos, Quaternion.identity);
+                GameObject obj = Instantiate(prefabToCreate, pos, Quaternion.identity);
+                obj.transform.parent = this.transform;
             }
         }
     }

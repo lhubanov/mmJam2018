@@ -19,7 +19,19 @@ namespace Assets.Scripts.Steering
             steering = Vector3.ClampMagnitude(steering, maxForce);
             steering = steering / mass;
 
-            return Vector3.ClampMagnitude(velocity + steering, maxSpeed);
+            velocity = Vector3.ClampMagnitude(velocity + steering, maxSpeed);
+            return velocity;
+        }
+
+        // FIXME: There are quaternions for this!
+        protected Vector3 RotateVector(Vector3 vector, float angle)
+        {
+            Vector3 v = new Vector3(0,0,0);
+            float magnitude = vector.magnitude;
+            v.x = vector.x * Mathf.Cos(angle) - vector.y * Mathf.Sin(angle);
+            v.y = vector.y * Mathf.Cos(angle) + vector.x * Mathf.Sin(angle);
+
+            return v;
         }
 
         public virtual Vector3 GetSteering(Vector3 position, Vector3 velocity) { return new Vector3(0, 0, 0); }
