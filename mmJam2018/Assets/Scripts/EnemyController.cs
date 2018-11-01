@@ -83,14 +83,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            //transform.position = Vector3.Lerp(transform.position, playerPosition.transform.position, Time.deltaTime * AggroSmoothFactor);
-
-            // Seek player (not really chasing)
-            //transform.position += Seeker.GetSteering(transform.position, velocity, player.transform.position);
-
             // FIXME: Move these to interface and call GetIdleAction(); or whatever!
-
-
             // Flee from player
             transform.position += Flee.GetSteering(transform.position, velocity, player.transform.position);
         }
