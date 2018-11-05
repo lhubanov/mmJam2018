@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Assets.Scripts.Steering.SteeringData;
 
 namespace Assets.Scripts.Steering
 {
@@ -9,13 +10,21 @@ namespace Assets.Scripts.Steering
         [SerializeField]
         private float MaxAvoidanceForce = 0.5f;
 
-        public Vector3 GetSteering(Transform transform, Vector3 velocity, Vector3 target)
+        public override Vector3 GetSteering(ISteeringData steeringData) //Transform transform, Vector3 velocity, Vector3 target)
         {
-            Vector3 direction = (target - transform.position).normalized;
+            if (steeringData.Position == null) {
+                throw new System.NullReferenceException(string.Format("{0}: steeringData.Position is null", System.Reflection.MethodBase.GetCurrentMethod().Name));
+            } if (steeringData.Velocity == null) {
+                throw new System.NullReferenceException(string.Format("{0}: steeringData.Velocity is null", System.Reflection.MethodBase.GetCurrentMethod().Name));
+            } if (steeringData.Target == null) {
+                throw new System.NullReferenceException(string.Format("{0}: steeringData.Target is null", System.Reflection.MethodBase.GetCurrentMethod().Name));
+            }
+
+            Vector3 direction = (steeringData.Target.Value - steeringData.Position.Value).normalized;
             RaycastHit hitInfo = new RaycastHit();
 
-            // FIXME: Raycasts draw up as well
-            if(Physics.Raycast(transform.position, target*AvoidanceRangeScale, out hitInfo, 2))
+            // FIXME: Raycasts draw up along z for some reason
+            if(Physics.Raycast(transform.position, steeringData.Target.Value * AvoidanceRangeScale, out hitInfo, 2))
             {
                 // There is probably a better way to do this than just any firm colliders
                 // Interface, as usual?
@@ -33,7 +42,7 @@ namespace Assets.Scripts.Steering
                 }
             }
 
-            return AddForce(velocity, direction);
+            return AddForce(steeringData.Velocity.Value, direction);
         }
     }
 }

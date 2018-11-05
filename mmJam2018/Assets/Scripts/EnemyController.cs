@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Assets.Scripts.Steering;
+using Assets.Scripts.Steering.SteeringData;
 
 public class EnemyController : MonoBehaviour
 {
@@ -44,19 +45,20 @@ public class EnemyController : MonoBehaviour
         nextIdleMovementPosition = new Vector3(transform.position.x + Random.Range(-5, 5), transform.position.y + Random.Range(-5, 5), 0);
     }
 
+    //FIXME: This needs refactoring as well, once all the steering is cleaned up, move to single Steer script
     private void Update()
     {
         if (idling)
         {           
             if (Wander != null)
             {
-                //Wander
-                //transform.position += Wander.GetSteering(transform.position, velocity);
-                velocity += Wander.GetSteering(transform, velocity);
+                // Wander
+                velocity += Wander.GetSteering(new SteeringDataBase(null, velocity, null));
                 Vector3 newPos = transform.position + velocity;
                 //Debug.DrawLine(transform.position, newPos * 2, Color.red);
 
-                velocity += CollisionAvoid.GetSteering(transform, velocity, newPos);
+                // CollisionAvoid
+                velocity += CollisionAvoid.GetSteering(new SteeringDataBase(transform.position, velocity, newPos)); //transform, velocity, newPos);
                 velocity = Vector3.ClampMagnitude(velocity, maxForce);
 
                 newPos = transform.position + velocity;
@@ -67,8 +69,7 @@ public class EnemyController : MonoBehaviour
 
                 if (Time.time <= NextIdleMovement)
                 {
-                    //transform.position = Vector3.Lerp(transform.position, nextIdleMovementPosition, Time.deltaTime * SmoothFactor);
-                    transform.position += Seeker.GetSteering(transform.position, velocity, nextIdleMovementPosition);
+                    transform.position += Seeker.GetSteering(new SteeringDataBase(transform.position, velocity, nextIdleMovementPosition));
                 }
                 else
                 {
@@ -85,7 +86,7 @@ public class EnemyController : MonoBehaviour
         {
             // FIXME: Move these to interface and call GetIdleAction(); or whatever!
             // Flee from player
-            transform.position += Flee.GetSteering(transform.position, velocity, player.transform.position);
+            transform.position += Flee.GetSteering(new SteeringDataBase(transform.position, velocity, player.transform.position));
         }
     }
 

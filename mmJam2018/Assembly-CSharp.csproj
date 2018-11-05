@@ -93,6 +93,8 @@
     <Compile Include="Assets\Scripts\Steering\Pursue.cs" />
     <Compile Include="Assets\Scripts\Steering\Seek.cs" />
     <Compile Include="Assets\Scripts\Steering\SteeringBase.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringData\ISteeringData.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringData\SteeringDataBase.cs" />
     <Compile Include="Assets\Scripts\Steering\Wander.cs" />
     <Compile Include="Assets\Scripts\Tile.cs" />
     <Compile Include="Assets\Scripts\UI\HeldEnergyUI.cs" />

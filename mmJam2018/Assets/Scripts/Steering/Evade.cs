@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Assets.Scripts.Steering.SteeringData;
 
 namespace Assets.Scripts.Steering
 {
@@ -11,20 +12,21 @@ namespace Assets.Scripts.Steering
             flee = GetComponent<Flee>();
         }
         
-        // However, adding rules for not leaving
-        // the game world using this won't be straightforward.
-        // Potentially, target can be a vector in front (e.g. velocity?)
-        // and if it's of a specific property, evade;
-
-        // However, again, probably easier with raycasting (at least to do the check if not walking out of map/in a wall etc.)
-        // Or maybe just colliders and upon collision, turn around?
-        public Vector3 GetSteering(Vector3 position, Vector3 velocity, Vector3 target)
+        public override Vector3 GetSteering(ISteeringData steeringData) //Vector3 position, Vector3 velocity, Vector3 target)
         {
-            Vector3 distance = target - position;
+            if (steeringData.Position == null) {
+                throw new System.NullReferenceException(string.Format("{0}: steeringData.Position is null", System.Reflection.MethodBase.GetCurrentMethod().Name));
+            } if (steeringData.Velocity == null) {
+                throw new System.NullReferenceException(string.Format("{0}: steeringData.Velocity is null", System.Reflection.MethodBase.GetCurrentMethod().Name));
+            } if (steeringData.Target == null) {
+                throw new System.NullReferenceException(string.Format("{0}: steeringData.Target is null", System.Reflection.MethodBase.GetCurrentMethod().Name));
+            }
+
+            Vector3 distance = steeringData.Target.Value - steeringData.Position.Value;
             float fleeDistance = distance.magnitude / maxVelocity;
 
-            Vector3 futurePosition = position + velocity * fleeDistance;
-            return flee.GetSteering(position, velocity, futurePosition);
+            Vector3 futurePosition = steeringData.Position.Value + steeringData.Velocity.Value * fleeDistance;
+            return flee.GetSteering(new SteeringDataBase(steeringData.Position, steeringData.Velocity, futurePosition));
         }
     }
 }

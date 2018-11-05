@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Assets.Scripts.Steering.SteeringData;
 
 namespace Assets.Scripts.Steering
 {
@@ -11,9 +12,9 @@ namespace Assets.Scripts.Steering
             Seeker = GetComponent<Seek>();
         }
 
-        public Vector3 GetSteering(Vector3 position, Vector3 velocity, Vector3 target)
+        public override Vector3 GetSteering(ISteeringData steeringData) //Vector3 position, Vector3 velocity, Vector3 target)
         {
-            return -Seeker.GetSteering(position, velocity, target);
+            return -Seeker.GetSteering(new SteeringDataBase(steeringData.Position, steeringData.Velocity, steeringData.Target));
         }
     }
 }
