@@ -10,6 +10,7 @@ namespace Assets.Scripts.Steering
         [SerializeField]
         private float MaxAvoidanceForce = 0.5f;
 
+        /// <inheritdoc/>
         public override Vector3 GetSteering(ISteeringData steeringData) //Transform transform, Vector3 velocity, Vector3 target)
         {
             if (steeringData.Position == null) {

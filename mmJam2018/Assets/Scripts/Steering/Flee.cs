@@ -12,6 +12,7 @@ namespace Assets.Scripts.Steering
             Seeker = GetComponent<Seek>();
         }
 
+        /// <inheritdoc/>
         public override Vector3 GetSteering(ISteeringData steeringData) //Vector3 position, Vector3 velocity, Vector3 target)
         {
             return -Seeker.GetSteering(new SteeringDataBase(steeringData.Position, steeringData.Velocity, steeringData.Target));

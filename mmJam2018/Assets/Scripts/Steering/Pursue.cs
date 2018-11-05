@@ -12,6 +12,7 @@ namespace Assets.Scripts.Steering
             seeker = GetComponent<Seek>();
         }
 
+        /// <inheritdoc/>
         public override Vector3 GetSteering(ISteeringData steeringData) //Vector3 position, Vector3 velocity, Vector3 target)
         {
             Vector3 distance = steeringData.Target.Value - steeringData.Position.Value;

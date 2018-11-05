@@ -8,6 +8,7 @@ namespace Assets.Scripts.Steering
         [SerializeField]
         private float slowingRadius = 5f;
 
+        /// <inheritdoc/>
         public override Vector3 GetSteering(ISteeringData steeringData) //Vector3 position, Vector3 velocity, Vector3 target)
         {
             if (steeringData.Position == null) {

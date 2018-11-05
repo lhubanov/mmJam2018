@@ -35,6 +35,7 @@ namespace Assets.Scripts.Steering
         //    return v;
         //}
 
+        /// <inheritdoc/>
         public abstract Vector3 GetSteering(ISteeringData steeringData);
     }
 }

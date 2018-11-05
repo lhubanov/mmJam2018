@@ -11,7 +11,8 @@ namespace Assets.Scripts.Steering
         {
             flee = GetComponent<Flee>();
         }
-        
+
+        /// <inheritdoc/>
         public override Vector3 GetSteering(ISteeringData steeringData) //Vector3 position, Vector3 velocity, Vector3 target)
         {
             if (steeringData.Position == null) {

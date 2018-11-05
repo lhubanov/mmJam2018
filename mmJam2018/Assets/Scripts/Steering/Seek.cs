@@ -5,6 +5,7 @@ namespace Assets.Scripts.Steering
 {
     public class Seek : SteeringBase
     {
+        /// <inheritdoc/>
         public override Vector3 GetSteering(ISteeringData steeringData)//Vector3 position, Vector3 velocity, Vector3 target)
         {
             if (steeringData.Position == null) {

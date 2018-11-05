@@ -27,6 +27,7 @@ namespace Assets.Scripts.Steering
             return Vector3.Scale(velocity.normalized, new Vector3(circleDistance, circleDistance, circleDistance));
         }
 
+        /// <inheritdoc/>
         public override Vector3 GetSteering(ISteeringData steeringData)
         {
             if(steeringData.Velocity == null) {
