@@ -25,8 +25,10 @@ namespace Assets.Scripts.Steering
             RaycastHit hitInfo = new RaycastHit();
 
             // FIXME: Raycasts draw up along z for some reason
-            if(Physics.Raycast(transform.position, steeringData.Target.Value * AvoidanceRangeScale, out hitInfo, 2))
+            if(Physics.Raycast(steeringData.Position.Value, steeringData.Target.Value * AvoidanceRangeScale, out hitInfo, 2))
             {
+                // FIXME: Check the use of transform here works ok. Perhaps need to get parent's transform?
+
                 // There is probably a better way to do this than just any firm colliders
                 // Interface, as usual?
                 if(!hitInfo.collider.isTrigger && hitInfo.transform != transform)
