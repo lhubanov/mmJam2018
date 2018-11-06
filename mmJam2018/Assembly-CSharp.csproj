@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Steering\ISteer.cs" />
     <Compile Include="Assets\Scripts\Steering\Pursue.cs" />
     <Compile Include="Assets\Scripts\Steering\Seek.cs" />
+    <Compile Include="Assets\Scripts\Steering\Steer.cs" />
     <Compile Include="Assets\Scripts\Steering\SteeringBase.cs" />
     <Compile Include="Assets\Scripts\Steering\SteeringData\ISteeringData.cs" />
     <Compile Include="Assets\Scripts\Steering\SteeringData\SteeringDataBase.cs" />

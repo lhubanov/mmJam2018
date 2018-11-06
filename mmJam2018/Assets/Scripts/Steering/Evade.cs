@@ -3,6 +3,7 @@ using Assets.Scripts.Steering.SteeringData;
 
 namespace Assets.Scripts.Steering
 {
+    [RequireComponent(typeof(Flee))]
     public class Evade : SteeringBase
     {
         private Flee flee;
