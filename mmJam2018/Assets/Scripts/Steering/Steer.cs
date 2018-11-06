@@ -15,12 +15,12 @@ namespace Assets.Scripts.Steering
         // Let's say we arrive and seek normally every time
         //private const float         seekProbability;
         //private const float         arriveProbability;
-        private const float         collisionAvoidProbability = 0.9f;
-        private const float         pursueProbability = 0.85f;
+        private const float         collisionAvoidProbability   = 0.9f;
+        private const float         pursueProbability           = 0.85f;
         
         // Fleeing and pursuing on the same object might be weird
-        private const float         fleeProbability = 0.5f;
-        private const float         wanderProbability = 0.5f;
+        private const float         fleeProbability             = 0.5f;
+        private const float         wanderProbability           = 0.5f;
 
         [SerializeField]
         private Vector3 velocity;
