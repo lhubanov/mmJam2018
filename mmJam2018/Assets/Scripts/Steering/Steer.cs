@@ -82,7 +82,8 @@ namespace Assets.Scripts.Steering
             return true;
         }
 
-        private void Start()
+        //Start() and Awake() are not called on Prefabs (:O took me a year to find that out)
+        public void Initialize()
         {
             velocity        = Vector3.zero;
             arrive          = GetComponent<Arrive>();
@@ -108,8 +109,8 @@ namespace Assets.Scripts.Steering
             {
                 forceToAdd = collisionAvoid.GetSteering(steeringData);
 
-                if(!AccumulateForce(ref velocity, forceToAdd)) {
-                    return AddForce(steeringData.Velocity.Value, velocity);
+                if(AccumulateForce(ref velocity, forceToAdd)) {
+                    AddForce(steeringData.Velocity.Value, velocity);
                 }
             }
 
@@ -117,8 +118,8 @@ namespace Assets.Scripts.Steering
             {
                 forceToAdd = pursue.GetSteering(steeringData);
 
-                if (!AccumulateForce(ref velocity, forceToAdd)) {
-                    return AddForce(steeringData.Velocity.Value, velocity);
+                if (AccumulateForce(ref velocity, forceToAdd)) {
+                    AddForce(steeringData.Velocity.Value, velocity);
                 }
             }
 
@@ -126,8 +127,8 @@ namespace Assets.Scripts.Steering
             {
                 forceToAdd = flee.GetSteering(steeringData);
 
-                if (!AccumulateForce(ref velocity, forceToAdd)) {
-                    return AddForce(steeringData.Velocity.Value, velocity);
+                if (AccumulateForce(ref velocity, forceToAdd)) {
+                    AddForce(steeringData.Velocity.Value, velocity);
                 }
             }
 
@@ -135,8 +136,8 @@ namespace Assets.Scripts.Steering
             {
                 forceToAdd = wander.GetSteering(steeringData);
 
-                if (!AccumulateForce(ref velocity, forceToAdd)) {
-                    return AddForce(steeringData.Velocity.Value, velocity);
+                if (AccumulateForce(ref velocity, forceToAdd)) {
+                    AddForce(steeringData.Velocity.Value, velocity);
                 }
             }
 

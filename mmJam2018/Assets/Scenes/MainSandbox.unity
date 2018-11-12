@@ -8001,7 +8001,6 @@ MonoBehaviour:
   maxForce: 0.2
   maxVelocity: 0.2
   mass: 2
-  TurnAngle: 90
   AvoidanceRangeScale: 10
   MaxAvoidanceForce: 0.5
 --- !u!114 &1102084622
@@ -10239,7 +10238,6 @@ MonoBehaviour:
   maxForce: 0.2
   maxVelocity: 0.2
   mass: 2
-  TurnAngle: 90
   AvoidanceRangeScale: 10
   MaxAvoidanceForce: 0.5
 --- !u!114 &1493103997
@@ -10377,7 +10375,6 @@ MonoBehaviour:
   maxForce: 0.2
   maxVelocity: 0.2
   mass: 2
-  TurnAngle: 90
   AvoidanceRangeScale: 10
   MaxAvoidanceForce: 0.5
 --- !u!114 &1494310196
@@ -10561,6 +10558,12 @@ Prefab:
       propertyPath: maxForce
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114155695222780042, guid: 3925cb4a173307544aa0d2c652c616cb,
+        type: 2}
+      propertyPath: steeringPrefab
+      value: 
+      objectReference: {fileID: 1444817038399034, guid: 3e99e2c5dccf3384bb16e0af7c92d89d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3925cb4a173307544aa0d2c652c616cb, type: 2}
   m_IsPrefabAsset: 0
@@ -10569,78 +10572,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4337198974820156, guid: 3925cb4a173307544aa0d2c652c616cb,
     type: 2}
   m_PrefabInternal: {fileID: 1519009954}
---- !u!1 &1519009956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1870434065539196, guid: 3925cb4a173307544aa0d2c652c616cb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1519009954}
---- !u!114 &1519009957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1519009956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e94826ec5de5d8143a839d2f61fda7de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 0.7
-  maxForce: 0.5
-  maxVelocity: 0.5
-  mass: 2
---- !u!114 &1519009963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1519009956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e983d8a72c6449648ae8a0f60f9d2bb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 0.1
-  maxForce: 0.1
-  maxVelocity: 0.1
-  mass: 2
-  circleDistance: 1
-  circleRadius: 0.5
-  wanderAngleChangeRate: 0.08
-  wanderAngle: 0
---- !u!114 &1519009964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1519009956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48fdc16955153854d809f10ce27f91ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 0.2
-  maxForce: 0.2
-  maxVelocity: 0.2
-  mass: 2
-  TurnAngle: 90
-  AvoidanceRangeScale: 10
-  MaxAvoidanceForce: 0.5
---- !u!114 &1519009965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1519009956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c016ed4c8cdce3143a8e772a49f6abe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 0.2
-  maxForce: 0.2
-  maxVelocity: 0.2
-  mass: 1
 --- !u!1 &1524537444 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1075939481131954, guid: 690fe62958e024ff79c12cbbe0b4f21b,
@@ -12205,7 +12136,6 @@ MonoBehaviour:
   maxForce: 0.2
   maxVelocity: 0.2
   mass: 2
-  TurnAngle: 90
   AvoidanceRangeScale: 10
   MaxAvoidanceForce: 0.5
 --- !u!114 &1718685364

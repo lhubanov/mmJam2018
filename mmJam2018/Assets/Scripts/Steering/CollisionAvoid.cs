@@ -33,7 +33,7 @@ namespace Assets.Scripts.Steering
                 // Interface, as usual?
                 if(!hitInfo.collider.isTrigger && hitInfo.transform != transform)
                 {
-                    Debug.Log(transform.parent.name);
+                    //Debug.Log(transform.parent.name); // cannot find name of parent if its within a prefab of steering behaviours
                     Debug.Log("Raycast detected collision w/ " + hitInfo.collider.name);
                     Debug.Log("Old direction " + direction);
 

@@ -3,6 +3,7 @@ using Assets.Scripts.Steering.SteeringData;
 
 namespace Assets.Scripts.Steering
 {
+    [RequireComponent(typeof(Seek))]
     public class Pursue : SteeringBase
     {
         private Seek seeker;
