@@ -24,7 +24,7 @@ namespace Assets.Scripts.Steering
 
         private Vector3 GetCircleDistance(Vector3 velocity)
         {
-            return Vector3.Scale(velocity.normalized, new Vector3(circleDistance, circleDistance, circleDistance));
+            return Vector3.Scale(velocity.normalized, new Vector3(circleDistance, circleDistance, 0));
         }
 
         /// <inheritdoc/>
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Steering
             wanderAngle += (Random.Range(-180, 180) * wanderAngleChangeRate);
 
             Vector3 displacement = new Vector3(1, 1, 0);
-            displacement = Vector3.Scale(displacement, new Vector3(circleRadius, circleRadius, circleRadius));
+            displacement = Vector3.Scale(displacement, new Vector3(circleRadius, circleRadius, 0));
             displacement = Quaternion.AngleAxis(wanderAngle, new Vector3(0, 0, 1)) * displacement;
             Vector3 wanderForce = circleDistance + displacement;
 

@@ -67,7 +67,11 @@ public class EnemyController : MonoBehaviour
         { 
             velocity += steering.GetSteering(new SteeringDataBase(transform.position, velocity, nextPosition));
             velocity = Vector3.ClampMagnitude(velocity, maxForce);
+
+            Debug.DrawLine(transform.position, nextPosition * 2, Color.green);
             nextPosition = transform.position + velocity;
+
+            Debug.Log(string.Format("New position: {0}", nextPosition));
             transform.position = nextPosition;
         }
 

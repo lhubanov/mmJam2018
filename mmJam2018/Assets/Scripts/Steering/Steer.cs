@@ -104,7 +104,10 @@ namespace Assets.Scripts.Steering
             velocity = Vector3.zero;
             Vector3 forceToAdd = Vector3.zero;
 
-            // Note: there's probably a way to avoid this copy-pasting via delegates or sth
+            // Note:    There's probably a way to avoid this copy-pasting via delegates or, perhaps
+            //          by iterating in an enumerable of available behaviours (but that puts
+            //          a hidden dependency on the order, in which they get called, whereas here
+            //          that is apparent)
             if (avoidCollisions && On(collisionAvoid))
             {
                 forceToAdd = collisionAvoid.GetSteering(steeringData);

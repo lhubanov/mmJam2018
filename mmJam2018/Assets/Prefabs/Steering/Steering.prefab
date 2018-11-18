@@ -76,7 +76,7 @@ MonoBehaviour:
   maxForce: 0.2
   maxVelocity: 0.2
   mass: 1
-  velocity: {x: 0, y: 0, z: 0}
+  velocity: {x: 0.29978034, y: 0.0020134924, z: 3e-45}
   steeringMaxForce: {x: 0.8, y: 0.8, z: 0.8}
   fleeing: 0
   pursuing: 0
@@ -97,10 +97,10 @@ MonoBehaviour:
   maxForce: 0.2
   maxVelocity: 0.2
   mass: 1
-  circleDistance: 2
+  circleDistance: 21.4
   circleRadius: 2
-  wanderAngleChangeRate: 0.5
-  wanderAngle: 0
+  wanderAngleChangeRate: 5
+  wanderAngle: -35083.65
 --- !u!114 &114526320045504110
 MonoBehaviour:
   m_ObjectHideFlags: 1
