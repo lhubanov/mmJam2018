@@ -13,6 +13,7 @@ namespace Assets.Scripts.Steering
         private float circleRadius = 2f;
         [SerializeField]
         private float wanderAngleChangeRate = 0.5f;
+
         // Degrees
         [SerializeField]
         private float wanderAngle;
