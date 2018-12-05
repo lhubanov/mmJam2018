@@ -1,52 +1,52 @@
-mmJam 2018 To-Dos:
+TODO:
 
--Add separate scene for main world building
-	-Create multiple prefabs of basic elements - grass flowers etc., both ok & drained versions
+Steering:
+	- Can Add/Extend
+		- Hide
 
+--------------------------------------------------------------------------------------
+Procedural generation:
+	- Integrate tile text demo to Unity
+		//- Change namespaces to get soln build
+		- Start from disecting the RegionGenerator.cs
+			- Do call to map creation there w/ external vars
+			- Change all map creation parameters to match game sandbox
+				- Positions in space
+					- Might need to do the Vector2D to Vector3D conversion code
+				- Change text generation to spawn sprites
+					(see existing sprite instantiating code)
+				
+				- Perhaps reference to tile that can be spawned can be attached to Biome
+					- It can maybe also keep references to members to be spawned (and perhaps pick a random one out of a selection)
+					- Consider doing the Vector2 to Vector3 conversion as a part of Biome as well (as a part of the feeding Center as input thing)
+					
+	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
 	
-//-Sort out animation states!!	
-
-//-Player idle animation
-	-can tweak timing
+	- Try BFS, maybe, as well
 	
-(TRY COPYING player prefab w/ different colors and only sideways animations, upon motion)
-//-Enemy idle behaviour
-	-Enemy idle animation
-	//-Random-ish movement within an area
--Player movement animation
-	//-Walking up (same as turning)
-	//-Walking down
-	-Walking to side (add on top of existing turning)
--Branch interaction animation
--Branch retreat animation
+	- Water tile
+		- Start by trying grass tile in blue
+	- Sand/beach tile
+		- Start by trying to re-color the grass tile
+			
+--------------------------------------------------------------------------------------
+			
+Make sure there's a fail state etc.
+	-Audio when mom is low?
 
-//-Momma animation (maybe just one, same for idle and non-idle)
-
--Enemy-player interaction
-	//-button press
-	//-animation change player
-		//-change enemy color
-	//-enemy die animation - turn completely black and disable object once animation is done?
-	//-hold player in place for some time
-		//-player force adding gets disabled for the time being
-	//-chasing
-	//-leash and reset idling
-	-update UI ?
-		-energy
+Draw wisp pixel art sprite + spritesheet
+	
+Intro
+Ending
+UI & Tutorials
 		
--Disappearing land mechanic on button press
-	//-animation player (may be same or very similar to enemy interaction animation)
-	-land animation?
-		//-instead of animation, change sprite in script, based on tag (e.g. tree, bush etc.)
-		-add flash or some equivalent effect when player animation is done to conceal sprite transition
-	//-sprite change or sprite disappear
-	
--Dialogue system (God object keeping track of game state)
-	-Audio Mixer
-	-Audio manager
-		-Dialogue coroutines for different points of the story (in coroutines)
-	//-Trigger dialogue script
-	//-disable player movement when talking
-	-Keep track of dialogue bit to start
+Dialogue in-betweeen (requires more states) or just change
+Generify branch animation
+Refactor input controller (it does not feel good + code is messy)
 
--EVERYTHING LEFT IS MERGING MORE OR LESS
+
+Extra steering ?
+	- Path following
+	- Leader following
+	- Queuing
+	- Hiding?
