@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts;
 
+using ProceduralGeneration.Map;
+
 public class RegionGenerator : MonoBehaviour
 {
     public Transform    RegionTopLeft;
     public Transform    RegionBotRight;
 
-    // This assumes a tile is square - introduce two constants where it isn't
-    public float        SizeOfTile;
+    public TileLookup   TileLookup;
 
+    // Does this show up in Unity?
+    public bool     UseRandomSeed { get; set; }
     public string       Seed;
 
-    [Range(0,100)]
-    public int          FillPercent;
+    // This assumes a tile is square - introduce two constants where it isn't
+    public float SizeOfTile;
 
-    public TileLookup   TileLookup;
-    public bool         UseRandomSeed;
-
-    
-	private void Start ()
+    private void Start()
     {
         GenerateRegion();
 	}
@@ -31,28 +30,31 @@ public class RegionGenerator : MonoBehaviour
             Seed = Random.Range(0, 1000).ToString();
         }
 
+        // FIXME: Change this to Unity RNG
         System.Random randomNumberGenerator = new System.Random(Seed.GetHashCode());
 
-        for (float x = RegionTopLeft.position.x; x < RegionBotRight.position.x; x += SizeOfTile)
-        {
-            for(float y = RegionTopLeft.position.y; y > RegionBotRight.position.y; y -= SizeOfTile)
-            {
-                GameObject prefabToCreate = TileLookup.GrassTilePrefab;
-                Vector3 pos = new Vector3(x, y, 0);
 
-                if (IsAtRegionEdge(pos)) {
-                    prefabToCreate = TileLookup.SeveralPurpleBushTilePrefab;
-                }
 
-                // Make these editor-manipulatble constants, if necessary
-                else if (randomNumberGenerator.Next(0,100) < FillPercent) {
-                    prefabToCreate = TileLookup.SeveralPurpleBushTilePrefab;
-                }
+        //for (float x = RegionTopLeft.position.x; x < RegionBotRight.position.x; x += SizeOfTile)
+        //{
+        //    for(float y = RegionTopLeft.position.y; y > RegionBotRight.position.y; y -= SizeOfTile)
+        //    {
+        //        GameObject prefabToCreate = TileLookup.GrassTilePrefab;
+        //        Vector3 pos = new Vector3(x, y, 0);
 
-                GameObject obj = Instantiate(prefabToCreate, pos, Quaternion.identity);
-                obj.transform.parent = this.transform;
-            }
-        }
+        //        if (IsAtRegionEdge(pos)) {
+        //            prefabToCreate = TileLookup.SeveralPurpleBushTilePrefab;
+        //        }
+
+        //        // Make these editor-manipulatble constants, if necessary
+        //        else if (randomNumberGenerator.Next(0,100) < FillPercent) {
+        //            prefabToCreate = TileLookup.SeveralPurpleBushTilePrefab;
+        //        }
+
+        //        GameObject obj = Instantiate(prefabToCreate, pos, Quaternion.identity);
+        //        obj.transform.parent = this.transform;
+        //    }
+        //}
     }
 
 

@@ -17,20 +17,23 @@ namespace ProceduralGeneration.Map
         private int mapHeight;
 
         // Tiles are square, so using this vertically and horizontally
+        [SerializeField]
         private int tileSize = 10;
 
         private readonly int horizontalMapEdge;
         private readonly int verticalMapEdge;
 
-        //[Range 0:1]
+        [Range(0, 1)]
+        [SerializeField]
         public float OceanThreshold = 0.85f;
 
-        //[SerializeField]
+        [SerializeField]
         private double elevationIncreaseRate;
-        //[SerializeField]
+
+        [SerializeField]
         private double elevationIncreaseMultiplier = 7.5;
 
-        //[SerializeField]
+        [SerializeField]
         private int spawningIterations = 2;
 
         // some sort of noise map(?)
