@@ -5,14 +5,17 @@ namespace ProceduralGeneration.Biome
 {
     public class SwampBiome : IBiome
     {
+        private System.Random rng;
+
         public BiomeType biomeType { get; private set; }
         public bool HasSpawned { get; private set; }
 
         // Probabilities
         private float bushSpawnProbability = 40;
 
-        public SwampBiome()
+        public SwampBiome(System.Random seedBasedRng)
         {
+            rng = seedBasedRng;
             biomeType = BiomeType.SwampBiome;
             HasSpawned = false;
         }
@@ -29,8 +32,7 @@ namespace ProceduralGeneration.Biome
                 bushSpawnProbability += increase;
             }
 
-            Random r = new Random();
-            if (r.Next(0, 100) < bushSpawnProbability)
+            if (rng.Next(0, 100) < bushSpawnProbability)
             {
                 biomeType = BiomeType.SwampWithBushes;
                 HasSpawned = true;

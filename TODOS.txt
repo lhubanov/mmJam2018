@@ -11,7 +11,7 @@ Procedural generation:
 		- Start from disecting the RegionGenerator.cs
 			//- Do call to map creation there w/ external vars
 			- Find appropriate noise function (maybe Unity builtin for the time being)
-			- Remove all the calls to System.Random & use noise func instead
+			//- Remove all the calls to System.Random & use noise func instead
 			
 			- Change all map creation parameters to match game sandbox (Found through testing really)
 				- Positions in space

@@ -24,17 +24,6 @@ namespace Assets.Scripts.Steering
             return velocity;
         }
 
-        // Leaving this here, for the time being, just as a prototype
-        //protected Vector3 RotateVector(Vector3 vector, float angle)
-        //{
-        //    Vector3 v = new Vector3(0,0,0);
-        //    float magnitude = vector.magnitude;
-        //    v.x = vector.x * Mathf.Cos(angle) - vector.y * Mathf.Sin(angle);
-        //    v.y = vector.y * Mathf.Cos(angle) + vector.x * Mathf.Sin(angle);
-
-        //    return v;
-        //}
-
         /// <inheritdoc/>
         public abstract Vector3 GetSteering(ISteeringData steeringData);
     }

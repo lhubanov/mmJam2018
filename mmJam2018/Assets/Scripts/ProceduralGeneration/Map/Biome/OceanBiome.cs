@@ -4,11 +4,15 @@ namespace ProceduralGeneration.Biome
 {
     public class OceanBiome : IBiome
     {
+        private System.Random rng;
+
         public BiomeType biomeType { get; private set; }
         public bool HasSpawned { get; private set; }
 
-        public OceanBiome()
+        public OceanBiome(System.Random seedBasedRng)
         {
+            rng = seedBasedRng;
+
             HasSpawned = false;
             biomeType = BiomeType.Ocean;
         }

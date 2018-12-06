@@ -102,19 +102,6 @@ namespace ProceduralGeneration.Map
         }
 
 
-        public Center()
-        {
-            Water = false;
-            Ocean = false;
-            Coast = false;
-            Biome = new Biome.Biome();
-            Elevation = 0;
-            Moisture = 0;
-
-            index = 0;
-            position = new Vector2(0, 0);
-        }
-
         public Center(bool water, bool ocean, bool coast, Biome.Biome biome, double elevation, double moisture, uint ind, Vector2 pos)
         {
             Water = water;
@@ -160,7 +147,7 @@ namespace ProceduralGeneration.Map
             return null;
         }
 
-        public void Initialize(System.Random rand)
+        public void Initialize(System.Random seedBasedRng)
         {
             // Assign biome here
             bool hasOceanNeighbours = HasOceanNeighbours();
@@ -175,14 +162,14 @@ namespace ProceduralGeneration.Map
 
             if (Water && Ocean || IsStrayIslandTile())
             {
-                Biome = new Biome.OceanBiome();
+                Biome = new Biome.OceanBiome(seedBasedRng);
                 Elevation = 0;
             }
             else
             {
                 if(hasLandNeighbours && hasOceanNeighbours)
                 {
-                    Biome = new Biome.BeachBiome();
+                    Biome = new Biome.BeachBiome(seedBasedRng);
                     Elevation = 1;
 
                     Water = false;

@@ -150,11 +150,13 @@ namespace ProceduralGeneration.Map
         //}
 
 
-        // FIXME: I still don't like this, its sub-optimal
+        // FIXME:   I still don't like this, its sub-optimal
+        //          Research options in terms of graphs (some sort of BFS creation of a graph) 
+        //          and just look at all available options in C# land 
         private List<List<Center>> CreateDefaultNodes()
         {
             List<List<Center>> nodesMap = new List<List<Center>>();
-            Root = new Center(true, true, false, new Biome.Biome(), 0, 0, 0, new Vector2(0, 0));
+            Root = new Center(true, true, false, new Biome.Biome(rng), 0, 0, 0, new Vector2(0, 0));
 
             int horizontalTiles = mapWidth / tileSize;
             int verticalTiles = mapHeight / tileSize;
@@ -170,7 +172,7 @@ namespace ProceduralGeneration.Map
                         continue;
                     }
 
-                    Center node = new Center(false, false, false, new Biome.Biome(), 0, 0, Convert.ToUInt32(i + j), new Vector2(i, j));
+                    Center node = new Center(false, false, false, new Biome.Biome(rng), 0, 0, Convert.ToUInt32(i + j), new Vector2(i, j));
 
                     if (IsOnMapEdge(node)) {
                         node.Water = true;
@@ -326,8 +328,6 @@ namespace ProceduralGeneration.Map
             Debug.Log(String.Format("Generating island. Island Range X: {0} - {1}", horizontalMapEdge * (1 - OceanThreshold), horizontalMapEdge));
             Debug.Log(String.Format("Generating island. Island Range Y: {0} - {1}", verticalMapEdge * (1 - OceanThreshold), verticalMapEdge));
 
-            System.Random rand = new System.Random();
-
             foreach (Center center in islandTiles)
             {
                 //if (IsOceanTile(center.Position)) {
@@ -335,7 +335,7 @@ namespace ProceduralGeneration.Map
                 //}
 
                 // FIXME: Use noise function here instead
-                center.Water = rand.Next(0, 100) < 50;
+                center.Water = rng.Next(0, 100) < 50;
             }
         }
 
@@ -345,10 +345,9 @@ namespace ProceduralGeneration.Map
         {
             HashSet<Center> coast = new HashSet<Center>();
 
-            System.Random r = new System.Random();
             foreach (Center c in centers)
             {
-                c.Initialize(r);
+                c.Initialize(rng);
 
                 if (c.Coast) {
                     coast.Add(c);
