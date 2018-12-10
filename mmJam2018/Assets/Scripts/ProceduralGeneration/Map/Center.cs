@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using Assets.Scripts;
 using ProceduralGeneration.Node;
 using ProceduralGeneration.Biome;
 
@@ -20,10 +21,10 @@ namespace ProceduralGeneration.Map
 
     public class Center : INode
     {
-        private uint index;
+        private int index;
         private Vector2 position;
 
-        public uint Index
+        public int Index
         {
             get { return index; }
             set { index = value; }
@@ -48,6 +49,8 @@ namespace ProceduralGeneration.Map
         public Biome.IBiome Biome;
         public double Elevation;
         public double Moisture;
+
+        private TileLookup lookup;
 
         // Note: these could be HashSets?
         private HashSet<Edge> edges;
@@ -102,7 +105,16 @@ namespace ProceduralGeneration.Map
         }
 
 
-        public Center(bool water, bool ocean, bool coast, Biome.Biome biome, double elevation, double moisture, uint ind, Vector2 pos)
+        //  FIXME: I hate this constructor now
+        public Center(bool water, 
+                    bool ocean, 
+                    bool coast, 
+                    Biome.Biome biome, 
+                    double elevation, 
+                    double moisture, 
+                    int ind, 
+                    Vector2 pos,
+                    TileLookup tileLookup)
         {
             Water = water;
             Ocean = ocean;
@@ -110,6 +122,8 @@ namespace ProceduralGeneration.Map
             Biome = biome;
             Elevation = elevation;
             Moisture = moisture;
+
+            lookup = tileLookup;
 
             index = ind;
             position = pos;
@@ -162,14 +176,14 @@ namespace ProceduralGeneration.Map
 
             if (Water && Ocean || IsStrayIslandTile())
             {
-                Biome = new Biome.OceanBiome(seedBasedRng);
+                Biome = new Biome.OceanBiome(seedBasedRng, lookup);
                 Elevation = 0;
             }
             else
             {
                 if(hasLandNeighbours && hasOceanNeighbours)
                 {
-                    Biome = new Biome.BeachBiome(seedBasedRng);
+                    Biome = new Biome.BeachBiome(seedBasedRng, lookup);
                     Elevation = 1;
 
                     Water = false;
@@ -240,6 +254,11 @@ namespace ProceduralGeneration.Map
         public void SpawnMembers()
         {
             Biome.SpawnMembers(this);
+        }
+
+        public void SpawnSprite()
+        {
+            Biome.SpawnSprite(this);
         }
         
         // Potential member methods

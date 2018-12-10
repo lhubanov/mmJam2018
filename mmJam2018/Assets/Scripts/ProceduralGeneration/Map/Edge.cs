@@ -7,7 +7,7 @@ namespace ProceduralGeneration.Map
 {
     public class Edge : INode
     {
-        public uint Index { get; set; }
+        public int Index { get; set; }
         public Vector2 Position { get; set; }
 
         // Polygons/tiles connected by the Delaunay edge
@@ -27,7 +27,7 @@ namespace ProceduralGeneration.Map
             //V1 = null;
         }
 
-        public Edge (Center d0, Center d1, uint index)
+        public Edge (Center d0, Center d1, int index)
         {
             Index = index;
 

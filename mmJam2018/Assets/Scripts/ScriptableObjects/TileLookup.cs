@@ -11,6 +11,8 @@ namespace Assets.Scripts
     public class TileLookup : ScriptableObject
     {
         // Tile prefabs used for procedurally generated region
+        public GameObject WaterPrefab;
+        public GameObject SandPrefab;
         public GameObject GrassTilePrefab;
         public GameObject ColumnTilePrefab;
         public GameObject OneGreenBushTilePrefab;

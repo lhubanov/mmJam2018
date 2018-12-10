@@ -11,6 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289fa29f137a3b54a8c60e097f939f27, type: 3}
   m_Name: Tile Lookup
   m_EditorClassIdentifier: 
+  WaterPrefab: {fileID: 1125569479529836, guid: 12039bc5cac7c764bb2c9796b4d23ed8,
+    type: 2}
+  SandPrefab: {fileID: 1696521703097028, guid: 9dee7aa31d0a31e44afe5681d0fb6d6a, type: 2}
   GrassTilePrefab: {fileID: 1540279273266704, guid: 60d0bb0a9843da14bb15b9e14ba44c15,
     type: 2}
   ColumnTilePrefab: {fileID: 1828673470050604, guid: ec42d97bf7f918b4bab75a24fb69dbaf,

@@ -10,18 +10,19 @@ Procedural generation:
 		//- Change namespaces to get soln build
 		- Start from disecting the RegionGenerator.cs
 			//- Do call to map creation there w/ external vars
-			- Find appropriate noise function (maybe Unity builtin for the time being)
+			//- Find appropriate noise function (maybe Unity builtin for the time being)
+				- Explore other noise funcs outside of Perlin
 			//- Remove all the calls to System.Random & use noise func instead
 			
 			- Change all map creation parameters to match game sandbox (Found through testing really)
-				- Positions in space
-					- Might need to do the Vector2D to Vector3D conversion code
-				- Change text generation to spawn sprites
+				//- Positions in space
+					//- Might need to do the Vector2D to Vector3D conversion code
+				//- Change text generation to spawn sprites
 					(see existing sprite instantiating code)
 				
-				- Perhaps reference to tile that can be spawned can be attached to Biome
-					- It can maybe also keep references to members to be spawned (and perhaps pick a random one out of a selection)
-					- Consider doing the Vector2 to Vector3 conversion as a part of Biome as well (as a part of the feeding Center as input thing)
+				//- Perhaps reference to tile that can be spawned can be attached to Biome
+					//- It can maybe also keep references to members to be spawned (and perhaps pick a random one out of a selection)
+					//- Consider doing the Vector2 to Vector3 conversion as a part of Biome as well (as a part of the feeding Center as input thing)
 					
 					
 	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)

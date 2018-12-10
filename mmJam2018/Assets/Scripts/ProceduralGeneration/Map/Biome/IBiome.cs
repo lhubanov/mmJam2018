@@ -1,4 +1,5 @@
-﻿using ProceduralGeneration.Map;
+﻿using UnityEngine;
+using ProceduralGeneration.Map;
 
 namespace ProceduralGeneration.Biome
 {
@@ -16,5 +17,8 @@ namespace ProceduralGeneration.Biome
         // Returns bool if anything got spawned, so that multiple
         // items don't get spawned on top of each other on a single tile
         bool SpawnMembers(Center tile);
+
+        GameObject SpawnSprite(Center tile);
+
     }
 }

@@ -42,7 +42,7 @@ public class RegionGenerator : MonoBehaviour
         System.Random randomNumberGenerator = new System.Random(Seed.GetHashCode());
 
 
-        Map map = new Map(mapWidth, mapHeight, tileSize, Seed);
+        Map map = new Map(tileSize, Seed, RegionTopLeft.position, RegionBotRight.position, TileLookup);
         map.Generate();
 
 

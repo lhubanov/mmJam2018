@@ -1,4 +1,5 @@
-﻿using System;
+﻿using UnityEngine;
+using Assets.Scripts;
 using ProceduralGeneration.Map;
 
 namespace ProceduralGeneration.Biome
@@ -6,6 +7,15 @@ namespace ProceduralGeneration.Biome
     public class ForestBiome : IBiome
     {
         private System.Random rng;
+
+        [SerializeField]
+        private GameObject sprite;
+
+        // FIXME: This is due to the stupid way I've made the prefabs atm.
+        //        Should actually just be references to the spawnable members (columns/ruins)
+        //        not the whole tile.
+        private GameObject spriteWithMembers;
+
 
         public BiomeType biomeType { get; private set; }
         public bool HasSpawned { get; private set; }
@@ -18,9 +28,12 @@ namespace ProceduralGeneration.Biome
         //Range[0,100]
         private float treeSpawnProbability = 25;
 
-        public ForestBiome(System.Random seedBasedRng)
+        public ForestBiome(System.Random seedBasedRng, TileLookup tileLookup)
         {
             rng = seedBasedRng;
+            sprite = tileLookup.GrassTilePrefab;
+            spriteWithMembers = tileLookup.OneGreenBushTilePrefab;
+
             biomeType = BiomeType.ForestBiome;
             HasSpawned = false;
         }
@@ -46,11 +59,23 @@ namespace ProceduralGeneration.Biome
             if(rng.Next(0, 100) < treeSpawnProbability)
             {
                 biomeType = BiomeType.ForestWithSpawnedTrees;
+
+                // FIXME:   rework so object is returned and assigned a parent,
+                //          as now this will be spawned on the top-level of the hierarchy
+                GameObject obj = Object.Instantiate(spriteWithMembers, new Vector3(tile.Position.x, tile.Position.y, 0), Quaternion.identity);
+                // return obj;
+
                 HasSpawned = true;
                 return true;
             }
 
             return false;
+        }
+
+        public GameObject SpawnSprite(Center tile)
+        {
+            GameObject obj = Object.Instantiate(sprite, new Vector3(tile.Position.x, tile.Position.y, 0), Quaternion.identity);
+            return obj;
         }
     }
 }

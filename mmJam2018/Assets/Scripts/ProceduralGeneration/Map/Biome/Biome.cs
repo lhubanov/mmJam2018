@@ -1,4 +1,5 @@
-﻿using ProceduralGeneration.Map;
+﻿using UnityEngine;
+using ProceduralGeneration.Map;
 
 namespace ProceduralGeneration.Biome
 {
@@ -35,6 +36,13 @@ namespace ProceduralGeneration.Biome
         {
             HasSpawned = true;
             return true;
+        }
+
+        public GameObject SpawnSprite(Center tile)
+        {
+            //GameObject obj = Object.Instantiate(sprite, new Vector3(tile.Position.x, tile.Position.y, 0), Quaternion.identity);
+            //return obj;
+            return null;
         }
     }
 }
