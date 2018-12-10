@@ -171,7 +171,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 4280927}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 150, y: -150, z: 0}
+  m_LocalPosition: {x: 350, y: -750, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 34674768}
@@ -294,7 +294,7 @@ MonoBehaviour:
   RegionTopLeft: {fileID: 226368439}
   RegionBotRight: {fileID: 4280928}
   TileLookup: {fileID: 11400000, guid: 85a84a27aac725041b0b413a4bfd48ed, type: 2}
-  UseRandomSeed: 0
+  UseRandomSeed: 1
   Seed: Testing
   tileSize: 5
   mapWidth: 0
@@ -1400,7 +1400,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 226368438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -75, y: -60, z: 0}
+  m_LocalPosition: {x: -200, y: -50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 34674768}

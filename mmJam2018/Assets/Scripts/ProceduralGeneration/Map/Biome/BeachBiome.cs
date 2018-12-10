@@ -20,7 +20,7 @@ namespace ProceduralGeneration.Biome
         public BeachBiome(System.Random seedBasedRng, TileLookup tileLookup)
         {
             rng = seedBasedRng;
-            sprite = tileLookup.OneGreenBushTilePrefab;
+            sprite = tileLookup.SandPrefab;
 
             HasSpawned = false;
             biomeType = BiomeType.BeachBiome;

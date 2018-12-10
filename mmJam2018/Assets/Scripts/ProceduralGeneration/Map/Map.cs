@@ -31,7 +31,7 @@ namespace ProceduralGeneration.Map
         private double elevationIncreaseRate;
 
         [SerializeField]
-        private double elevationIncreaseMultiplier = 7.5;
+        private double elevationIncreaseMultiplier = 12;
 
         [SerializeField]
         private int spawningIterations = 2;
@@ -88,7 +88,7 @@ namespace ProceduralGeneration.Map
             { 5, Biome.BiomeType.BeachBiome},
             { 10, Biome.BiomeType.GrasslandBiome},
             { 30, Biome.BiomeType.ForestBiome},
-            { 100, Biome.BiomeType.SwampBiome}, // lol somehow this is the tallest biome
+            { 50, Biome.BiomeType.SwampBiome}, // lol somehow this is the tallest biome
         };
 
         private Biome.IBiome CreateBiomeByName(Biome.BiomeType name)
@@ -178,8 +178,8 @@ namespace ProceduralGeneration.Map
             List<List<Center>> nodes = CreateDefaultNodes();
             CreateGraph(nodes);
 
-            // Try using BFS to compare map shapes etc.
-            HashSet<Center> centers = TraverseDFS(Root as Center);
+            //HashSet<Center> centers = TraverseDFS(Root as Center);
+            HashSet<Center> centers = TraverseBFS(Root as Center);
 
             HashSet<Center> islandTiles = GenerateOcean(centers);
             GenerateIsland(islandTiles);
@@ -215,7 +215,7 @@ namespace ProceduralGeneration.Map
             for (float i = 0 ; i < mapWidthInTiles; i++)
             {
                 List<Center> row = new List<Center>();
-                x = mapBotLeft.x;
+                y = mapBotLeft.y;
 
                 for (float j = 0; j < mapHeightInTiles; j++)
                 {
@@ -232,11 +232,11 @@ namespace ProceduralGeneration.Map
                     }
 
                     row.Add(node);
-                    x += tileSize;
+                    y += tileSize;
                 }
 
                 nodesMap.Add(row);
-                y += tileSize;
+                x += tileSize;
             }
 
             return nodesMap;
@@ -316,6 +316,34 @@ namespace ProceduralGeneration.Map
                     if (!visited.Contains(neighbour))
                     {
                         stack.Push(neighbour);
+                    }
+                }
+            }
+
+            return visited;
+        }
+
+        private HashSet<Center> TraverseBFS(Center root)
+        {
+            HashSet<Center> visited = new HashSet<Center>();
+            Queue<Center> queue = new Queue<Center>();
+
+            queue.Enqueue(root);
+
+            while(queue.Count > 0)
+            {
+                Center node = queue.Dequeue();
+
+                if (visited.Contains(node)) {
+                    continue;
+                }
+
+                visited.Add(node);
+
+                foreach(Center neighbour in node.Centers)
+                {
+                    if (!visited.Contains(neighbour)){
+                        queue.Enqueue(neighbour);
                     }
                 }
             }
@@ -413,6 +441,11 @@ namespace ProceduralGeneration.Map
                     {
                         if (neighbour.Elevation == 0)
                         {
+                            if (tile.Elevation > 10)
+                            {
+                                Console.WriteLine("Debugging once more mofo");
+                            }
+
                             neighbour.Elevation = tile.Elevation + elevationIncreaseRate;
                             visitedTiles.Add(neighbour);
 
@@ -436,6 +469,10 @@ namespace ProceduralGeneration.Map
             {
                 if (tile.Biome.biomeType == Biome.BiomeType.None)
                 {
+                    if(tile.Elevation > 20)
+                    {
+                        Console.WriteLine("Debugging once more mofo");
+                    }
                     tile.Biome = CreateBiomeByName(BiomeConditions.Where(x => x.Key > tile.Elevation).First().Value);
                 }
             }
