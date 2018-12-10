@@ -93,13 +93,10 @@ namespace ProceduralGeneration.Map
 
         private Biome.IBiome CreateBiomeByName(Biome.BiomeType name)
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string fullName = "ProceduralGeneration.Biome." + name.ToString();
+            Type type = Type.GetType("ProceduralGeneration.Biome." + name.ToString());
+            System.Object obj = Activator.CreateInstance(type, rng, tileLookup);
 
-            System.Object obj = assembly.CreateInstance(fullName);
-            Biome.IBiome b = obj as Biome.IBiome;
-
-            return b;
+            return obj as Biome.IBiome;
         }
 
 

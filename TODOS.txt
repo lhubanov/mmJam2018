@@ -17,22 +17,26 @@ Procedural generation:
 			- Change all map creation parameters to match game sandbox (Found through testing really)
 				//- Positions in space
 					//- Might need to do the Vector2D to Vector3D conversion code
-				//- Change text generation to spawn sprites
-					(see existing sprite instantiating code)
+				//- Change text generation to spawn sprites (see existing sprite instantiating code)
 				
 				//- Perhaps reference to tile that can be spawned can be attached to Biome
 					//- It can maybe also keep references to members to be spawned (and perhaps pick a random one out of a selection)
 					//- Consider doing the Vector2 to Vector3 conversion as a part of Biome as well (as a part of the feeding Center as input thing)
 					
-					
 	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
 	
 	- Try BFS, maybe, as well
+	- Regarding reworking the graph creation - what about adding edges to previous column and previous row cell
+	(e.g. at center creation - if [row-1] is valid, add edge between center and center at [row-1][col]; 
+	same if [column-1] is valid - add edge between center and center at [row][column-1])
 	
 	- Water tile
-		- Start by trying grass tile in blue
+		//- Start by trying grass tile in blue
+		- See if there is need to create a new sprite
+		
 	- Sand/beach tile
-		- Start by trying to re-color the grass tile
+		//- Start by trying to re-color the grass tile
+		- See if there is need to create a new sprite
 			
 --------------------------------------------------------------------------------------
 			

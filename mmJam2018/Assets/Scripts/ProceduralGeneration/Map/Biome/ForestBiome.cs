@@ -16,7 +16,6 @@ namespace ProceduralGeneration.Biome
         //        not the whole tile.
         private GameObject spriteWithMembers;
 
-
         public BiomeType biomeType { get; private set; }
         public bool HasSpawned { get; private set; }
 
