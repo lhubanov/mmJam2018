@@ -20,11 +20,7 @@ namespace ProceduralGeneration.Biome
         public bool HasSpawned { get; private set; }
 
         // Probabilities
-
-        //Range[0,1]
-        //private float treeSpawnProbability = 0.7f;
-
-        //Range[0,100]
+        [Range(0, 100)]
         private float treeSpawnProbability = 25;
 
         public ForestBiome(System.Random seedBasedRng, TileLookup tileLookup)

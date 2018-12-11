@@ -6,29 +6,25 @@ Steering:
 
 --------------------------------------------------------------------------------------
 Procedural generation:
-	- Integrate tile text demo to Unity
-		//- Change namespaces to get soln build
-		- Start from disecting the RegionGenerator.cs
-			//- Do call to map creation there w/ external vars
-			//- Find appropriate noise function (maybe Unity builtin for the time being)
-				- Explore other noise funcs outside of Perlin
-			//- Remove all the calls to System.Random & use noise func instead
-			
-			- Change all map creation parameters to match game sandbox (Found through testing really)
-				//- Positions in space
-					//- Might need to do the Vector2D to Vector3D conversion code
-				//- Change text generation to spawn sprites (see existing sprite instantiating code)
-				
-				//- Perhaps reference to tile that can be spawned can be attached to Biome
-					//- It can maybe also keep references to members to be spawned (and perhaps pick a random one out of a selection)
-					//- Consider doing the Vector2 to Vector3 conversion as a part of Biome as well (as a part of the feeding Center as input thing)
 					
 	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
 	
-	- Try BFS, maybe, as well
+	//- Try BFS, maybe, as well
+	- Add drawing of sprites at earlier stages to visualize differences in graph traversal (and maybe spot issues?)
+		- Draw sprites before drawing members
+		- Then draw members at every iteration ?
+	//- Also traversal seems to go from right to left - see screenshots
+		- Completely changes w/ BFS - investigate patterns
+		- Try traversing the whole map tiles again instead of only the "island" tiles
+		- Try traversing via BFS/DFS instead of iterating over hashSet, to see what changes
+	
+	
 	- Regarding reworking the graph creation - what about adding edges to previous column and previous row cell
 	(e.g. at center creation - if [row-1] is valid, add edge between center and center at [row-1][col]; 
 	same if [column-1] is valid - add edge between center and center at [row][column-1])
+	
+	- Expose as many parameters as possible to RegionGenerator, so that generation @ different states can be done
+	at the click of e.g. LMB to visualise impact of different parameters
 	
 	- Find way to add noise to sprite edges (a-la Amit's island generation)
 	- 2 Layers of beach?
@@ -39,12 +35,11 @@ Procedural generation:
 		
 	- Sand/beach tile
 		- Draw new sprite
-		
-	//- Swamp seems to be missing
-		- Due to stupid elevation increase formula - rework
-	- Edges on LHS and top seem to be a bit broken (although top side seems to fit)
-	- Also traversal seems to go from right to left - see screenshots
 	
+	- Rework stupid elevation increase formula
+	
+	- Edges on LHS and top seem to be a bit broken (although top side seems to fit)
+		
 	- Create a bunch new prefabs as spawnable members (picked at random more-or-less)
 		- Ruins Biome members (Enemies need to be spawnable here)
 			- Column
@@ -65,7 +60,8 @@ Procedural generation:
 			- Purple bush
 			- 2x Purple bushes
 	
-	
+		
+	- Standardize the usage of the probabilities (either 0-100 ints or 0-1 floats)
 --------------------------------------------------------------------------------------
 			
 Make sure there's a fail state etc.
@@ -81,11 +77,7 @@ UI & Tutorials
 		
 Dialogue in-betweeen (requires more states) or just change
 Generify branch animation
+
 Refactor input controller (it does not feel good + code is messy)
 
 
-Extra steering ?
-	- Path following
-	- Leader following
-	- Queuing
-	- Hiding?
