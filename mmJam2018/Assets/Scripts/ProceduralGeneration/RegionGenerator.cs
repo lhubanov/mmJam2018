@@ -18,7 +18,7 @@ public class RegionGenerator : MonoBehaviour
 
     // Note: This assumes a tile is square;
     [SerializeField]
-    private int tileSize;
+    private float tileSize;
 
     [SerializeField]
     private int mapWidth;

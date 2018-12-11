@@ -22,7 +22,7 @@ namespace ProceduralGeneration.Map
         private readonly float mapHeight;
 
         [SerializeField]
-        private int tileSize = 10;
+        private float tileSize = 10f;
 
         private readonly Vector2 mapBotLeft;
         private readonly Vector2 mapTopRight;
@@ -64,7 +64,7 @@ namespace ProceduralGeneration.Map
         private GRAPH_TRAVERSAL_METHOD graphTraversalMethod = GRAPH_TRAVERSAL_METHOD.BFS;
 
 
-        public Map(int tilesize, string seed, Vector3 regionTopLeft, Vector3 regionBotRight, TileLookup lookup)
+        public Map(float tilesize, string seed, Vector3 regionTopLeft, Vector3 regionBotRight, TileLookup lookup)
         {
             // FIXME:   If this strange conversion needs to happen, probably need to just change the input Vector3s
             mapBotLeft = new Vector2(regionTopLeft.x, regionBotRight.y);
