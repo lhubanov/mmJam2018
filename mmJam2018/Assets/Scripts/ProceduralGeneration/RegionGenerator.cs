@@ -69,9 +69,18 @@ public class RegionGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(1)) {
+        if (Input.GetMouseButton(1))
+        {
+            if (UseRandomSeed) {
+                Seed = Random.Range(0, 1000).ToString();
+            }
+
+            System.Random randomNumberGenerator = new System.Random(Seed.GetHashCode());
+
             // FIXME:   This does nto delete old map and just adds more on top!
             //          Find a way to delete old map!
+            map = null;
+
             MapSettingsContainer settings = PackageSettings();
             map = new Map(settings);
             map.Generate();

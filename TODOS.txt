@@ -16,7 +16,8 @@ Procedural generation:
 	//- Expose as many parameters as possible to RegionGenerator, so that generation @ different states can be done
 	//at the click of e.g. LMB to visualise impact of different parameters
 		- Refactor container class a bit
-		- Fix bug with old map not being deleted!
+		- Fix bug with old map not being deleted! (might be complicated- need to delete created sprites)
+		- Move Biome chances to scriptable objects or sth! (not exposed currently)
 	
 	- Initial issues with GraphGeneration seems to be fixed w/ swapping x/y node traversal order
 		- Once quick per click generation is done - try a variety of seeds to see if true
