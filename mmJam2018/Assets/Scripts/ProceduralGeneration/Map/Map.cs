@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Linq;
 
 using UnityEngine;
 using Assets.Scripts;
 using ProceduralGeneration.Node;
+using ProceduralGeneration.Map.MapSettings;
 
 namespace ProceduralGeneration.Map
 {
@@ -18,52 +18,58 @@ namespace ProceduralGeneration.Map
     // Note: Expose the serialized settings below to editor
     public class Map : Graph.Graph
     {
-        private readonly float mapWidth;
-        private readonly float mapHeight;
-
-        [SerializeField]
-        private float tileSize = 10f;
+        // FIXME:   Find best constructional pattern to use w/ this many parameters;
+        //          Add defaults that currently get set to a default constructor.
+        private float mapWidth;
+        private float mapHeight;
 
         private readonly Vector2 mapBotLeft;
         private readonly Vector2 mapTopRight;
 
+        private float tileSize; // = 10f;
 
-        [Range(0, 1)]
-        [SerializeField]
-        public float OceanThreshold = 0.85f;
+        private float oceanThreshold; // = 0.85f;
+        private float chanceIslandTileIsWater; // = 0.5f;
 
-        [Range(0, 1)]
-        [SerializeField]
-        private float chanceIslandTileIsWater = 0.5f;
-
-        [SerializeField]
         private double elevationIncreaseRate;
+        private double elevationIncreaseMultiplier; // = 12;
+        private int spawningIterations; // = 2;
 
-        [SerializeField]
-        private double elevationIncreaseMultiplier = 12;
+        private float noiseScale; // = 1f;
+        private int maxNoiseOffset; // = 100;
 
-        [SerializeField]
-        private int spawningIterations = 2;
-
-        [SerializeField]
-        [Range(0, 1)]
-        private float waterSpawnProbability = 0.5f;
-
-        [SerializeField]
-        private float noiseScale = 1f;
-
-        [SerializeField]
-        private int maxNoiseOffset = 100;
-
-        [SerializeField]
         private string rngSeed;
         private System.Random rng;
         private TileLookup tileLookup;
 
-        [SerializeField]
-        private GRAPH_TRAVERSAL_METHOD graphTraversalMethod = GRAPH_TRAVERSAL_METHOD.BFS;
+        private GRAPH_TRAVERSAL_METHOD graphTraversalMethod; //= GRAPH_TRAVERSAL_METHOD.BFS;
 
 
+
+        public Map(MapSettingsContainer mapSettings)
+        {
+            mapBotLeft = mapSettings.MapBotLeft;
+            mapTopRight = mapSettings.MapTopRight;
+
+            oceanThreshold = mapSettings.OceanThreshold;
+            chanceIslandTileIsWater = mapSettings.ChanceIslandTileIsWater;
+
+            elevationIncreaseMultiplier = mapSettings.ElevationIncreaseMultiplier;
+
+            spawningIterations = mapSettings.MemberSpawningIterations;
+
+            noiseScale = mapSettings.NoiseScale;
+            maxNoiseOffset = mapSettings.MaxNoiseOffset;
+
+            tileLookup = mapSettings.TileLookup;
+            tileSize = mapSettings.TileSize;
+            graphTraversalMethod = mapSettings.GraphTraversalMethod;
+
+            rngSeed = mapSettings.RngSeed;
+            CalculateConstants();
+        }
+
+        // Maybe just deprecate this?
         public Map(float tilesize, string seed, Vector3 regionTopLeft, Vector3 regionBotRight, TileLookup lookup)
         {
             // FIXME:   If this strange conversion needs to happen, probably need to just change the input Vector3s
@@ -75,9 +81,16 @@ namespace ProceduralGeneration.Map
 
             tileSize = tilesize;
             tileLookup = lookup;
-            rngSeed = seed;
+
+            CalculateConstants();
+        }
+
+        private void CalculateConstants()
+        {
             rng = new System.Random(rngSeed.GetHashCode());
 
+            mapWidth = Mathf.Abs(mapTopRight.x - mapBotLeft.x);
+            mapHeight = Mathf.Abs(mapTopRight.y - mapBotLeft.y);
 
             // FIXME:   Define an actual formula for this eventually
             //          (+ the above is mostly due to the calculation saving 0 always if not done this way - investigate)
@@ -85,7 +98,6 @@ namespace ProceduralGeneration.Map
             double coeff = (tileSize / widthInTiles) * elevationIncreaseMultiplier;
             elevationIncreaseRate = coeff;
         }
-
 
         // FIXME: Using these enum type is a bit archaic
         private Dictionary<int, Biome.BiomeType> BiomeConditions = new Dictionary<int, Biome.BiomeType>()
@@ -114,13 +126,13 @@ namespace ProceduralGeneration.Map
         // FIXME: Still broken - debug what the values are below
         private bool IsOceanTile(Vector2 pos)
         {
-            var xMaxThreshold = mapTopRight.x  - (mapWidth * (1 - OceanThreshold));
+            var xMaxThreshold = mapTopRight.x  - (mapWidth * (1 - oceanThreshold));
             //var xMaxThreshold = mapTopRight.x * OceanThreshold;
-            var xMinThreshold = mapBotLeft.x + (mapWidth * (1 - OceanThreshold));
+            var xMinThreshold = mapBotLeft.x + (mapWidth * (1 - oceanThreshold));
 
-            var yMaxThreshold = mapTopRight.y  - (mapHeight * (1- OceanThreshold));
+            var yMaxThreshold = mapTopRight.y  - (mapHeight * (1- oceanThreshold));
             //var yMaxThreshold = mapTopRight.y * OceanThreshold;
-            var yMinThreshold = mapBotLeft.y + (mapHeight * (1 - OceanThreshold));
+            var yMinThreshold = mapBotLeft.y + (mapHeight * (1 - oceanThreshold));
 
             return (pos.x > xMaxThreshold || pos.x < xMinThreshold)
                 || (pos.y > yMaxThreshold || pos.y < yMinThreshold);

@@ -4,28 +4,50 @@ using UnityEngine;
 using Assets.Scripts;
 
 using ProceduralGeneration.Map;
+using ProceduralGeneration.Map.MapSettings;
 
 public class RegionGenerator : MonoBehaviour
 {
-    public Transform    RegionTopLeft;
-    public Transform    RegionBotRight;
+    [SerializeField]
+    private Transform    RegionTopLeft;
 
-    public TileLookup   TileLookup;
+    [SerializeField]
+    private Transform    RegionBotRight;
 
-    // Does this show up in Unity?
-    public bool         UseRandomSeed;
-    public string       Seed;
+    [SerializeField]
+    private TileLookup   TileLookup;
+
+    [SerializeField]
+    private bool         UseRandomSeed;
+
+    [SerializeField]
+    private string       Seed;
 
     // Note: This assumes a tile is square;
     [SerializeField]
     private float tileSize;
 
+    [Range(0, 1)]
     [SerializeField]
-    private int mapWidth;
+    private float oceanThreshold = 0.85f;
+
+    [Range(0, 1)]
+    [SerializeField]
+    private float chanceIslandTileIsWater = 0.5f;
 
     [SerializeField]
-    private int mapHeight;
+    private double elevationIncreaseMultiplier = 12;
 
+    [SerializeField]
+    private int spawningIterations = 2;
+
+    [SerializeField]
+    private float noiseScale = 1f;
+
+    [SerializeField]
+    private int maxNoiseOffset = 100;
+
+    private Map map = null;
 
     private void Start()
     {
@@ -38,33 +60,49 @@ public class RegionGenerator : MonoBehaviour
             Seed = Random.Range(0, 1000).ToString();
         }
 
-        // FIXME: Change this to Unity RNG
         System.Random randomNumberGenerator = new System.Random(Seed.GetHashCode());
 
-
-        Map map = new Map(tileSize, Seed, RegionTopLeft.position, RegionBotRight.position, TileLookup);
+        MapSettingsContainer settings = PackageSettings();
+        map = new Map(settings);
         map.Generate();
+    }
 
+    private void Update()
+    {
+        if (Input.GetMouseButton(1)) {
+            // FIXME:   This does nto delete old map and just adds more on top!
+            //          Find a way to delete old map!
+            MapSettingsContainer settings = PackageSettings();
+            map = new Map(settings);
+            map.Generate();
+        }
+    }
 
-        //for (float x = RegionTopLeft.position.x; x < RegionBotRight.position.x; x += SizeOfTile)
-        //{
-        //    for(float y = RegionTopLeft.position.y; y > RegionBotRight.position.y; y -= SizeOfTile)
-        //    {
-        //        GameObject prefabToCreate = TileLookup.GrassTilePrefab;
-        //        Vector3 pos = new Vector3(x, y, 0);
+    private MapSettingsContainer PackageSettings()
+    {
+        MapSettingsContainer settings = new MapSettingsContainer()
+        {
+            MapBotLeft = new Vector2(RegionTopLeft.position.x, RegionBotRight.position.y),
+            MapTopRight = new Vector2(RegionBotRight.position.x, RegionTopLeft.position.y),
 
-        //        if (IsAtRegionEdge(pos)) {
-        //            prefabToCreate = TileLookup.SeveralPurpleBushTilePrefab;
-        //        }
+            TileSize = tileSize,
 
-        //        // Make these editor-manipulatble constants, if necessary
-        //        else if (randomNumberGenerator.Next(0,100) < FillPercent) {
-        //            prefabToCreate = TileLookup.SeveralPurpleBushTilePrefab;
-        //        }
+            OceanThreshold = oceanThreshold,
+            ChanceIslandTileIsWater = chanceIslandTileIsWater,
+            ElevationIncreaseMultiplier = elevationIncreaseMultiplier,
 
-        //        GameObject obj = Instantiate(prefabToCreate, pos, Quaternion.identity);
-        //        obj.transform.parent = this.transform;
-        //    }
-        //}
+            MemberSpawningIterations = spawningIterations,
+
+            NoiseScale = noiseScale,
+            MaxNoiseOffset = maxNoiseOffset,
+
+            RngSeed = Seed,
+
+            TileLookup = TileLookup,
+
+            GraphTraversalMethod = GRAPH_TRAVERSAL_METHOD.BFS
+        };
+
+        return settings;
     }
 }
