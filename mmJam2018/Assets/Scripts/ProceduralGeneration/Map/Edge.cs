@@ -22,9 +22,6 @@ namespace ProceduralGeneration.Map
 
             D0 = null;
             D1 = null;
-
-            //V0 = null;
-            //V1 = null;
         }
 
         public Edge (Center d0, Center d1, int index)
@@ -35,18 +32,17 @@ namespace ProceduralGeneration.Map
             D1 = d1;
 
             AddUndirectedEdge(D0, D1);
-
-            //V0 = v0;
-            //V1 = v1;
         }
 
         private void AddUndirectedEdge(Center from, Center to)
         {
             from.Centers.Add(to);
             to.Centers.Add(from);
+
+            from.Edges.Add(this);
+            to.Edges.Add(this);
         }
 
-        // IEqualityComparer overrides
         public override int GetHashCode()
         {
             return Convert.ToInt32(Index);
@@ -56,13 +52,5 @@ namespace ProceduralGeneration.Map
         {
             return (Index == (obj as Edge).Index);
         }
-
-
-        // Potential member methods
-        //bool Legalize();
-        //bool Flip();
-        //void SwitchCorner(corner* old_corner, corner* new_corner);
-        //corner* GetOpositeCorner(corner* c);
-        //center* GetOpositeCenter(center* c);
     }
 }

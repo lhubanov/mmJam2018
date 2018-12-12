@@ -140,16 +140,6 @@ namespace ProceduralGeneration.Map
             return true;
         }
 
-        //bool RemoveCorner(Corner corner)
-        //{
-        //    if (corner == null) {
-        //        return false;
-        //    }
-
-        //    corners.Remove(corner);
-        //    return true;
-        //}
-
         public Edge GetEdgeWith(Center center)
         {
             foreach(Edge edge in edges) {
@@ -197,11 +187,6 @@ namespace ProceduralGeneration.Map
                     Elevation = 0;
                 }
             }
-
-            // TODO:    Get & instantiate tile prefab here
-            //          Note: Potentially, this could be done at some
-            //          post-processing stage, depending on how many iterations
-            //          through the graph need to be made (based on initial Biome assignments)
         }
 
         // i.e. are all neighbours oceans
@@ -209,10 +194,20 @@ namespace ProceduralGeneration.Map
         {
             bool val = true;
             foreach(Center center in centers) {
-                val &= (center.Water && center.Ocean);
+                val &= center.Ocean;
             }
 
             return val;
+        }
+
+        public void StrayIslandTilePostProcess(System.Random seedBasedRng, TileLookup lookup)
+        {
+            if (IsStrayIslandTile()) {
+                Biome = new Biome.OceanBiome(seedBasedRng, lookup);
+                Elevation = 0;
+
+                Biome.SpawnSprite(this);
+            }
         }
 
         private bool HasLandNeighbours()
@@ -258,16 +253,9 @@ namespace ProceduralGeneration.Map
 
         public void SpawnSprite()
         {
-            Biome.SpawnSprite(this);
-        }
-        
-        // Potential member methods
-
-        //void MakeBorder();
-        //bool IsInsideBoundingBox(int width, int height);
-        //bool Contains(Vec2 p_pos);
-        //pair<Vec2, Vec2> GetBoundingBox();
-        //void SortCorners();
-        //bool GoesBefore(Vec2 p_a, Vec2 p_b);
+            if(Biome != null) { 
+                Biome.SpawnSprite(this);
+            }
+        }      
     }
 }

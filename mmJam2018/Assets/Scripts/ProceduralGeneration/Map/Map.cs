@@ -90,10 +90,10 @@ namespace ProceduralGeneration.Map
         // FIXME: Using these enum type is a bit archaic
         private Dictionary<int, Biome.BiomeType> BiomeConditions = new Dictionary<int, Biome.BiomeType>()
         {
-            { 5, Biome.BiomeType.BeachBiome},
+            { 3, Biome.BiomeType.BeachBiome},
             { 10, Biome.BiomeType.GrasslandBiome},
-            { 30, Biome.BiomeType.ForestBiome},
-            { 50, Biome.BiomeType.SwampBiome}, // lol somehow this is the tallest biome
+            { 20, Biome.BiomeType.ForestBiome},
+            { 200, Biome.BiomeType.SwampBiome}, // lol somehow this is the tallest biome
         };
 
         private Biome.IBiome CreateBiomeByName(Biome.BiomeType name)
@@ -111,15 +111,15 @@ namespace ProceduralGeneration.Map
                 || (node.Position.y == mapBotLeft.y || node.Position.y == mapTopRight.y);
         }
 
-        // FIXME: This might still be broken - try the commented out below
+        // FIXME: Still broken - debug what the values are below
         private bool IsOceanTile(Vector2 pos)
         {
-            //var xMaxThreshold = mapTopRight.x  - (mapWidth * OceanThreshold);
-            var xMaxThreshold = mapTopRight.x * OceanThreshold;
+            var xMaxThreshold = mapTopRight.x  - (mapWidth * (1 - OceanThreshold));
+            //var xMaxThreshold = mapTopRight.x * OceanThreshold;
             var xMinThreshold = mapBotLeft.x + (mapWidth * (1 - OceanThreshold));
 
-            //var yMaxThreshold = mapTopRight.y  - (mapHeight * OceanThreshold);
-            var yMaxThreshold = mapTopRight.y * OceanThreshold;
+            var yMaxThreshold = mapTopRight.y  - (mapHeight * (1- OceanThreshold));
+            //var yMaxThreshold = mapTopRight.y * OceanThreshold;
             var yMinThreshold = mapBotLeft.y + (mapHeight * (1 - OceanThreshold));
 
             return (pos.x > xMaxThreshold || pos.x < xMinThreshold)
@@ -129,7 +129,7 @@ namespace ProceduralGeneration.Map
         public void Generate()
         {
             List<List<Center>> nodes = CreateDefaultNodes();
-            CreateGraph(nodes);
+            //CreateGraph(nodes);
 
             //HashSet<Center> centers = TraverseDFS(Root as Center);
             HashSet<Center> centers = TraverseGraph(Root as Center, graphTraversalMethod);
@@ -138,6 +138,8 @@ namespace ProceduralGeneration.Map
             GenerateIsland(islandTiles);
 
             // FIXME: Refactor this, to also use noise function!
+            //        Also, maybe structurally refactor as well, it's
+            //        a bit weird, how some proc gen map stuff happens within Center class  
             HashSet<Center> coastalTiles = InitializeTiles(centers);
 
             SetElevation(coastalTiles);
@@ -149,11 +151,12 @@ namespace ProceduralGeneration.Map
             // Note: This just calls the tile.Biome.Spawn(), so can be done on all tiles,
             //       if e.g. stuff needs to spawn in-ocean. Feeding it only island tiles for now
             SpawnMembers(islandTiles, spawningIterations);
+
+            StrayIslandPostProcessing(centers);
         }
 
-        // FIXME:   I still don't like this, its sub-optimal
-        //          Research options in terms of graphs (some sort of BFS creation of a graph) 
-        //          and just look at all available options in C# land 
+        // FIXME:   Can use some clean up;
+        //          Does not need to return anything actually
         private List<List<Center>> CreateDefaultNodes()
         {
             List<List<Center>> nodesMap = new List<List<Center>>();
@@ -165,12 +168,12 @@ namespace ProceduralGeneration.Map
             int mapWidthInTiles = Convert.ToInt32(mapWidth / tileSize);
             int mapHeightInTiles = Convert.ToInt32(mapHeight / tileSize);
 
-            for (float i = 0 ; i < mapWidthInTiles; i++)
+            for (int i = 0 ; i < mapHeightInTiles; i++)
             {
                 List<Center> row = new List<Center>();
-                y = mapBotLeft.y;
+                x = mapBotLeft.x;
 
-                for (float j = 0; j < mapHeightInTiles; j++)
+                for (int j = 0; j < mapWidthInTiles; j++)
                 {
                     if (i == 0 && j == 0) {
                         row.Add(Root as Center);
@@ -184,71 +187,86 @@ namespace ProceduralGeneration.Map
                         node.Ocean = true;
                     }
 
+                    if (j - 1 >= 0) {
+                        node.Edges.Add(new Edge(node, row[j - 1], (node.Index + row[j - 1].Index)));
+                    }
+
+                    if (i - 1 >= 0) {
+                        node.Edges.Add(new Edge(node, nodesMap[i - 1][j], (node.Index + nodesMap[i - 1][j].Index)));
+                    }
+
                     row.Add(node);
-                    y += tileSize;
+                    x += tileSize;
                 }
 
                 nodesMap.Add(row);
-                x += tileSize;
+                y += tileSize;
             }
 
             return nodesMap;
         }
 
-        // FIXME: I've hacked this about to get it working, so refactor later pls
-        private void CreateGraph(List<List<Center>> nodes)
+        private void StrayIslandPostProcessing(HashSet<Center> tiles)
         {
-            // FIXME: This seems sub-optimal. Can we assign neghbours during the centers' creation in the loops above?
-            //        Or loop more inteligently?
-            int rows = nodes.Count;
-            int columns = nodes.First().Count;
-
-            foreach (List<Center> row in nodes)
+            foreach(Center node in tiles)
             {
-                int rowNumber = nodes.IndexOf(row);
-
-                foreach (Center node in row)
-                {
-                    int columnNumber = row.IndexOf(node);
-
-                    // Edges are only adjacent tiles, no diagonals
-
-                    int top = rowNumber + 1;
-                    if (top >= 0 && top < rows)
-                    {
-                        Center topNeigbhour = nodes[top][columnNumber];
-                        // FIXME:   Index creation does not create unique values
-                        node.Edges.Add(new Edge(node, topNeigbhour, (node.Index + topNeigbhour.Index)));
-                    }
-
-                    int bot = rowNumber - 1;
-                    if (bot >= 0 && bot < rows)
-                    {
-                        Center botNeighbour = nodes[bot][columnNumber];
-                        node.Edges.Add(new Edge(node, botNeighbour, (node.Index + botNeighbour.Index)));
-                    }
-
-                    int left = columnNumber - 1;
-                    if (left >= 0 && left < columns)
-                    {
-                        Center leftNeighbour = nodes[rowNumber][left];
-                        node.Edges.Add(new Edge(node, leftNeighbour, (node.Index + leftNeighbour.Index)));
-                    }
-
-                    int right = columnNumber + 1;
-                    if (right >= 0 && right < columns)
-                    {
-                        Center rightNeighbour = (Center)nodes[rowNumber][right];
-                        node.Edges.Add(new Edge(node, rightNeighbour, (node.Index + rightNeighbour.Index)));
-                    }
-                }
+                node.StrayIslandTilePostProcess(rng, tileLookup);
             }
         }
+
+        // FIXME: I've hacked this about to get it working, so refactor later pls
+        //private void CreateGraph(List<List<Center>> nodes)
+        //{
+        //    // FIXME: This seems sub-optimal. Can we assign neghbours during the centers' creation in the loops above?
+        //    //        Or loop more inteligently?
+        //    int rows = nodes.Count;
+        //    int columns = nodes.First().Count;
+
+        //    foreach (List<Center> row in nodes)
+        //    {
+        //        int rowNumber = nodes.IndexOf(row);
+
+        //        foreach (Center node in row)
+        //        {
+        //            int columnNumber = row.IndexOf(node);
+
+        //            // Edges are only adjacent tiles, no diagonals
+
+        //            int top = rowNumber + 1;
+        //            if (top >= 0 && top < rows)
+        //            {
+        //                Center topNeigbhour = nodes[top][columnNumber];
+        //                // FIXME:   Index creation does not create unique values
+        //                node.Edges.Add(new Edge(node, topNeigbhour, (node.Index + topNeigbhour.Index)));
+        //            }
+
+        //            int bot = rowNumber - 1;
+        //            if (bot >= 0 && bot < rows)
+        //            {
+        //                Center botNeighbour = nodes[bot][columnNumber];
+        //                node.Edges.Add(new Edge(node, botNeighbour, (node.Index + botNeighbour.Index)));
+        //            }
+
+        //            int left = columnNumber - 1;
+        //            if (left >= 0 && left < columns)
+        //            {
+        //                Center leftNeighbour = nodes[rowNumber][left];
+        //                node.Edges.Add(new Edge(node, leftNeighbour, (node.Index + leftNeighbour.Index)));
+        //            }
+
+        //            int right = columnNumber + 1;
+        //            if (right >= 0 && right < columns)
+        //            {
+        //                Center rightNeighbour = (Center)nodes[rowNumber][right];
+        //                node.Edges.Add(new Edge(node, rightNeighbour, (node.Index + rightNeighbour.Index)));
+        //            }
+        //        }
+        //    }
+        //}
 
         private delegate Center TraversalGetter();
         private delegate void TraversalSetter(Center center);
 
-        // Naturally, this needs testing
         private HashSet<Center> TraverseGraph(Center root, GRAPH_TRAVERSAL_METHOD method)
         {
             IEnumerable<Center> collection;
@@ -287,66 +305,7 @@ namespace ProceduralGeneration.Map
 
             return visited;
         }
-
-        //private HashSet<Center> TraverseDFS(Center root)
-        //{
-        //    var visited = new HashSet<Center>();
-        //    var stack = new Stack<Center>();
-
-        //    stack.Push(root);
-
-        //    while (stack.Count > 0)
-        //    {
-        //        Center node = stack.Pop();
-
-        //        if (visited.Contains(node))
-        //        {
-        //            continue;
-        //        }
-
-        //        visited.Add(node);
-
-        //        foreach (Center neighbour in node.Centers)
-        //        {
-        //            if (!visited.Contains(neighbour))
-        //            {
-        //                stack.Push(neighbour);
-        //            }
-        //        }
-        //    }
-
-        //    return visited;
-        //}
-
-        //private HashSet<Center> TraverseBFS(Center root)
-        //{
-        //    var visited = new HashSet<Center>();
-        //    var queue = new Queue<Center>();
-
-        //    queue.Enqueue(root);
-
-        //    while(queue.Count > 0)
-        //    {
-        //        Center node = queue.Dequeue();
-
-        //        if (visited.Contains(node)) {
-        //            continue;
-        //        }
-
-        //        visited.Add(node);
-
-        //        foreach(Center neighbour in node.Centers)
-        //        {
-        //            if (!visited.Contains(neighbour)){
-        //                queue.Enqueue(neighbour);
-        //            }
-        //        }
-        //    }
-
-        //    return visited;
-        //}
-
-
+        
         // Returns Island tiles
         private HashSet<Center> GenerateOcean(HashSet<Center> centers)
         {
@@ -365,13 +324,17 @@ namespace ProceduralGeneration.Map
             return islandTiles;
         }
 
-        private void GenerateIsland(HashSet<Center> islandTiles)
+        private void GenerateIsland(HashSet<Center> tiles)
         {
-            // Note: If this is to be used on whole map, add check if tile is ocean before setting center.Water to anything
-            foreach (Center center in islandTiles) {
+            foreach (Center center in tiles)
+            {
+                if (center.Ocean) {
+                    continue;
+                }
                 center.Water = (GetNoiseValueBasedOnPosition(center.Position.x, center.Position.y)) < chanceIslandTileIsWater;
             }
         }
+
 
         private float GetNoiseValueBasedOnPosition(float x, float y)
         {
@@ -400,7 +363,6 @@ namespace ProceduralGeneration.Map
 
                 Console.WriteLine(String.Format("Visited: Index {0}, posX {1}, posY {2}, Biome {3}", c.Index, c.Position.x, c.Position.y, c.Biome.ToString()));
             }
-
             return coast;
         }
 
@@ -440,6 +402,7 @@ namespace ProceduralGeneration.Map
             {
                 if (tile.Biome.biomeType == Biome.BiomeType.None) {
                     tile.Biome = CreateBiomeByName(BiomeConditions.Where(x => x.Key > tile.Elevation).First().Value);
+                    tile.SpawnMembers();
                 }
             }
         }

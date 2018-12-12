@@ -9,19 +9,12 @@ Procedural generation:
 					
 	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
 	
-	//- Try BFS, maybe, as well
-	- Add drawing of sprites at earlier stages to visualize differences in graph traversal (and maybe spot issues?)
-		- Draw sprites before drawing members
-		- Then draw members at every iteration ?
-	//- Also traversal seems to go from right to left - see screenshots
-		- Completely changes w/ BFS - investigate patterns
-		- Try traversing the whole map tiles again instead of only the "island" tiles
-		- Try traversing via BFS/DFS instead of iterating over hashSet, to see what changes
+	- Visualizing this might provide clarity why spawning works from one side to the other
 	
-	
-	- Regarding reworking the graph creation - what about adding edges to previous column and previous row cell
-	(e.g. at center creation - if [row-1] is valid, add edge between center and center at [row-1][col]; 
-	same if [column-1] is valid - add edge between center and center at [row][column-1])
+	- Initial issues with GraphGeneration seems to be fixed w/ swapping x/y node traversal order
+		- Once quick per click generation is done - try a variety of seeds to see if true
+		
+	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue
 	
 	- Expose as many parameters as possible to RegionGenerator, so that generation @ different states can be done
 	at the click of e.g. LMB to visualise impact of different parameters
@@ -37,8 +30,6 @@ Procedural generation:
 		- Draw new sprite
 	
 	- Rework stupid elevation increase formula
-	
-	- Edges on LHS and top seem to be a bit broken (although top side seems to fit)
 		
 	- Create a bunch new prefabs as spawnable members (picked at random more-or-less)
 		- Ruins Biome members (Enemies need to be spawnable here)
