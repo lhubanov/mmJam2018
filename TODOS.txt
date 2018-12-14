@@ -8,9 +8,8 @@ Steering:
 Procedural generation:
 					
 	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
-	
-	- Visualizing this might provide clarity why spawning works from one side to the other
-			
+	- Visualizing tile placement might provide clarity why spawning works from one side to the other
+		- As the script is blocking currently, perhaps this is achievable via a secondary thread
 	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue
 	
 	//- Expose as many parameters as possible to RegionGenerator, so that generation @ different states can be done
@@ -20,6 +19,10 @@ Procedural generation:
 			- Assign newly instantiated sprites/tiles to a parent (e.g. GeneratedRegion or RegionGenerator or sth)
 			- Then in RegionGenerator add a delete method - which iterates through all children (maybe of type Tile or sth)
 			  and run the Unity delete
+			- Feed parent dependency through Biome base class (it's kind of time for one anyway)
+				- And btw, a Builder/Factory is what that Activator.CreateInstance needs to be refactored into
+			- Similarly, chances can be fed down alongside BiomeSettings struct/class
+			  which allows for them to be exposed externally however
 		- Move Biome chances to scriptable objects or sth! (not exposed currently)
 	
 	- Initial issues with GraphGeneration seems to be fixed w/ swapping x/y node traversal order
