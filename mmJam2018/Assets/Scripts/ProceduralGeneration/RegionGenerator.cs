@@ -107,6 +107,8 @@ public class RegionGenerator : MonoBehaviour
 
             TileLookup = TileLookup,
 
+            ParentGameObject = transform,
+
             GraphTraversalMethod = GRAPH_TRAVERSAL_METHOD.BFS
         };
 

@@ -29,6 +29,7 @@ namespace ProceduralGeneration.Map.MapSettings
 
         public string RngSeed;
         public TileLookup TileLookup;
+        public Transform ParentGameObject;
 
         public GRAPH_TRAVERSAL_METHOD GraphTraversalMethod;
     }

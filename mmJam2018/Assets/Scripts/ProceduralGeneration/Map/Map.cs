@@ -4,6 +4,7 @@ using System.Linq;
 
 using UnityEngine;
 using Assets.Scripts;
+using ProceduralGeneration.Biome;
 using ProceduralGeneration.Node;
 using ProceduralGeneration.Map.MapSettings;
 
@@ -19,7 +20,7 @@ namespace ProceduralGeneration.Map
     public class Map : Graph.Graph
     {
         // FIXME:   Find best constructional pattern to use w/ this many parameters;
-        //          Add defaults that currently get set to a default constructor.
+        //          Add defaults that currently get set via a default constructor.
         private float mapWidth;
         private float mapHeight;
 
@@ -42,8 +43,12 @@ namespace ProceduralGeneration.Map
         private System.Random rng;
         private TileLookup tileLookup;
 
+        private Transform parentGameObject;
+
         private GRAPH_TRAVERSAL_METHOD graphTraversalMethod; //= GRAPH_TRAVERSAL_METHOD.BFS;
 
+
+        private BiomeFactory biomeFactory;
 
 
         public Map(MapSettingsContainer mapSettings)
@@ -62,11 +67,13 @@ namespace ProceduralGeneration.Map
             maxNoiseOffset = mapSettings.MaxNoiseOffset;
 
             tileLookup = mapSettings.TileLookup;
+            parentGameObject = mapSettings.ParentGameObject;
+
             tileSize = mapSettings.TileSize;
             graphTraversalMethod = mapSettings.GraphTraversalMethod;
 
             rngSeed = mapSettings.RngSeed;
-            CalculateConstants();
+            InitConstants();
         }
 
         // Maybe just deprecate this?
@@ -82,11 +89,13 @@ namespace ProceduralGeneration.Map
             tileSize = tilesize;
             tileLookup = lookup;
 
-            CalculateConstants();
+            InitConstants();
         }
 
-        private void CalculateConstants()
+        private void InitConstants()
         {
+            biomeFactory = new BiomeFactory(rng, tileLookup, parentGameObject);
+
             rng = new System.Random(rngSeed.GetHashCode());
 
             mapWidth = Mathf.Abs(mapTopRight.x - mapBotLeft.x);
@@ -108,12 +117,10 @@ namespace ProceduralGeneration.Map
             { 200, Biome.BiomeType.SwampBiome}, // lol somehow this is the tallest biome
         };
 
-        private Biome.IBiome CreateBiomeByName(Biome.BiomeType name)
+        private Biome.IBiome CreateBiomeByName(Biome.BiomeType type)
         {
-            Type type = Type.GetType("ProceduralGeneration.Biome." + name.ToString());
-            System.Object obj = Activator.CreateInstance(type, rng, tileLookup);
-
-            return obj as Biome.IBiome;
+            // FIXME: Assign parent in BiomeFactory ( parent passed in via BiomeFactory constructor)
+            return biomeFactory.CreateBiome(type);
         }
 
 
@@ -172,7 +179,7 @@ namespace ProceduralGeneration.Map
         private List<List<Center>> CreateDefaultNodes()
         {
             List<List<Center>> nodesMap = new List<List<Center>>();
-            Root = new Center(true, true, false, new Biome.Biome(rng), 0, 0, 0, new Vector2(mapBotLeft.x, mapBotLeft.y), tileLookup);
+            Root = new Center(true, true, false, new Biome.Biome(rng, tileLookup), 0, 0, 0, new Vector2(mapBotLeft.x, mapBotLeft.y), tileLookup);
 
             float x = mapBotLeft.x;
             float y = mapBotLeft.y;
@@ -192,7 +199,7 @@ namespace ProceduralGeneration.Map
                         continue;
                     }
 
-                    Center node = new Center(false, false, false, new Biome.Biome(rng), 0, 0, Convert.ToInt32(x + y), new Vector2(x, y), tileLookup);
+                    Center node = new Center(false, false, false, new Biome.Biome(rng, tileLookup), 0, 0, Convert.ToInt32(x + y), new Vector2(x, y), tileLookup);
 
                     if (IsOnMapEdge(node)) {
                         node.Water = true;
@@ -226,59 +233,11 @@ namespace ProceduralGeneration.Map
             }
         }
 
-        // FIXME: I've hacked this about to get it working, so refactor later pls
-        //private void CreateGraph(List<List<Center>> nodes)
-        //{
-        //    // FIXME: This seems sub-optimal. Can we assign neghbours during the centers' creation in the loops above?
-        //    //        Or loop more inteligently?
-        //    int rows = nodes.Count;
-        //    int columns = nodes.First().Count;
-
-        //    foreach (List<Center> row in nodes)
-        //    {
-        //        int rowNumber = nodes.IndexOf(row);
-
-        //        foreach (Center node in row)
-        //        {
-        //            int columnNumber = row.IndexOf(node);
-
-        //            // Edges are only adjacent tiles, no diagonals
-
-        //            int top = rowNumber + 1;
-        //            if (top >= 0 && top < rows)
-        //            {
-        //                Center topNeigbhour = nodes[top][columnNumber];
-        //                // FIXME:   Index creation does not create unique values
-        //                node.Edges.Add(new Edge(node, topNeigbhour, (node.Index + topNeigbhour.Index)));
-        //            }
-
-        //            int bot = rowNumber - 1;
-        //            if (bot >= 0 && bot < rows)
-        //            {
-        //                Center botNeighbour = nodes[bot][columnNumber];
-        //                node.Edges.Add(new Edge(node, botNeighbour, (node.Index + botNeighbour.Index)));
-        //            }
-
-        //            int left = columnNumber - 1;
-        //            if (left >= 0 && left < columns)
-        //            {
-        //                Center leftNeighbour = nodes[rowNumber][left];
-        //                node.Edges.Add(new Edge(node, leftNeighbour, (node.Index + leftNeighbour.Index)));
-        //            }
-
-        //            int right = columnNumber + 1;
-        //            if (right >= 0 && right < columns)
-        //            {
-        //                Center rightNeighbour = (Center)nodes[rowNumber][right];
-        //                node.Edges.Add(new Edge(node, rightNeighbour, (node.Index + rightNeighbour.Index)));
-        //            }
-        //        }
-        //    }
-        //}
 
         private delegate Center TraversalGetter();
         private delegate void TraversalSetter(Center center);
 
+        // This seems a bit over-complicated for what I intended to do, review later
         private HashSet<Center> TraverseGraph(Center root, GRAPH_TRAVERSAL_METHOD method)
         {
             IEnumerable<Center> collection;

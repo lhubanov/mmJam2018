@@ -16,20 +16,21 @@ Procedural generation:
 	//at the click of e.g. LMB to visualise impact of different parameters
 		- Refactor container class a bit
 		- Fix bug with old map not being deleted! (might be complicated- need to delete created sprites)
-			- Assign newly instantiated sprites/tiles to a parent (e.g. GeneratedRegion or RegionGenerator or sth)
+			//- Assign newly instantiated sprites/tiles to a parent (e.g. GeneratedRegion or RegionGenerator or sth)
 			- Then in RegionGenerator add a delete method - which iterates through all children (maybe of type Tile or sth)
 			  and run the Unity delete
-			- Feed parent dependency through Biome base class (it's kind of time for one anyway)
-				- And btw, a Builder/Factory is what that Activator.CreateInstance needs to be refactored into
+			//- Feed parent dependency through Biome base class (it's kind of time for one anyway)
+			//	- And btw, a Builder/Factory is what that Activator.CreateInstance needs to be refactored into
 			- Similarly, chances can be fed down alongside BiomeSettings struct/class
 			  which allows for them to be exposed externally however
+			- Need to move operations from Center to Biome, so that parent dependency thing doesn't need to
+			  be assigned to 50 things, unnecessarily
 		- Move Biome chances to scriptable objects or sth! (not exposed currently)
 	
 	- Initial issues with GraphGeneration seems to be fixed w/ swapping x/y node traversal order
 		- Once quick per click generation is done - try a variety of seeds to see if true
 	
 	- Find way to add noise to sprite edges (a-la Amit's island generation)
-	- 2 Layers of beach?
 	
 	- Water tile
 		- See if there is need to create a new sprite

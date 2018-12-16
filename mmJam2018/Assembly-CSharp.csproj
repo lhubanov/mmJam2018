@@ -79,6 +79,8 @@
     <Compile Include="Assets\Scripts\ProceduralGeneration\Graph\Graph.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\BeachBiome.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\Biome.cs" />
+    <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\BiomeBase.cs" />
+    <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\BiomeFactory.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\ForestBiome.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\GrasslandBiome.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\IBiome.cs" />
