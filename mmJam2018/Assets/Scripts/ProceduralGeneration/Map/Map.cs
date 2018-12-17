@@ -47,8 +47,8 @@ namespace ProceduralGeneration.Map
 
         private GRAPH_TRAVERSAL_METHOD graphTraversalMethod; //= GRAPH_TRAVERSAL_METHOD.BFS;
 
-
         private BiomeFactory biomeFactory;
+        private BiomeConditions conditions;
 
 
         public Map(MapSettingsContainer mapSettings)
@@ -68,6 +68,7 @@ namespace ProceduralGeneration.Map
 
             tileLookup = mapSettings.TileLookup;
             parentGameObject = mapSettings.ParentGameObject;
+            conditions = mapSettings.Conditions;
 
             tileSize = mapSettings.TileSize;
             graphTraversalMethod = mapSettings.GraphTraversalMethod;
@@ -107,22 +108,6 @@ namespace ProceduralGeneration.Map
             double coeff = (tileSize / widthInTiles) * elevationIncreaseMultiplier;
             elevationIncreaseRate = coeff;
         }
-
-        // FIXME: Using these enum type is a bit archaic
-        private Dictionary<int, Biome.BiomeType> BiomeConditions = new Dictionary<int, Biome.BiomeType>()
-        {
-            { 3, Biome.BiomeType.BeachBiome},
-            { 10, Biome.BiomeType.GrasslandBiome},
-            { 20, Biome.BiomeType.ForestBiome},
-            { 200, Biome.BiomeType.SwampBiome}, // lol somehow this is the tallest biome
-        };
-
-        private Biome.IBiome CreateBiomeByName(Biome.BiomeType type)
-        {
-            // FIXME: Assign parent in BiomeFactory ( parent passed in via BiomeFactory constructor)
-            return biomeFactory.CreateBiome(type);
-        }
-
 
         private bool IsOnMapEdge(INode node)
         {
@@ -179,7 +164,7 @@ namespace ProceduralGeneration.Map
         private List<List<Center>> CreateDefaultNodes()
         {
             List<List<Center>> nodesMap = new List<List<Center>>();
-            Root = new Center(true, true, false, new Biome.Biome(rng, tileLookup), 0, 0, 0, new Vector2(mapBotLeft.x, mapBotLeft.y), tileLookup);
+            Root = new Center(true, true, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, 0, 0, new Vector2(mapBotLeft.x, mapBotLeft.y), tileLookup, conditions, biomeFactory);
 
             float x = mapBotLeft.x;
             float y = mapBotLeft.y;
@@ -199,7 +184,7 @@ namespace ProceduralGeneration.Map
                         continue;
                     }
 
-                    Center node = new Center(false, false, false, new Biome.Biome(rng, tileLookup), 0, 0, Convert.ToInt32(x + y), new Vector2(x, y), tileLookup);
+                    Center node = new Center(false, false, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, 0, Convert.ToInt32(x + y), new Vector2(x, y), tileLookup, conditions, biomeFactory);
 
                     if (IsOnMapEdge(node)) {
                         node.Water = true;
@@ -372,7 +357,7 @@ namespace ProceduralGeneration.Map
             foreach (Center tile in islandTiles)
             {
                 if (tile.Biome.biomeType == Biome.BiomeType.None) {
-                    tile.Biome = CreateBiomeByName(BiomeConditions.Where(x => x.Key > tile.Elevation).First().Value);
+                    tile.SetBiomeBasedOnElevation();
                     tile.SpawnMembers();
                 }
             }

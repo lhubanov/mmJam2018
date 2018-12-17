@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -8,21 +9,13 @@ using ProceduralGeneration.Biome;
 
 namespace ProceduralGeneration.Map
 {
-    //Center.neighbours = adjacent polygons/tiles
-    //Center.borders = bordering edges
-    //Center.corners = polygon corners
-
-    //Edge.d0/d1 = polygons connected by the Delaunay edge
-    //Edge.v0/v1 = corners connected by the Voronoi edge
-
-    //Corner.touches = set of polygons touching this corner
-    //Corner.portrudes = set of edges touching the corner
-    //Corner.adjacent = set of corners connected to this one
-
     public class Center : INode
     {
         private int index;
         private Vector2 position;
+
+        private BiomeFactory BiomeFactory;
+        private BiomeConditions Conditions;
 
         public int Index
         {
@@ -36,16 +29,12 @@ namespace ProceduralGeneration.Map
             set { position = value; }
         }
 
-        // FIXME:   Shouldn't be public probably, 
-        //          one ok alternative would be to
-        //          add specific setters (e.g. SetToOcean() or IsOcean(bool b) etc.)
+        // FIXME:   Review the accessors of all these (surely biomes need not be public)
 
         public bool Water;
         public bool Ocean;
 
         public bool Coast;
-
-        //bool border;
         public Biome.IBiome Biome;
         public double Elevation;
         public double Moisture;
@@ -106,6 +95,7 @@ namespace ProceduralGeneration.Map
 
 
         //  FIXME: I hate this constructor now
+        //         Review if its necessary to be able to set all these actually!
         public Center(bool water, 
                     bool ocean, 
                     bool coast, 
@@ -114,7 +104,9 @@ namespace ProceduralGeneration.Map
                     double moisture, 
                     int ind, 
                     Vector2 pos,
-                    TileLookup tileLookup)
+                    TileLookup tileLookup,
+                    BiomeConditions conditions,
+                    BiomeFactory biomeFactory)
         {
             Water = water;
             Ocean = ocean;
@@ -127,6 +119,9 @@ namespace ProceduralGeneration.Map
 
             index = ind;
             position = pos;
+
+            Conditions = conditions;
+            BiomeFactory = biomeFactory;
         }
 
 
@@ -166,14 +161,14 @@ namespace ProceduralGeneration.Map
 
             if (Water && Ocean || IsStrayIslandTile())
             {
-                Biome = new Biome.OceanBiome(seedBasedRng, lookup);
+                Biome = BiomeFactory.CreateBiome(BiomeType.OceanBiome);
                 Elevation = 0;
             }
             else
             {
                 if(hasLandNeighbours && hasOceanNeighbours)
                 {
-                    Biome = new Biome.BeachBiome(seedBasedRng, lookup);
+                    Biome = BiomeFactory.CreateBiome(BiomeType.BeachBiome);
                     Elevation = 1;
 
                     Water = false;
@@ -203,7 +198,7 @@ namespace ProceduralGeneration.Map
         public void StrayIslandTilePostProcess(System.Random seedBasedRng, TileLookup lookup)
         {
             if (IsStrayIslandTile()) {
-                Biome = new Biome.OceanBiome(seedBasedRng, lookup);
+                Biome = BiomeFactory.CreateBiome(BiomeType.OceanBiome);
                 Elevation = 0;
 
                 Biome.SpawnSprite(this);
@@ -244,6 +239,12 @@ namespace ProceduralGeneration.Map
             }
 
             return false;
+        }
+
+        public void SetBiomeBasedOnElevation()
+        {
+            BiomeType biome = Conditions.Elevations.Where(x => x.Key > Elevation).First().Value;
+            Biome = BiomeFactory.CreateBiome(biome);
         }
 
         public void SpawnMembers()

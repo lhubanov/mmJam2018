@@ -21,11 +21,9 @@ Procedural generation:
 			  and run the Unity delete
 			//- Feed parent dependency through Biome base class (it's kind of time for one anyway)
 			//	- And btw, a Builder/Factory is what that Activator.CreateInstance needs to be refactored into
-			- Similarly, chances can be fed down alongside BiomeSettings struct/class
-			  which allows for them to be exposed externally however
-			- Need to move operations from Center to Biome, so that parent dependency thing doesn't need to
-			  be assigned to 50 things, unnecessarily
-		- Move Biome chances to scriptable objects or sth! (not exposed currently)
+			//- Need to move operations from Center to Biome, so that parent dependency thing doesn't need to
+			//  be assigned to 50 things, unnecessarily
+		- Move Biome chances to scriptable objects, so that they can be exposed and edited on the fly
 	
 	- Initial issues with GraphGeneration seems to be fixed w/ swapping x/y node traversal order
 		- Once quick per click generation is done - try a variety of seeds to see if true

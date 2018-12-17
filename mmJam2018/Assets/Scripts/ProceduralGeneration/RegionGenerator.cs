@@ -16,6 +16,9 @@ public class RegionGenerator : MonoBehaviour
     private TileLookup   TileLookup;
 
     [SerializeField]
+    private BiomeConditions BiomeConditions;
+
+    [SerializeField]
     private bool         UseRandomSeed;
 
     [SerializeField]
@@ -76,7 +79,6 @@ public class RegionGenerator : MonoBehaviour
             System.Random randomNumberGenerator = new System.Random(Seed.GetHashCode());
 
             // FIXME:   This does nto delete old map and just adds more on top!
-            //          Find a way to delete old map!
             map = null;
 
             MapSettingsContainer settings = PackageSettings();
@@ -106,6 +108,7 @@ public class RegionGenerator : MonoBehaviour
             RngSeed = Seed,
 
             TileLookup = TileLookup,
+            Conditions = BiomeConditions,
 
             ParentGameObject = transform,
 

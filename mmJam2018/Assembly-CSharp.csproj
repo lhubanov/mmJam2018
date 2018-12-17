@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\MapSettings\MapSettingsContainer.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Node\INode.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\RegionGenerator.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjects\BiomeConditions.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\StateMachine.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\TileLookup.cs" />
     <Compile Include="Assets\Scripts\States\Ending.cs" />

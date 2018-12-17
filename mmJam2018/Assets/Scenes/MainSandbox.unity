@@ -294,11 +294,16 @@ MonoBehaviour:
   RegionTopLeft: {fileID: 226368439}
   RegionBotRight: {fileID: 4280928}
   TileLookup: {fileID: 11400000, guid: 85a84a27aac725041b0b413a4bfd48ed, type: 2}
+  BiomeConditions: {fileID: 11400000, guid: 8e1187fedede80c4fac8a544ba794236, type: 2}
   UseRandomSeed: 1
-  Seed: Testing
+  Seed: 
   tileSize: 5
-  mapWidth: 0
-  mapHeight: 0
+  oceanThreshold: 0.85
+  chanceIslandTileIsWater: 0.5
+  elevationIncreaseMultiplier: 12
+  spawningIterations: 2
+  noiseScale: 1
+  maxNoiseOffset: 100
 --- !u!1 &36510246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1841599375255322, guid: 690fe62958e024ff79c12cbbe0b4f21b,
