@@ -72,6 +72,8 @@ public class RegionGenerator : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
+            DestroyAllTiles();
+
             if (UseRandomSeed) {
                 Seed = Random.Range(0, 1000).ToString();
             }
@@ -116,5 +118,15 @@ public class RegionGenerator : MonoBehaviour
         };
 
         return settings;
+    }
+
+    private void DestroyAllTiles()
+    {
+        foreach(Transform child in transform)
+        {
+            if (child.GetComponent<Tile>()) {
+                Destroy(child.gameObject);
+            }
+        }
     }
 }

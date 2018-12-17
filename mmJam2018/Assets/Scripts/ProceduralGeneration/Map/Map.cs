@@ -95,9 +95,9 @@ namespace ProceduralGeneration.Map
 
         private void InitConstants()
         {
-            biomeFactory = new BiomeFactory(rng, tileLookup, parentGameObject);
-
             rng = new System.Random(rngSeed.GetHashCode());
+
+            biomeFactory = new BiomeFactory(rng, tileLookup, parentGameObject);
 
             mapWidth = Mathf.Abs(mapTopRight.x - mapBotLeft.x);
             mapHeight = Mathf.Abs(mapTopRight.y - mapBotLeft.y);
