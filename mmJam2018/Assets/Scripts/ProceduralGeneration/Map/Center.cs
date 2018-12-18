@@ -15,7 +15,6 @@ namespace ProceduralGeneration.Map
         private Vector2 position;
 
         private BiomeFactory BiomeFactory;
-        private BiomeConditions Conditions;
 
         public int Index
         {
