@@ -11,3 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 954c460b8f2fe3446a0792d67d585f3f, type: 3}
   m_Name: Biome Conditions
   m_EditorClassIdentifier: 
+  beachElevation: 3
+  grasslandElevation: 10
+  forestElevation: 20
+  swampElevation: 200
+  forestProbabilities:
+    treeSpawn: 15
+  grasslandProbabilities:
+    ruinSpawn: 10
+  swampProbabilities:
+    bushSpawn: 40

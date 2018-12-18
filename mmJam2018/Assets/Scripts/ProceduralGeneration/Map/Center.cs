@@ -240,7 +240,7 @@ namespace ProceduralGeneration.Map
 
         public void SetBiomeBasedOnElevation()
         {
-            BiomeFactory.CreateBiomeFromElevation(Elevation);
+            Biome = BiomeFactory.CreateBiomeFromElevation(Elevation);
         }
 
         public void SpawnMembers()

@@ -298,12 +298,13 @@ MonoBehaviour:
   UseRandomSeed: 1
   Seed: 
   tileSize: 5
-  oceanThreshold: 0.85
-  chanceIslandTileIsWater: 0.5
+  oceanThreshold: 0.9
+  chanceIslandTileIsWater: 0.475
   elevationIncreaseMultiplier: 12
   spawningIterations: 2
-  noiseScale: 1
-  maxNoiseOffset: 100
+  noiseScale: 0.95
+  maxNoiseOffset: 150
+  graphTraversalMethod: 0
 --- !u!1 &36510246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1841599375255322, guid: 690fe62958e024ff79c12cbbe0b4f21b,

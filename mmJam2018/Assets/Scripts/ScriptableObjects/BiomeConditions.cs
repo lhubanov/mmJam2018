@@ -28,7 +28,7 @@ namespace Assets.Scripts
         public SwampProbabilities swampProbabilities;
 
 
-        public void Awake()
+        public void OnEnable()
         {
             Elevations = new Dictionary<int, BiomeType>();
             Elevations.Add(beachElevation, BiomeType.BeachBiome);
@@ -46,12 +46,10 @@ namespace Assets.Scripts
     // FIXME: Add constructors etc.
 
     // Literally for the sake of encapsulation
-    // Note: These could contain spawnable members etc. also?
-    //       Or should that be delegated to 
+    // Note: Look up if this make any sort of performance difference
     [System.Serializable]
     public class ForestProbabilities : IContainSpawnData
     {
-        // FIXME: Consolidate these to either 0-100 or 0-1
         [Range(0, 100)]
         public float treeSpawn = 25;
     }
@@ -63,6 +61,7 @@ namespace Assets.Scripts
         public float ruinSpawn = 15;
     }
 
+    [System.Serializable]
     public class SwampProbabilities : IContainSpawnData
     {
         [Range(0, 100)]

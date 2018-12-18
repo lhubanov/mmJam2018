@@ -48,6 +48,9 @@ public class RegionGenerator : MonoBehaviour
     [SerializeField]
     private int maxNoiseOffset = 100;
 
+    [SerializeField]
+    private GRAPH_TRAVERSAL_METHOD graphTraversalMethod = GRAPH_TRAVERSAL_METHOD.BFS;
+
     private Map map = null;
 
     private void Start()
@@ -102,7 +105,7 @@ public class RegionGenerator : MonoBehaviour
 
             ParentGameObject = transform,
 
-            GraphTraversalMethod = GRAPH_TRAVERSAL_METHOD.BFS
+            GraphTraversalMethod = graphTraversalMethod
         };
 
         return settings;

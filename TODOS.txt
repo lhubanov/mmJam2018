@@ -10,21 +10,13 @@ Procedural generation:
 	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
 	- Visualizing tile placement might provide clarity why spawning works from one side to the other
 		- As the script is blocking currently, perhaps this is achievable via a secondary thread
-	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue
 	
-	//- Expose as many parameters as possible to RegionGenerator, so that generation @ different states can be done
-	//at the click of e.g. LMB to visualise impact of different parameters
-		- Refactor container class a bit (its missing constructors etc.)
-		//- Move all elevations to private/serialized members so they are settable from editor
-		//- Move Biome chances to BiomeConditions, so that they can be exposed and edited on the fly
-			//- Create sub-classes and instantiate in BiomeConditions
-				//- Try [System.Serializable] on biome-specific class instances - this actually works?
+	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue and the inner-island beach problem
+	
+	
+	- Create proper container classes at one point (probabilities and MapSettings need constructors etc.)
 				
 	- Remove that Console.WriteLine() thing in Map.SpawnMembers() to see if whatever was happening there still happens
-	
-	- Initial issues with GraphGeneration seems to be fixed w/ swapping x/y node traversal order
-		- Once quick per click generation is done - try a variety of seeds to see if true
-	
 	- Find way to add noise to sprite edges (a-la Amit's island generation)
 	
 	- Water tile
@@ -32,8 +24,9 @@ Procedural generation:
 		
 	- Sand/beach tile
 		- Draw new sprite
+		- Maybe make a marsh-esque tile? (closer to the grassland green, so proc gen issues can be better concealed)
 	
-	- Rework stupid elevation increase formula
+	- Rework stupid elevation increase formula (might help w/ inner beach issue)
 		
 	- Create a bunch new prefabs as spawnable members (picked at random more-or-less)
 		- Ruins Biome members (Enemies need to be spawnable here)
@@ -57,6 +50,9 @@ Procedural generation:
 	
 		
 	- Standardize the usage of the probabilities (either 0-100 ints or 0-1 floats)
+	
+	- Create semi-random method of spawning prefab from a list of prefabs (runes/bushes/flowers etc.)
+	- Maybe add a special type of inner-island/marsh water, which can be drained?
 --------------------------------------------------------------------------------------
 			
 Make sure there's a fail state etc.
