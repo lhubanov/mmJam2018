@@ -6,7 +6,7 @@ namespace ProceduralGeneration.Biome
 {
     public class OceanBiome : BiomeBase
     {
-        public OceanBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent)
+        public OceanBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
             : base(seedBasedRng, tileLookup.WaterPrefab, null, parent)
         {
             HasSpawned = false;

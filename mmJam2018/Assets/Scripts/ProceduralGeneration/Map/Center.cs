@@ -105,7 +105,6 @@ namespace ProceduralGeneration.Map
                     int ind, 
                     Vector2 pos,
                     TileLookup tileLookup,
-                    BiomeConditions conditions,
                     BiomeFactory biomeFactory)
         {
             Water = water;
@@ -120,7 +119,6 @@ namespace ProceduralGeneration.Map
             index = ind;
             position = pos;
 
-            Conditions = conditions;
             BiomeFactory = biomeFactory;
         }
 
@@ -243,8 +241,7 @@ namespace ProceduralGeneration.Map
 
         public void SetBiomeBasedOnElevation()
         {
-            BiomeType biome = Conditions.Elevations.Where(x => x.Key > Elevation).First().Value;
-            Biome = BiomeFactory.CreateBiome(biome);
+            BiomeFactory.CreateBiomeFromElevation(Elevation);
         }
 
         public void SpawnMembers()

@@ -7,13 +7,15 @@ namespace ProceduralGeneration.Biome
     public class SwampBiome : BiomeBase
     {
         // Probabilities
-        private float bushSpawnProbability = 40;
+        private float bushSpawnProbability;
 
-        public SwampBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent)
+        public SwampBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
             : base(seedBasedRng, tileLookup.GrassTilePrefab, tileLookup.OnePurpleBushTilePrefab, parent)
         {
             biomeType = BiomeType.SwampBiome;
             HasSpawned = false;
+
+            bushSpawnProbability = (spawnData as SwampProbabilities).bushSpawn;
         }
 
         public override void SpawnMembers(Center tile)

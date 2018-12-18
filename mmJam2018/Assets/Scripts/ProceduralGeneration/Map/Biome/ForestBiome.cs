@@ -8,13 +8,15 @@ namespace ProceduralGeneration.Biome
     {
         // Probabilities
         [Range(0, 100)]
-        private float treeSpawnProbability = 25;
+        private float treeSpawnProbability;
 
-        public ForestBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent)
+        public ForestBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
             : base(seedBasedRng, tileLookup.GrassTilePrefab, tileLookup.OneGreenBushTilePrefab, parent)
         {
             biomeType = BiomeType.ForestBiome;
             HasSpawned = false;
+
+            treeSpawnProbability = (spawnData as ForestProbabilities).treeSpawn;
         }
 
         public override void SpawnMembers(Center tile)

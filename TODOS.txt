@@ -15,8 +15,12 @@ Procedural generation:
 	//- Expose as many parameters as possible to RegionGenerator, so that generation @ different states can be done
 	//at the click of e.g. LMB to visualise impact of different parameters
 		- Refactor container class a bit (its missing constructors etc.)
-		- Move all elevations to private/serialized members so they are settable from editor
-		- Move Biome chances to scriptable objects, so that they can be exposed and edited on the fly
+		//- Move all elevations to private/serialized members so they are settable from editor
+		//- Move Biome chances to BiomeConditions, so that they can be exposed and edited on the fly
+			//- Create sub-classes and instantiate in BiomeConditions
+				//- Try [System.Serializable] on biome-specific class instances - this actually works?
+				
+	- Remove that Console.WriteLine() thing in Map.SpawnMembers() to see if whatever was happening there still happens
 	
 	- Initial issues with GraphGeneration seems to be fixed w/ swapping x/y node traversal order
 		- Once quick per click generation is done - try a variety of seeds to see if true

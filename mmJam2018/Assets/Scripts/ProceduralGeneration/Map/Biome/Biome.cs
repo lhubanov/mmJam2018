@@ -7,7 +7,7 @@ namespace ProceduralGeneration.Biome
     // Equivalent to BiomeType.None
     public class Biome : BiomeBase
     {
-        public Biome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent)
+        public Biome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
             : base(seedBasedRng, null, null, parent)
         {
             HasSpawned = false;

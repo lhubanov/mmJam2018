@@ -7,13 +7,15 @@ namespace ProceduralGeneration.Biome
     public class GrasslandBiome : BiomeBase
     {
         // Probabilities
-        private float ruinSpawnProbability = 15;
+        private float ruinSpawnProbability;
 
-        public GrasslandBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent)
+        public GrasslandBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
             : base(seedBasedRng, tileLookup.GrassTilePrefab, tileLookup.ColumnTilePrefab, parent)
         {
             biomeType = BiomeType.GrasslandBiome;
             HasSpawned = false;
+
+            ruinSpawnProbability = (spawnData as GrasslandProbabilities).ruinSpawn;
         }
 
         public override void SpawnMembers(Center tile)

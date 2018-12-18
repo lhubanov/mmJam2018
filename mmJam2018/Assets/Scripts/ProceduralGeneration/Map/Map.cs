@@ -97,7 +97,7 @@ namespace ProceduralGeneration.Map
         {
             rng = new System.Random(rngSeed.GetHashCode());
 
-            biomeFactory = new BiomeFactory(rng, tileLookup, parentGameObject);
+            biomeFactory = new BiomeFactory(rng, tileLookup, conditions, parentGameObject);
 
             mapWidth = Mathf.Abs(mapTopRight.x - mapBotLeft.x);
             mapHeight = Mathf.Abs(mapTopRight.y - mapBotLeft.y);
@@ -115,15 +115,12 @@ namespace ProceduralGeneration.Map
                 || (node.Position.y == mapBotLeft.y || node.Position.y == mapTopRight.y);
         }
 
-        // FIXME: Still broken - debug what the values are below
         private bool IsOceanTile(Vector2 pos)
         {
             var xMaxThreshold = mapTopRight.x  - (mapWidth * (1 - oceanThreshold));
-            //var xMaxThreshold = mapTopRight.x * OceanThreshold;
             var xMinThreshold = mapBotLeft.x + (mapWidth * (1 - oceanThreshold));
 
             var yMaxThreshold = mapTopRight.y  - (mapHeight * (1- oceanThreshold));
-            //var yMaxThreshold = mapTopRight.y * OceanThreshold;
             var yMinThreshold = mapBotLeft.y + (mapHeight * (1 - oceanThreshold));
 
             return (pos.x > xMaxThreshold || pos.x < xMinThreshold)
@@ -133,9 +130,6 @@ namespace ProceduralGeneration.Map
         public void Generate()
         {
             List<List<Center>> nodes = CreateDefaultNodes();
-            //CreateGraph(nodes);
-
-            //HashSet<Center> centers = TraverseDFS(Root as Center);
             HashSet<Center> centers = TraverseGraph(Root as Center, graphTraversalMethod);
 
             HashSet<Center> islandTiles = GenerateOcean(centers);
@@ -164,7 +158,7 @@ namespace ProceduralGeneration.Map
         private List<List<Center>> CreateDefaultNodes()
         {
             List<List<Center>> nodesMap = new List<List<Center>>();
-            Root = new Center(true, true, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, 0, 0, new Vector2(mapBotLeft.x, mapBotLeft.y), tileLookup, conditions, biomeFactory);
+            Root = new Center(true, true, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, 0, 0, new Vector2(mapBotLeft.x, mapBotLeft.y), tileLookup, biomeFactory);
 
             float x = mapBotLeft.x;
             float y = mapBotLeft.y;
@@ -184,7 +178,7 @@ namespace ProceduralGeneration.Map
                         continue;
                     }
 
-                    Center node = new Center(false, false, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, 0, Convert.ToInt32(x + y), new Vector2(x, y), tileLookup, conditions, biomeFactory);
+                    Center node = new Center(false, false, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, 0, Convert.ToInt32(x + y), new Vector2(x, y), tileLookup, biomeFactory);
 
                     if (IsOnMapEdge(node)) {
                         node.Water = true;
@@ -212,8 +206,7 @@ namespace ProceduralGeneration.Map
 
         private void StrayIslandPostProcessing(HashSet<Center> tiles)
         {
-            foreach(Center node in tiles)
-            {
+            foreach(Center node in tiles) {
                 node.StrayIslandTilePostProcess(rng, tileLookup);
             }
         }
@@ -316,8 +309,6 @@ namespace ProceduralGeneration.Map
                 if (c.Coast) {
                     coast.Add(c);
                 }
-
-                Console.WriteLine(String.Format("Visited: Index {0}, posX {1}, posY {2}, Biome {3}", c.Index, c.Position.x, c.Position.y, c.Biome.ToString()));
             }
             return coast;
         }
