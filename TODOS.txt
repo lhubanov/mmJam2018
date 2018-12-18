@@ -14,15 +14,8 @@ Procedural generation:
 	
 	//- Expose as many parameters as possible to RegionGenerator, so that generation @ different states can be done
 	//at the click of e.g. LMB to visualise impact of different parameters
-		- Refactor container class a bit
-		- Fix bug with old map not being deleted! (might be complicated- need to delete created sprites)
-			//- Assign newly instantiated sprites/tiles to a parent (e.g. GeneratedRegion or RegionGenerator or sth)
-			- Then in RegionGenerator add a delete method - which iterates through all children (maybe of type Tile or sth)
-			  and run the Unity delete
-			//- Feed parent dependency through Biome base class (it's kind of time for one anyway)
-			//	- And btw, a Builder/Factory is what that Activator.CreateInstance needs to be refactored into
-			//- Need to move operations from Center to Biome, so that parent dependency thing doesn't need to
-			//  be assigned to 50 things, unnecessarily
+		- Refactor container class a bit (its missing constructors etc.)
+		- Move all elevations to private/serialized members so they are settable from editor
 		- Move Biome chances to scriptable objects, so that they can be exposed and edited on the fly
 	
 	- Initial issues with GraphGeneration seems to be fixed w/ swapping x/y node traversal order

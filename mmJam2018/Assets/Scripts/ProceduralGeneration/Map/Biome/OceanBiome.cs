@@ -17,11 +17,5 @@ namespace ProceduralGeneration.Biome
         {
             HasSpawned = true;
         }
-
-        public override void SpawnSprite(Center tile)
-        {
-            GameObject obj = Object.Instantiate(baseSprite, new Vector3(tile.Position.x, tile.Position.y, 0), Quaternion.identity);
-            obj.transform.parent = parentGameObject;
-        }
     }
 }

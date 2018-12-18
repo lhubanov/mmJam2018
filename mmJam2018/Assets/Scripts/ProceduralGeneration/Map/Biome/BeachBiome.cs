@@ -17,17 +17,5 @@ namespace ProceduralGeneration.Biome
         {
             HasSpawned = true;
         }
-
-        // FIXME:   This is generic and reusable- move to base class,
-        //          alongside the sprite as a protected (property).
-        //          Then just copy exact implementation and just set sprite
-        //          in sub-biome.
-        //          This returns a GameObject, so that eventual parent can be assigned
-        //          in Map/RegionGenerator MonoBehaviour object.
-        public override void SpawnSprite(Center tile)
-        {
-            GameObject obj = Object.Instantiate(baseSprite, new Vector3(tile.Position.x, tile.Position.y, 0), Quaternion.identity);
-            obj.transform.parent = parentGameObject;
-        }
     }
 }
