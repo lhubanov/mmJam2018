@@ -13,6 +13,7 @@ Procedural generation:
 
 	- Visualizing tile placement might provide clarity why spawning works from one side to the other
 		- As the script is blocking currently, perhaps this is achievable via a secondary thread
+		- Have I already tried lists instead of hashsets?
 	
 	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue and the inner-island beach problem
 	
@@ -40,7 +41,7 @@ Procedural generation:
 		- Grassland
 			- Bush 1
 			- 2x Bushes
-			- Tree (needs some rules, due to potential traversal issues
+			- Tree (needs some rules, due to potential traversal issues)
 			- Flower(s)
 				- 1x Flower
 				- 5x Flowers randomly
@@ -48,12 +49,11 @@ Procedural generation:
 		
 		- Swamp
 			- Purple bush
-			- 2x Purple bushes
+			- Multiple Purple bushes (whatever looks good)
 	
-		
-	- Standardize the usage of the probabilities (either 0-100 ints or 0-1 floats)
-
 	- Maybe add a special type of inner-island/marsh water, which can be drained?
+		- Or to avoid the new mechanical work (drain -> remove collider etc. (functionality can be appended to said tile prefab, currently, I suspect)),
+		  make it traversable, slowing down player movement speed (?) and so it looks as if model legs descend in the "marsh" sprite - might require some visual trickery
 --------------------------------------------------------------------------------------
 			
 Make sure there's a fail state etc.
