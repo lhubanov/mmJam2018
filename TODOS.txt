@@ -6,13 +6,15 @@ Steering:
 
 --------------------------------------------------------------------------------------
 Procedural generation:
-					
+	
+	- Create method of spawning prefab from a list of prefabs (runes/bushes/flowers etc.)					
 	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
+
+
 	- Visualizing tile placement might provide clarity why spawning works from one side to the other
 		- As the script is blocking currently, perhaps this is achievable via a secondary thread
 	
 	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue and the inner-island beach problem
-	
 	
 	- Create proper container classes at one point (probabilities and MapSettings need constructors etc.)
 				
@@ -24,7 +26,7 @@ Procedural generation:
 		
 	- Sand/beach tile
 		- Draw new sprite
-		- Maybe make a marsh-esque tile? (closer to the grassland green, so proc gen issues can be better concealed)
+		- Maybe make a marsh-esque tile instead? (closer to the grassland green, so proc gen issues can be better concealed)
 	
 	- Rework stupid elevation increase formula (might help w/ inner beach issue)
 		
@@ -50,8 +52,7 @@ Procedural generation:
 	
 		
 	- Standardize the usage of the probabilities (either 0-100 ints or 0-1 floats)
-	
-	- Create semi-random method of spawning prefab from a list of prefabs (runes/bushes/flowers etc.)
+
 	- Maybe add a special type of inner-island/marsh water, which can be drained?
 --------------------------------------------------------------------------------------
 			

@@ -13,7 +13,6 @@ namespace ProceduralGeneration.Map
     {
         private int index;
         private Vector2 position;
-
         private BiomeFactory BiomeFactory;
 
         public int Index
@@ -143,7 +142,7 @@ namespace ProceduralGeneration.Map
             return null;
         }
 
-        public void Initialize(System.Random seedBasedRng)
+        public void Initialize()
         {
             // Assign biome here
             bool hasOceanNeighbours = HasOceanNeighbours();
@@ -192,13 +191,14 @@ namespace ProceduralGeneration.Map
             return val;
         }
 
-        public void StrayIslandTilePostProcess(System.Random seedBasedRng, TileLookup lookup)
+        public void StrayIslandTilePostProcess()
         {
             if (IsStrayIslandTile()) {
                 Biome = BiomeFactory.CreateBiome(BiomeType.OceanBiome);
                 Elevation = 0;
 
-                Biome.SpawnSprite(this);
+                // FIXME: This doesn't actually work, as the Biome has already spawned whatever it has spawned
+                //Biome.SpawnSprite(this);
             }
         }
 

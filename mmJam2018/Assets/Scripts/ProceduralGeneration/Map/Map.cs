@@ -143,14 +143,14 @@ namespace ProceduralGeneration.Map
             SetElevation(coastalTiles);
             AssignBiomes(islandTiles);
 
+            StrayIslandPostProcessing(centers);
+
             SpawnSprites(centers);
 
             // Post processing runs to spawn tile/biome respective members (bushes, ruins etc.)
             // Note: This just calls the tile.Biome.Spawn(), so can be done on all tiles,
             //       if e.g. stuff needs to spawn in-ocean. Feeding it only island tiles for now
             SpawnMembers(islandTiles, spawningIterations);
-
-            StrayIslandPostProcessing(centers);
         }
 
         // FIXME:   Can use some clean up;
@@ -207,7 +207,7 @@ namespace ProceduralGeneration.Map
         private void StrayIslandPostProcessing(HashSet<Center> tiles)
         {
             foreach(Center node in tiles) {
-                node.StrayIslandTilePostProcess(rng, tileLookup);
+                node.StrayIslandTilePostProcess();
             }
         }
 
@@ -304,7 +304,7 @@ namespace ProceduralGeneration.Map
 
             foreach (Center c in centers)
             {
-                c.Initialize(rng);
+                c.Initialize();
 
                 if (c.Coast) {
                     coast.Add(c);
