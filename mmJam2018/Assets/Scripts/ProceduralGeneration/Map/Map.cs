@@ -280,12 +280,12 @@ namespace ProceduralGeneration.Map
                 if (center.Ocean) {
                     continue;
                 }
-                center.Water = (GetNoiseValueBasedOnPosition(center.Position.x, center.Position.y)) < chanceIslandTileIsWater;
+                center.Water = (GetNoiseValFromPosition(center.Position.x, center.Position.y)) < chanceIslandTileIsWater;
             }
         }
 
 
-        private float GetNoiseValueBasedOnPosition(float x, float y)
+        private float GetNoiseValFromPosition(float x, float y)
         {
             float offsetX = x + rng.Next(0, maxNoiseOffset);
             float offsetY = y + rng.Next(0, maxNoiseOffset);

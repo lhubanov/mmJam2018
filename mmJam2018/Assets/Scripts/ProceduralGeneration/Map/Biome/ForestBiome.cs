@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+
+using UnityEngine;
 using Assets.Scripts;
 using ProceduralGeneration.Map;
 
@@ -11,7 +13,7 @@ namespace ProceduralGeneration.Biome
         private float treeSpawnProbability;
 
         public ForestBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
-            : base(seedBasedRng, tileLookup.GrassTilePrefab, tileLookup.OneGreenBushTilePrefab, parent)
+            : base(seedBasedRng, tileLookup.GrassTilePrefab, new List<GameObject>{ tileLookup.OneGreenBushTilePrefab }, parent)
         {
             biomeType = BiomeType.ForestBiome;
             HasSpawned = false;
@@ -30,8 +32,12 @@ namespace ProceduralGeneration.Biome
                 treeSpawnProbability += increase;
             }
 
-            if(randomNumberGen.Next(0, 100) < treeSpawnProbability) { 
-                GameObject obj = Object.Instantiate(spriteWithMembers, new Vector3(tile.Position.x, tile.Position.y, 0), Quaternion.identity);
+            if(randomNumberGen.Next(0, 100) < treeSpawnProbability)
+            {
+                // Randomly select member to spawn from list of members
+                int member = randomNumberGen.Next(Members.Count);
+
+                GameObject obj = Object.Instantiate(Members[member], new Vector3(tile.Position.x, tile.Position.y, 0), Quaternion.identity);
                 obj.transform.parent = parentGameObject;
                 HasSpawned = true;
             }

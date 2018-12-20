@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+
+using UnityEngine;
 using Assets.Scripts;
 using ProceduralGeneration.Map;
 
@@ -11,8 +13,7 @@ namespace ProceduralGeneration.Biome
 
         protected GameObject baseSprite;
 
-        // FIXME: Change to some list of gameobjects(members) to spawn once the prefabs have been reorganized
-        protected GameObject spriteWithMembers;
+        protected List<GameObject> Members;
         protected Transform parentGameObject;
 
         public BiomeType biomeType { get; protected set; }
@@ -20,13 +21,13 @@ namespace ProceduralGeneration.Biome
 
         protected BiomeBase(System.Random rng,
                         GameObject sprite, 
-                        GameObject spriteWMembers,
+                        List<GameObject> spriteWMembers,
                         Transform parent)
         {
             randomNumberGen = rng;
 
             baseSprite = sprite;
-            spriteWithMembers = spriteWMembers;
+            Members = spriteWMembers;
 
             parentGameObject = parent;
         }

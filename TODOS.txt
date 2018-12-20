@@ -7,13 +7,14 @@ Steering:
 --------------------------------------------------------------------------------------
 Procedural generation:
 	
-	- Create method of spawning prefab from a list of prefabs (runes/bushes/flowers etc.)					
+	//- Create method of spawning prefab from a list of prefabs (runes/bushes/flowers etc.)					
 	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
-
 
 	- Visualizing tile placement might provide clarity why spawning works from one side to the other
 		- As the script is blocking currently, perhaps this is achievable via a secondary thread
-		- Have I already tried lists instead of hashsets?
+		- Have I already tried lists instead of hashsets? 
+		(although I guess the hashset order, as will the list order, is determined by the traversal?)
+		- Maybe try GenerateIsland() on centers again?
 	
 	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue and the inner-island beach problem
 	
