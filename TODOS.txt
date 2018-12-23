@@ -12,9 +12,6 @@ Procedural generation:
 
 	- Visualizing tile placement might provide clarity why spawning works from one side to the other
 		- As the script is blocking currently, perhaps this is achievable via a secondary thread
-		- Have I already tried lists instead of hashsets? 
-		(although I guess the hashset order, as will the list order, is determined by the traversal?)
-		- Maybe try GenerateIsland() on centers again?
 	
 	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue and the inner-island beach problem
 	
@@ -31,11 +28,12 @@ Procedural generation:
 		- Maybe make a marsh-esque tile instead? (closer to the grassland green, so proc gen issues can be better concealed)
 	
 	- Rework stupid elevation increase formula (might help w/ inner beach issue)
+	- Add colliders to member prefabs and sort their order
 		
 	- Create a bunch new prefabs as spawnable members (picked at random more-or-less)
 		- Ruins Biome members (Enemies need to be spawnable here)
-			- Column
-			- Broken column
+			//- Column
+			//- Broken column
 			- Rock 1
 			- Rock 2
 		

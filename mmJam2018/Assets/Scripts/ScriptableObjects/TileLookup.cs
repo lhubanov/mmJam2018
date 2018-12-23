@@ -10,13 +10,19 @@ namespace Assets.Scripts
         public GameObject WaterPrefab;
         public GameObject SandPrefab;
         public GameObject GrassTilePrefab;
-        public GameObject ColumnTilePrefab;
+
+        public GameObject FullColumnPrefab;
+        public GameObject HalfColumnPrefab;
+
         public GameObject OneGreenBushTilePrefab;
         public GameObject OnePurpleBushTilePrefab;
         public GameObject SeveralPurpleBushTilePrefab;
         public GameObject TreePrefab;
 
-        // Resource lookup table; probably a more optimal way to do this
+        // Resource lookup table; 
+
+        // FIXME:   I hate these string comparison operations- investigate
+        //          if can be done by type somehow
         public Dictionary<string, string> DeadSprites = new Dictionary<string, string>()
         {
             { "grass pattern", "grass pattern dead"},

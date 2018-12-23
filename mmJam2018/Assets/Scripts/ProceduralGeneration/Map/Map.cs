@@ -129,7 +129,7 @@ namespace ProceduralGeneration.Map
 
         public void Generate()
         {
-            List<List<Center>> nodes = CreateDefaultNodes();
+            CreateDefaultNodes();
             HashSet<Center> centers = TraverseGraph(Root as Center, graphTraversalMethod);
 
             HashSet<Center> islandTiles = GenerateOcean(centers);
@@ -204,7 +204,7 @@ namespace ProceduralGeneration.Map
             return nodesMap;
         }
 
-        private void StrayIslandPostProcessing(HashSet<Center> tiles)
+        private void StrayIslandPostProcessing(IEnumerable<Center> tiles)
         {
             foreach(Center node in tiles) {
                 node.StrayIslandTilePostProcess();
@@ -256,7 +256,7 @@ namespace ProceduralGeneration.Map
         }
         
         // Returns Island tiles
-        private HashSet<Center> GenerateOcean(HashSet<Center> centers)
+        private HashSet<Center> GenerateOcean(IEnumerable<Center> centers)
         {
             HashSet<Center> islandTiles = new HashSet<Center>();
 
@@ -273,7 +273,7 @@ namespace ProceduralGeneration.Map
             return islandTiles;
         }
 
-        private void GenerateIsland(HashSet<Center> tiles)
+        private void GenerateIsland(IEnumerable<Center> tiles)
         {
             foreach (Center center in tiles)
             {
@@ -298,7 +298,7 @@ namespace ProceduralGeneration.Map
 
 
         // FIXME: Refactor this, to also use noise function!
-        private HashSet<Center> InitializeTiles(HashSet<Center> centers)
+        private HashSet<Center> InitializeTiles(IEnumerable<Center> centers)
         {
             HashSet<Center> coast = new HashSet<Center>();
 
@@ -314,7 +314,7 @@ namespace ProceduralGeneration.Map
         }
 
 
-        private void SetElevation(HashSet<Center> outerTiles)
+        private void SetElevation(IEnumerable<Center> outerTiles)
         {
             HashSet<Center> visitedTiles = new HashSet<Center>();
 
@@ -343,7 +343,7 @@ namespace ProceduralGeneration.Map
         }
 
 
-        private void AssignBiomes(HashSet<Center> islandTiles)
+        private void AssignBiomes(IEnumerable<Center> islandTiles)
         {
             foreach (Center tile in islandTiles)
             {
@@ -355,7 +355,7 @@ namespace ProceduralGeneration.Map
         }
 
 
-        private void SpawnMembers(HashSet<Center> tiles, int iterations)
+        private void SpawnMembers(IEnumerable<Center> tiles, int iterations)
         {
             for (int i = 0; i < iterations; i++)
             {
@@ -374,7 +374,7 @@ namespace ProceduralGeneration.Map
             }
         }
 
-        private void SpawnSprites(HashSet<Center> map)
+        private void SpawnSprites(IEnumerable<Center> map)
         {
             foreach (Center center in map)
             {
