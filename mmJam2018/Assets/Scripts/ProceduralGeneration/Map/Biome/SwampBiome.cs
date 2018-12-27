@@ -12,7 +12,13 @@ namespace ProceduralGeneration.Biome
         private float bushSpawnProbability;
 
         public SwampBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
-            : base(seedBasedRng, tileLookup.GrassTilePrefab, new List<GameObject> { tileLookup.OnePurpleBushTilePrefab }, parent)
+            : base(seedBasedRng, 
+                  tileLookup.GrassTilePrefab, 
+                  new List<GameObject> {
+                      tileLookup.SinglePurpleBushPrefab,
+                      tileLookup.PurpleBushGroupPrefab
+                  }, 
+                  parent)
         {
             biomeType = BiomeType.SwampBiome;
             HasSpawned = false;

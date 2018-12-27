@@ -9,6 +9,10 @@ Procedural generation:
 	
 	//- Create method of spawning prefab from a list of prefabs (runes/bushes/flowers etc.)					
 	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
+		- Flower Field biome
+		- Separate Ruins biome
+		- Tree distance rules
+		- More stuff to spawn in swamp
 
 	- Visualizing tile placement might provide clarity why spawning works from one side to the other
 		- As the script is blocking currently, perhaps this is achievable via a secondary thread
@@ -23,36 +27,18 @@ Procedural generation:
 	- Water tile
 		- See if there is need to create a new sprite
 		
+	- Maybe add a special type of inner-island/marsh water, which can be drained?
+		- Can be made inpassable by adding a collider to prefab tbh
+		- Or to avoid the new mechanical work (drain -> remove collider etc. (functionality can be appended to said tile prefab, currently, I suspect)),
+		  make it traversable, slowing down player movement speed (?) and so it looks as if model legs descend in the "marsh" sprite - might require some visual trickery
+		
 	- Sand/beach tile
 		- Draw new sprite
 		- Maybe make a marsh-esque tile instead? (closer to the grassland green, so proc gen issues can be better concealed)
 	
 	- Rework stupid elevation increase formula (might help w/ inner beach issue)
 	- Add colliders to member prefabs and sort their order
-		
-	- Create a bunch new prefabs as spawnable members (picked at random more-or-less)
-		- Ruins Biome members (Enemies need to be spawnable here)
-			//- Column
-			//- Broken column
-			- Rock 1
-			- Rock 2
-		
-		- Grassland
-			- Bush 1
-			- 2x Bushes
-			- Tree (needs some rules, due to potential traversal issues)
-			- Flower(s)
-				- 1x Flower
-				- 5x Flowers randomly
-				- Farm-like patch of flowers
-		
-		- Swamp
-			- Purple bush
-			- Multiple Purple bushes (whatever looks good)
-	
-	- Maybe add a special type of inner-island/marsh water, which can be drained?
-		- Or to avoid the new mechanical work (drain -> remove collider etc. (functionality can be appended to said tile prefab, currently, I suspect)),
-		  make it traversable, slowing down player movement speed (?) and so it looks as if model legs descend in the "marsh" sprite - might require some visual trickery
+
 --------------------------------------------------------------------------------------
 			
 Make sure there's a fail state etc.

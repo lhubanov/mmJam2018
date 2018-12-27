@@ -13,7 +13,14 @@ namespace ProceduralGeneration.Biome
         private float treeSpawnProbability;
 
         public ForestBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
-            : base(seedBasedRng, tileLookup.GrassTilePrefab, new List<GameObject>{ tileLookup.OneGreenBushTilePrefab }, parent)
+            : base(seedBasedRng, 
+                  tileLookup.GrassTilePrefab, 
+                  new List<GameObject>{
+                      tileLookup.TreePrefab,
+                      tileLookup.SingleGreenBushPrefab,
+                      tileLookup.GreenBushGroupPrefab,
+                  }, 
+                  parent)
         {
             biomeType = BiomeType.ForestBiome;
             HasSpawned = false;

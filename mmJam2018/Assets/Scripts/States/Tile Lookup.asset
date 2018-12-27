@@ -21,10 +21,22 @@ MonoBehaviour:
     type: 3}
   HalfColumnPrefab: {fileID: 1753304929107150901, guid: f9ecfe8753bf2824babb3a15f7c92e35,
     type: 3}
-  OneGreenBushTilePrefab: {fileID: 1437819127527024, guid: b304cb7504683784c95294b7536d839c,
+  SingleStonePrefab: {fileID: 246208666189534367, guid: 82bb944c8fe8a2048aa710d9eb2664cf,
     type: 3}
-  OnePurpleBushTilePrefab: {fileID: 1907386570932606, guid: 4e1365cc0f141b64189e18036d692517,
+  CrackedStonePrefab: {fileID: 8949981591425248741, guid: 4b9f877a49b2c414281d95562a9bafda,
     type: 3}
-  SeveralPurpleBushTilePrefab: {fileID: 1159447654470796, guid: 2e1bca88687d0824c8ae951e37120adf,
+  SingleGreenBushPrefab: {fileID: 7513994847087974937, guid: 30cba013685126d4a8e88ddd77af3964,
+    type: 3}
+  GreenBushGroupPrefab: {fileID: 731964602346817669, guid: 3be2d286f0c0b744e9deca3ab437eb9e,
+    type: 3}
+  SinglePurpleBushPrefab: {fileID: 891945290631675214, guid: 60d150c69972ae849819d0fe116a5175,
+    type: 3}
+  PurpleBushGroupPrefab: {fileID: 5000036789369992181, guid: 89cf555c2643d5e4eb9ae35cf4a4b28d,
+    type: 3}
+  SingleFlowerPrefab: {fileID: 1928952910132094097, guid: a3009076b41af854d841110890085460,
+    type: 3}
+  FlowerPatchPrefab: {fileID: 6420063882730731713, guid: 1d440b29082f3e24bb93a9a91757ad47,
+    type: 3}
+  FlowerFarmPrefab: {fileID: 2849926745308020265, guid: 078a28138ce1571449b5eb3ba541ee43,
     type: 3}
   TreePrefab: {fileID: 1125931901691560, guid: e9f324e6530d84126ac06cd3228bd996, type: 3}

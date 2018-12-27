@@ -14,9 +14,19 @@ namespace Assets.Scripts
         public GameObject FullColumnPrefab;
         public GameObject HalfColumnPrefab;
 
-        public GameObject OneGreenBushTilePrefab;
-        public GameObject OnePurpleBushTilePrefab;
-        public GameObject SeveralPurpleBushTilePrefab;
+        public GameObject SingleStonePrefab;
+        public GameObject CrackedStonePrefab;
+
+        public GameObject SingleGreenBushPrefab;
+        public GameObject GreenBushGroupPrefab;
+
+        public GameObject SinglePurpleBushPrefab;
+        public GameObject PurpleBushGroupPrefab;
+
+        public GameObject SingleFlowerPrefab;
+        public GameObject FlowerPatchPrefab;
+        public GameObject FlowerFarmPrefab;
+
         public GameObject TreePrefab;
 
         // Resource lookup table; 

@@ -12,7 +12,20 @@ namespace ProceduralGeneration.Biome
         private float ruinSpawnProbability;
 
         public GrasslandBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
-            : base(seedBasedRng, tileLookup.GrassTilePrefab, new List<GameObject> { tileLookup.FullColumnPrefab, tileLookup.HalfColumnPrefab }, parent)
+            : base(seedBasedRng, 
+                  tileLookup.GrassTilePrefab, 
+                  new List<GameObject> {
+                      tileLookup.FullColumnPrefab,
+                      tileLookup.HalfColumnPrefab,
+                      tileLookup.SingleStonePrefab,
+                      tileLookup.CrackedStonePrefab,
+                      tileLookup.SingleFlowerPrefab,
+                      tileLookup.FlowerFarmPrefab,
+                      tileLookup.FlowerPatchPrefab,
+                      tileLookup.SingleGreenBushPrefab,
+                      tileLookup.GreenBushGroupPrefab
+                  }, 
+                  parent)
         {
             biomeType = BiomeType.GrasslandBiome;
             HasSpawned = false;
