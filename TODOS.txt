@@ -37,7 +37,7 @@ Procedural generation:
 		- Maybe make a marsh-esque tile instead? (closer to the grassland green, so proc gen issues can be better concealed)
 	
 	- Rework stupid elevation increase formula (might help w/ inner beach issue)
-	- Add colliders to member prefabs and sort their order
+	- Add new colliders to member prefabs and sort their order
 
 --------------------------------------------------------------------------------------
 			
