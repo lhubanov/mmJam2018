@@ -18,6 +18,11 @@ Procedural generation:
 		- As the script is blocking currently, perhaps this is achievable via a secondary thread
 	
 	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue and the inner-island beach problem
+		- Try swapping with normal grass tile and see how odd it looks (if at all) - to avoid adding marsh tile-related work
+		
+		- Sand/beach tile
+			- Draw new sprite
+			- Maybe make a marsh-esque tile instead? (closer to the grassland green, so proc gen issues can be better concealed)
 	
 	- Create proper container classes at one point (probabilities and MapSettings need constructors etc.)
 				
@@ -25,16 +30,10 @@ Procedural generation:
 	- Find way to add noise to sprite edges (a-la Amit's island generation)
 	
 	- Water tile
-		- See if there is need to create a new sprite
+		- Add impassable collider to prefab
 		
-	- Maybe add a special type of inner-island/marsh water, which can be drained?
-		- Can be made inpassable by adding a collider to prefab tbh
-		- Or to avoid the new mechanical work (drain -> remove collider etc. (functionality can be appended to said tile prefab, currently, I suspect)),
-		  make it traversable, slowing down player movement speed (?) and so it looks as if model legs descend in the "marsh" sprite - might require some visual trickery
-		
-	- Sand/beach tile
-		- Draw new sprite
-		- Maybe make a marsh-esque tile instead? (closer to the grassland green, so proc gen issues can be better concealed)
+	- Maybe add a special type of inner-island/marsh water, which can be drained? - investigate implementation - may be able to do via collider triggers enter-exit setting a max speed var
+		- Traversable, slowing down player movement speed (?) and so it looks as if model legs descend in the "marsh" sprite - might require some visual trickery
 	
 	- Rework stupid elevation increase formula (might help w/ inner beach issue)
 	- Add new colliders to member prefabs and sort their order
