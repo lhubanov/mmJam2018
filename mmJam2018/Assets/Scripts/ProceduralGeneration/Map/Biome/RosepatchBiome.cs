@@ -6,12 +6,12 @@ using ProceduralGeneration.Map;
 
 namespace ProceduralGeneration.Biome
 {
-    public class SwampBiome : BiomeBase
+    public class RosepatchBiome : BiomeBase
     {
         // Probabilities
         private float bushSpawnProbability;
 
-        public SwampBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
+        public RosepatchBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
             : base(seedBasedRng, 
                   tileLookup.GrassTilePrefab, 
                   new List<GameObject> {
@@ -20,10 +20,10 @@ namespace ProceduralGeneration.Biome
                   }, 
                   parent)
         {
-            biomeType = BiomeType.SwampBiome;
+            biomeType = BiomeType.RosepatchBiome;
             HasSpawned = false;
 
-            bushSpawnProbability = (spawnData as SwampProbabilities).bushSpawn;
+            bushSpawnProbability = (spawnData as RosepatchProbabilities).bushSpawn;
         }
 
         public override void SpawnMembers(Center tile)

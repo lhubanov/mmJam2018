@@ -5,7 +5,7 @@ using ProceduralGeneration.Map;
 namespace ProceduralGeneration.Map.MapSettings
 {
     // Note: This is a bit basic in terms of the way its designed;
-    //       Add interface and extend w/ Base, if different types of
+    //       Segregate into interfaces and extend w/ Base, if different types of
     //       containers need to be used at some point;
     
     //       Maybe at least add constructor and make all private, so they can be set to defaults if invalid;
@@ -22,7 +22,7 @@ namespace ProceduralGeneration.Map.MapSettings
         public float OceanThreshold;
         public float ChanceIslandTileIsWater;
 
-        public double ElevationIncreaseMultiplier;
+        public double ElevationIncreaseRate;
 
         public int MemberSpawningIterations;
 

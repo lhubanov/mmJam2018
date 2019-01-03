@@ -28,7 +28,7 @@ public class HeldEnergyManager : MonoBehaviour
         }
     }
 
-
+    // FIXME: remove this string check
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Enemy")

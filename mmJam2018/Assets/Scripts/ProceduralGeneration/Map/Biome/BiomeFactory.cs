@@ -9,7 +9,7 @@ namespace ProceduralGeneration.Biome
         None,
         ForestBiome,
         GrasslandBiome,
-        SwampBiome,
+        RosepatchBiome,
         BeachBiome,
         OceanBiome,
     }
@@ -39,8 +39,8 @@ namespace ProceduralGeneration.Biome
                     return new BeachBiome(randomNumberGen, tileLookup, parentGameObject, null);
                 case BiomeType.GrasslandBiome:
                     return new GrasslandBiome(randomNumberGen, tileLookup, parentGameObject, conditions.grasslandProbabilities);
-                case BiomeType.SwampBiome:
-                    return new SwampBiome(randomNumberGen, tileLookup, parentGameObject, conditions.swampProbabilities);
+                case BiomeType.RosepatchBiome:
+                    return new RosepatchBiome(randomNumberGen, tileLookup, parentGameObject, conditions.RosepatchProbabilities);
                 case BiomeType.OceanBiome:
                     return new OceanBiome(randomNumberGen, tileLookup, parentGameObject, null);
 

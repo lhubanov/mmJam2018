@@ -33,7 +33,7 @@ namespace ProceduralGeneration.Map
         private float chanceIslandTileIsWater; // = 0.5f;
 
         private double elevationIncreaseRate;
-        private double elevationIncreaseMultiplier; // = 12;
+        //private double elevationIncreaseMultiplier; // = 12;
         private int spawningIterations; // = 2;
 
         private float noiseScale; // = 1f;
@@ -59,7 +59,7 @@ namespace ProceduralGeneration.Map
             oceanThreshold = mapSettings.OceanThreshold;
             chanceIslandTileIsWater = mapSettings.ChanceIslandTileIsWater;
 
-            elevationIncreaseMultiplier = mapSettings.ElevationIncreaseMultiplier;
+            elevationIncreaseRate = mapSettings.ElevationIncreaseRate;
 
             spawningIterations = mapSettings.MemberSpawningIterations;
 
@@ -104,15 +104,15 @@ namespace ProceduralGeneration.Map
 
             // FIXME:   Define an actual formula for this eventually
             //          (+ the above is mostly due to the calculation saving 0 always if not done this way - investigate)
-            double widthInTiles = mapWidth / tileSize;
-            double coeff = (tileSize / widthInTiles) * elevationIncreaseMultiplier;
-            elevationIncreaseRate = coeff;
+            //double widthInTiles = mapWidth / tileSize;
+            //double coeff = (tileSize / widthInTiles) * elevationIncreaseMultiplier;
+            //elevationIncreaseRate = coeff;
         }
 
         private bool IsOnMapEdge(INode node)
         {
-            return (node.Position.x == mapBotLeft.x || node.Position.x == mapTopRight.x) 
-                || (node.Position.y == mapBotLeft.y || node.Position.y == mapTopRight.y);
+            return (node.Position.x == mapBotLeft.x)// || node.Position.x == mapTopRight.x) 
+                || (node.Position.y == mapBotLeft.y);// || node.Position.y == mapTopRight.y);
         }
 
         private bool IsOceanTile(Vector2 pos)
@@ -120,11 +120,11 @@ namespace ProceduralGeneration.Map
             var xMaxThreshold = mapTopRight.x  - (mapWidth * (1 - oceanThreshold));
             var xMinThreshold = mapBotLeft.x + (mapWidth * (1 - oceanThreshold));
 
-            var yMaxThreshold = mapTopRight.y  - (mapHeight * (1- oceanThreshold));
-            var yMinThreshold = mapBotLeft.y + (mapHeight * (1 - oceanThreshold));
+            //var yMaxThreshold = mapTopRight.y  - (mapHeight * (1- oceanThreshold));
+            //var yMinThreshold = mapBotLeft.y + (mapHeight * (1 - oceanThreshold));
 
-            return (pos.x > xMaxThreshold || pos.x < xMinThreshold)
-                || (pos.y > yMaxThreshold || pos.y < yMinThreshold);
+            return (pos.x > xMaxThreshold || pos.x < xMinThreshold);
+                //|| (pos.y > yMaxThreshold || pos.y < yMinThreshold);
         }
 
         public void Generate()
@@ -134,10 +134,8 @@ namespace ProceduralGeneration.Map
 
             HashSet<Center> islandTiles = GenerateOcean(centers);
             GenerateIsland(islandTiles);
-
-            // FIXME: Refactor this, to also use noise function!
-            //        Also, maybe structurally refactor as well, it's
-            //        a bit weird, how some proc gen map stuff happens within Center class  
+            
+            // FIXME: Refactor this, to also use noise function?
             HashSet<Center> coastalTiles = InitializeTiles(centers);
 
             SetElevation(coastalTiles);
@@ -153,9 +151,9 @@ namespace ProceduralGeneration.Map
             SpawnMembers(islandTiles, spawningIterations);
         }
 
-        // FIXME:   Can use some clean up;
+        // FIXME:   Can use clean up;
         //          Does not need to return anything actually
-        private List<List<Center>> CreateDefaultNodes()
+        private void CreateDefaultNodes()
         {
             List<List<Center>> nodesMap = new List<List<Center>>();
             Root = new Center(true, true, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, 0, 0, new Vector2(mapBotLeft.x, mapBotLeft.y), tileLookup, biomeFactory);
@@ -200,8 +198,6 @@ namespace ProceduralGeneration.Map
                 nodesMap.Add(row);
                 y += tileSize;
             }
-
-            return nodesMap;
         }
 
         private void StrayIslandPostProcessing(IEnumerable<Center> tiles)
@@ -215,7 +211,7 @@ namespace ProceduralGeneration.Map
         private delegate Center TraversalGetter();
         private delegate void TraversalSetter(Center center);
 
-        // This seems a bit over-complicated for what I intended to do, review later
+        // This seems a bit over-engineered for what I intended to do, review later
         private HashSet<Center> TraverseGraph(Center root, GRAPH_TRAVERSAL_METHOD method)
         {
             IEnumerable<Center> collection;
@@ -328,9 +324,6 @@ namespace ProceduralGeneration.Map
                         {
                             neighbour.Elevation = tile.Elevation + elevationIncreaseRate;
                             visitedTiles.Add(neighbour);
-
-                            // As there should be only one of these, so we can skip the rest
-                            break;
                         }
                     }
                 }
@@ -359,16 +352,7 @@ namespace ProceduralGeneration.Map
         {
             for (int i = 0; i < iterations; i++)
             {
-                foreach (Center center in tiles)
-                {
-
-                    // FIXME: having this in actually changes the RNG!
-                    //        Hence, without it, either no spawning or full spawning happens
-                    if (!(center.Biome is Biome.OceanBiome))
-                    {
-                        Console.WriteLine("Debuggiiiing...");
-                    }
-
+                foreach (Center center in tiles) {
                     center.SpawnMembers();
                 }
             }
@@ -376,8 +360,7 @@ namespace ProceduralGeneration.Map
 
         private void SpawnSprites(IEnumerable<Center> map)
         {
-            foreach (Center center in map)
-            {
+            foreach (Center center in map) {
                 center.SpawnSprite();
             }
         }

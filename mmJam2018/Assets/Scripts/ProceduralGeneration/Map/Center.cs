@@ -180,7 +180,7 @@ namespace ProceduralGeneration.Map
             }
         }
 
-        // i.e. are all neighbours oceans
+        // i.e. all neighbours are of ocean type
         private bool IsStrayIslandTile()
         {
             bool val = true;

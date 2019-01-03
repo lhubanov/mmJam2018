@@ -86,7 +86,7 @@
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\IBiome.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\IContainSpawnData.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\OceanBiome.cs" />
-    <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\SwampBiome.cs" />
+    <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\RosepatchBiome.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Center.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Corner.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Edge.cs" />

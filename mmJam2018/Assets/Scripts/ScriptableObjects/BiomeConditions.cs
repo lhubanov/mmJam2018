@@ -19,13 +19,13 @@ namespace Assets.Scripts
         private int forestElevation; //20
 
         [SerializeField]
-        private int swampElevation; //200
+        private int RosepatchElevation; //200
 
         public Dictionary<int, BiomeType> Elevations;
 
         public ForestProbabilities forestProbabilities;
         public GrasslandProbabilities grasslandProbabilities;
-        public SwampProbabilities swampProbabilities;
+        public RosepatchProbabilities RosepatchProbabilities;
 
 
         public void OnEnable()
@@ -34,11 +34,11 @@ namespace Assets.Scripts
             Elevations.Add(beachElevation, BiomeType.BeachBiome);
             Elevations.Add(grasslandElevation, BiomeType.GrasslandBiome);
             Elevations.Add(forestElevation, BiomeType.ForestBiome);
-            Elevations.Add(swampElevation, BiomeType.SwampBiome);
+            Elevations.Add(RosepatchElevation, BiomeType.RosepatchBiome);
 
             forestProbabilities = new ForestProbabilities();
             grasslandProbabilities = new GrasslandProbabilities();
-            swampProbabilities = new SwampProbabilities();
+            RosepatchProbabilities = new RosepatchProbabilities();
         }
     }
 
@@ -62,7 +62,7 @@ namespace Assets.Scripts
     }
 
     [System.Serializable]
-    public class SwampProbabilities : IContainSpawnData
+    public class RosepatchProbabilities : IContainSpawnData
     {
         [Range(0, 100)]
         public float bushSpawn = 40;

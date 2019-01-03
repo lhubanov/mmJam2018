@@ -4,6 +4,7 @@ using FMOD.Studio;
 
 public class ProximityScanner : MonoBehaviour
 {
+    // FIXME: make these necessary with that unity attribute
     private SphereCollider          tileScanner;
     private PlayerAnimationManager  playerAnimationManager;
     private PlayerSFXManager        playerSFXManager;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaterPrefab: {fileID: 1125569479529836, guid: 12039bc5cac7c764bb2c9796b4d23ed8,
     type: 3}
-  SandPrefab: {fileID: 1696521703097028, guid: 9dee7aa31d0a31e44afe5681d0fb6d6a, type: 3}
+  SandPrefab: {fileID: 1540279273266704, guid: 60d0bb0a9843da14bb15b9e14ba44c15, type: 3}
   GrassTilePrefab: {fileID: 1540279273266704, guid: 60d0bb0a9843da14bb15b9e14ba44c15,
     type: 3}
   FullColumnPrefab: {fileID: 3332604717335123027, guid: ecb25d72cb905b647bb458a78b71e5dd,

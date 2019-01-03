@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rbody;
     private SpriteRenderer sprite;
+
+    // FIXME: Move to animation manager and play via member
     private Animator animator;
 
     private bool keyPressed = false;

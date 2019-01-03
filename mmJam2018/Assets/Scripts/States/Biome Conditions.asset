@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -14,10 +15,10 @@ MonoBehaviour:
   beachElevation: 3
   grasslandElevation: 10
   forestElevation: 20
-  swampElevation: 200
+  RosepatchElevation: 500
   forestProbabilities:
-    treeSpawn: 15
+    treeSpawn: 25
   grasslandProbabilities:
-    ruinSpawn: 10
-  swampProbabilities:
+    ruinSpawn: 15
+  RosepatchProbabilities:
     bushSpawn: 40

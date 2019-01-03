@@ -37,7 +37,7 @@ public class RegionGenerator : MonoBehaviour
     private float chanceIslandTileIsWater = 0.5f;
 
     [SerializeField]
-    private double elevationIncreaseMultiplier = 12;
+    private double elevationIncreaseRate = 0.95;
 
     [SerializeField]
     private int spawningIterations = 2;
@@ -91,7 +91,7 @@ public class RegionGenerator : MonoBehaviour
 
             OceanThreshold = oceanThreshold,
             ChanceIslandTileIsWater = chanceIslandTileIsWater,
-            ElevationIncreaseMultiplier = elevationIncreaseMultiplier,
+            ElevationIncreaseRate = elevationIncreaseRate,
 
             MemberSpawningIterations = spawningIterations,
 
