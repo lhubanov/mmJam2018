@@ -13,7 +13,6 @@ Procedural generation:
 		//- Marsh biome
 		- Tree distance rules
 			- Or maybe experiment with reducing tree spawn probability so they are sparse enough
-		- More stuff to spawn in swamp
 	
 	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue and the inner-island beach problem
 		- Add inner passable water marsh tile prefab 

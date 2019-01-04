@@ -158,6 +158,7 @@ namespace ProceduralGeneration.Map
                 else {
                     Ocean = false;
                     Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
+                    Elevation = 0;
                 }
             }
 
