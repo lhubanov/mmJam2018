@@ -11,7 +11,6 @@ namespace ProceduralGeneration.Biome
             : base(seedBasedRng, null, null, parent)
         {
             HasSpawned = false;
-            biomeType = BiomeType.None;
         }
 
         public override void SpawnMembers(Center tile)

@@ -34,11 +34,11 @@ namespace ProceduralGeneration.Biome
             switch(biomeType)
             {
                 case BiomeType.ForestBiome:
-                    return new ForestBiome(randomNumberGen, tileLookup, parentGameObject, conditions.forestProbabilities);
+                    return new ForestBiome(randomNumberGen, tileLookup, parentGameObject, conditions.ForestProbabilities);
                 case BiomeType.BeachBiome:
                     return new BeachBiome(randomNumberGen, tileLookup, parentGameObject, null);
                 case BiomeType.GrasslandBiome:
-                    return new GrasslandBiome(randomNumberGen, tileLookup, parentGameObject, conditions.grasslandProbabilities);
+                    return new GrasslandBiome(randomNumberGen, tileLookup, parentGameObject, conditions.GrasslandProbabilities);
                 case BiomeType.RosepatchBiome:
                     return new RosepatchBiome(randomNumberGen, tileLookup, parentGameObject, conditions.RosepatchProbabilities);
                 case BiomeType.OceanBiome:

@@ -10,7 +10,6 @@ namespace ProceduralGeneration.Biome
             : base(seedBasedRng, tileLookup.SandPrefab, null, parent)
         {
             HasSpawned = false;
-            biomeType = BiomeType.BeachBiome;
         }
 
         public override void SpawnMembers(Center tile)

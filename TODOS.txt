@@ -7,18 +7,15 @@ Steering:
 --------------------------------------------------------------------------------------
 Procedural generation:
 	
-	//- Create method of spawning prefab from a list of prefabs (runes/bushes/flowers etc.)					
 	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
 		- Flower Field biome
 		- Separate Ruins biome
+		- Marsh biome
 		- Tree distance rules
+			- Or maybe experiment with reducing tree spawn probability so they are sparse enough
 		- More stuff to spawn in swamp
-
-	- Visualizing tile placement might provide clarity why spawning works from one side to the other
-		- As the script is blocking currently, perhaps this is achievable via a secondary thread
 	
 	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue and the inner-island beach problem
-		//- Try swapping with normal grass tile and see how odd it looks (if at all) - to avoid adding marsh tile-related work
 		- Add inner passable water marsh tile prefab 
 			- Visually - water + bushes, maybe a darker shade bush (maybe procedurally spawn bushes?)
 			- Add script interaction to player that reduces speed
@@ -26,25 +23,15 @@ Procedural generation:
 			Marsh tile info: 			
 				- Maybe add a special type of inner-island/marsh water, which can be drained? - investigate implementation - may be able to do via collider triggers enter-exit setting a max speed var
 					- Traversable, slowing down player movement speed (?) and so it looks as if model legs descend in the "marsh" sprite - might require some visual trickery
-			
-	//- Water tile
-		//- Add impassable collider to prefab
-		
+					
 	- Create proper container classes at one point (probabilities and MapSettings need constructors etc.)
 				
-	//- Remove that Console.WriteLine() thing in Map.SpawnMembers() to see if whatever was happening there still happens
 	- Find way to add noise to sprite edges (a-la Amit's island generation)
 	
-	//- Rework stupid elevation increase formula (might help w/ inner beach issue)
-	//- Check elevation assignment function as formula seems to not be the fault
-	
-	//- Rename Swamp to Rosepatch
 	- Expose elevation on a tile-script level - assign post-initialization and make each tile have a base interface, which this is assigned through
 	
 	- Add new colliders to member prefabs (trees, pillars etc.) and sort their order
 	- Make player collider smaller
-	
-	//- Check generated island can be drained
 	
 	- Refactor the biome constructors that make a new List() in constructor call instead of done in factory
 		- Or split grassland into several different biomes
@@ -56,6 +43,8 @@ Procedural generation:
 	
 --------------------------------------------------------------------------------------
 There are a bunch of tag comparisons worth refactoring in Player code
+
+Add Start and end areas, which are not Proc Gen'd
 
 Make sure there's a fail state etc.
 	-Audio when mom is low?

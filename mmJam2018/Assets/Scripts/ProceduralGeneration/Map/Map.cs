@@ -340,7 +340,7 @@ namespace ProceduralGeneration.Map
         {
             foreach (Center tile in islandTiles)
             {
-                if (tile.Biome.biomeType == Biome.BiomeType.None) {
+                if (tile.Biome is Biome.Biome) {
                     tile.SetBiomeBasedOnElevation();
                     tile.SpawnMembers();
                 }

@@ -23,9 +23,10 @@ namespace Assets.Scripts
 
         public Dictionary<int, BiomeType> Elevations;
 
-        public ForestProbabilities forestProbabilities;
-        public GrasslandProbabilities grasslandProbabilities;
-        public RosepatchProbabilities RosepatchProbabilities;
+        public ForestProbabilities      ForestProbabilities;
+        public GrasslandProbabilities   GrasslandProbabilities;
+        public RosepatchProbabilities   RosepatchProbabilities;
+        public MarshProbabilities       MarshProbabilities;
 
 
         public void OnEnable()
@@ -36,9 +37,10 @@ namespace Assets.Scripts
             Elevations.Add(forestElevation, BiomeType.ForestBiome);
             Elevations.Add(RosepatchElevation, BiomeType.RosepatchBiome);
 
-            forestProbabilities = new ForestProbabilities();
-            grasslandProbabilities = new GrasslandProbabilities();
-            RosepatchProbabilities = new RosepatchProbabilities();
+            ForestProbabilities     = new ForestProbabilities();
+            GrasslandProbabilities  = new GrasslandProbabilities();
+            RosepatchProbabilities  = new RosepatchProbabilities();
+            MarshProbabilities      = new MarshProbabilities();
         }
     }
 
@@ -46,7 +48,7 @@ namespace Assets.Scripts
     // FIXME: Add constructors etc.
 
     // Literally for the sake of encapsulation
-    // Note: Look up if this make any sort of performance difference
+    // Note: Look up if this makes any sort of performance difference
     [System.Serializable]
     public class ForestProbabilities : IContainSpawnData
     {
@@ -63,6 +65,13 @@ namespace Assets.Scripts
 
     [System.Serializable]
     public class RosepatchProbabilities : IContainSpawnData
+    {
+        [Range(0, 100)]
+        public float bushSpawn = 40;
+    }
+
+    [System.Serializable]
+    public class MarshProbabilities : IContainSpawnData
     {
         [Range(0, 100)]
         public float bushSpawn = 40;

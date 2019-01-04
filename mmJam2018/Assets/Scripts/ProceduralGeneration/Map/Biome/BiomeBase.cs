@@ -16,7 +16,6 @@ namespace ProceduralGeneration.Biome
         protected List<GameObject> Members;
         protected Transform parentGameObject;
 
-        public BiomeType biomeType { get; protected set; }
         public bool HasSpawned { get; protected set; }
 
         protected BiomeBase(System.Random rng,

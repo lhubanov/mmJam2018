@@ -10,7 +10,6 @@ namespace ProceduralGeneration.Biome
             : base(seedBasedRng, tileLookup.WaterPrefab, null, parent)
         {
             HasSpawned = false;
-            biomeType = BiomeType.OceanBiome;
         }
 
         public override void SpawnMembers(Center tile)

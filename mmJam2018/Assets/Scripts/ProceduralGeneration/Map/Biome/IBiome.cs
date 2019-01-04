@@ -5,7 +5,6 @@ namespace ProceduralGeneration.Biome
 {
     public interface IBiome
     {
-        BiomeType biomeType { get; }
         bool HasSpawned { get; }
 
         void SpawnMembers(Center tile);

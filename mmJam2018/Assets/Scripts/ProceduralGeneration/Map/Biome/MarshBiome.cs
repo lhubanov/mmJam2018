@@ -6,23 +6,22 @@ using ProceduralGeneration.Map;
 
 namespace ProceduralGeneration.Biome
 {
-    public class RosepatchBiome : BiomeBase
+    public class MarshBiome : BiomeBase
     {
-        // Probabilities
         private float bushSpawnProbability;
 
-        public RosepatchBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
+        public MarshBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
             : base(seedBasedRng, 
-                  tileLookup.GrassTilePrefab, 
+                  tileLookup.WaterPrefab, 
                   new List<GameObject> {
-                      tileLookup.SinglePurpleBushPrefab,
-                      tileLookup.PurpleBushGroupPrefab
+                      tileLookup.SingleGreenBushPrefab,
+                      tileLookup.GreenBushGroupPrefab
                   }, 
                   parent)
         {
             HasSpawned = false;
 
-            bushSpawnProbability = (spawnData as RosepatchProbabilities).bushSpawn;
+            bushSpawnProbability = (spawnData as MarshProbabilities).bushSpawn;
         }
 
         public override void SpawnMembers(Center tile)
@@ -31,7 +30,8 @@ namespace ProceduralGeneration.Biome
                 return;
             }
 
-            if (tile.HasNeighbourOfExBiomeType(typeof(GrasslandBiome))) {
+            if (tile.HasNeighbourOfExBiomeType(typeof(GrasslandBiome)))
+            {
                 float increase = bushSpawnProbability / 2;
                 bushSpawnProbability += increase;
             }
