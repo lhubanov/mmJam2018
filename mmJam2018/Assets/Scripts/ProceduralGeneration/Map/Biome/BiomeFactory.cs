@@ -12,6 +12,7 @@ namespace ProceduralGeneration.Biome
         RosepatchBiome,
         BeachBiome,
         OceanBiome,
+        MarshBiome
     }
 
     public class BiomeFactory
@@ -43,6 +44,8 @@ namespace ProceduralGeneration.Biome
                     return new RosepatchBiome(randomNumberGen, tileLookup, parentGameObject, conditions.RosepatchProbabilities);
                 case BiomeType.OceanBiome:
                     return new OceanBiome(randomNumberGen, tileLookup, parentGameObject, null);
+                case BiomeType.MarshBiome:
+                    return new MarshBiome(randomNumberGen, tileLookup, parentGameObject, conditions.MarshProbabilities);
 
                 default:
                     return new Biome(randomNumberGen, tileLookup, parentGameObject, null);

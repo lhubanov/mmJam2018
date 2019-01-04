@@ -141,6 +141,7 @@ namespace ProceduralGeneration.Map
             SetElevation(coastalTiles);
             AssignBiomes(islandTiles);
 
+            // FIXME: Does this actually do anything? think it just sets a Biome
             StrayIslandPostProcessing(centers);
 
             SpawnSprites(centers);
@@ -148,7 +149,9 @@ namespace ProceduralGeneration.Map
             // Post processing runs to spawn tile/biome respective members (bushes, ruins etc.)
             // Note: This just calls the tile.Biome.Spawn(), so can be done on all tiles,
             //       if e.g. stuff needs to spawn in-ocean. Feeding it only island tiles for now
-            SpawnMembers(islandTiles, spawningIterations);
+            //SpawnMembers(islandTiles, spawningIterations);
+
+            SpawnMembers(centers, spawningIterations);
         }
 
         // FIXME:   Can use clean up;

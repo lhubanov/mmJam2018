@@ -10,7 +10,7 @@ Procedural generation:
 	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
 		- Flower Field biome
 		- Separate Ruins biome
-		- Marsh biome
+		//- Marsh biome
 		- Tree distance rules
 			- Or maybe experiment with reducing tree spawn probability so they are sparse enough
 		- More stuff to spawn in swamp

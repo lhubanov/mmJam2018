@@ -39,7 +39,6 @@ namespace ProceduralGeneration.Map
 
         private TileLookup lookup;
 
-        // Note: these could be HashSets?
         private HashSet<Edge> edges;
         private HashSet<Center> centers;
 
@@ -142,9 +141,11 @@ namespace ProceduralGeneration.Map
             return null;
         }
 
+        // FIXME: This is a bit weird - review and refactor
+        // Assigns first-pass biome/conditions
         public void Initialize()
         {
-            // Assign biome here
+            // FIXME: Test lack of water && ocean checkign doesn't create weird
             bool hasOceanNeighbours = HasOceanNeighbours();
             bool hasLandNeighbours = HasLandNeighbours();
 
@@ -153,29 +154,29 @@ namespace ProceduralGeneration.Map
                 if (hasOceanNeighbours) {
                     Ocean = true;
                 }
+                // NB! This needs verifying as I imagine we can get marshes mid-ocean?
+                else {
+                    Ocean = false;
+                    Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
+                }
             }
 
-            if (Water && Ocean || IsStrayIslandTile())
+            if (Ocean || IsStrayIslandTile())
             {
                 Biome = BiomeFactory.CreateBiome(BiomeType.OceanBiome);
                 Elevation = 0;
             }
-            else
+            else if(Biome is Biome.Biome)
             {
-                if(hasLandNeighbours && hasOceanNeighbours)
-                {
+                Water = false;
+
+                if (hasLandNeighbours && hasOceanNeighbours) {
                     Biome = BiomeFactory.CreateBiome(BiomeType.BeachBiome);
                     Elevation = 1;
-
-                    Water = false;
                     Coast = true;
-                }
-                else
-                {
-                    Water = false;
-                    Coast = false;
-
+                } else {
                     Elevation = 0;
+                    Coast = false;
                 }
             }
         }

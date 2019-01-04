@@ -27,7 +27,6 @@ namespace ProceduralGeneration.Biome
                   }, 
                   parent)
         {
-            biomeType = BiomeType.GrasslandBiome;
             HasSpawned = false;
 
             ruinSpawnProbability = (spawnData as GrasslandProbabilities).ruinSpawn;

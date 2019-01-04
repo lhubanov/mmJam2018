@@ -22,7 +22,6 @@ namespace ProceduralGeneration.Biome
                   }, 
                   parent)
         {
-            biomeType = BiomeType.ForestBiome;
             HasSpawned = false;
 
             treeSpawnProbability = (spawnData as ForestProbabilities).treeSpawn;
