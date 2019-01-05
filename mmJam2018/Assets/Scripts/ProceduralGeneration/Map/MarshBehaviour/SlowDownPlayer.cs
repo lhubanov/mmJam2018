@@ -3,7 +3,7 @@
 using UnityEngine;
 using Assets.Scripts;
 
-public class MarshTile : MonoBehaviour, ISlowDownPlayer
+public class SlowDownPlayer : MonoBehaviour, ISlowDownPlayer
 {
     public float GetSpeedReduction()
     {
