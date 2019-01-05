@@ -154,13 +154,13 @@ namespace ProceduralGeneration.Map
                     Ocean = true;
                 }
                 
-                else {
-                    Ocean = false;
-                    Coast = false;
+                //else {
+                //    Ocean = false;
+                //    Coast = false;
 
-                    Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
-                    Elevation = 0;
-                }
+                //    Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
+                //    Elevation = 0;
+                //}
             }
 
             if (Ocean || IsStrayIslandTile())

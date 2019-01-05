@@ -138,6 +138,7 @@ namespace ProceduralGeneration.Map
             // FIXME: Refactor this, to also use noise function?
             HashSet<Center> coastalTiles = InitializeTiles(centers);
             StrayIslandPostProcessing(centers);
+            GenerateMarsh(islandTiles);
 
             SetElevation(coastalTiles);
             AssignBiomes(islandTiles);
@@ -281,6 +282,16 @@ namespace ProceduralGeneration.Map
             }
         }
 
+
+        private void GenerateMarsh(IEnumerable<Center> tiles)
+        {
+            foreach(Center center in tiles)
+            {
+                if (center.Water) {
+                    center.Biome = biomeFactory.CreateBiome(BiomeType.MarshBiome);
+                }
+            }
+        }
 
         private float GetNoiseValFromPosition(float x, float y)
         {
