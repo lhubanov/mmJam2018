@@ -8,8 +8,10 @@ using FMOD.Studio;
 
 using Assets.Scripts;
 
+// FIXME: rename
 public class Tile : MonoBehaviour
 {
+    // FIXME: Run analysis to find unreferenced properties
     [EventRef]
     public string DrainSound;
     private EventInstance drainInstance;

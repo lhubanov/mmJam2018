@@ -31,11 +31,10 @@ namespace ProceduralGeneration.Map
 
         public bool Water;
         public bool Ocean;
-
         public bool Coast;
+
         public Biome.IBiome Biome;
         public double Elevation;
-        public double Moisture;
 
         private TileLookup lookup;
 
@@ -98,7 +97,6 @@ namespace ProceduralGeneration.Map
                     bool coast, 
                     Biome.Biome biome, 
                     double elevation, 
-                    double moisture, 
                     int ind, 
                     Vector2 pos,
                     TileLookup tileLookup,
@@ -109,7 +107,6 @@ namespace ProceduralGeneration.Map
             Coast = coast;
             Biome = biome;
             Elevation = elevation;
-            Moisture = moisture;
 
             lookup = tileLookup;
 
@@ -153,14 +150,6 @@ namespace ProceduralGeneration.Map
                 if (hasOceanNeighbours) {
                     Ocean = true;
                 }
-                
-                //else {
-                //    Ocean = false;
-                //    Coast = false;
-
-                //    Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
-                //    Elevation = 0;
-                //}
             }
 
             if (Ocean || IsStrayIslandTile())
@@ -183,6 +172,14 @@ namespace ProceduralGeneration.Map
             }
         }
 
+        public void SetToMarshTile()
+        {
+            if (Water) {
+                Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
+                Elevation = 0;
+            }
+        }
+
         // i.e. all neighbours are of ocean type
         private bool IsStrayIslandTile()
         {
@@ -192,20 +189,6 @@ namespace ProceduralGeneration.Map
             }
 
             return val;
-        }
-
-        private bool IsStrayMarshTile()
-        {
-            int count = 0;
-
-            foreach (Center center in centers)
-            {
-                if(!(center.Biome is MarshBiome)) {
-                    count++;
-                }
-            }
-
-            return (count >= 3);
         }
 
         public void StrayIslandTilePostProcess()

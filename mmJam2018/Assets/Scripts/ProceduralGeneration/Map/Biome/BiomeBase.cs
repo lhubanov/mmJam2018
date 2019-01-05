@@ -13,8 +13,9 @@ namespace ProceduralGeneration.Biome
 
         protected GameObject baseSprite;
 
-        protected List<GameObject> Members;
+        protected List<GameObject> members;
         protected Transform parentGameObject;
+        protected Transform tileGameObject;
 
         public bool HasSpawned { get; protected set; }
 
@@ -26,7 +27,7 @@ namespace ProceduralGeneration.Biome
             randomNumberGen = rng;
 
             baseSprite = sprite;
-            Members = spriteWMembers;
+            members = spriteWMembers;
 
             parentGameObject = parent;
         }
@@ -35,6 +36,7 @@ namespace ProceduralGeneration.Biome
         {
             GameObject obj = Object.Instantiate(baseSprite, new Vector3(tile.Position.x, tile.Position.y, 0), Quaternion.identity);
             obj.transform.parent = parentGameObject;
+            tileGameObject = obj.transform;
         } 
 
         public abstract void SpawnMembers(Center tile);

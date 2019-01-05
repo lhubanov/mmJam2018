@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4137450844574964}
   - component: {fileID: 212897466058305156}
-  - component: {fileID: 114602520251783088}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -80,20 +79,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &114602520251783088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109272746263808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb57e4ace63a7594ab0cc8b14ebf05d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DrainSound: 
-  DeadTileLookup: {fileID: 0}
 --- !u!1 &1125569479529836
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4302161677550678}
   - component: {fileID: 65612890490997676}
-  - component: {fileID: 114011388948172606}
   m_Layer: 0
   m_Name: WaterTile
   m_TagString: Terrain
@@ -140,17 +124,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.27563, y: 4.76133, z: 8.709807}
   m_Center: {x: -0.0016107559, y: 0.0314703, z: -3.8549047}
---- !u!114 &114011388948172606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125569479529836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb57e4ace63a7594ab0cc8b14ebf05d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DrainSound: 
-  DeadTileLookup: {fileID: 11400000, guid: 85a84a27aac725041b0b413a4bfd48ed, type: 2}

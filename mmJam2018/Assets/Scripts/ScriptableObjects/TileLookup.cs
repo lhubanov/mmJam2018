@@ -8,6 +8,8 @@ namespace Assets.Scripts
     {
         // Tile prefabs used for procedurally generated region
         public GameObject WaterPrefab;
+        public GameObject MarshWaterPrefab;
+
         public GameObject SandPrefab;
         public GameObject GrassTilePrefab;
 
@@ -19,6 +21,9 @@ namespace Assets.Scripts
 
         public GameObject SingleGreenBushPrefab;
         public GameObject GreenBushGroupPrefab;
+
+        public GameObject SingleMarshBushPrefab;
+        public GameObject MarshBushGroupPrefab;
 
         public GameObject SinglePurpleBushPrefab;
         public GameObject PurpleBushGroupPrefab;

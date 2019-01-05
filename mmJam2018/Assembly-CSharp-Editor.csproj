@@ -386,13 +386,13 @@
       <Project>{D13A656E-B0DE-4FB6-2797-E59F24446F8B}</Project>
       <Name>Unity.PackageManagerUI.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{7CAAC653-F09A-2D52-D834-C2AB9B716C09}</Project>
-      <Name>Unity.TextMeshPro</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.CollabProxy.Editor.csproj">
       <Project>{EEC6FDAF-C92F-6D11-DDF2-9DCEF17111CD}</Project>
       <Name>Unity.CollabProxy.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.csproj">
+      <Project>{7CAAC653-F09A-2D52-D834-C2AB9B716C09}</Project>
+      <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Analytics.DataPrivacy.csproj">
       <Project>{D04BEF30-2507-D6D0-CD6A-33FD149113CF}</Project>

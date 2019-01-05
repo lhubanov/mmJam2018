@@ -11,33 +11,31 @@ Procedural generation:
 		- Flower Field biome
 		- Separate Ruins biome
 		//- Marsh biome
+			//- Add special marsh prefab (just of ISlowDownPlayer type or sth, player can then check upon collision enter or sth)
+			//	but need to make sure it's not ultra slow
+			//- Darker shade fo bush
+			//- Make undrainable, alongside water tile (cause it looks weird)
+			
+			- Ocean tiles spawn in-between marsh tiles
+			- Movement slow down scripting
+			
 		- Tree distance rules
 			- Or maybe experiment with reducing tree spawn probability so they are sparse enough
-	
-	- Also, try assigning coast in post-processing around the end maybe? to try solving the cliff/grassland coast issue and the inner-island beach problem
-		- Add inner passable water marsh tile prefab 
-			- Visually - water + bushes, maybe a darker shade bush (maybe procedurally spawn bushes?)
-			- Add script interaction to player that reduces speed
-			
-			Marsh tile info: 			
-				- Maybe add a special type of inner-island/marsh water, which can be drained? - investigate implementation - may be able to do via collider triggers enter-exit setting a max speed var
-					- Traversable, slowing down player movement speed (?) and so it looks as if model legs descend in the "marsh" sprite - might require some visual trickery
 					
 	- Create proper container classes at one point (probabilities and MapSettings need constructors etc.)
 				
 	- Find way to add noise to sprite edges (a-la Amit's island generation)
 	
-	- Expose elevation on a tile-script level - assign post-initialization and make each tile have a base interface, which this is assigned through
-	
-	- Add new colliders to member prefabs (trees, pillars etc.) and sort their order
-	- Make player collider smaller
+	- Add new colliders to member prefabs (trees, pillars etc.)
+	- Sort out sprite layer order incl player interactions
+	//- Make player collider smaller
 	
 	- Refactor the biome constructors that make a new List() in constructor call instead of done in factory
 		- Or split grassland into several different biomes
 		
 	- There a lot of small refactorings to be done in FIXME comments - go through them
 	
-	- Flower patch camera bug - some of the flowers disappear, as char walks on them
+	//- Flower patch camera bug - some of the flowers disappear, as char walks on them
 	- Tree does not drain (need to double-check tree prefab's attached script and what its looking for)
 	
 --------------------------------------------------------------------------------------

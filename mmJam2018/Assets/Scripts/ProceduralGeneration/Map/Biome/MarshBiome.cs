@@ -12,10 +12,10 @@ namespace ProceduralGeneration.Biome
 
         public MarshBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
             : base(seedBasedRng, 
-                  tileLookup.WaterPrefab, 
+                  tileLookup.MarshWaterPrefab, 
                   new List<GameObject> {
-                      tileLookup.SingleGreenBushPrefab,
-                      tileLookup.GreenBushGroupPrefab
+                      tileLookup.SingleMarshBushPrefab,
+                      tileLookup.MarshBushGroupPrefab
                   }, 
                   parent)
         {
@@ -39,10 +39,10 @@ namespace ProceduralGeneration.Biome
             if (randomNumberGen.Next(0, 100) < bushSpawnProbability)
             {
                 // Randomly select member to spawn from list of members
-                int member = randomNumberGen.Next(Members.Count);
+                int member = randomNumberGen.Next(members.Count);
 
-                GameObject obj = Object.Instantiate(Members[member], new Vector3(tile.Position.x, tile.Position.y, 0), Quaternion.identity);
-                obj.transform.parent = parentGameObject;
+                GameObject obj = Object.Instantiate(members[member], new Vector3(tile.Position.x, tile.Position.y, 0), Quaternion.identity);
+                obj.transform.parent = tileGameObject;
                 HasSpawned = true;
             }
         }

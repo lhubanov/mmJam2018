@@ -36,16 +36,19 @@ public class ProximityScanner : MonoBehaviour
         Collider[] objectsInProximity = GetAllObjectsInProximity();
         for(int i = 0; i < objectsInProximity.Length; i++)
         {
-            switch (objectsInProximity[i].tag)
-            {
-                case "Terrain":
-                    objectsInProximity[i].GetComponent<Tile>().DrainTile();
-                    heldEnergyManager.IncreaseHeldEnergy(EnergyGainRateTile);
-                    break;
-                case "Enemy":
-                    objectsInProximity[i].GetComponentInChildren<EnemyAnimationManager>().PlayDeathAnimation();
-                    heldEnergyManager.IncreaseHeldEnergy(EnergyGainRateEnemy);
-                    break;
+            if(objectsInProximity[i].GetComponent<Tile>() != null)
+            { 
+                switch (objectsInProximity[i].tag)
+                {
+                    case "Terrain":
+                        objectsInProximity[i].GetComponent<Tile>().DrainTile();
+                        heldEnergyManager.IncreaseHeldEnergy(EnergyGainRateTile);
+                        break;
+                    case "Enemy":
+                        objectsInProximity[i].GetComponentInChildren<EnemyAnimationManager>().PlayDeathAnimation();
+                        heldEnergyManager.IncreaseHeldEnergy(EnergyGainRateEnemy);
+                        break;
+                }
             }
         }
     }

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaterPrefab: {fileID: 1125569479529836, guid: 12039bc5cac7c764bb2c9796b4d23ed8,
     type: 3}
+  MarshWaterPrefab: {fileID: 1163456094162771698, guid: a34d3da738f219b4bbe93beef8e89ce4,
+    type: 3}
   SandPrefab: {fileID: 1540279273266704, guid: 60d0bb0a9843da14bb15b9e14ba44c15, type: 3}
   GrassTilePrefab: {fileID: 1540279273266704, guid: 60d0bb0a9843da14bb15b9e14ba44c15,
     type: 3}
@@ -28,6 +30,10 @@ MonoBehaviour:
   SingleGreenBushPrefab: {fileID: 7513994847087974937, guid: 30cba013685126d4a8e88ddd77af3964,
     type: 3}
   GreenBushGroupPrefab: {fileID: 731964602346817669, guid: 3be2d286f0c0b744e9deca3ab437eb9e,
+    type: 3}
+  SingleMarshBushPrefab: {fileID: 4492908530267929517, guid: f4e235d55d4e988458350a3acb174337,
+    type: 3}
+  MarshBushGroupPrefab: {fileID: 8172974754298262596, guid: c2c26cdd288934b45a2ed722de27e5ae,
     type: 3}
   SinglePurpleBushPrefab: {fileID: 891945290631675214, guid: 60d150c69972ae849819d0fe116a5175,
     type: 3}

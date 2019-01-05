@@ -137,8 +137,10 @@ namespace ProceduralGeneration.Map
             
             // FIXME: Refactor this, to also use noise function?
             HashSet<Center> coastalTiles = InitializeTiles(centers);
-            StrayIslandPostProcessing(centers);
+
+            // FIXME: Do this in a Center method
             GenerateMarsh(islandTiles);
+            StrayIslandPostProcessing(centers);
 
             SetElevation(coastalTiles);
             AssignBiomes(islandTiles);
@@ -158,7 +160,7 @@ namespace ProceduralGeneration.Map
         private void CreateDefaultNodes()
         {
             List<List<Center>> nodesMap = new List<List<Center>>();
-            Root = new Center(true, true, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, 0, 0, new Vector2(mapBotLeft.x, mapBotLeft.y), tileLookup, biomeFactory);
+            Root = new Center(true, true, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, 0, new Vector2(mapBotLeft.x, mapBotLeft.y), tileLookup, biomeFactory);
 
             float x = mapBotLeft.x;
             float y = mapBotLeft.y;
@@ -178,7 +180,7 @@ namespace ProceduralGeneration.Map
                         continue;
                     }
 
-                    Center node = new Center(false, false, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, 0, Convert.ToInt32(x + y), new Vector2(x, y), tileLookup, biomeFactory);
+                    Center node = new Center(false, false, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, Convert.ToInt32(x + y), new Vector2(x, y), tileLookup, biomeFactory);
 
                     if (IsOnMapEdge(node)) {
                         node.Water = true;
@@ -283,13 +285,11 @@ namespace ProceduralGeneration.Map
         }
 
 
-        private void GenerateMarsh(IEnumerable<Center> tiles)
+        private void GenerateMarsh(IEnumerable<Center> nonOceanTiles)
         {
-            foreach(Center center in tiles)
+            foreach(Center center in nonOceanTiles)
             {
-                if (center.Water) {
-                    center.Biome = biomeFactory.CreateBiome(BiomeType.MarshBiome);
-                }
+                center.SetToMarshTile();
             }
         }
 

@@ -4392,6 +4392,26 @@ PrefabInstance:
       propertyPath: TurningCooldown
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 65513658059832662, guid: 2ee10cf712108e04280762ec57e0a8d4,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.7671165
+      objectReference: {fileID: 0}
+    - target: {fileID: 65513658059832662, guid: 2ee10cf712108e04280762ec57e0a8d4,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.06883049
+      objectReference: {fileID: 0}
+    - target: {fileID: 65513658059832662, guid: 2ee10cf712108e04280762ec57e0a8d4,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4.322097
+      objectReference: {fileID: 0}
+    - target: {fileID: 65513658059832662, guid: 2ee10cf712108e04280762ec57e0a8d4,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.2189517
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ee10cf712108e04280762ec57e0a8d4, type: 3}
 --- !u!1 &655409876
