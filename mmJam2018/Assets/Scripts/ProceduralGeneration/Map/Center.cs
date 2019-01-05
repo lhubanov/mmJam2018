@@ -145,7 +145,6 @@ namespace ProceduralGeneration.Map
         // Assigns first-pass biome/conditions
         public void Initialize()
         {
-            // FIXME: Test lack of water && ocean checkign doesn't create weird
             bool hasOceanNeighbours = HasOceanNeighbours();
             bool hasLandNeighbours = HasLandNeighbours();
 
@@ -154,9 +153,11 @@ namespace ProceduralGeneration.Map
                 if (hasOceanNeighbours) {
                     Ocean = true;
                 }
-                // NB! This needs verifying as I imagine we can get marshes mid-ocean?
+                
                 else {
                     Ocean = false;
+                    Coast = false;
+
                     Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
                     Elevation = 0;
                 }
@@ -167,7 +168,7 @@ namespace ProceduralGeneration.Map
                 Biome = BiomeFactory.CreateBiome(BiomeType.OceanBiome);
                 Elevation = 0;
             }
-            else if(Biome is Biome.Biome)
+            else
             {
                 Water = false;
 
@@ -193,14 +194,25 @@ namespace ProceduralGeneration.Map
             return val;
         }
 
+        private bool IsStrayMarshTile()
+        {
+            int count = 0;
+
+            foreach (Center center in centers)
+            {
+                if(!(center.Biome is MarshBiome)) {
+                    count++;
+                }
+            }
+
+            return (count >= 3);
+        }
+
         public void StrayIslandTilePostProcess()
         {
             if (IsStrayIslandTile()) {
                 Biome = BiomeFactory.CreateBiome(BiomeType.OceanBiome);
                 Elevation = 0;
-
-                // FIXME: This doesn't actually work, as the Biome has already spawned whatever it has spawned
-                //Biome.SpawnSprite(this);
             }
         }
 

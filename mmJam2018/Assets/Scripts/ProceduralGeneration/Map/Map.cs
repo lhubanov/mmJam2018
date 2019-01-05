@@ -137,12 +137,10 @@ namespace ProceduralGeneration.Map
             
             // FIXME: Refactor this, to also use noise function?
             HashSet<Center> coastalTiles = InitializeTiles(centers);
+            StrayIslandPostProcessing(centers);
 
             SetElevation(coastalTiles);
             AssignBiomes(islandTiles);
-
-            // FIXME: Does this actually do anything? think it just sets a Biome
-            StrayIslandPostProcessing(centers);
 
             SpawnSprites(centers);
 
