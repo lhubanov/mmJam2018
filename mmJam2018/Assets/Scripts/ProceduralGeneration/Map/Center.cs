@@ -145,15 +145,9 @@ namespace ProceduralGeneration.Map
             bool hasOceanNeighbours = HasOceanNeighbours();
             bool hasLandNeighbours = HasLandNeighbours();
 
-            if (Water)
+            if ((Water && hasOceanNeighbours) || IsStrayIslandTile())
             {
-                if (hasOceanNeighbours) {
-                    Ocean = true;
-                }
-            }
-
-            if (Ocean || IsStrayIslandTile())
-            {
+                Ocean = true;
                 Biome = BiomeFactory.CreateBiome(BiomeType.OceanBiome);
                 Elevation = 0;
             }
@@ -175,7 +169,8 @@ namespace ProceduralGeneration.Map
         public void SetToMarshTile()
         {
             //if (Water || Ocean) {
-            if(Biome is Biome.OceanBiome) {
+            if(Water) { 
+                //(Biome is Biome.OceanBiome)) {
                 Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
                 Elevation = 0;
             }
@@ -190,14 +185,6 @@ namespace ProceduralGeneration.Map
             }
 
             return val;
-        }
-
-        public void StrayIslandTilePostProcess()
-        {
-            if (IsStrayIslandTile()) {
-                Biome = BiomeFactory.CreateBiome(BiomeType.OceanBiome);
-                Elevation = 0;
-            }
         }
 
         private bool HasLandNeighbours()

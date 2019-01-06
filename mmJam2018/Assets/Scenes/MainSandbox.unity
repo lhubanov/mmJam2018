@@ -315,7 +315,7 @@ MonoBehaviour:
   Seed: 
   tileSize: 5
   oceanThreshold: 0.9
-  chanceIslandTileIsWater: 0.475
+  chanceIslandTileIsWater: 0.52
   elevationIncreaseRate: 0.95
   spawningIterations: 2
   noiseScale: 0.95
@@ -4405,12 +4405,12 @@ PrefabInstance:
     - target: {fileID: 65513658059832662, guid: 2ee10cf712108e04280762ec57e0a8d4,
         type: 3}
       propertyPath: m_Size.y
-      value: 4.322097
+      value: 3.985361
       objectReference: {fileID: 0}
     - target: {fileID: 65513658059832662, guid: 2ee10cf712108e04280762ec57e0a8d4,
         type: 3}
       propertyPath: m_Center.y
-      value: -0.2189517
+      value: -0.38732052
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ee10cf712108e04280762ec57e0a8d4, type: 3}

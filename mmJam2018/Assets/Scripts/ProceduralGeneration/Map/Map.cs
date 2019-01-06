@@ -77,22 +77,6 @@ namespace ProceduralGeneration.Map
             InitConstants();
         }
 
-        // Maybe just deprecate this?
-        public Map(float tilesize, string seed, Vector3 regionTopLeft, Vector3 regionBotRight, TileLookup lookup)
-        {
-            // FIXME:   If this strange conversion needs to happen, probably need to just change the input Vector3s
-            mapBotLeft = new Vector2(regionTopLeft.x, regionBotRight.y);
-            mapTopRight = new Vector2(regionBotRight.x, regionTopLeft.y);
-
-            mapWidth = Mathf.Abs(mapTopRight.x - mapBotLeft.x);
-            mapHeight = Mathf.Abs(mapTopRight.y - mapBotLeft.y);
-
-            tileSize = tilesize;
-            tileLookup = lookup;
-
-            InitConstants();
-        }
-
         private void InitConstants()
         {
             rng = new System.Random(rngSeed.GetHashCode());
@@ -101,18 +85,11 @@ namespace ProceduralGeneration.Map
 
             mapWidth = Mathf.Abs(mapTopRight.x - mapBotLeft.x);
             mapHeight = Mathf.Abs(mapTopRight.y - mapBotLeft.y);
-
-            // FIXME:   Define an actual formula for this eventually
-            //          (+ the above is mostly due to the calculation saving 0 always if not done this way - investigate)
-            //double widthInTiles = mapWidth / tileSize;
-            //double coeff = (tileSize / widthInTiles) * elevationIncreaseMultiplier;
-            //elevationIncreaseRate = coeff;
         }
 
         private bool IsOnMapEdge(INode node)
         {
-            return (node.Position.x == mapBotLeft.x)// || node.Position.x == mapTopRight.x) 
-                || (node.Position.y == mapBotLeft.y);// || node.Position.y == mapTopRight.y);
+            return (node.Position.x == mapBotLeft.x || node.Position.x == mapTopRight.x);
         }
 
         private bool IsOceanTile(Vector2 pos)
@@ -120,11 +97,7 @@ namespace ProceduralGeneration.Map
             var xMaxThreshold = mapTopRight.x  - (mapWidth * (1 - oceanThreshold));
             var xMinThreshold = mapBotLeft.x + (mapWidth * (1 - oceanThreshold));
 
-            //var yMaxThreshold = mapTopRight.y  - (mapHeight * (1- oceanThreshold));
-            //var yMinThreshold = mapBotLeft.y + (mapHeight * (1 - oceanThreshold));
-
             return (pos.x > xMaxThreshold || pos.x < xMinThreshold);
-                //|| (pos.y > yMaxThreshold || pos.y < yMinThreshold);
         }
 
         public void Generate()
@@ -135,11 +108,8 @@ namespace ProceduralGeneration.Map
             HashSet<Center> islandTiles = GenerateOcean(centers);
             GenerateIsland(islandTiles);
 
-            // FIXME: Refactor this, to also use noise function?
             HashSet<Center> coastalTiles = InitializeTiles(centers);
-
             GenerateMarsh(islandTiles);
-            StrayIslandPostProcessing(centers);
 
             SetElevation(coastalTiles);
             AssignBiomes(islandTiles);
@@ -194,13 +164,6 @@ namespace ProceduralGeneration.Map
 
                 nodesMap.Add(row);
                 y += tileSize;
-            }
-        }
-
-        private void StrayIslandPostProcessing(IEnumerable<Center> tiles)
-        {
-            foreach(Center node in tiles) {
-                node.StrayIslandTilePostProcess();
             }
         }
 
@@ -280,8 +243,7 @@ namespace ProceduralGeneration.Map
 
         private void GenerateMarsh(IEnumerable<Center> nonOceanTiles)
         {
-            foreach(Center center in nonOceanTiles)
-            {
+            foreach(Center center in nonOceanTiles) {
                 center.SetToMarshTile();
             }
         }
