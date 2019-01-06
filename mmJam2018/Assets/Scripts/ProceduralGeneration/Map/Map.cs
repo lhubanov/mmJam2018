@@ -346,7 +346,6 @@ namespace ProceduralGeneration.Map
             {
                 if (tile.Biome is Biome.Biome) {
                     tile.SetBiomeBasedOnElevation();
-                    tile.SpawnMembers();
                 }
             }
         }
