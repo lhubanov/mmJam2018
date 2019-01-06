@@ -174,7 +174,8 @@ namespace ProceduralGeneration.Map
 
         public void SetToMarshTile()
         {
-            if (Water) {
+            //if (Water || Ocean) {
+            if(Biome is Biome.OceanBiome) {
                 Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
                 Elevation = 0;
             }

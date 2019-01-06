@@ -17,6 +17,7 @@ Procedural generation:
 			//- Make undrainable, alongside water tile (cause it looks weird)
 			
 			- Ocean tiles spawn in-between marsh tiles
+			- WHY ARE THE ROSEBUSHES PARENTING WEIRD AND NOT DESPAWNING ANKLJGHASNLKHKLS
 			- Movement slow down scripting
 			
 		- Tree distance rules

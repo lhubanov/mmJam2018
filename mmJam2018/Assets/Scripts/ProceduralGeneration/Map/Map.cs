@@ -134,11 +134,10 @@ namespace ProceduralGeneration.Map
 
             HashSet<Center> islandTiles = GenerateOcean(centers);
             GenerateIsland(islandTiles);
-            
+
             // FIXME: Refactor this, to also use noise function?
             HashSet<Center> coastalTiles = InitializeTiles(centers);
 
-            // FIXME: Do this in a Center method
             GenerateMarsh(islandTiles);
             StrayIslandPostProcessing(centers);
 
@@ -146,12 +145,6 @@ namespace ProceduralGeneration.Map
             AssignBiomes(islandTiles);
 
             SpawnSprites(centers);
-
-            // Post processing runs to spawn tile/biome respective members (bushes, ruins etc.)
-            // Note: This just calls the tile.Biome.Spawn(), so can be done on all tiles,
-            //       if e.g. stuff needs to spawn in-ocean. Feeding it only island tiles for now
-            //SpawnMembers(islandTiles, spawningIterations);
-
             SpawnMembers(centers, spawningIterations);
         }
 
@@ -305,7 +298,6 @@ namespace ProceduralGeneration.Map
         }
 
 
-        // FIXME: Refactor this, to also use noise function!
         private HashSet<Center> InitializeTiles(IEnumerable<Center> centers)
         {
             HashSet<Center> coast = new HashSet<Center>();
