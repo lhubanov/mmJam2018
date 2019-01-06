@@ -18,6 +18,7 @@ Procedural generation:
 			
 			- Ocean tiles spawn in-between marsh tiles
 			- WHY ARE THE ROSEBUSHES PARENTING WEIRD AND NOT DESPAWNING ANKLJGHASNLKHKLS
+				- Ok, they are all parenting weird actually- the parent tile thing might nto be working
 			- Movement slow down scripting
 			
 		- Tree distance rules
