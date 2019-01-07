@@ -23,6 +23,8 @@ Procedural generation:
 --------------------------------------------------------------------------------------
 There are a bunch of tag comparisons worth refactoring in Player code
 
+Player controller general refactor
+
 Add Start and end areas, which are not Proc Gen'd
 	- Starting areas
 		- Mom nest, surrounded by trees
@@ -38,17 +40,26 @@ Make sure there's a fail state etc.
 
 Draw wisp pixel art sprite + spritesheet
 
-Pick-up orb animation
+Pick-up orb animation (leave branch in existence)
+
+Teleportation back to mum
 	
 Intro
+	- UI
+		- Press enter to start
+		- Controls on lhs/rhs (find key icons to add)
+			- Drain button
+			- Movement
+			- Teleport back to Mum button
+	- Upon pressing enter
+		- Disable UI
+		- Script effect to change camera Field of View from 150 to 50 at some rate (maybe slowly?)
+			- Make sure there's enough ocean present for this effect to be possible
+		
 Ending
-UI & Tutorials
+	- Play last clip
+	- Fade to black
 		
 Dialogue in-betweeen (requires more states) or just change
-Generify branch animation
-
-Refactor input controller (it does not feel good + code is messy)
-Teleportation back to mum?
-	- Learn after longer voice clip
 
 
