@@ -53,27 +53,27 @@ namespace Assets.Scripts
     public class ForestProbabilities : IContainSpawnData
     {
         [Range(0, 100)]
-        public float treeSpawn = 25;
+        public float treeSpawn = 20;
     }
 
     [System.Serializable]
     public class GrasslandProbabilities : IContainSpawnData
     {
         [Range(0, 100)]
-        public float ruinSpawn = 15;
+        public float memberSpawn = 15;
     }
 
     [System.Serializable]
     public class RosepatchProbabilities : IContainSpawnData
     {
         [Range(0, 100)]
-        public float bushSpawn = 40;
+        public float bushSpawn = 30;
     }
 
     [System.Serializable]
     public class MarshProbabilities : IContainSpawnData
     {
         [Range(0, 100)]
-        public float bushSpawn = 40;
+        public float bushSpawn = 15;
     }
 }

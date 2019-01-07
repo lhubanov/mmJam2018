@@ -138,7 +138,7 @@ namespace ProceduralGeneration.Map
             return null;
         }
 
-        // FIXME: This is a bit weird - review and refactor
+        // FIXME: This is a bit weird - review and refactor - is the ocean bool actually needed?
         // Assigns first-pass biome/conditions
         public void Initialize()
         {
@@ -168,9 +168,7 @@ namespace ProceduralGeneration.Map
 
         public void SetToMarshTile()
         {
-            //if (Water || Ocean) {
             if(Water) { 
-                //(Biome is Biome.OceanBiome)) {
                 Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
                 Elevation = 0;
             }

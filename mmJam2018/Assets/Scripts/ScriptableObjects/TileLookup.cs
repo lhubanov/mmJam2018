@@ -36,11 +36,10 @@ namespace Assets.Scripts
 
         // Resource lookup table; 
 
-        // FIXME:   I hate these string comparison operations- investigate
-        //          if can be done by type somehow
+        // FIXME:   Just swap out Sprite objects instead of loading from resources - still need lookup, no string comparisons and resource loading
         public Dictionary<string, string> DeadSprites = new Dictionary<string, string>()
         {
-            { "grass pattern", "grass pattern dead"},
+            { "grass pattern_0", "grass pattern dead"},
             { "tree regular", "tree dead"},
             { "bushes_0", "bushes dead"},
             { "bushes_1", "bushes dead"},

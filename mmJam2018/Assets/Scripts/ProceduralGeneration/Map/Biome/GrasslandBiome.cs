@@ -9,7 +9,7 @@ namespace ProceduralGeneration.Biome
     public class GrasslandBiome : BiomeBase
     {
         // Probabilities
-        private float ruinSpawnProbability;
+        private float memberSpawnProbability;
 
         public GrasslandBiome(System.Random seedBasedRng, TileLookup tileLookup, Transform parent, IContainSpawnData spawnData)
             : base(seedBasedRng, 
@@ -29,7 +29,7 @@ namespace ProceduralGeneration.Biome
         {
             HasSpawned = false;
 
-            ruinSpawnProbability = (spawnData as GrasslandProbabilities).ruinSpawn;
+            memberSpawnProbability = (spawnData as GrasslandProbabilities).memberSpawn;
         }
 
         public override void SpawnMembers(Center tile)
@@ -39,11 +39,11 @@ namespace ProceduralGeneration.Biome
             }
 
             if(tile.HasNeighbourOfExBiomeType(typeof(GrasslandBiome))) {
-                float increase = ruinSpawnProbability / 2;
-                ruinSpawnProbability += increase;
+                float increase = memberSpawnProbability / 2;
+                memberSpawnProbability += increase;
             }
 
-            if(randomNumberGen.Next(0,100) < ruinSpawnProbability)
+            if(randomNumberGen.Next(0,100) < memberSpawnProbability)
             {
                 // Randomly select member to spawn from list of members
                 int member = randomNumberGen.Next(members.Count);

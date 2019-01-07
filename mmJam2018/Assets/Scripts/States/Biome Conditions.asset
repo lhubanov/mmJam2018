@@ -16,9 +16,11 @@ MonoBehaviour:
   grasslandElevation: 10
   forestElevation: 20
   RosepatchElevation: 500
-  forestProbabilities:
-    treeSpawn: 25
-  grasslandProbabilities:
-    ruinSpawn: 15
+  ForestProbabilities:
+    treeSpawn: 20
+  GrasslandProbabilities:
+    memberSpawn: 15
   RosepatchProbabilities:
-    bushSpawn: 40
+    bushSpawn: 30
+  MarshProbabilities:
+    bushSpawn: 15
