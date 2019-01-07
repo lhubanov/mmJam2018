@@ -93,7 +93,6 @@
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Edge.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Map.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\MapSettings\MapSettingsContainer.cs" />
-    <Compile Include="Assets\Scripts\ProceduralGeneration\Map\MarshBehaviour\ISlowDownPlayer.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\MarshBehaviour\SlowDownPlayer.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Node\INode.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\RegionGenerator.cs" />

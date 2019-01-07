@@ -4392,6 +4392,12 @@ PrefabInstance:
       propertyPath: TurningCooldown
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 114095550092785070, guid: 2ee10cf712108e04280762ec57e0a8d4,
+        type: 3}
+      propertyPath: WorldRules
+      value: 
+      objectReference: {fileID: 11400000, guid: 1298533f4594bc943a135c1714cc4490,
+        type: 2}
     - target: {fileID: 65513658059832662, guid: 2ee10cf712108e04280762ec57e0a8d4,
         type: 3}
       propertyPath: m_Size.x

@@ -1,6 +1,6 @@
 ﻿
 using UnityEngine;
-using System.Collections;
+
 using FMODUnity;
 using FMOD.Studio;
 
@@ -17,11 +17,17 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     private bool keyPressed = false;
-    private float NextTurn = 0;
-    private bool Talking = false;
+    private float nextTurn = 0;
+    private bool talking = false;
 
-    public float TurningCooldown = 0.5f;
-    public float Speed;
+    [SerializeField]
+    private float TurningCooldown = 0.5f;
+
+    [SerializeField]
+    private float Speed;
+
+    [SerializeField]
+    private StateMachine WorldRules;
 
     void Start()
     {
@@ -34,14 +40,8 @@ public class PlayerController : MonoBehaviour
         animator.Play("playerIdle");
     }
 
-
-    private void Update()
-    {
-
-    }
-
-    // This is in heavy need of refactoring
-    void FixedUpdate()
+    // FIXME: This is in heavy need of refactoring
+    void Update()
     {
         if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
             keyPressed = true;
@@ -51,38 +51,40 @@ public class PlayerController : MonoBehaviour
 
         //Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
-        if ((moveHorizontal < 0) && Time.time > NextTurn && keyPressed)
+        if ((moveHorizontal < 0) && Time.time > nextTurn && keyPressed)
         {
-            NextTurn = Time.time + TurningCooldown;
+            nextTurn = Time.time + TurningCooldown;
             sprite.flipX = true;
             animator.Play("playerSideWalk");
         }
-        else if (moveHorizontal > 0 && keyPressed && Time.time > NextTurn)
+        else if (moveHorizontal > 0 && keyPressed && Time.time > nextTurn)
         {
-            NextTurn = Time.time + TurningCooldown;
+            nextTurn = Time.time + TurningCooldown;
             sprite.flipX = false;
             animator.Play("playerSideWalk");
         }
 
         //Store the current vertical input in the float moveVertical.
         float moveVertical = Input.GetAxis("Vertical");
-        if ((moveVertical < 0) && keyPressed && Time.time > NextTurn)
+        if ((moveVertical < 0) && keyPressed && Time.time > nextTurn)
         {
-            NextTurn = Time.time + TurningCooldown;
+            nextTurn = Time.time + TurningCooldown;
             animator.Play("moveDownwards");
             sprite.flipY = false;
         }
-        else if (moveVertical > 0 && keyPressed && Time.time > NextTurn)
+        else if (moveVertical > 0 && keyPressed && Time.time > nextTurn)
         {
-            NextTurn = Time.time + TurningCooldown;
+            nextTurn = Time.time + TurningCooldown;
             animator.Play("moveUpwards");
         }
 
 
-        if (!Input.GetButton("Fire2") && !Talking)
+        if (!Input.GetButton("Fire2") && !talking)
         {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-            rbody.AddForce(movement * Speed);
+            float slowedDownSpeed = Speed - WorldRules.PlayerMovementSlowdown;
+
+            rbody.AddForce(movement * slowedDownSpeed);
         }
     }
 }

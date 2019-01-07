@@ -3,10 +3,27 @@
 using UnityEngine;
 using Assets.Scripts;
 
-public class SlowDownPlayer : MonoBehaviour, ISlowDownPlayer
+public class SlowDownPlayer : MonoBehaviour
 {
-    public float GetSpeedReduction()
+    [SerializeField]
+    private StateMachine WorldRules;
+
+    [SerializeField]
+    private float slowdown = 5.0f;
+
+    private void OnTriggerEnter(Collider other)
     {
-        throw new NotImplementedException();
+        PlayerController player = other.GetComponent<PlayerController>();
+        if(player != null) {
+            WorldRules.PlayerMovementSlowdown = slowdown;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        PlayerController player = other.GetComponent<PlayerController>();
+        if (player != null) {
+            WorldRules.PlayerMovementSlowdown = 0;
+        }
     }
 }

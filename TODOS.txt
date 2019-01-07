@@ -6,14 +6,15 @@ Steering:
 
 --------------------------------------------------------------------------------------
 Procedural generation:
+
+	- Add constructors etc to container classes (Probabilities, MapSettings etc.)
 	
-	//- Marsh biome
-		- Movement slow down scripting
-					
-	- Create proper container classes at one point (probabilities and MapSettings need constructors etc.)
-	- Noise mask cleanup
-	- Add Noise mask to water tiles
+	- Create higher fidelity noise mask for water and grass tiles
+	- Figure out why sprite masks cause editor issues (does build share said framerate issues?)
+	
 	- Biome constructors are a bit messy once more
+	
+	- Rosebushes disappear on and off
 	
 	- There a lot of small refactorings to be done in FIXME comments - go through them
 	- Enemy spawning in Rosepatch

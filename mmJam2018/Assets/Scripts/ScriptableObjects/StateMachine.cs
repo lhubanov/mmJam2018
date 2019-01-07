@@ -13,6 +13,8 @@ public class StateMachine : ScriptableObject
     public float HeldEnergy;
     public float MomHealth;
 
+    public float PlayerMovementSlowdown;
+
     // Audio references
     [EventRef]
     public string SnoringSound;

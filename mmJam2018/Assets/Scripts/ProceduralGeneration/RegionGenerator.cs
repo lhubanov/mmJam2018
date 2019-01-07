@@ -116,7 +116,7 @@ public class RegionGenerator : MonoBehaviour
         foreach(Transform child in transform)
         {
             if (child.GetComponent<Tile>() != null ||
-                child.GetComponent<ISlowDownPlayer>() != null)
+                child.GetComponent<SlowDownPlayer>() != null)
             {
                 Destroy(child.gameObject);
             }
