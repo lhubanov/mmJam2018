@@ -7,47 +7,17 @@ Steering:
 --------------------------------------------------------------------------------------
 Procedural generation:
 	
-	- Might need to add rules (e.g. positions for spawning ruins/ ruin item selection etc.)
-		
-		//- Flower Field biome - Decided not to
-		//- Separate Ruins biome - Decided not to
-		
-		//- Marsh biome
-			//- Add special marsh prefab (just of ISlowDownPlayer type or sth, player can then check upon collision enter or sth)
-			//	but need to make sure it's not ultra slow
-			//- Darker shade fo bush
-			//- Make undrainable, alongside water tile (cause it looks weird)
-			
-			//- Ocean tiles spawn in-between marsh tiles - was the stray island post-processing
-			//- WHY ARE THE ROSEBUSHES PARENTING WEIRD AND NOT DESPAWNING ANKLJGHASNLKHKLS
-				//- Ok, they are all parenting weird actually- the parent tile thing might nto be working - there was a wild SpawnMembers() call
-			
-			- Movement slow down scripting
-			
-		//- Tree distance rules
-			//- Or maybe experiment with reducing tree spawn probability so they are sparse enough
+	//- Marsh biome
+		- Movement slow down scripting
 					
 	- Create proper container classes at one point (probabilities and MapSettings need constructors etc.)
-				
-	- Find way to add noise to sprite edges (a-la Amit's island generation)
-	
-	//- Add new colliders to member prefabs (trees, pillars etc.)
-	//- Sort out sprite layer order incl player interactions
-		//- Trees and columns - high (as player and enemies can hide behind them)
-		//- Enemies and Player on the same level
-		//- All other grassy things - layer 1
-		
-	//- Make player collider smaller
-	
+	- Noise mask cleanup
+	- Add Noise mask to water tiles
 	- Biome constructors are a bit messy once more
-		//- Or split grassland into several different biomes
-		
+	
 	- There a lot of small refactorings to be done in FIXME comments - go through them
-	
-	//- Flower patch camera bug - some of the flowers disappear, as char walks on them
-	//- Tree does not drain (need to double-check tree prefab's attached script and what its looking for)
-	
 	- Enemy spawning in Rosepatch
+	- Refactor tile lookup to just pick Sprite object
 	
 --------------------------------------------------------------------------------------
 There are a bunch of tag comparisons worth refactoring in Player code
