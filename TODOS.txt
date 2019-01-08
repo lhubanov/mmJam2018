@@ -16,14 +16,14 @@ Procedural generation:
 	
 	- Rosebushes disappear on and off
 	
-	- There a lot of small refactorings to be done in FIXME comments - go through them
 	- Enemy spawning in Rosepatch
 	- Refactor tile lookup to just pick Sprite object
 	
+	- Go through the leftover FIXME areas
+	- Player controller general refactor
+	
 --------------------------------------------------------------------------------------
 //There are a bunch of tag comparisons worth refactoring in Player code
-
-Player controller general refactor
 
 Add Start and end areas, which are not Proc Gen'd
 	- Starting areas
