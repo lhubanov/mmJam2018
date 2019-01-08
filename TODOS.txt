@@ -31,9 +31,9 @@ Add Start and end areas, which are not Proc Gen'd
 		//- Water around
 	
 	- End area
-		- Tree of life grassland
+		//- Tree of life grassland
 		- Maybe some trees around or some asset special configuration (maybe colourful bushes of every type? Blue bushes?)
-		- Surrounding water
+		//- Surrounding water
 	
 Make sure there's a fail state etc.
 	-Audio when mom is low?
