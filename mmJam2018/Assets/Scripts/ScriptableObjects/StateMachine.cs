@@ -9,11 +9,12 @@ public class StateMachine : ScriptableObject
 {
     public IState CurrentState;
 
-    // Health bar references
-    public float HeldEnergy;
-    public float MomHealth;
+    // HUD Bars references
+    public float    HeldEnergy;
+    public float    MomHealth;
 
-    public float PlayerMovementSlowdown;
+    public float    PlayerMovementSlowdown;
+    public bool     MomStartsDying; // FIXME: This is when you start using events
 
     // Audio references
     [EventRef]
@@ -42,6 +43,8 @@ public class StateMachine : ScriptableObject
 
     public void Initialize()
     {
+        MomStartsDying = false;
+
         SnoringInstance = RuntimeManager.CreateInstance(SnoringSound);
 
         RechargeInstance = RuntimeManager.CreateInstance(RechargeSound);

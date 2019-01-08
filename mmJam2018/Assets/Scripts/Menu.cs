@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Assets.Scripts.States;
 
 public class Menu : MonoBehaviour
 {
@@ -29,14 +28,25 @@ public class Menu : MonoBehaviour
 
         hud.SetActive(false);
         player.SetActive(false);
+
+        title.SetActive(true);
+
+        stateMachine.CurrentState = new StartState();
+        stateMachine.CurrentState.OnEnter(stateMachine);
     }
 
     void Update()
     {
-        // If enter is pressed
-        //hud.SetActive(true);
-        //player.SetActive(true);
-        //cameraController.PlayIntro();
-        //title.SetActive(false);
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            hud.SetActive(true);
+            player.SetActive(true);
+            title.SetActive(false);
+
+            //stateMachine.CurrentState = new StartState();
+            //stateMachine.CurrentState.OnEnter(stateMachine);
+
+            cameraController.PlayIntro();
+        }
     }
 }

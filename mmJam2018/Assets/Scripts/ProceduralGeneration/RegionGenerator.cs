@@ -73,11 +73,11 @@ public class RegionGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(1))
-        {
-            DestroyAllTiles();
-            GenerateRegion();
-        }
+        //if (Input.GetMouseButton(1))
+        //{
+        //    DestroyAllTiles();
+        //    GenerateRegion();
+        //}
     }
 
     private MapSettingsContainer PackageSettings()

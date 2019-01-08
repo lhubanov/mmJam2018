@@ -2,8 +2,6 @@
 using UnityEngine;
 using FMOD.Studio;
 
-using Assets.Scripts.States;
-
 public class Mom : MonoBehaviour
 {
     public StateMachine World;
@@ -12,14 +10,12 @@ public class Mom : MonoBehaviour
     public float DrainAmount = 3;
     public float DrainSpeed = 2;
 
-	void Start ()
+    private void Update()
     {
-        World.CurrentState = new StartState();
-        World.CurrentState.OnEnter(World);
-        World.MomHealth = 100;
-
-        // TODO FROM BEFORE: Disable UI and start this after passing through a collider- exit of cave or sth like that - point post-speech when main gameplay starts
-        StartCoroutine(LoseHealthIdly());
+        if (World.MomStartsDying) {
+            StartCoroutine(LoseHealthIdly());
+            World.MomStartsDying = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

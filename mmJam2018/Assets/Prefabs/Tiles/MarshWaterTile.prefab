@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldRules: {fileID: 11400000, guid: 1298533f4594bc943a135c1714cc4490, type: 2}
+  slowdown: 8
 --- !u!1 &3468584659938452693
 GameObject:
   m_ObjectHideFlags: 0

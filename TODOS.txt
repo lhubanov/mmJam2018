@@ -14,7 +14,7 @@ Procedural generation:
 	
 	- Biome constructors are a bit messy once more
 	
-	- Rosebushes disappear on and off
+	- Rosebushes disappearance bug (sprite layers seem OK)
 	
 	- Enemy spawning in Rosepatch
 	- Refactor tile lookup to just pick Sprite object
@@ -23,17 +23,7 @@ Procedural generation:
 	- Player controller general refactor
 	
 --------------------------------------------------------------------------------------
-//There are a bunch of tag comparisons worth refactoring in Player code
 
-//Add Start and end areas, which are not Proc Gen'd
-	//- Starting areas
-		//- Mom nest, surrounded by trees
-		//- Water around
-	
-	//- End area
-		//- Tree of life grassland
-		//- Maybe some trees around or some asset special configuration (maybe colourful bushes of every type? Blue bushes?)
-		//- Surrounding water
 	
 Make sure there's a fail state etc.
 	-Audio when mom is low?
@@ -47,23 +37,14 @@ Teleportation back to mum
 		- Same as jump up
 		- Fade screen to white
 	- Move to startingPosition by setting transform manually?
-	
-Intro
-	- UI
-		//- Press enter to start
-		//- Controls on lhs/rhs (find key icons to add)
-			//- Drain button
-			//- Movement
-			//- Teleport back to Mum button
-	- Upon pressing enter
-		- Disable UI
-		- Script effect to change camera Field of View from 148 to 70 at some rate (maybe slowly?)
 		
 Ending
 	- Play last clip
 	- Fade to black
 		
 Dialogue in-betweeen (requires more states) or just change
+
+Check enemy behaviour works ok
 
 ----------------------------------------------------------------------------
 GitHub readme

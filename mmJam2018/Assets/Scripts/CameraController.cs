@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
@@ -8,8 +9,15 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private Vector3 offset;
 
+    [SerializeField]
+    private Camera gameCamera;
+
+    [SerializeField]
+    private float zoomRate;
+
     void Start()
     {
+        gameCamera = GetComponent<Camera>();
         offset = transform.position - player.transform.position;
 	}
 
@@ -20,6 +28,15 @@ public class CameraController : MonoBehaviour
 
     public void PlayIntro()
     {
-        // FIXME: Add zoom in script
+        StartCoroutine(ZoomInCamera());
+    }
+
+    private IEnumerator ZoomInCamera()
+    {
+        while (Camera.main.fieldOfView > 70)
+        {
+            Camera.main.fieldOfView -= Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
     }
 }

@@ -13,11 +13,19 @@ namespace Assets.Scripts.States
         {
             base.OnEnter(stateMachine);
             stateMachine.Initialize();
+            stateMachine.MomHealth = 100;
+
             PlayMusic(stateMachine);
         }
 
         public override void Update(StateMachine stateMachine)
         {
+            FMOD.Studio.PLAYBACK_STATE playbackState;
+            stateMachine.SpeechIntroInstance.getPlaybackState(out playbackState);
+
+            if (playbackState != FMOD.Studio.PLAYBACK_STATE.PLAYING && isDialogueDone) {
+                stateMachine.MomStartsDying = true;
+            }
         }
 
         public override void PlayDialogue(StateMachine stateMachine)
