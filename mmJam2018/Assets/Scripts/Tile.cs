@@ -1,17 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-using UnityEngine;
+﻿using UnityEngine;
 
 using FMODUnity;
 using FMOD.Studio;
 
 using Assets.Scripts;
 
-// FIXME: rename
 public class Tile : MonoBehaviour
 {
-    // FIXME: Run analysis to find unreferenced properties
+    // FIXME: Run analysis to find all unreferenced properties
     [EventRef]
     public string DrainSound;
     private EventInstance drainInstance;

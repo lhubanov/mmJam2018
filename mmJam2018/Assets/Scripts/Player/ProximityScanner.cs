@@ -4,7 +4,6 @@ using FMOD.Studio;
 
 public class ProximityScanner : MonoBehaviour
 {
-    // FIXME: make these necessary with that unity attribute
     private SphereCollider          tileScanner;
     private PlayerAnimationManager  playerAnimationManager;
     private PlayerSFXManager        playerSFXManager;
@@ -28,6 +27,8 @@ public class ProximityScanner : MonoBehaviour
         }
     }
 
+    // FIXME: this monstrosity
+    //          - Move Drain/Death animation call to Interface function of, say, an IDie interface
     private void DrainLife()
     {
         playerAnimationManager.AnimateLifeDrain();

@@ -38,7 +38,7 @@ namespace ProceduralGeneration.Biome
                 return;
             }
 
-            if(tile.HasNeighbourOfExBiomeType(typeof(GrasslandBiome))) {
+            if(tile.HasNeighbourWithSpawnedMembers(typeof(GrasslandBiome))) {
                 float increase = memberSpawnProbability / 2;
                 memberSpawnProbability += increase;
             }

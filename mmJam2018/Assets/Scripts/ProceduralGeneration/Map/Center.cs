@@ -207,9 +207,8 @@ namespace ProceduralGeneration.Map
             return false;
         }
 
-        // FIXME: The fact the name of this function is weird/long
-        //        probably just means it needs to be refactored/redesigned.
-        public bool HasNeighbourOfExBiomeType(Type biomeType)
+
+        public bool HasNeighbourWithSpawnedMembers(Type biomeType)
         {
             foreach(Center c in centers)
             {

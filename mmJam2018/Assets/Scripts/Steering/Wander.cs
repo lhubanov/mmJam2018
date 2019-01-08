@@ -3,8 +3,6 @@ using Assets.Scripts.Steering.SteeringData;
 
 namespace Assets.Scripts.Steering
 {
-    // FIXME:   This needs some rules to make enemies turn around,
-    //          if at the edge of the map
     public class Wander : SteeringBase
     {
         [SerializeField]

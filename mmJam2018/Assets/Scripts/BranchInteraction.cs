@@ -19,7 +19,7 @@ public class BranchInteraction : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "Player" && Input.GetButton("Fire1"))
+        if(other.GetComponent<PlayerController>() != null && Input.GetButton("Fire1"))
         {
             // Generify this
             animator.Play("BranchDisappear1");

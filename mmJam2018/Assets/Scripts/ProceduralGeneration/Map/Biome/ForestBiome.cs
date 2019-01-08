@@ -33,7 +33,7 @@ namespace ProceduralGeneration.Biome
                 return;
             }
 
-            if (tile.HasNeighbourOfExBiomeType(typeof(ForestBiome))) {
+            if (tile.HasNeighbourWithSpawnedMembers(typeof(ForestBiome))) {
                 float increase = treeSpawnProbability / 2;
                 treeSpawnProbability += increase;
             }

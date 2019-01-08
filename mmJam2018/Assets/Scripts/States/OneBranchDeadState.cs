@@ -22,7 +22,6 @@ namespace Assets.Scripts.States
         {
             if (!isDialogueDone)
             {
-                // FIXME: depending on gameplay there might be more states, actually
                 stateMachine.Speech1Instance.start();
                 isDialogueDone = true;
             }

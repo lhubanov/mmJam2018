@@ -21,7 +21,7 @@ Procedural generation:
 	- Refactor tile lookup to just pick Sprite object
 	
 --------------------------------------------------------------------------------------
-There are a bunch of tag comparisons worth refactoring in Player code
+//There are a bunch of tag comparisons worth refactoring in Player code
 
 Player controller general refactor
 

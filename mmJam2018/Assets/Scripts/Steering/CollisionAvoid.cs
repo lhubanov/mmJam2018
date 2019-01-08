@@ -24,7 +24,6 @@ namespace Assets.Scripts.Steering
             Vector3 direction = (steeringData.Target.Value - steeringData.Position.Value).normalized;
             RaycastHit hitInfo = new RaycastHit();
 
-            // FIXME: Raycasts draw up along z for some reason
             if(Physics.Raycast(steeringData.Position.Value, steeringData.Target.Value * AvoidanceRangeScale, out hitInfo, 2))
             {
                 // There is probably a better way to do this than just any firm colliders
@@ -34,10 +33,7 @@ namespace Assets.Scripts.Steering
                     Debug.Log("Raycast detected collision w/ " + hitInfo.collider.name);
                     Debug.Log("Old direction " + direction);
 
-                    // Double-check the normal does not point along Z
                     direction = hitInfo.normal.normalized;
-                    Debug.Log(string.Format("hitInfo.normal.normalized = {0}", direction));
-  
                     direction = Vector3.Scale(direction, new Vector3(MaxAvoidanceForce, MaxAvoidanceForce, MaxAvoidanceForce));
 
                     // FIXME:
@@ -48,7 +44,7 @@ namespace Assets.Scripts.Steering
                     // 90 or -90 degrees around x, maybe?
                     //
                     // Because now it keeps within bounds by backing up,
-                    // not by trying to collision avoid, but maintain course(?)
+                    // not by trying to collision avoid, but maintain course.
                     direction.z = 0;
                     Debug.Log("New direction " + direction);
                 }

@@ -24,7 +24,7 @@ public class Mom : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") {
+        if (other.GetComponent<PlayerController>() != null) {
             World.CurrentState.PlayDialogue(World);
         }
     }
@@ -32,7 +32,7 @@ public class Mom : MonoBehaviour
     // Transcends whatever world state.. I think
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && Input.GetButton("Fire2"))
+        if (other.GetComponent<PlayerController>() != null && Input.GetButton("Fire2"))
         {
             if(World.MomHealth < 120 && World.HeldEnergy > 0) { 
                 PlayRechargeSound();

@@ -3,9 +3,6 @@ using Assets.Scripts.Steering.SteeringData;
 
 namespace Assets.Scripts.Steering
 {
-    // FIXME:   Move all of this to separate steering Prefab/Component, which has all scripts attached
-    //          So that it can be plugged on top of a separate Enemy Controller script (which does things
-    //          like e.g. checking collider interactions and just calls getSteering to wander etc.)
     public class Steer : SteeringBase
     {
         private Seek                seek;
@@ -32,8 +29,6 @@ namespace Assets.Scripts.Steering
 
         [SerializeField]
         private Vector3 velocity;
-        //[SerializeField]
-        //private float maxSteeringForce = 0.2f;
 
 
         /// <summary>
@@ -95,7 +90,6 @@ namespace Assets.Scripts.Steering
             collisionAvoid  = GetComponent<CollisionAvoid>();
         }
 
-        // FIXME: Test if the velocity adding works as expected & make steering prefab
 
         // Currently trying out Weighed Truncated Running Sum with Prioritization
         // Test how Prioritized Dithering works as well (abstract each into separate method)
@@ -147,7 +141,6 @@ namespace Assets.Scripts.Steering
             // Perhaps Arrive goes here? (and is somehow not subject to the
             // running total prioritization?)
 
-            //return velocity;
             return AddForce(steeringData.Velocity.Value, velocity);
         }
     }
