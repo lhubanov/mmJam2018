@@ -26,9 +26,9 @@ Procedural generation:
 //There are a bunch of tag comparisons worth refactoring in Player code
 
 Add Start and end areas, which are not Proc Gen'd
-	- Starting areas
-		- Mom nest, surrounded by trees
-		- Water around
+	//- Starting areas
+		//- Mom nest, surrounded by trees
+		//- Water around
 	
 	- End area
 		- Tree of life grassland
