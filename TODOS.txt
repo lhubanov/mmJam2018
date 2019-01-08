@@ -32,7 +32,7 @@ Add Start and end areas, which are not Proc Gen'd
 	
 	- End area
 		//- Tree of life grassland
-		- Maybe some trees around or some asset special configuration (maybe colourful bushes of every type? Blue bushes?)
+		//- Maybe some trees around or some asset special configuration (maybe colourful bushes of every type? Blue bushes?)
 		//- Surrounding water
 	
 Make sure there's a fail state etc.

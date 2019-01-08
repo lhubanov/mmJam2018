@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5139eeb60356494a8e3956ac298a7e6, type: 3}
   m_Name: World
   m_EditorClassIdentifier: 
-  HeldEnergy: 0
+  HeldEnergy: 100.05094
   MomHealth: 73
-  MarshSlowdown: 5
+  PlayerMovementSlowdown: 5
   SnoringSound: event:/SFX/SnoringLoop
   RechargeSound: event:/SFX/PowerGive
   GameplayMusic: 
