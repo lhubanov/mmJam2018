@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject player;
+    [SerializeField]
+    private GameObject player;
+
+    [SerializeField]
     private Vector3 offset;
 
-    // Add intro motion here (can just e a left-to-right motion with a vector.lerp?)
     void Start()
     {
         offset = transform.position - player.transform.position;
@@ -17,5 +18,8 @@ public class CameraController : MonoBehaviour
         transform.position = player.transform.position + offset;
 	}
 
-
+    public void PlayIntro()
+    {
+        // FIXME: Add zoom in script
+    }
 }

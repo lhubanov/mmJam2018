@@ -25,12 +25,12 @@ Procedural generation:
 --------------------------------------------------------------------------------------
 //There are a bunch of tag comparisons worth refactoring in Player code
 
-Add Start and end areas, which are not Proc Gen'd
+//Add Start and end areas, which are not Proc Gen'd
 	//- Starting areas
 		//- Mom nest, surrounded by trees
 		//- Water around
 	
-	- End area
+	//- End area
 		//- Tree of life grassland
 		//- Maybe some trees around or some asset special configuration (maybe colourful bushes of every type? Blue bushes?)
 		//- Surrounding water
@@ -43,23 +43,32 @@ Draw wisp pixel art sprite + spritesheet
 Pick-up orb animation (leave branch in existence)
 
 Teleportation back to mum
+	- Animation
+		- Same as jump up
+		- Fade screen to white
+	- Move to startingPosition by setting transform manually?
 	
 Intro
 	- UI
-		- Press enter to start
-		- Controls on lhs/rhs (find key icons to add)
-			- Drain button
-			- Movement
-			- Teleport back to Mum button
+		//- Press enter to start
+		//- Controls on lhs/rhs (find key icons to add)
+			//- Drain button
+			//- Movement
+			//- Teleport back to Mum button
 	- Upon pressing enter
 		- Disable UI
-		- Script effect to change camera Field of View from 150 to 50 at some rate (maybe slowly?)
-			- Make sure there's enough ocean present for this effect to be possible
+		- Script effect to change camera Field of View from 148 to 70 at some rate (maybe slowly?)
 		
 Ending
 	- Play last clip
 	- Fade to black
 		
 Dialogue in-betweeen (requires more states) or just change
+
+----------------------------------------------------------------------------
+GitHub readme
+Trailer/Gameplay
+Update website + incl. trailer
+
 
 

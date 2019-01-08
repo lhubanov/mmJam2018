@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\EnemyAnimationManager.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\InputController.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\Mom.cs" />
     <Compile Include="Assets\Scripts\Player\HeldEnergyManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationManager.cs" />
