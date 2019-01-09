@@ -17,12 +17,17 @@ Procedural generation:
 	- Rosebushes disappearance bug (sprite layers seem OK)
 	
 	- Enemy spawning in Rosepatch
+		- Check enemy behaviour works ok within the island
+		
 	- Refactor tile lookup to just pick Sprite object
 	
-	- Go through the leftover FIXME areas
+	- Go through the leftover FIXMEs
 	- Player controller general refactor
+	- Add an IDie interface, to avoid that one awkward switch statement
 	
 --------------------------------------------------------------------------------------
+Music change?
+
 Mom does not start dying
 	
 Make sure there's a fail state etc.
@@ -45,12 +50,10 @@ Ending
 		
 Dialogue in-betweeen (requires more states) or just change
 
-Check enemy behaviour works ok
 
 ----------------------------------------------------------------------------
 GitHub readme
 Trailer/Gameplay
 Update website + incl. trailer
-
 
 
