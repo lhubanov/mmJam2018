@@ -23,7 +23,7 @@ Procedural generation:
 	- Player controller general refactor
 	
 --------------------------------------------------------------------------------------
-
+Mom does not start dying
 	
 Make sure there's a fail state etc.
 	-Audio when mom is low?

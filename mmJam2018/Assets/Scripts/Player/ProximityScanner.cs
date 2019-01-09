@@ -22,7 +22,7 @@ public class ProximityScanner : MonoBehaviour
 	
 	void Update()
     {
-        if (Input.GetButton("Fire1")) {
+        if (Input.GetButton("DrainEnergy")) {
             DrainLife();
         }
     }

@@ -28,7 +28,7 @@ public class Mom : MonoBehaviour
     // Transcends whatever world state.. I think
     private void OnTriggerStay(Collider other)
     {
-        if (other.GetComponent<PlayerController>() != null && Input.GetButton("Fire2"))
+        if (other.GetComponent<PlayerController>() != null && Input.GetButton("DeliverEnergy"))
         {
             if(World.MomHealth < 120 && World.HeldEnergy > 0) { 
                 PlayRechargeSound();
