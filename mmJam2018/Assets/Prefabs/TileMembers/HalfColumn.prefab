@@ -59,7 +59,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DrainSound: 
-  DeadTileLookup: {fileID: 11400000, guid: 85a84a27aac725041b0b413a4bfd48ed, type: 2}
+  isDead: 0
+  deadTileLookup: {fileID: 11400000, guid: 85a84a27aac725041b0b413a4bfd48ed, type: 2}
+  heldEnergy: 0
 --- !u!1 &8251780693175420425
 GameObject:
   m_ObjectHideFlags: 0

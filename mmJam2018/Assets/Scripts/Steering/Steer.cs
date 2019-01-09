@@ -77,7 +77,6 @@ namespace Assets.Scripts.Steering
             return true;
         }
 
-        //Start() and Awake() are not called on Prefabs (:O took me a year to find that out)
         public void Initialize()
         {
             velocity        = Vector3.zero;

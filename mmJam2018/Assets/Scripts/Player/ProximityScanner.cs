@@ -9,9 +9,6 @@ public class ProximityScanner : MonoBehaviour
     private PlayerSFXManager        playerSFXManager;
     private HeldEnergyManager       heldEnergyManager;
 
-    //public float EnergyGainRateTile = 0.5f;
-    //public float EnergyGainRateEnemy = 2f;
-
     void Start()
     {
         tileScanner             = GetComponent<SphereCollider>();

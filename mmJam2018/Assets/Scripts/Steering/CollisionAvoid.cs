@@ -30,8 +30,8 @@ namespace Assets.Scripts.Steering
                 // Interface, as usual?
                 if(!hitInfo.collider.isTrigger && hitInfo.transform != transform)
                 {
-                    Debug.Log("Raycast detected collision w/ " + hitInfo.collider.name);
-                    Debug.Log("Old direction " + direction);
+                    //Debug.Log("Raycast detected collision w/ " + hitInfo.collider.name);
+                    //Debug.Log("Old direction " + direction);
 
                     direction = hitInfo.normal.normalized;
                     direction = Vector3.Scale(direction, new Vector3(MaxAvoidanceForce, MaxAvoidanceForce, MaxAvoidanceForce));
@@ -46,7 +46,7 @@ namespace Assets.Scripts.Steering
                     // Because now it keeps within bounds by backing up,
                     // not by trying to collision avoid, but maintain course.
                     direction.z = 0;
-                    Debug.Log("New direction " + direction);
+                    //Debug.Log("New direction " + direction);
                 }
             }
 
