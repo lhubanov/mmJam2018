@@ -1,9 +1,10 @@
 ﻿
 using UnityEngine;
+using Assets.Scripts;
 using Assets.Scripts.Steering;
 using Assets.Scripts.Steering.SteeringData;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IDie, IHoldEnergy
 {
     private BoxCollider     idleMovementRange;
     private Vector3         nextIdleMovementPosition;
@@ -37,6 +38,11 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField]
     private Vector3         nextPosition;
+
+    [SerializeField]
+    private float           heldEnergy;
+
+
 
 
     private void Start()
@@ -96,5 +102,22 @@ public class EnemyController : MonoBehaviour
             player = null;
             idling = true;
         }
+    }
+
+    public float GetHeldEnergy()
+    {
+        return heldEnergy;
+    }
+
+    public void Die()
+    {
+        EnemyAnimationManager animationManager = GetComponentInChildren<EnemyAnimationManager>();
+
+        if (animationManager != null) {
+            animationManager.PlayDeathAnimation();
+        }
+
+        this.gameObject.SetActive(false);
+        Object.Destroy(this.transform.gameObject);
     }
 }

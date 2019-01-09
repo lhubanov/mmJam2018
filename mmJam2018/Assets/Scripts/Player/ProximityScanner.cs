@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using FMODUnity;
-using FMOD.Studio;
+using Assets.Scripts;
+
 
 public class ProximityScanner : MonoBehaviour
 {
@@ -9,8 +9,8 @@ public class ProximityScanner : MonoBehaviour
     private PlayerSFXManager        playerSFXManager;
     private HeldEnergyManager       heldEnergyManager;
 
-    public float EnergyGainRateTile = 0.5f;
-    public float EnergyGainRateEnemy = 2f;
+    //public float EnergyGainRateTile = 0.5f;
+    //public float EnergyGainRateEnemy = 2f;
 
     void Start()
     {
@@ -37,19 +37,15 @@ public class ProximityScanner : MonoBehaviour
         Collider[] objectsInProximity = GetAllObjectsInProximity();
         for(int i = 0; i < objectsInProximity.Length; i++)
         {
-            if(objectsInProximity[i].GetComponent<Tile>() != null)
-            { 
-                switch (objectsInProximity[i].tag)
-                {
-                    case "Terrain":
-                        objectsInProximity[i].GetComponent<Tile>().DrainTile();
-                        heldEnergyManager.IncreaseHeldEnergy(EnergyGainRateTile);
-                        break;
-                    case "Enemy":
-                        objectsInProximity[i].GetComponentInChildren<EnemyAnimationManager>().PlayDeathAnimation();
-                        heldEnergyManager.IncreaseHeldEnergy(EnergyGainRateEnemy);
-                        break;
-                }
+            IDie dying = objectsInProximity[i].GetComponent<IDie>();
+            IHoldEnergy energyHolder = objectsInProximity[i].GetComponent<IHoldEnergy>();
+
+            if (dying != null) {
+                dying.Die();
+            }
+
+            if(energyHolder != null) {
+                heldEnergyManager.IncreaseHeldEnergy(energyHolder.GetHeldEnergy());
             }
         }
     }

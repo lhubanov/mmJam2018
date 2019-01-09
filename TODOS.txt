@@ -23,7 +23,14 @@ Procedural generation:
 	
 	- Go through the leftover FIXMEs
 	- Player controller general refactor
-	- Add an IDie interface, to avoid that one awkward switch statement
+	
+	//- Add an IDie interface, to avoid that one awkward switch statement
+		- Move all non-player world interaction scripts to a World folder (incl. interfaces above), via Unity - VS seems to create oddities
+			- Set Tile HeldEnergy value in editor
+			- Check if EnemyController is enough to call enemy Die() and GetHeldEnergy() (as die is technically an AnimationManager thing)
+				- Test enemy death
+				- Assign held energy in editor to enemy as well
+		- Remove commented out ProximityScanner energy values
 	
 --------------------------------------------------------------------------------------
 Music change?

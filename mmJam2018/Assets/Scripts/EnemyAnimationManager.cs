@@ -20,7 +20,5 @@ public class EnemyAnimationManager : MonoBehaviour
     {
         animator.Play("enemyDie");
         yield return new WaitForSeconds(delay);
-        this.gameObject.SetActive(false);
-        Object.Destroy(this.transform.parent.gameObject);
     }
 }
