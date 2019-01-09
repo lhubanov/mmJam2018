@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     private bool talking = false;
 
     [SerializeField]
+    private Vector3 teleportLocation;
+
+    [SerializeField]
     private float TurningCooldown = 0.5f;
 
     [SerializeField]
@@ -43,6 +46,11 @@ public class PlayerController : MonoBehaviour
     // FIXME: This is in heavy need of refactoring
     void Update()
     {
+        if (Input.GetButton("Teleport")) {
+            transform.position = teleportLocation;
+            return;
+        }
+
         if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
             keyPressed = true;
         } else {
@@ -79,7 +87,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (!Input.GetButton("Fire2") && !talking)
+        if (!Input.GetButton("DrainEnergy") && !talking)
         {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             float slowedDownSpeed = Speed - WorldRules.PlayerMovementSlowdown;

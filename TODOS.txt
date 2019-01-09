@@ -36,7 +36,8 @@ Teleportation back to mum
 	- Animation
 		- Same as jump up
 		- Fade screen to white
-	- Move to startingPosition by setting transform manually?
+		- Need to wait for animation to be done before teleporting
+	//- Move to startingPosition by setting transform manually?
 		
 Ending
 	- Play last clip
