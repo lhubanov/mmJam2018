@@ -5,19 +5,19 @@ Steering:
 		- Hide
 
 --------------------------------------------------------------------------------------
-Procedural generation:
+Bugs and refactoring:
+--------------------------------------------------------------------------------------
+
 
 	- Add constructors etc to container classes (Probabilities, MapSettings etc.)
-	
-	- Create higher fidelity noise mask for water and grass tiles
-	- Figure out why sprite masks cause editor issues (does build share said framerate issues?)
-	
 	- Biome constructors are a bit messy once more
 	
-	- Rosebushes disappearance bug (sprite layers seem OK)
+	- Create higher fidelity noise mask for water and grass tiles
 	
-	- Enemy spawning in Rosepatch
-		- Check enemy behaviour works ok within the island
+	- Sprite mask editor framerate issues 
+		-Seems framerate issues are editor-only?
+	
+	- Rosebushes disappearance bug (sprite layers seem OK)
 		
 	- Refactor tile lookup to just pick Sprite object
 	
@@ -31,14 +31,23 @@ Procedural generation:
 				- Test enemy death
 				- Assign held energy in editor to enemy as well
 		- Remove commented out ProximityScanner energy values
+		
+	- Mom does not start dying
+	
 	
 --------------------------------------------------------------------------------------
-Music change?
+Features before announcing GitHub repo:
+--------------------------------------------------------------------------------------
 
-Mom does not start dying
+Enemy spawning in Rosepatch
+	- Check enemy behaviour works ok within the island
+	
+
+Music change?
 	
 Make sure there's a fail state etc.
-	-Audio when mom is low?
+	- Audio when mom is low?
+	- Mom death rate increase after first time back (that bit of dialogue)? - Or the other way around?
 
 Draw wisp pixel art sprite + spritesheet
 

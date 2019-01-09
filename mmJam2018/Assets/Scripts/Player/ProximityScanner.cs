@@ -27,8 +27,7 @@ public class ProximityScanner : MonoBehaviour
         }
     }
 
-    // FIXME: this monstrosity
-    //          - Move Drain/Death animation call to Interface function of, say, an IDie interface
+
     private void DrainLife()
     {
         playerAnimationManager.AnimateLifeDrain();
