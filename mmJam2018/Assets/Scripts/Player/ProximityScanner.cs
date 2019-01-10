@@ -1,20 +1,32 @@
 ﻿using UnityEngine;
 using Assets.Scripts;
 
-
+// Rename to HeldEnergyManager via Unity later
 public class ProximityScanner : MonoBehaviour
 {
     private SphereCollider          tileScanner;
     private PlayerAnimationManager  playerAnimationManager;
     private PlayerSFXManager        playerSFXManager;
-    private HeldEnergyManager       heldEnergyManager;
+
+    [SerializeField]
+    private StateMachine World;
+
+    [SerializeField]
+    private float EnergyLoseRate = 2f;
+
+    [SerializeField]
+    private float EnergyLoseDelay = 1f;
+
+    [SerializeField]
+    private float NextTick = 0f;
 
     void Start()
     {
         tileScanner             = GetComponent<SphereCollider>();
         playerAnimationManager  = GetComponentInParent<PlayerAnimationManager>();
         playerSFXManager        = GetComponentInParent<PlayerSFXManager>();
-        heldEnergyManager       = GetComponentInParent<HeldEnergyManager>();
+
+        World.HeldEnergy = 0;
     }
 	
 	void Update()
@@ -24,6 +36,10 @@ public class ProximityScanner : MonoBehaviour
         }
     }
 
+    private Collider[] GetAllObjectsInProximity()
+    {
+        return Physics.OverlapSphere(tileScanner.transform.position, tileScanner.radius);
+    }
 
     private void DrainLife()
     {
@@ -41,13 +57,33 @@ public class ProximityScanner : MonoBehaviour
             }
 
             if(energyHolder != null) {
-                heldEnergyManager.IncreaseHeldEnergy(energyHolder.GetHeldEnergy());
+                IncreaseHeldEnergy(energyHolder.GetHeldEnergy());
             }
         }
     }
 
-    private Collider[] GetAllObjectsInProximity()
+    private void IncreaseHeldEnergy(float amount)
     {
-        return Physics.OverlapSphere(tileScanner.transform.position, tileScanner.radius);
+        if (World.HeldEnergy < 100) {
+            World.HeldEnergy += amount;
+        }
+    }
+
+    private void DecreaseHeldEnergy(float amount)
+    {
+        if (World.HeldEnergy > 0) {
+            World.HeldEnergy -= amount;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<EnemyController>() != null)
+        {
+            if (Time.time > NextTick) {
+                NextTick = Time.time + EnergyLoseDelay;
+                DecreaseHeldEnergy(EnergyLoseRate);
+            }
+        }
     }
 }
