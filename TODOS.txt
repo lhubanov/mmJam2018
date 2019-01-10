@@ -33,6 +33,7 @@ Bugs and refactoring:
 	
 	- States-wise - Delete One/TwoBrancesDeadState and just leave TreeDeadState
 	- Test all the new stuff (that music gets stopped etc.)
+	- Add Mom - firstTimeBack interaction/logic & state.advanceState & whatever else callse
 	
 --------------------------------------------------------------------------------------
 Features before announcing GitHub repo:

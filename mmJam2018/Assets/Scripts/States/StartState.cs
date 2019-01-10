@@ -33,7 +33,9 @@ namespace Assets.Scripts.States
 
         public override void PlayDialogue(StateMachine stateMachine)
         {
-            if (!isDialogueDone) {
+            if (!isDialogueDone)
+            {
+                base.SetCurrentPlayingDialogue(stateMachine, stateMachine.SpeechIntroInstance);
                 stateMachine.SpeechIntroInstance.start();
                 isDialogueDone = true;
             }
