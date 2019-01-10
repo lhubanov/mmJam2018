@@ -18,15 +18,19 @@ public class Mom : MonoBehaviour
 
     [SerializeField]
     private float LowHealthThreshold = 20;
+    private Coroutine healthLossRoutine;
 
-
+    private void Start()
+    {
+        healthLossRoutine = null;
+    }
 
     private void Update()
     {
         World.CurrentState.Update(World);
 
         if (World.MomStartsDying) {
-            StartCoroutine(LoseHealthIdly());
+            healthLossRoutine = StartCoroutine(LoseHealthIdly());
             World.MomStartsDying = false;
         }
 
@@ -55,6 +59,12 @@ public class Mom : MonoBehaviour
             { 
                 World.CurrentState.PlayRechargeSound(World);
                 IncreaseHealth(RechargeSpeed);
+
+                // if(firstTime)
+                // change state
+                // play state music/ dialogue
+                // stop coroutine
+                // start again after decreaseRate vals have changed
             }
         }
     }
@@ -64,7 +74,6 @@ public class Mom : MonoBehaviour
         World.MomCurrentHealth += amount;
         World.HeldEnergy -= amount;
     }
-
 
     private bool IsHealthBelowThreshold()
     {

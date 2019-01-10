@@ -13,8 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rbody;
     private SpriteRenderer sprite;
 
-    // FIXME: Move to animation manager and play via member
-    private Animator animator;
+    private PlayerAnimationManager animationManager;
 
     private bool keyPressed = false;
     private float nextTurn = 0;
@@ -39,8 +38,8 @@ public class PlayerController : MonoBehaviour
 
         walkingInstance = RuntimeManager.CreateInstance(CloakSound);
 
-        animator = GetComponent<Animator>();
-        animator.Play("playerIdle");
+        animationManager = GetComponent<PlayerAnimationManager>();
+        animationManager.AnimateIdle();
     }
 
     // FIXME: This is in heavy need of refactoring
@@ -48,6 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButton("Teleport")) {
             transform.position = teleportLocation;
+            animationManager.AnimateTeleport();
             return;
         }
 
@@ -57,33 +57,31 @@ public class PlayerController : MonoBehaviour
             keyPressed = false;
         }
 
-        //Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
         if ((moveHorizontal < 0) && Time.time > nextTurn && keyPressed)
         {
             nextTurn = Time.time + TurningCooldown;
             sprite.flipX = true;
-            animator.Play("playerSideWalk");
+            animationManager.AnimateSideWalk();
         }
         else if (moveHorizontal > 0 && keyPressed && Time.time > nextTurn)
         {
             nextTurn = Time.time + TurningCooldown;
             sprite.flipX = false;
-            animator.Play("playerSideWalk");
+            animationManager.AnimateSideWalk();
         }
 
-        //Store the current vertical input in the float moveVertical.
         float moveVertical = Input.GetAxis("Vertical");
         if ((moveVertical < 0) && keyPressed && Time.time > nextTurn)
         {
             nextTurn = Time.time + TurningCooldown;
-            animator.Play("moveDownwards");
+            animationManager.AnimateDownMove();
             sprite.flipY = false;
         }
         else if (moveVertical > 0 && keyPressed && Time.time > nextTurn)
         {
             nextTurn = Time.time + TurningCooldown;
-            animator.Play("moveUpwards");
+            animationManager.AnimateUpMove();
         }
 
 

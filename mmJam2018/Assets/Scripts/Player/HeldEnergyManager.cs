@@ -27,7 +27,7 @@ public class HeldEnergyManager : MonoBehaviour
         }
     }
 
-    public void DecreaseHeldEnergy(float amount)
+    private void DecreaseHeldEnergy(float amount)
     {
         if(World.HeldEnergy > 0) { 
             World.HeldEnergy -= amount;
