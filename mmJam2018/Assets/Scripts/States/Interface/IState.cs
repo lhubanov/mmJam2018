@@ -17,7 +17,10 @@ namespace Assets.Scripts.States
         void AdvanceState(StateMachine stateMachine);
 
         void PlayMusic(StateMachine stateMachine);
+        void StopMusic(StateMachine stateMachine);
+
         void PlayDialogue(StateMachine stateMachine);
+        void StopDialogue(StateMachine stateMachine);
 
         void PlayLowHealthSound(StateMachine stateMachine);
         void PlayRechargeSound(StateMachine stateMachine);

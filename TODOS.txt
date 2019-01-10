@@ -28,6 +28,11 @@ Bugs and refactoring:
 	  to assign the playable animation as an object.
 	
 	- ProximityScanner and HeldEnergyManager merge - rename/delete via Unity (as VS causes odd things)
+	- Move Menu to UI
+		- Rename Menu to StartMenu
+	
+	- States-wise - Delete One/TwoBrancesDeadState and just leave TreeDeadState
+	- Test all the new stuff (that music gets stopped etc.)
 	
 --------------------------------------------------------------------------------------
 Features before announcing GitHub repo:

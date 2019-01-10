@@ -22,7 +22,8 @@ namespace Assets.Scripts.States
         {
             if (!isDialogueDone)
             {
-                stateMachine.Speech1Instance.start();
+                base.SetCurrentPlayingDialogue(stateMachine, stateMachine.Speech2Instance);
+                stateMachine.Speech2Instance.start();
                 isDialogueDone = true;
             }
         }

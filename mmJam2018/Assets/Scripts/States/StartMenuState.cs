@@ -5,13 +5,14 @@ using System.Text;
 
 namespace Assets.Scripts.States
 {
-    public class Ending : StateBase
+    public class StartMenuState : StateBase
     {
-        private bool isDialogueDone = false;
-
         public override void OnEnter(StateMachine stateMachine)
         {
             base.OnEnter(stateMachine);
+
+            stateMachine.Initialize();
+            PlayMusic(stateMachine);
         }
 
         public override void Update(StateMachine stateMachine)
@@ -20,23 +21,18 @@ namespace Assets.Scripts.States
 
         public override void PlayDialogue(StateMachine stateMachine)
         {
-            if (!isDialogueDone)
-            {
-                stateMachine.Speech2Instance.start();
-                isDialogueDone = true;
-            }
         }
 
         public override void PlayMusic(StateMachine stateMachine)
         {
-            // FIXME: Is there other music?
-            //stateMachine.GameplayMusicInstance.start();
+            base.SetCurrentPlayingMusic(stateMachine, stateMachine.MenuMusicInstance);
+            stateMachine.MenuMusicInstance.start();
         }
 
         public override void AdvanceState(StateMachine stateMachine)
         {
             stateMachine.CurrentState.OnExit(stateMachine);
-            stateMachine.CurrentState = new StartMenuState();
+            stateMachine.CurrentState = new StartState();
             stateMachine.CurrentState.OnEnter(stateMachine);
         }
     }

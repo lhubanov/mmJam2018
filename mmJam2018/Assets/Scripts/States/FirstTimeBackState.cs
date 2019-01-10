@@ -1,52 +1,55 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
-using Assets.Scripts.States;
+using System.Linq;
+using System.Text;
 
 namespace Assets.Scripts.States
 {
-    public class StartState : StateBase
+    public class FirstTimeBackState : StateBase
     {
         private bool isDialogueDone;
 
         public override void OnEnter(StateMachine stateMachine)
         {
             base.OnEnter(stateMachine);
-
             isDialogueDone = false;
-            stateMachine.MomCurrentHealth = 100;
         }
 
         public override void Update(StateMachine stateMachine)
         {
-            // FIXME: Replace with an event
             if (isDialogueDone)
-            { 
+            {
                 FMOD.Studio.PLAYBACK_STATE playbackState;
-                stateMachine.SpeechIntroInstance.getPlaybackState(out playbackState);
+                stateMachine.Speech1Instance.getPlaybackState(out playbackState);
 
                 if (playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPING) {
-                    stateMachine.MomStartsDying = true;
+                    PlayMusic(stateMachine);
                 }
             }
         }
 
         public override void PlayDialogue(StateMachine stateMachine)
         {
-            if (!isDialogueDone) {
-                stateMachine.SpeechIntroInstance.start();
+            if (!isDialogueDone)
+            {
+                base.StopMusic(stateMachine);
+                base.SetCurrentPlayingDialogue(stateMachine, stateMachine.Speech1Instance);
+                stateMachine.Speech1Instance.start();
+
                 isDialogueDone = true;
             }
         }
 
         public override void PlayMusic(StateMachine stateMachine)
         {
+            base.SetCurrentPlayingMusic(stateMachine, stateMachine.GameplayMusicInstance);
+            stateMachine.GameplayMusicInstance.start();
         }
 
         public override void AdvanceState(StateMachine stateMachine)
         {
             stateMachine.CurrentState.OnExit(stateMachine);
-            stateMachine.CurrentState = new FirstTimeBackState();
+            stateMachine.CurrentState = new OneBranchDeadState();
             stateMachine.CurrentState.OnEnter(stateMachine);
         }
     }

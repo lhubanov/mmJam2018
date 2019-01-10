@@ -12,11 +12,31 @@ namespace Assets.Scripts.States
             stateMachine.CurrentState = nextState;
             stateMachine.CurrentState.OnEnter(stateMachine);
         }
-        public virtual void PlayMusic(StateMachine stateMachine) { }
-        public virtual void PlayDialogue(StateMachine stateMachine) { }
 
         public abstract void Update(StateMachine stateMachine);
         public abstract void AdvanceState(StateMachine stateMachine);
+
+        public virtual void PlayMusic(StateMachine stateMachine) { }
+        public virtual void StopMusic(StateMachine stateMachine)
+        {
+            stateMachine.CurrentMusic.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+
+        public virtual void PlayDialogue(StateMachine stateMachine) { }
+        public virtual void StopDialogue(StateMachine stateMachine)
+        {
+            stateMachine.CurrentDialogue.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+
+        public virtual void SetCurrentPlayingMusic(StateMachine stateMachine, EventInstance musicInstance)
+        {
+            stateMachine.CurrentMusic = musicInstance;
+        }
+
+        public virtual void SetCurrentPlayingDialogue(StateMachine stateMachine, EventInstance musicInstance)
+        {
+            stateMachine.CurrentDialogue = musicInstance;
+        }
 
         public virtual void PlayLowHealthSound(StateMachine stateMachine)
         {

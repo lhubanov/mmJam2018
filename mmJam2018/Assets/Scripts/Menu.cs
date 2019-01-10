@@ -24,8 +24,21 @@ public class Menu : MonoBehaviour
     void Start()
     {
         cameraController = gameCamera.GetComponent<CameraController>();
-        // FIXME: Generate world
+        Initialize();
+    }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return)) {
+            StartGame();
+        }
+
+        // if World.CurrentState is StartMenuState
+        // Initialize()
+    }
+
+    private void Initialize()
+    {
         hud.SetActive(false);
         player.SetActive(false);
 
@@ -35,18 +48,12 @@ public class Menu : MonoBehaviour
         stateMachine.CurrentState.OnEnter(stateMachine);
     }
 
-    void Update()
+    private void StartGame()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            hud.SetActive(true);
-            player.SetActive(true);
-            title.SetActive(false);
+        hud.SetActive(true);
+        player.SetActive(true);
+        title.SetActive(false);
 
-            //stateMachine.CurrentState = new StartState();
-            //stateMachine.CurrentState.OnEnter(stateMachine);
-
-            cameraController.PlayIntro();
-        }
+        cameraController.PlayIntro();
     }
 }

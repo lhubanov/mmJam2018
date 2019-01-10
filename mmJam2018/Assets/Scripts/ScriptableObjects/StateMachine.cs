@@ -19,6 +19,9 @@ public class StateMachine : ScriptableObject
     public float    PlayerMovementSlowdown;
     public bool     MomStartsDying; // FIXME: This is when you start using events
 
+    public EventInstance CurrentMusic;
+    public EventInstance CurrentDialogue;
+
     // Audio references
     [EventRef]
     public string SnoringSound;
@@ -31,6 +34,10 @@ public class StateMachine : ScriptableObject
     [EventRef]
     public string LowHealthSound;
     public EventInstance LowHealthInstance;
+
+    [EventRef]
+    public string MenuMusic;
+    public EventInstance MenuMusicInstance;
 
     [EventRef]
     public string GameplayMusic;
@@ -61,7 +68,7 @@ public class StateMachine : ScriptableObject
         LowHealthInstance = RuntimeManager.CreateInstance(LowHealthSound);
         FinalDialogueInstance = RuntimeManager.CreateInstance(FinalDialogue);
 
-
+        MenuMusicInstance = RuntimeManager.CreateInstance(MenuMusic);
         GameplayMusicInstance = RuntimeManager.CreateInstance(GameplayMusic);
         SpeechIntroInstance = RuntimeManager.CreateInstance(SpeechIntro);
         Speech1Instance = RuntimeManager.CreateInstance(Speech1);

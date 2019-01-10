@@ -97,9 +97,11 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\StateMachine.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\TileLookup.cs" />
     <Compile Include="Assets\Scripts\States\Ending.cs" />
+    <Compile Include="Assets\Scripts\States\FirstTimeBackState.cs" />
     <Compile Include="Assets\Scripts\States\Interface\IState.cs" />
     <Compile Include="Assets\Scripts\States\Interface\StateBase.cs" />
     <Compile Include="Assets\Scripts\States\OneBranchDeadState.cs" />
+    <Compile Include="Assets\Scripts\States\StartMenuState.cs" />
     <Compile Include="Assets\Scripts\States\StartState.cs" />
     <Compile Include="Assets\Scripts\States\TwoBranchesDeadState.cs" />
     <Compile Include="Assets\Scripts\Steering\Arrive.cs" />
