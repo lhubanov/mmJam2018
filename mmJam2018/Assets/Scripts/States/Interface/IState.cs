@@ -18,5 +18,9 @@ namespace Assets.Scripts.States
 
         void PlayMusic(StateMachine stateMachine);
         void PlayDialogue(StateMachine stateMachine);
+
+        void PlayLowHealthSound(StateMachine stateMachine);
+        void PlayRechargeSound(StateMachine stateMachine);
+        void PlayEnding(StateMachine stateMachine);
     }
 }

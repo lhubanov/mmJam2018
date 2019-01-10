@@ -1,9 +1,5 @@
 TODO:
 
-Steering:
-	- Can Add/Extend
-		- Hide
-
 --------------------------------------------------------------------------------------
 Bugs and refactoring:
 --------------------------------------------------------------------------------------
@@ -25,6 +21,8 @@ Bugs and refactoring:
 	- Refactor tile lookup to just pick Sprite object
 	
 	- Go through the leftover FIXMEs
+	- Go through Proc-Gen code to check if all is needed (e.g. INode might be redundant)
+	
 	- Player controller general refactor
 	- The branch disappearing animation still calls Animator.Play(string) with an editor-set string. There must be a way
 	  to assign the playable animation as an object.
@@ -34,16 +32,26 @@ Bugs and refactoring:
 Features before announcing GitHub repo:
 --------------------------------------------------------------------------------------
 
+Steering:
+	- Can Add/Extend
+		- Hide		
+	- Start Fleeing from player, once having stolen player energy
+
+
 Enemy spawning in Rosepatch (as part of proc. gen.)
 	
+
+Assign StateMachine.MomMaxHealth value in editor
+	- Align with slider max/mins also!
+
 !Make sure there's a fail state etc. (na ralta)
-	- Add State/StateBase - PlayLowHealthSound() and PlayEnd()
-		- Which are to be called by Mom, when low health or when dying
+	//- Add State/StateBase - PlayLowHealthSound() and PlayEnd()
+		//- Which are to be called by Mom, when low health or when dying
 		
-		- PlayLowHealthSound() 
-			- Just play the sound/clip?
-		- PlayEnd() 
-			- Play clip/sound
+		//- PlayLowHealthSound() 
+			//- Just play the sound/clip?
+		//- PlayEnd() 
+			//- Play clip/sound
 			- Play animation
 
 	!- Mom death rate increase after first time back (that bit of dialogue)? - Or the other way around?
@@ -51,7 +59,6 @@ Enemy spawning in Rosepatch (as part of proc. gen.)
 		!- Increase death rate by a bit?
 		!- Music change can then be a part of a general PlayMusic call
 
-!Audio when mom is low? (na rabota)
 
 Draw wisp pixel art sprite + spritesheet
 Create higher fidelity noise mask for water and grass tiles
@@ -65,10 +72,10 @@ Teleportation back to mum
 	//- Move to startingPosition by setting transform manually?
 	
 	
-!Ending (after last branch state) 
-- Call PlayEnd() from above
-	(!- Play last clip
-	!- Fade to black animation)
+!Ending (after last branch state) - Add separate State (or leave it obscure so you find out you can't save mom only by futily recharging over and over ?)
+//- Call PlayEnd() from above
+//	(!- Play last clip
+//	!- Fade to black animation)
 		
 In-betweeen dialogue, if there are more voice recordings(requires more states)
 

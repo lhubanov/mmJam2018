@@ -4,10 +4,10 @@ using Assets.Scripts.UI;
 
 public class SliderControl : MonoBehaviour
 {
-    private Slider slider = null;
-    // I'm a bit torn about this being private and auto-fetched,
-    // as there is a dependency on an IUpdateUI type being attached to
-    // gameObject as well.
+    [SerializeField]
+    private Slider slider;
+
+    [SerializeField]
     private IUpdateUIFromStateMachine uiInstance;
 
     void Start ()

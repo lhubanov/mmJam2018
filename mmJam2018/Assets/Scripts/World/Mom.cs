@@ -4,11 +4,22 @@ using FMOD.Studio;
 
 public class Mom : MonoBehaviour
 {
-    public StateMachine World;
+    [SerializeField]
+    private StateMachine World;
 
-    public float RechargeSpeed = 5;
-    public float DrainAmount = 3;
-    public float DrainSpeed = 2;
+    [SerializeField]
+    private float RechargeSpeed = 5;
+
+    [SerializeField]
+    private float DrainAmount = 3;
+
+    [SerializeField]
+    private float DrainSpeed = 2;
+
+    [SerializeField]
+    private float LowHealthThreshold = 20;
+
+
 
     private void Update()
     {
@@ -17,6 +28,14 @@ public class Mom : MonoBehaviour
         if (World.MomStartsDying) {
             StartCoroutine(LoseHealthIdly());
             World.MomStartsDying = false;
+        }
+
+        if (IsHealthBelowThreshold()) {
+            World.CurrentState.PlayLowHealthSound(World);
+        }
+
+        if (IsDead()) {
+            World.CurrentState.PlayEnding(World);
         }
     }
 
@@ -31,8 +50,10 @@ public class Mom : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null && Input.GetButton("DeliverEnergy"))
         {
-            if(World.MomHealth < 120 && World.HeldEnergy > 0) { 
-                PlayRechargeSound();
+            if( World.MomCurrentHealth < World.MomMaxHealth && 
+                World.HeldEnergy > World.MomMinHealth)
+            { 
+                World.CurrentState.PlayRechargeSound(World);
                 IncreaseHealth(RechargeSpeed);
             }
         }
@@ -40,25 +61,27 @@ public class Mom : MonoBehaviour
 
     private void IncreaseHealth(float amount)
     {
-        World.MomHealth += amount;
+        World.MomCurrentHealth += amount;
         World.HeldEnergy -= amount;
+    }
+
+
+    private bool IsHealthBelowThreshold()
+    {
+        return (World.MomCurrentHealth < (World.MomMinHealth + LowHealthThreshold));
+    }
+
+    private bool IsDead()
+    {
+        return (World.MomCurrentHealth <= World.MomMinHealth);
     }
 
     private IEnumerator LoseHealthIdly()
     {
-        while (World.MomHealth > 0) {
-            World.MomHealth -= DrainAmount;
+        while (World.MomCurrentHealth > 0) {
+            World.MomCurrentHealth -= DrainAmount;
             yield return new WaitForSeconds(DrainSpeed);
         }
     }
 
-    private void PlayRechargeSound()
-    {
-        FMOD.Studio.PLAYBACK_STATE rechargeSoundState;
-
-        World.RechargeInstance.getPlaybackState(out rechargeSoundState);
-        if (rechargeSoundState != PLAYBACK_STATE.PLAYING) {
-            World.RechargeInstance.start();
-        }
-    }
 }

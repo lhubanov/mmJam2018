@@ -11,7 +11,10 @@ public class StateMachine : ScriptableObject
 
     // HUD Bars references
     public float    HeldEnergy;
-    public float    MomHealth;
+    public float    MomCurrentHealth;
+
+    public float    MomMaxHealth;
+    public float    MomMinHealth;
 
     public float    PlayerMovementSlowdown;
     public bool     MomStartsDying; // FIXME: This is when you start using events
@@ -24,6 +27,10 @@ public class StateMachine : ScriptableObject
     [EventRef]
     public string RechargeSound;
     public EventInstance RechargeInstance;
+
+    [EventRef]
+    public string LowHealthSound;
+    public EventInstance LowHealthInstance;
 
     [EventRef]
     public string GameplayMusic;
@@ -41,13 +48,20 @@ public class StateMachine : ScriptableObject
     public string Speech2;
     public EventInstance Speech2Instance;
 
+    [EventRef]
+    public string FinalDialogue;
+    public EventInstance FinalDialogueInstance;
+
     public void Initialize()
     {
         MomStartsDying = false;
 
         SnoringInstance = RuntimeManager.CreateInstance(SnoringSound);
-
         RechargeInstance = RuntimeManager.CreateInstance(RechargeSound);
+        LowHealthInstance = RuntimeManager.CreateInstance(LowHealthSound);
+        FinalDialogueInstance = RuntimeManager.CreateInstance(FinalDialogue);
+
+
         GameplayMusicInstance = RuntimeManager.CreateInstance(GameplayMusic);
         SpeechIntroInstance = RuntimeManager.CreateInstance(SpeechIntro);
         Speech1Instance = RuntimeManager.CreateInstance(Speech1);

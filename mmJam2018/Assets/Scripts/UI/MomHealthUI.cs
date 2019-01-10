@@ -7,6 +7,6 @@ public class MomHealthUI : MonoBehaviour, IUpdateMotherHealth
 
     public float GetValueFromStateMachine()
     {
-        return World.MomHealth;
+        return World.MomCurrentHealth;
     }
 }

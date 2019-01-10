@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
+﻿using FMOD.Studio;
 
 namespace Assets.Scripts.States
 {
@@ -22,5 +17,27 @@ namespace Assets.Scripts.States
 
         public abstract void Update(StateMachine stateMachine);
         public abstract void AdvanceState(StateMachine stateMachine);
+
+        public virtual void PlayLowHealthSound(StateMachine stateMachine)
+        {
+            stateMachine.LowHealthInstance.start();
+        }
+
+        public virtual void PlayRechargeSound(StateMachine stateMachine)
+        {
+            FMOD.Studio.PLAYBACK_STATE rechargeSoundState;
+
+            stateMachine.RechargeInstance.getPlaybackState(out rechargeSoundState);
+            if (rechargeSoundState != PLAYBACK_STATE.PLAYING)
+            {
+                stateMachine.RechargeInstance.start();
+            }
+        }
+
+        public virtual void PlayEnding(StateMachine stateMachine)
+        {
+            stateMachine.FinalDialogueInstance.start();
+            // Play fade to white/black animation
+        }
     }
 }

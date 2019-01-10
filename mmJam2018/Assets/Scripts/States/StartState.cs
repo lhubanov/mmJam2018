@@ -13,7 +13,7 @@ namespace Assets.Scripts.States
         {
             base.OnEnter(stateMachine);
             stateMachine.Initialize();
-            stateMachine.MomHealth = 100;
+            stateMachine.MomCurrentHealth = 100;
 
             PlayMusic(stateMachine);
         }
