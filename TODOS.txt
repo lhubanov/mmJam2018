@@ -27,13 +27,13 @@ Bugs and refactoring:
 	- The branch disappearing animation still calls Animator.Play(string) with an editor-set string. There must be a way
 	  to assign the playable animation as an object.
 	
-	- ProximityScanner and HeldEnergyManager merge - rename/delete via Unity (as VS causes odd things)
-	- Move Menu to UI
-		- Rename Menu to StartMenu
+	//- ProximityScanner and HeldEnergyManager merge - rename/delete via Unity (as VS causes odd things)
+	//- Move Menu to UI
+		//- Rename Menu to StartMenu
 	
-	- States-wise - Delete One/TwoBrancesDeadState and just leave TreeDeadState
+	//- States-wise - Delete One/TwoBrancesDeadState and just leave TreeDeadState
 	- Test all the new stuff (that music gets stopped etc.)
-	- Add Mom - firstTimeBack interaction/logic & state.advanceState & whatever else callse
+	//- Add Mom - firstTimeBack interaction/logic & state.advanceState & whatever else callse
 	
 --------------------------------------------------------------------------------------
 Features before announcing GitHub repo:

@@ -66,13 +66,10 @@
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudio.cs" />
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudioRoom.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\InputController.cs" />
-    <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\Player\HeldEnergyManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSFXManager.cs" />
-    <Compile Include="Assets\Scripts\Player\ProximityScanner.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Graph\Graph.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\BeachBiome.cs" />
     <Compile Include="Assets\Scripts\ProceduralGeneration\Map\Biome\Biome.cs" />
@@ -97,13 +94,11 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\StateMachine.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\TileLookup.cs" />
     <Compile Include="Assets\Scripts\States\Ending.cs" />
-    <Compile Include="Assets\Scripts\States\FirstTimeBackState.cs" />
+    <Compile Include="Assets\Scripts\States\GameplayState.cs" />
     <Compile Include="Assets\Scripts\States\Interface\IState.cs" />
     <Compile Include="Assets\Scripts\States\Interface\StateBase.cs" />
-    <Compile Include="Assets\Scripts\States\OneBranchDeadState.cs" />
     <Compile Include="Assets\Scripts\States\StartMenuState.cs" />
     <Compile Include="Assets\Scripts\States\StartState.cs" />
-    <Compile Include="Assets\Scripts\States\TwoBranchesDeadState.cs" />
     <Compile Include="Assets\Scripts\Steering\Arrive.cs" />
     <Compile Include="Assets\Scripts\Steering\CollisionAvoid.cs" />
     <Compile Include="Assets\Scripts\Steering\Evade.cs" />
@@ -128,6 +123,7 @@
     <Compile Include="Assets\Scripts\World\Interface\IDie.cs" />
     <Compile Include="Assets\Scripts\World\Interface\IHoldEnergy.cs" />
     <Compile Include="Assets\Scripts\World\Mom.cs" />
+    <Compile Include="Assets\Scripts\World\StartMenu.cs" />
     <Compile Include="Assets\Scripts\World\Tile.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

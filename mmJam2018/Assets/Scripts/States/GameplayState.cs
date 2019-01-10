@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace Assets.Scripts.States
 {
-    public class FirstTimeBackState : StateBase
+    public class GameplayState : StateBase
     {
         private bool isDialogueDone;
 
@@ -49,7 +45,7 @@ namespace Assets.Scripts.States
         public override void AdvanceState(StateMachine stateMachine)
         {
             stateMachine.CurrentState.OnExit(stateMachine);
-            stateMachine.CurrentState = new OneBranchDeadState();
+            stateMachine.CurrentState = new Ending();
             stateMachine.CurrentState.OnEnter(stateMachine);
         }
     }

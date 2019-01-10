@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts.States;
 
-public class Menu : MonoBehaviour
+public class StartMenu : MonoBehaviour
 {
     [SerializeField]
     private GameObject title;

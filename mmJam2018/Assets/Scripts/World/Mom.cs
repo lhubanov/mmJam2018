@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
-using FMOD.Studio;
+using Assets.Scripts;
 
-public class Mom : MonoBehaviour
+public class Mom : MonoBehaviour, IDie
 {
     [SerializeField]
     private StateMachine World;
@@ -18,11 +18,14 @@ public class Mom : MonoBehaviour
 
     [SerializeField]
     private float LowHealthThreshold = 20;
+
     private Coroutine healthLossRoutine;
+    private bool notHealedYet;
 
     private void Start()
     {
         healthLossRoutine = null;
+        notHealedYet = true;
     }
 
     private void Update()
@@ -38,8 +41,8 @@ public class Mom : MonoBehaviour
             World.CurrentState.PlayLowHealthSound(World);
         }
 
-        if (IsDead()) {
-            World.CurrentState.PlayEnding(World);
+        if (HasNoHealth()) {
+            Die();
         }
     }
 
@@ -60,13 +63,21 @@ public class Mom : MonoBehaviour
                 World.CurrentState.PlayRechargeSound(World);
                 IncreaseHealth(RechargeSpeed);
 
-                // if(firstTime)
-                // change state
-                // play state music/ dialogue
-                // stop coroutine
-                // start again after decreaseRate vals have changed
+                if(notHealedYet)
+                {
+                    World.CurrentState.AdvanceState(World);
+                    StopCoroutine(healthLossRoutine);
+
+                    DrainSpeed += DrainSpeed / 2;
+                    healthLossRoutine = StartCoroutine(LoseHealthIdly());
+                }
             }
         }
+    }
+
+    public void Die()
+    {
+        World.CurrentState.PlayEnding(World);
     }
 
     private void IncreaseHealth(float amount)
@@ -80,7 +91,7 @@ public class Mom : MonoBehaviour
         return (World.MomCurrentHealth < (World.MomMinHealth + LowHealthThreshold));
     }
 
-    private bool IsDead()
+    private bool HasNoHealth()
     {
         return (World.MomCurrentHealth <= World.MomMinHealth);
     }

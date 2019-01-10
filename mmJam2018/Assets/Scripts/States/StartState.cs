@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Assets.Scripts.States;
-
+﻿
 namespace Assets.Scripts.States
 {
     public class StartState : StateBase
@@ -48,7 +44,7 @@ namespace Assets.Scripts.States
         public override void AdvanceState(StateMachine stateMachine)
         {
             stateMachine.CurrentState.OnExit(stateMachine);
-            stateMachine.CurrentState = new FirstTimeBackState();
+            stateMachine.CurrentState = new GameplayState();
             stateMachine.CurrentState.OnEnter(stateMachine);
         }
     }
