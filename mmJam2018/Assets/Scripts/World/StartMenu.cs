@@ -33,8 +33,10 @@ public class StartMenu : MonoBehaviour
             StartGame();
         }
 
-        // if World.CurrentState is StartMenuState
-        // Initialize()
+        if(stateMachine.CurrentState is EndingState) {
+            Initialize();
+            stateMachine.CurrentState = new StartMenuState();
+        }
     }
 
     private void Initialize()
@@ -44,7 +46,7 @@ public class StartMenu : MonoBehaviour
 
         title.SetActive(true);
 
-        stateMachine.CurrentState = new StartState();
+        stateMachine.CurrentState = new StartMenuState();
         stateMachine.CurrentState.OnEnter(stateMachine);
     }
 
@@ -55,5 +57,6 @@ public class StartMenu : MonoBehaviour
         title.SetActive(false);
 
         cameraController.PlayIntro();
+        stateMachine.CurrentState.AdvanceState(stateMachine);
     }
 }

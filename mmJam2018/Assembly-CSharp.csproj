@@ -93,7 +93,7 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\BiomeConditions.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\StateMachine.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\TileLookup.cs" />
-    <Compile Include="Assets\Scripts\States\Ending.cs" />
+    <Compile Include="Assets\Scripts\States\EndingState.cs" />
     <Compile Include="Assets\Scripts\States\GameplayState.cs" />
     <Compile Include="Assets\Scripts\States\Interface\IState.cs" />
     <Compile Include="Assets\Scripts\States\Interface\StateBase.cs" />

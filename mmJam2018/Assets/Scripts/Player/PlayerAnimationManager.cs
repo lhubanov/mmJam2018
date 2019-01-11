@@ -6,7 +6,8 @@ public class PlayerAnimationManager : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponentInParent<Animator>();
+        animator = GetComponent<Animator>();
+        AnimateIdle();
     }
 
     public void AnimateLifeDrain()

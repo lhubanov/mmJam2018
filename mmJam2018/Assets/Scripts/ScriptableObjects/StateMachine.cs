@@ -44,16 +44,16 @@ public class StateMachine : ScriptableObject
     public EventInstance GameplayMusicInstance;
 
     [EventRef]
+    public string EndingMusic;
+    public EventInstance EndingMusicInstance;
+
+    [EventRef]
     public string SpeechIntro;
     public EventInstance SpeechIntroInstance;
 
     [EventRef]
     public string Speech1;
     public EventInstance Speech1Instance;
-
-    [EventRef]
-    public string Speech2;
-    public EventInstance Speech2Instance;
 
     [EventRef]
     public string FinalDialogue;
@@ -67,11 +67,11 @@ public class StateMachine : ScriptableObject
         RechargeInstance = RuntimeManager.CreateInstance(RechargeSound);
         LowHealthInstance = RuntimeManager.CreateInstance(LowHealthSound);
         FinalDialogueInstance = RuntimeManager.CreateInstance(FinalDialogue);
+        EndingMusicInstance = RuntimeManager.CreateInstance(EndingMusic);
 
         MenuMusicInstance = RuntimeManager.CreateInstance(MenuMusic);
         GameplayMusicInstance = RuntimeManager.CreateInstance(GameplayMusic);
         SpeechIntroInstance = RuntimeManager.CreateInstance(SpeechIntro);
         Speech1Instance = RuntimeManager.CreateInstance(Speech1);
-        Speech2Instance = RuntimeManager.CreateInstance(Speech2);
     }
 }

@@ -27,14 +27,6 @@ Bugs and refactoring:
 	- The branch disappearing animation still calls Animator.Play(string) with an editor-set string. There must be a way
 	  to assign the playable animation as an object.
 	
-	//- ProximityScanner and HeldEnergyManager merge - rename/delete via Unity (as VS causes odd things)
-	//- Move Menu to UI
-		//- Rename Menu to StartMenu
-	
-	//- States-wise - Delete One/TwoBrancesDeadState and just leave TreeDeadState
-	- Test all the new stuff (that music gets stopped etc.)
-	//- Add Mom - firstTimeBack interaction/logic & state.advanceState & whatever else callse
-	
 --------------------------------------------------------------------------------------
 Features before announcing GitHub repo:
 --------------------------------------------------------------------------------------
@@ -51,21 +43,6 @@ Enemy spawning in Rosepatch (as part of proc. gen.)
 Assign StateMachine.MomMaxHealth value in editor
 	- Align with slider max/mins also!
 
-!Make sure there's a fail state etc. (na ralta)
-	//- Add State/StateBase - PlayLowHealthSound() and PlayEnd()
-		//- Which are to be called by Mom, when low health or when dying
-		
-		//- PlayLowHealthSound() 
-			//- Just play the sound/clip?
-		//- PlayEnd() 
-			//- Play clip/sound
-			- Play animation
-
-	!- Mom death rate increase after first time back (that bit of dialogue)? - Or the other way around?
-		- Need to add Mom logic (or actually, maybe Player logic?), to advance the state once, after recharging the first time
-		!- Increase death rate by a bit?
-		!- Music change can then be a part of a general PlayMusic call
-
 
 Draw wisp pixel art sprite + spritesheet
 Create higher fidelity noise mask for water and grass tiles
@@ -76,16 +53,11 @@ Teleportation back to mum
 		!- Same as jump up
 		!- Fade screen to white
 		!- Need to wait for animation to be done before teleporting
-	//- Move to startingPosition by setting transform manually?
 	
-	
-!Ending (after last branch state) - Add separate State (or leave it obscure so you find out you can't save mom only by futily recharging over and over ?)
-//- Call PlayEnd() from above
-//	(!- Play last clip
-//	!- Fade to black animation)
-		
-In-betweeen dialogue, if there are more voice recordings(requires more states)
+There's a bunch more music and SFX to be used
+	- Ending tune
 
+	
 
 ----------------------------------------------------------------------------
 GitHub readme (moje na rabota da se svurshi)

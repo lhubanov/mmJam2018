@@ -8,9 +8,7 @@ namespace Assets.Scripts.States
         public override void OnEnter(StateMachine stateMachine)
         {
             base.OnEnter(stateMachine);
-
             isDialogueDone = false;
-            stateMachine.MomCurrentHealth = 100;
         }
 
         public override void Update(StateMachine stateMachine)

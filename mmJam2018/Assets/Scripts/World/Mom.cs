@@ -2,7 +2,8 @@
 using UnityEngine;
 using Assets.Scripts;
 
-public class Mom : MonoBehaviour, IDie
+// Mom should be of IDie, but this causes a case where the player can kill Mom :D
+public class Mom : MonoBehaviour //, IDie
 {
     [SerializeField]
     private StateMachine World;
@@ -65,11 +66,13 @@ public class Mom : MonoBehaviour, IDie
 
                 if(notHealedYet)
                 {
+                    notHealedYet = false;
                     World.CurrentState.AdvanceState(World);
                     StopCoroutine(healthLossRoutine);
 
                     DrainSpeed += DrainSpeed / 2;
                     healthLossRoutine = StartCoroutine(LoseHealthIdly());
+                    World.CurrentState.PlayDialogue(World);
                 }
             }
         }

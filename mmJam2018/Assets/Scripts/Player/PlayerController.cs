@@ -36,10 +36,8 @@ public class PlayerController : MonoBehaviour
         rbody = GetComponent<Rigidbody>();
         sprite = GetComponent<SpriteRenderer>();
 
-        walkingInstance = RuntimeManager.CreateInstance(CloakSound);
-
+        //walkingInstance = RuntimeManager.CreateInstance(CloakSound);
         animationManager = GetComponent<PlayerAnimationManager>();
-        animationManager.AnimateIdle();
     }
 
     // FIXME: This is in heavy need of refactoring

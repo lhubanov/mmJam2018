@@ -9,6 +9,8 @@ namespace Assets.Scripts.States
 
             stateMachine.Initialize();
             PlayMusic(stateMachine);
+
+            stateMachine.MomCurrentHealth = 100;
         }
 
         public override void Update(StateMachine stateMachine)

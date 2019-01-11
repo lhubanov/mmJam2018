@@ -8,6 +8,7 @@ namespace Assets.Scripts.States
         public override void OnEnter(StateMachine stateMachine)
         {
             base.OnEnter(stateMachine);
+
             isDialogueDone = false;
         }
 
@@ -18,7 +19,11 @@ namespace Assets.Scripts.States
                 FMOD.Studio.PLAYBACK_STATE playbackState;
                 stateMachine.Speech1Instance.getPlaybackState(out playbackState);
 
-                if (playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPING) {
+                if (playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPING ||
+                    playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED) {
+
+                    //FIXME: This plays twice and messes up with the FMOD playback - use different flag or sth
+                    //          And same with the end music
                     PlayMusic(stateMachine);
                 }
             }
@@ -45,7 +50,7 @@ namespace Assets.Scripts.States
         public override void AdvanceState(StateMachine stateMachine)
         {
             stateMachine.CurrentState.OnExit(stateMachine);
-            stateMachine.CurrentState = new Ending();
+            stateMachine.CurrentState = new EndingState();
             stateMachine.CurrentState.OnEnter(stateMachine);
         }
     }

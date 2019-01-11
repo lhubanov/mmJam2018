@@ -1,13 +1,18 @@
 ﻿
 namespace Assets.Scripts.States
 {
-    public class Ending : StateBase
+    public class EndingState : StateBase
     {
         private bool isDialogueDone = false;
 
         public override void OnEnter(StateMachine stateMachine)
         {
             base.OnEnter(stateMachine);
+
+            PlayDialogue(stateMachine);
+            PlayMusic(stateMachine);
+
+            // Play fade to white/black animation
         }
 
         public override void Update(StateMachine stateMachine)
@@ -18,15 +23,17 @@ namespace Assets.Scripts.States
         {
             if (!isDialogueDone)
             {
-                stateMachine.Speech2Instance.start();
+                base.SetCurrentPlayingDialogue(stateMachine, stateMachine.FinalDialogueInstance);
+                stateMachine.FinalDialogueInstance.start();
                 isDialogueDone = true;
             }
         }
 
         public override void PlayMusic(StateMachine stateMachine)
         {
-            // FIXME: Is there other music?
-            //stateMachine.GameplayMusicInstance.start();
+            StopMusic(stateMachine);
+            base.SetCurrentPlayingMusic(stateMachine, stateMachine.EndingMusicInstance);
+            stateMachine.EndingMusicInstance.start();
         }
 
         public override void AdvanceState(StateMachine stateMachine)

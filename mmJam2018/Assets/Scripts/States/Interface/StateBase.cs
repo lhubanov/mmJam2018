@@ -56,8 +56,9 @@ namespace Assets.Scripts.States
 
         public virtual void PlayEnding(StateMachine stateMachine)
         {
-            stateMachine.FinalDialogueInstance.start();
-            // Play fade to white/black animation
+            stateMachine.CurrentState.OnExit(stateMachine);
+            stateMachine.CurrentState = new EndingState();
+            stateMachine.CurrentState.OnEnter(stateMachine);
         }
     }
 }

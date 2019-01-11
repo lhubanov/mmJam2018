@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5139eeb60356494a8e3956ac298a7e6, type: 3}
   m_Name: World
   m_EditorClassIdentifier: 
-  HeldEnergy: 0
-  MomHealth: 100
-  PlayerMovementSlowdown: 5
+  HeldEnergy: 100
+  MomCurrentHealth: 82
+  MomMaxHealth: 120
+  MomMinHealth: 0
+  PlayerMovementSlowdown: 8
   MomStartsDying: 0
   SnoringSound: event:/SFX/SnoringLoop
   RechargeSound: event:/SFX/PowerGive
-  GameplayMusic: event:/Music/IntroCutscene
-  SpeechIntro: event:/Dialogue/OpeningNarrative
-  Speech1: event:/Dialogue/OnReturn
-  Speech2: event:/Dialogue/OnReturn2
+  LowHealthSound: event:/Dialogue/FirstEnergySource
+  MenuMusic: event:/Music/IntroCutscene
+  GameplayMusic: event:/Music/VenturingOutWithVocals
+  EndingMusic: event:/Music/LevelEnd
+  SpeechIntro: event:/SFX/Footsteps
+  Speech1: event:/Dialogue/OnReturn2
+  FinalDialogue: event:/Dialogue/MumGetsMoreIll
