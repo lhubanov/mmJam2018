@@ -19,11 +19,7 @@ namespace Assets.Scripts.States
                 FMOD.Studio.PLAYBACK_STATE playbackState;
                 stateMachine.Speech1Instance.getPlaybackState(out playbackState);
 
-                if (playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPING ||
-                    playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED) {
-
-                    //FIXME: This plays twice and messes up with the FMOD playback - use different flag or sth
-                    //          And same with the end music
+                if (playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPED) {
                     PlayMusic(stateMachine);
                 }
             }
@@ -43,8 +39,14 @@ namespace Assets.Scripts.States
 
         public override void PlayMusic(StateMachine stateMachine)
         {
-            base.SetCurrentPlayingMusic(stateMachine, stateMachine.GameplayMusicInstance);
-            stateMachine.GameplayMusicInstance.start();
+            FMOD.Studio.PLAYBACK_STATE playbackState;
+            stateMachine.GameplayMusicInstance.getPlaybackState(out playbackState);
+
+            if(playbackState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
+            { 
+                base.SetCurrentPlayingMusic(stateMachine, stateMachine.GameplayMusicInstance);
+                stateMachine.GameplayMusicInstance.start();
+            }
         }
 
         public override void AdvanceState(StateMachine stateMachine)

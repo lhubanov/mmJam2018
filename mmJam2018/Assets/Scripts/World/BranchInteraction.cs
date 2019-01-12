@@ -33,6 +33,5 @@ public class BranchInteraction : MonoBehaviour, IDie
     {
         animator.Play(animation);
         RuntimeManager.PlayOneShot(DestructionSound);
-        stateMachine.CurrentState.AdvanceState(stateMachine);
     }
 }

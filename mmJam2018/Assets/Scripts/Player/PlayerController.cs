@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
 
     private bool keyPressed = false;
     private float nextTurn = 0;
-    private bool talking = false;
 
     [SerializeField]
     private Vector3 teleportLocation;
@@ -83,7 +82,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (!Input.GetButton("DrainEnergy") && !talking)
+        if (!Input.GetButton("DrainEnergy"))
         {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical);
             float slowedDownSpeed = Speed - WorldRules.PlayerMovementSlowdown;

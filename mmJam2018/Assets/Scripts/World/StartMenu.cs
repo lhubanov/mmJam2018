@@ -33,10 +33,14 @@ public class StartMenu : MonoBehaviour
             StartGame();
         }
 
-        if(stateMachine.CurrentState is EndingState) {
-            Initialize();
-            stateMachine.CurrentState = new StartMenuState();
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
         }
+
+        //if (stateMachine.CurrentState is EndingState) {
+        //    Initialize();
+        //    stateMachine.CurrentState = new StartMenuState();
+        //}
     }
 
     private void Initialize()

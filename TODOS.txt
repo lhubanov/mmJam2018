@@ -10,7 +10,7 @@ Bugs and refactoring:
 	- Sprite mask editor framerate issues 
 		-Seems framerate issues are editor-only?
 	
-	- Rosebushes flicker bug (sprite layers seem OK)
+	//- Rosebushes flicker bug (sprite layers seem OK)
 	
 	- Start screen needs a Loading/Loaded event/UI
 	
@@ -27,6 +27,12 @@ Bugs and refactoring:
 	- The branch disappearing animation still calls Animator.Play(string) with an editor-set string. There must be a way
 	  to assign the playable animation as an object.
 	
+	- Ending/Death fade to black slowly animation
+	
+	- The audio music switching bugs
+		//- Low Health sound
+		- End dialogue etc.
+	
 --------------------------------------------------------------------------------------
 Features before announcing GitHub repo:
 --------------------------------------------------------------------------------------
@@ -35,14 +41,9 @@ Steering:
 	- Can Add/Extend
 		- Hide		
 	- Start Fleeing from player, once having stolen player energy
-
-
-Enemy spawning in Rosepatch (as part of proc. gen.)
 	
 
-Assign StateMachine.MomMaxHealth value in editor
-	- Align with slider max/mins also!
-
+Enemy spawning in Rosepatch (as part of proc. gen.)
 
 Draw wisp pixel art sprite + spritesheet
 Create higher fidelity noise mask for water and grass tiles
@@ -53,7 +54,10 @@ Teleportation back to mum
 		!- Same as jump up
 		!- Fade screen to white
 		!- Need to wait for animation to be done before teleporting
-	
+
+Ending is a bit abrupt
+	- Needs a fade out animation
+		
 There's a bunch more music and SFX to be used
 	- Ending tune
 

@@ -36,7 +36,7 @@ public class CameraController : MonoBehaviour
         while (Camera.main.fieldOfView > 70)
         {
             Camera.main.fieldOfView -= Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return new WaitForSeconds(Time.deltaTime/2);
         }
     }
 }

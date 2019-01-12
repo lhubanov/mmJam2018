@@ -58,8 +58,7 @@ public class Mom : MonoBehaviour //, IDie
     {
         if (other.GetComponent<PlayerController>() != null && Input.GetButton("DeliverEnergy"))
         {
-            if( World.MomCurrentHealth < World.MomMaxHealth && 
-                World.HeldEnergy > World.MomMinHealth)
+            if( World.MomCurrentHealth < World.MomMaxHealth && World.HeldEnergy > World.MomMinHealth)
             { 
                 World.CurrentState.PlayRechargeSound(World);
                 IncreaseHealth(RechargeSpeed);
@@ -91,7 +90,8 @@ public class Mom : MonoBehaviour //, IDie
 
     private bool IsHealthBelowThreshold()
     {
-        return (World.MomCurrentHealth < (World.MomMinHealth + LowHealthThreshold));
+        return (World.MomCurrentHealth == (World.MomMinHealth + LowHealthThreshold) 
+            || World.MomCurrentHealth == (World.MomMinHealth + (LowHealthThreshold/2)));
     }
 
     private bool HasNoHealth()

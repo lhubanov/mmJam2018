@@ -40,16 +40,21 @@ namespace Assets.Scripts.States
 
         public virtual void PlayLowHealthSound(StateMachine stateMachine)
         {
-            stateMachine.LowHealthInstance.start();
+            FMOD.Studio.PLAYBACK_STATE playbackState;
+            stateMachine.LowHealthInstance.getPlaybackState(out playbackState);
+
+            if(playbackState != PLAYBACK_STATE.PLAYING) {
+                SetCurrentPlayingDialogue(stateMachine, stateMachine.LowHealthInstance);
+                stateMachine.LowHealthInstance.start();
+            }
         }
 
         public virtual void PlayRechargeSound(StateMachine stateMachine)
         {
             FMOD.Studio.PLAYBACK_STATE rechargeSoundState;
-
             stateMachine.RechargeInstance.getPlaybackState(out rechargeSoundState);
-            if (rechargeSoundState != PLAYBACK_STATE.PLAYING)
-            {
+
+            if (rechargeSoundState != PLAYBACK_STATE.PLAYING){
                 stateMachine.RechargeInstance.start();
             }
         }
