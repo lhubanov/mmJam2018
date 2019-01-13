@@ -8,9 +8,11 @@ namespace Assets.Scripts.States
             base.OnEnter(stateMachine);
 
             stateMachine.Initialize();
+
+            base.StopMusic(stateMachine);
             PlayMusic(stateMachine);
 
-            stateMachine.MomCurrentHealth = 100;
+            stateMachine.MomCurrentHealth = stateMachine.MomMaxHealth;
         }
 
         public override void Update(StateMachine stateMachine)
@@ -23,8 +25,15 @@ namespace Assets.Scripts.States
 
         public override void PlayMusic(StateMachine stateMachine)
         {
-            base.SetCurrentPlayingMusic(stateMachine, stateMachine.MenuMusicInstance);
-            stateMachine.MenuMusicInstance.start();
+            FMOD.Studio.PLAYBACK_STATE playbackState;
+            stateMachine.MenuMusicInstance.getPlaybackState(out playbackState);
+
+            if (playbackState != FMOD.Studio.PLAYBACK_STATE.STARTING &&
+                playbackState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
+            { 
+                base.SetCurrentPlayingMusic(stateMachine, stateMachine.MenuMusicInstance);
+                stateMachine.MenuMusicInstance.start();
+            }
         }
 
         public override void AdvanceState(StateMachine stateMachine)

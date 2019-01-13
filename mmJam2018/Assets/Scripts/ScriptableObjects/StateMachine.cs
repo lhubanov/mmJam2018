@@ -7,9 +7,9 @@ using FMOD.Studio;
 [CreateAssetMenu(menuName="World State Machine")]
 public class StateMachine : ScriptableObject
 {
-    public IState CurrentState;
+    public IState   CurrentState;
 
-    // HUD Bars references
+    // UI references
     public float    HeldEnergy;
     public float    MomCurrentHealth;
 
@@ -18,6 +18,10 @@ public class StateMachine : ScriptableObject
 
     public float    PlayerMovementSlowdown;
     public bool     MomStartsDying; // FIXME: This is when you start using events
+
+    [Range(0,255)]
+    public float    FadeAmount;
+
 
     public EventInstance CurrentMusic;
     public EventInstance CurrentDialogue;
@@ -62,6 +66,7 @@ public class StateMachine : ScriptableObject
     public void Initialize()
     {
         MomStartsDying = false;
+        FadeAmount = 0;
 
         SnoringInstance = RuntimeManager.CreateInstance(SnoringSound);
         RechargeInstance = RuntimeManager.CreateInstance(RechargeSound);

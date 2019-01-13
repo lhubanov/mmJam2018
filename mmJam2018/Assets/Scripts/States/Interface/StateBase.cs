@@ -43,7 +43,7 @@ namespace Assets.Scripts.States
             FMOD.Studio.PLAYBACK_STATE playbackState;
             stateMachine.LowHealthInstance.getPlaybackState(out playbackState);
 
-            if(playbackState != PLAYBACK_STATE.PLAYING) {
+            if(playbackState != PLAYBACK_STATE.STARTING && playbackState != PLAYBACK_STATE.PLAYING) {
                 SetCurrentPlayingDialogue(stateMachine, stateMachine.LowHealthInstance);
                 stateMachine.LowHealthInstance.start();
             }
@@ -54,7 +54,7 @@ namespace Assets.Scripts.States
             FMOD.Studio.PLAYBACK_STATE rechargeSoundState;
             stateMachine.RechargeInstance.getPlaybackState(out rechargeSoundState);
 
-            if (rechargeSoundState != PLAYBACK_STATE.PLAYING){
+            if (rechargeSoundState != PLAYBACK_STATE.STARTING && rechargeSoundState != PLAYBACK_STATE.PLAYING){
                 stateMachine.RechargeInstance.start();
             }
         }

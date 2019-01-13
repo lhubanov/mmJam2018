@@ -1,6 +1,8 @@
 ﻿
 using UnityEngine;
 
+using Assets.Scripts.States;
+
 using FMODUnity;
 using FMOD.Studio;
 
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour
     // FIXME: This is in heavy need of refactoring
     void Update()
     {
-        if (Input.GetButton("Teleport")) {
+        if (Input.GetButton("Teleport") || (WorldRules.CurrentState is EndingState)) {
             transform.position = teleportLocation;
             animationManager.AnimateTeleport();
             return;

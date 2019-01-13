@@ -51,12 +51,12 @@ public class HeldEnergyManager : MonoBehaviour
             IDie dying = objectsInProximity[i].GetComponent<IDie>();
             IHoldEnergy energyHolder = objectsInProximity[i].GetComponent<IHoldEnergy>();
 
-            if (dying != null) {
-                dying.Die();
+            if (energyHolder != null) {
+                IncreaseHeldEnergy(energyHolder.GetHeldEnergy());
             }
 
-            if(energyHolder != null) {
-                IncreaseHeldEnergy(energyHolder.GetHeldEnergy());
+            if (dying != null) {
+                dying.Die();
             }
         }
     }

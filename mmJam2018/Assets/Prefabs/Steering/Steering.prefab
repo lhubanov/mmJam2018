@@ -136,9 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e983d8a72c6449648ae8a0f60f9d2bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0.2
-  maxForce: 0.2
-  maxVelocity: 0.2
+  maxSpeed: 0.4
+  maxForce: 0.4
+  maxVelocity: 0.4
   mass: 1
   circleDistance: 21.4
   circleRadius: 2

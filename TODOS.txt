@@ -7,8 +7,7 @@ Bugs and refactoring:
 	- Container clases - either make better classes - w/ constructors, properties etc., or rework altogether
 	- Biome constructors are a bit messy once more
 	
-	- Sprite mask editor framerate issues 
-		-Seems framerate issues are editor-only?
+	- Sprite mask framerate issues - seen in build as well
 	
 	//- Rosebushes flicker bug (sprite layers seem OK)
 	
@@ -26,8 +25,13 @@ Bugs and refactoring:
 	- Player controller general refactor
 	- The branch disappearing animation still calls Animator.Play(string) with an editor-set string. There must be a way
 	  to assign the playable animation as an object.
+	  
+	- The screen un-fading needs a proper formula to reset fading amount, when the player recharges mum
+	//- Player position does not reset at the end of the game
 	
-	- Ending/Death fade to black slowly animation
+	- FadeAmount overflows and makes things non-black again - add some setter function, which stops it from overflowing
+	
+	//- Ending/Death fade to black slowly animation
 	
 	- The audio music switching bugs
 		//- Low Health sound
@@ -55,8 +59,8 @@ Teleportation back to mum
 		!- Fade screen to white
 		!- Need to wait for animation to be done before teleporting
 
-Ending is a bit abrupt
-	- Needs a fade out animation
+//Ending is a bit abrupt
+	//- Needs a fade out animation
 		
 There's a bunch more music and SFX to be used
 	- Ending tune

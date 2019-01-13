@@ -38,6 +38,7 @@ public class Tile : MonoBehaviour, IDie, IHoldEnergy
     {
         if (!isDead) {
             DrainTile(transform);
+            heldEnergy = 0;
             isDead = true;
         }
     }

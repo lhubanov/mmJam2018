@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-using Assets.Scripts;
+using Assets.Scripts.States;
 
 // Mom should be of IDie, but this causes a case where the player can kill Mom :D
 public class Mom : MonoBehaviour //, IDie
@@ -21,6 +21,7 @@ public class Mom : MonoBehaviour //, IDie
     private float LowHealthThreshold = 20;
 
     private Coroutine healthLossRoutine;
+    private Coroutine fadeRoutine;
     private bool notHealedYet;
 
     private void Start()
@@ -35,6 +36,7 @@ public class Mom : MonoBehaviour //, IDie
 
         if (World.MomStartsDying) {
             healthLossRoutine = StartCoroutine(LoseHealthIdly());
+            fadeRoutine = StartCoroutine(FadeToBlackSlowly());
             World.MomStartsDying = false;
         }
 
@@ -42,7 +44,7 @@ public class Mom : MonoBehaviour //, IDie
             World.CurrentState.PlayLowHealthSound(World);
         }
 
-        if (HasNoHealth()) {
+        if (HasNoHealth() && (!(World.CurrentState is EndingState))) {
             Die();
         }
     }
@@ -63,14 +65,16 @@ public class Mom : MonoBehaviour //, IDie
                 World.CurrentState.PlayRechargeSound(World);
                 IncreaseHealth(RechargeSpeed);
 
+                World.FadeAmount = 0;
+
                 if(notHealedYet)
                 {
                     notHealedYet = false;
                     World.CurrentState.AdvanceState(World);
-                    StopCoroutine(healthLossRoutine);
+                    //StopCoroutine(healthLossRoutine);
 
-                    DrainSpeed += DrainSpeed / 2;
-                    healthLossRoutine = StartCoroutine(LoseHealthIdly());
+                    //DrainSpeed += DrainSpeed / 2;
+                    //healthLossRoutine = StartCoroutine(LoseHealthIdly());
                     World.CurrentState.PlayDialogue(World);
                 }
             }
@@ -101,10 +105,20 @@ public class Mom : MonoBehaviour //, IDie
 
     private IEnumerator LoseHealthIdly()
     {
-        while (World.MomCurrentHealth > 0) {
+        while (World.MomCurrentHealth > World.MomMinHealth) {
             World.MomCurrentHealth -= DrainAmount;
             yield return new WaitForSeconds(DrainSpeed);
         }
     }
 
+    private IEnumerator FadeToBlackSlowly()
+    {
+        while (World.MomCurrentHealth > World.MomMinHealth)
+        {
+            if (World.MomCurrentHealth < (World.MomMinHealth + LowHealthThreshold)) {
+                World.FadeAmount += (255 / LowHealthThreshold) * 2;
+            }
+            yield return new WaitForSeconds(DrainSpeed);
+        }
+    }
 }
