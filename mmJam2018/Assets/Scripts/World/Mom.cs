@@ -40,7 +40,7 @@ public class Mom : MonoBehaviour //, IDie
             World.MomStartsDying = false;
         }
 
-        if (IsHealthBelowThreshold()) {
+        if (IsHealthBelowThreshold() && (!(World.CurrentState is EndingState))) {
             World.CurrentState.PlayLowHealthSound(World);
         }
 
@@ -67,14 +67,9 @@ public class Mom : MonoBehaviour //, IDie
 
                 World.FadeAmount = 0;
 
-                if(notHealedYet)
-                {
+                if(notHealedYet) {
                     notHealedYet = false;
                     World.CurrentState.AdvanceState(World);
-                    //StopCoroutine(healthLossRoutine);
-
-                    //DrainSpeed += DrainSpeed / 2;
-                    //healthLossRoutine = StartCoroutine(LoseHealthIdly());
                     World.CurrentState.PlayDialogue(World);
                 }
             }

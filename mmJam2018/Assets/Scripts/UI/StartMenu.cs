@@ -45,7 +45,7 @@ public class StartMenu : MonoBehaviour
             Application.Quit();
         }
 
-        // Due to lack of a smarter solution at the time being
+        // FIXME: Cannot check if coroutine is already running, but could use a smarter solution
         if ((stateMachine.CurrentState is EndingState) && !endingRunning) {
             StartCoroutine(ResetUIWithDelay());
             endingRunning = true;

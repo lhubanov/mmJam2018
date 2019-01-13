@@ -9,9 +9,7 @@ Bugs and refactoring:
 	
 	- Sprite mask framerate issues - seen in build as well
 	
-	//- Rosebushes flicker bug (sprite layers seem OK)
-	
-	- Start screen needs a Loading/Loaded event/UI
+	- MomStartsDying event
 	
 	- Enemy behaviour in-depth testing
 		- Raycast always points down, but wandering seems to be fine
@@ -20,23 +18,14 @@ Bugs and refactoring:
 	- Refactor tile lookup to just pick Sprite object
 	
 	- Go through the leftover FIXMEs
-	- Go through Proc-Gen code to check if all is needed (e.g. INode might be redundant)
+		(- Go through Proc-Gen code to check if all is needed (e.g. INode might be redundant))
 	
 	- Player controller general refactor
 	- The branch disappearing animation still calls Animator.Play(string) with an editor-set string. There must be a way
 	  to assign the playable animation as an object.
 	  
 	- The screen un-fading needs a proper formula to reset fading amount, when the player recharges mum
-	//- Player position does not reset at the end of the game
-	
-	- FadeAmount overflows and makes things non-black again - add some setter function, which stops it from overflowing
-	
-	//- Ending/Death fade to black slowly animation
-	
-	- The audio music switching bugs
-		//- Low Health sound
-		- End dialogue etc.
-	
+
 --------------------------------------------------------------------------------------
 Features before announcing GitHub repo:
 --------------------------------------------------------------------------------------
@@ -46,30 +35,33 @@ Steering:
 		- Hide		
 	- Start Fleeing from player, once having stolen player energy
 	
-
+	
 Enemy spawning in Rosepatch (as part of proc. gen.)
 
 Draw wisp pixel art sprite + spritesheet
-Create higher fidelity noise mask for water and grass tiles
-
 
 Teleportation back to mum
 	!- Animation
 		!- Same as jump up
 		!- Fade screen to white
 		!- Need to wait for animation to be done before teleporting
-
-//Ending is a bit abrupt
-	//- Needs a fade out animation
-		
-There's a bunch more music and SFX to be used
-	- Ending tune
-
+	
+There's a more music and SFX to be used
+	- Footsteps
+	- Snoring
 	
 
 ----------------------------------------------------------------------------
-GitHub readme (moje na rabota da se svurshi)
+GitHub readme
 Trailer/Gameplay
-Update website + incl. trailer
+	- Trailer 
+	- Screenshots
+	- Screenshots of world variation
+
+Update website
+	//- New photo
+	- TreeOfLife page update
+
+CV + email to Rachel from OPM
 
 

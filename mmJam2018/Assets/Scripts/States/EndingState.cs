@@ -9,6 +9,8 @@ namespace Assets.Scripts.States
         {
             base.OnEnter(stateMachine);
 
+            stateMachine.FadeAmount = 255;
+
             PlayDialogue(stateMachine);
             PlayMusic(stateMachine);
 

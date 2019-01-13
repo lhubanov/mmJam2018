@@ -19,8 +19,24 @@ public class StateMachine : ScriptableObject
     public float    PlayerMovementSlowdown;
     public bool     MomStartsDying; // FIXME: This is when you start using events
 
-    [Range(0,255)]
-    public float    FadeAmount;
+    // The unity UI image component's transparency overflows,
+    // so this is just to make sure screen is black, and does not 
+    // become transparent again.
+    [SerializeField]
+    private float fadeAmount;
+    public float FadeAmount
+    {
+        get { return fadeAmount; }
+
+        set
+        {
+            if(value > 255) {
+               value = 255;
+            }
+
+            fadeAmount = value;
+        }
+    }
 
 
     public EventInstance CurrentMusic;

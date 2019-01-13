@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5139eeb60356494a8e3956ac298a7e6, type: 3}
   m_Name: World
   m_EditorClassIdentifier: 
-  HeldEnergy: 12.5
-  MomCurrentHealth: 100
+  HeldEnergy: 0
+  MomCurrentHealth: 28
   MomMaxHealth: 100
   MomMinHealth: 0
   PlayerMovementSlowdown: 0
   MomStartsDying: 0
-  FadeAmount: 0
+  fadeAmount: 0
   SnoringSound: event:/SFX/SnoringLoop
   RechargeSound: event:/SFX/PowerGive
   LowHealthSound: event:/Dialogue/FirstEnergySource
