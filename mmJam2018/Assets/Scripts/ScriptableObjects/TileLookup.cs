@@ -1,8 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+using Assets.Scripts.SerializableGenerics;
+
 namespace Assets.Scripts
 {
+    // Unity does not serialize generics, so resorting to hacks, until a better solution is found
+    [System.Serializable]
+    public class DictOfStringAndSprite : SerializableDictionary<string, Sprite> { }
+
     [CreateAssetMenu(menuName = "Tile Lookup Table")]
     public class TileLookup : ScriptableObject
     {
@@ -35,20 +41,20 @@ namespace Assets.Scripts
         public GameObject TreePrefab;
 
         // Resource lookup table; 
+        public DictOfStringAndSprite DeadSprites = new DictOfStringAndSprite();
 
-        // FIXME:   Just swap out Sprite objects instead of loading from resources - still need lookup, no string comparisons and resource loading
-        public Dictionary<string, string> DeadSprites = new Dictionary<string, string>()
-        {
-            { "grass pattern_0", "grass pattern dead"},
-            { "tree regular", "tree dead"},
-            { "bushes_0", "bushes dead"},
-            { "bushes_1", "bushes dead"},
-            { "bushes_2", "bushes dead"},
-            { "bushes_3", "bushes dead"},
-            { "flowers_0", "flowers dead"},
-            { "flowers_1", "flowers dead"},
-            { "flowers_2", "flowers dead"},
-            { "flowers_3", "flowers dead"}
-        };
+        // Add string/Sprite pairs in editor later
+        //{
+        //    { "grass pattern_0", "grass pattern dead"},
+        //    { "tree regular", "tree dead"},
+        //    { "bushes_0", "bushes dead"},
+        //    { "bushes_1", "bushes dead"},
+        //    { "bushes_2", "bushes dead"},
+        //    { "bushes_3", "bushes dead"},
+        //    { "flowers_0", "flowers dead"},
+        //    { "flowers_1", "flowers dead"},
+        //    { "flowers_2", "flowers dead"},
+        //    { "flowers_3", "flowers dead"}
+        //};
     }
 }

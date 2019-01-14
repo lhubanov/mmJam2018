@@ -46,9 +46,7 @@ namespace Assets.Scripts
 
 
     // FIXME: Add constructors etc.
-
     // Literally for the sake of encapsulation
-    // Note: Look up if this makes any sort of performance difference
     [System.Serializable]
     public class ForestProbabilities : IContainSpawnData
     {

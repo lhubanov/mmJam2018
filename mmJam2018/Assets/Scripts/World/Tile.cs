@@ -21,13 +21,6 @@ public class Tile : MonoBehaviour, IDie, IHoldEnergy
     [SerializeField]
     private float heldEnergy;
 
-    // All to do with the way the spritesheet gets broken down into child sprites;
-    // Need to figure out a different way to get these at run time; this string parsing is not great
-    private int GetResourceID(string spriteName)
-    {
-        char resourceID = spriteName[spriteName.Length - 1];
-        return (char.GetNumericValue(resourceID) != -1) ? (int)char.GetNumericValue(resourceID) : 0;
-    }
 
     public float GetHeldEnergy()
     {
@@ -43,19 +36,17 @@ public class Tile : MonoBehaviour, IDie, IHoldEnergy
         }
     }
 
-    // FIXME: Do the Sprite tango here, when the lookup is refactored
     private void DrainTile(Transform transform)
     {
         foreach (Transform t in transform)
         {
             if (t.GetComponent<SpriteRenderer>() != null)
             {
-                string spriteSheetName;
+                Sprite deadSprite;
                 string spriteName = t.GetComponentInChildren<SpriteRenderer>().sprite.name;
-                if (deadTileLookup.DeadSprites.TryGetValue(spriteName, out spriteSheetName))
-                {
-                    Sprite[] resources = Resources.LoadAll<Sprite>(spriteSheetName);
-                    t.GetComponentInChildren<SpriteRenderer>().sprite = resources[GetResourceID(spriteName)];
+
+                if (deadTileLookup.DeadSprites.TryGetValue(spriteName, out deadSprite)) {
+                    t.GetComponentInChildren<SpriteRenderer>().sprite = deadSprite;
                 }
             }
 
