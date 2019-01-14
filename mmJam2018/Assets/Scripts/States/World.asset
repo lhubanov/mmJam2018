@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5139eeb60356494a8e3956ac298a7e6, type: 3}
   m_Name: World
   m_EditorClassIdentifier: 
-  HeldEnergy: 0
-  MomCurrentHealth: 28
+  HeldEnergy: 100
+  MomCurrentHealth: 89
   MomMaxHealth: 100
   MomMinHealth: 0
   PlayerMovementSlowdown: 0
