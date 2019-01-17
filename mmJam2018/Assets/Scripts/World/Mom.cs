@@ -2,7 +2,7 @@
 using UnityEngine;
 using Assets.Scripts.States;
 
-// Mom should be of IDie, but this causes a case where the player can kill Mom :D
+//FIXME: Mom should be of IDie, but this causes a case where the player can kill Mom :D
 public class Mom : MonoBehaviour //, IDie
 {
     [SerializeField]
@@ -34,18 +34,16 @@ public class Mom : MonoBehaviour //, IDie
     {
         World.CurrentState.Update(World);
 
-        if (World.MomStartsDying) {
-            healthLossRoutine = StartCoroutine(LoseHealthIdly());
-            fadeRoutine = StartCoroutine(FadeToBlackSlowly());
-            World.MomStartsDying = false;
-        }
+        if(!(World.CurrentState is EndingState))
+        { 
+            if (IsHealthBelowThreshold()) {
+                World.CurrentState.PlayLowHealthSound(World);
+            }
 
-        if (IsHealthBelowThreshold() && (!(World.CurrentState is EndingState))) {
-            World.CurrentState.PlayLowHealthSound(World);
-        }
+            if (HasNoHealth()) {
+                Die();
+            }
 
-        if (HasNoHealth() && (!(World.CurrentState is EndingState))) {
-            Die();
         }
     }
 
@@ -96,6 +94,22 @@ public class Mom : MonoBehaviour //, IDie
     private bool HasNoHealth()
     {
         return (World.MomCurrentHealth <= World.MomMinHealth);
+    }
+
+    private void OnEnable()
+    {
+        World.OnMomStartsDying += StartDying;
+    }
+
+    private void OnDisable()
+    {
+        World.OnMomStartsDying -= StartDying;
+    }
+
+    private void StartDying()
+    {
+        healthLossRoutine = StartCoroutine(LoseHealthIdly());
+        fadeRoutine = StartCoroutine(FadeToBlackSlowly());
     }
 
     private IEnumerator LoseHealthIdly()

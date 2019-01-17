@@ -13,14 +13,13 @@ namespace Assets.Scripts.States
 
         public override void Update(StateMachine stateMachine)
         {
-            // FIXME: Replace with an event
             if (isDialogueDone)
             { 
                 FMOD.Studio.PLAYBACK_STATE playbackState;
                 stateMachine.SpeechIntroInstance.getPlaybackState(out playbackState);
 
                 if (playbackState == FMOD.Studio.PLAYBACK_STATE.STOPPING) {
-                    stateMachine.MomStartsDying = true;
+                    stateMachine.MomStartsDying();
                 }
             }
         }

@@ -9,6 +9,9 @@ public class StateMachine : ScriptableObject
 {
     public IState   CurrentState;
 
+    public delegate void EventHandler();
+    public event EventHandler OnMomStartsDying;
+
     // UI references
     public float    HeldEnergy;
     public float    MomCurrentHealth;
@@ -17,7 +20,6 @@ public class StateMachine : ScriptableObject
     public float    MomMinHealth;
 
     public float    PlayerMovementSlowdown;
-    public bool     MomStartsDying; // FIXME: This is when you start using events
 
     // The unity UI image component's transparency overflows,
     // so this is just to make sure screen is black, and does not 
@@ -81,7 +83,6 @@ public class StateMachine : ScriptableObject
 
     public void Initialize()
     {
-        MomStartsDying = false;
         FadeAmount = 0;
 
         SnoringInstance = RuntimeManager.CreateInstance(SnoringSound);
@@ -94,5 +95,12 @@ public class StateMachine : ScriptableObject
         GameplayMusicInstance = RuntimeManager.CreateInstance(GameplayMusic);
         SpeechIntroInstance = RuntimeManager.CreateInstance(SpeechIntro);
         Speech1Instance = RuntimeManager.CreateInstance(Speech1);
+    }
+
+    public void MomStartsDying()
+    {
+        if(OnMomStartsDying != null) {
+            OnMomStartsDying();
+        }
     }
 }

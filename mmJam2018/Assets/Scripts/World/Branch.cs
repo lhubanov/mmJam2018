@@ -12,7 +12,7 @@ public class Branch : MonoBehaviour, IDie, IHoldEnergy
     private float heldEnergy;
     private Animator animator;
 
-    // FIXME: Surely there's a way to play animations not via Animator.Play(string)
+    // FIXME: Try playing via HashCode (see docu)
     [SerializeField]
     private string animation;
 
