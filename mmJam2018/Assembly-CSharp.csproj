@@ -126,6 +126,7 @@
     <Compile Include="Assets\Scripts\World\Interface\IDie.cs" />
     <Compile Include="Assets\Scripts\World\Interface\IHoldEnergy.cs" />
     <Compile Include="Assets\Scripts\World\Mom.cs" />
+    <Compile Include="Assets\Scripts\World\MomHealthManager.cs" />
     <Compile Include="Assets\Scripts\World\Tile.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

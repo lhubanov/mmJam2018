@@ -3,3 +3,7 @@ TODO:
 Trailer/Gameplay
 	- Trailer 
 	- Add devlog about procedural generation and basic AI behaviours
+
+	- Test new Sprite lookup
+	- Test MomStartsDying event
+	
