@@ -39,6 +39,12 @@ public class MomHealthManager : MonoBehaviour
         World.OnMomStartsDying -= StartDeathCoroutines;
     }
 
+    public void StartDeathCoroutines()
+    {
+        healthLossRoutine = StartCoroutine(LoseHealthIdly());
+        fadeRoutine = StartCoroutine(FadeToBlackSlowly());
+    }
+
     private void Update()
     {
         if (!(World.CurrentState is EndingState))
@@ -80,19 +86,22 @@ public class MomHealthManager : MonoBehaviour
         World.HeldEnergy -= amount;
     }
 
-    private bool IsHealthBelowThreshold() { return (World.MomCurrentHealth == (World.MomMinHealth + LowHealthThreshold) || World.MomCurrentHealth == (World.MomMinHealth + (LowHealthThreshold / 2))); }
-    private bool HasNoHealth() { return (World.MomCurrentHealth <= World.MomMinHealth); }
+    private bool IsHealthBelowThreshold()
+    {
+        return (World.MomCurrentHealth == (World.MomMinHealth + LowHealthThreshold) 
+            || World.MomCurrentHealth == (World.MomMinHealth + (LowHealthThreshold / 2)));
+    }
+
+    private bool HasNoHealth()
+    {
+        return (World.MomCurrentHealth <= World.MomMinHealth);
+    }
 
     public void Die()
     {
         World.CurrentState.PlayEnding(World);
     }
 
-    public void StartDeathCoroutines()
-    {
-        healthLossRoutine = StartCoroutine(LoseHealthIdly());
-        fadeRoutine = StartCoroutine(FadeToBlackSlowly());
-    }
 
     private IEnumerator LoseHealthIdly()
     {
