@@ -46,9 +46,9 @@ Note: I intend to do another update of the game in the immediate future. There a
 
 ## Pending fixes/refactoring
 * Noise sprite mask kills framerate - pending investigation if can still be included
-* LoseLifeIdly coroutine on the Mom GameObject is triggered via a flag, but needs to be via event, instead
+~~* LoseLifeIdly coroutine on the Mom GameObject is triggered via a flag, but needs to be via event, instead~~
 * Enemy collision avoidance is buggy, due to reliance on colliders
-* TileLookup dictionary needs refactoring to get a Sprite object
+~~* TileLookup dictionary needs refactoring to get a Sprite object~~
 * Animator.Play() uses a string as an input argument in Branch.cs, but surely can be done in a neater way
 * PlayerController.cs is in dire need of refactoring
 * Container classes need refactoring or replacing
