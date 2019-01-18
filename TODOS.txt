@@ -6,4 +6,5 @@ Trailer/Gameplay
 
 	- Test new Sprite lookup
 	- Test MomStartsDying event
+	- Test new PlayerController
 	
