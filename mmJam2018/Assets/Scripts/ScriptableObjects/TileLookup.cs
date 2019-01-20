@@ -40,21 +40,38 @@ namespace Assets.Scripts
 
         public GameObject TreePrefab;
 
-        // Resource lookup table; 
-        public DictOfStringAndSprite DeadSprites = new DictOfStringAndSprite();
+        // Dead tile Sprites
+        // Note: Never got serializable generics to quite work properly in-editor
+        //       so stuck with this for the time being. Will look into this again in the future.
+        public Sprite DeadGrass;
+        public Sprite DeadTree;
+        public Sprite DeadBush1;
+        public Sprite DeadBush2;
+        public Sprite DeadBush3;
+        public Sprite DeadBush4;
+        public Sprite DeadFlower1;
+        public Sprite DeadFlower2;
+        public Sprite DeadFlower3;
+        public Sprite DeadFlower4;
 
-        // Add string/Sprite pairs in editor later
-        //{
-        //    { "grass pattern_0", "grass pattern dead"},
-        //    { "tree regular", "tree dead"},
-        //    { "bushes_0", "bushes dead"},
-        //    { "bushes_1", "bushes dead"},
-        //    { "bushes_2", "bushes dead"},
-        //    { "bushes_3", "bushes dead"},
-        //    { "flowers_0", "flowers dead"},
-        //    { "flowers_1", "flowers dead"},
-        //    { "flowers_2", "flowers dead"},
-        //    { "flowers_3", "flowers dead"}
-        //};
+        // Dead sprite lookup table used by Tile.Die()
+        [SerializeField]
+        public Dictionary<string, Sprite> DeadSprites = new Dictionary<string, Sprite>() { };
+
+        public void Initialize()
+        {
+            DeadSprites.Add("grass pattern_0", DeadGrass);
+            DeadSprites.Add("tree regular", DeadTree);
+
+            DeadSprites.Add("bushes_0", DeadBush1);
+            DeadSprites.Add("bushes_1", DeadBush2);
+            DeadSprites.Add("bushes_2", DeadBush3);
+            DeadSprites.Add("bushes_3", DeadBush4);
+
+            DeadSprites.Add("flowers_0", DeadFlower1);
+            DeadSprites.Add("flowers_1", DeadFlower2);
+            DeadSprites.Add("flowers_2", DeadFlower3);
+            DeadSprites.Add("flowers_3", DeadFlower4);
+        }
     }
 }

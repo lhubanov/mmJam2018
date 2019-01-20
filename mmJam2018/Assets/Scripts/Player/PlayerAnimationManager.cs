@@ -14,6 +14,7 @@ public class PlayerAnimationManager : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
         AnimateIdle();
     }
 

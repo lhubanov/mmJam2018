@@ -30,7 +30,7 @@ namespace Assets.Scripts.SerializableGenerics
             this.Clear();
 
             if (keys.Count != values.Count) { 
-                throw new System.Exception(String.Format("there are {0} keys and {1} values after deserialization. Make sure that both key and value types are serializable.", keys, values));
+                throw new System.Exception(String.Format("there are {0} keys and {1} values after deserialization. Make sure that both key and value types are serializable.", keys.Count, values.Count));
             }
 
             for (int i = 0; i < keys.Count; i++) { 

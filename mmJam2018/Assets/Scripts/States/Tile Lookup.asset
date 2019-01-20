@@ -46,3 +46,13 @@ MonoBehaviour:
   FlowerFarmPrefab: {fileID: 2849926745308020265, guid: 078a28138ce1571449b5eb3ba541ee43,
     type: 3}
   TreePrefab: {fileID: 1125931901691560, guid: e9f324e6530d84126ac06cd3228bd996, type: 3}
+  DeadGrass: {fileID: 21300000, guid: b96494ef607cf4df4b901e95893207b1, type: 3}
+  DeadTree: {fileID: 21300000, guid: 6d8d7299666a54adb901a4faf381ac35, type: 3}
+  DeadBush1: {fileID: 21300000, guid: 85ae57ef7adb44d25b48e803df7d656f, type: 3}
+  DeadBush2: {fileID: 21300002, guid: 85ae57ef7adb44d25b48e803df7d656f, type: 3}
+  DeadBush3: {fileID: 21300004, guid: 85ae57ef7adb44d25b48e803df7d656f, type: 3}
+  DeadBush4: {fileID: 21300006, guid: 85ae57ef7adb44d25b48e803df7d656f, type: 3}
+  DeadFlower1: {fileID: 21300000, guid: 0b3beb1f8874941959b3c5d54def429e, type: 3}
+  DeadFlower2: {fileID: 21300002, guid: 0b3beb1f8874941959b3c5d54def429e, type: 3}
+  DeadFlower3: {fileID: 21300004, guid: 0b3beb1f8874941959b3c5d54def429e, type: 3}
+  DeadFlower4: {fileID: 21300006, guid: 0b3beb1f8874941959b3c5d54def429e, type: 3}

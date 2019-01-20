@@ -359,6 +359,7 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\BiomeConditions.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\StateMachine.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\TileLookup.cs" />
+    <Compile Include="Assets\Scripts\SerializableGenerics\SerializableDictionary.cs" />
     <Compile Include="Assets\Scripts\States\EndingState.cs" />
     <Compile Include="Assets\Scripts\States\GameplayState.cs" />
     <Compile Include="Assets\Scripts\States\Interface\IState.cs" />
@@ -391,6 +392,7 @@
     <Compile Include="Assets\Scripts\World\Interface\IDie.cs" />
     <Compile Include="Assets\Scripts\World\Interface\IHoldEnergy.cs" />
     <Compile Include="Assets\Scripts\World\Mom.cs" />
+    <Compile Include="Assets\Scripts\World\MomHealthManager.cs" />
     <Compile Include="Assets\Scripts\World\Tile.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

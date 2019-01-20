@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Assets.Scripts;
 using Assets.Scripts.States;
 
 using FMODUnity;
@@ -40,6 +41,7 @@ public class StateMachine : ScriptableObject
         }
     }
 
+    public TileLookup TileLookup;
 
     public EventInstance CurrentMusic;
     public EventInstance CurrentDialogue;
@@ -84,6 +86,8 @@ public class StateMachine : ScriptableObject
     public void Initialize()
     {
         FadeAmount = 0;
+
+        TileLookup.Initialize();
 
         SnoringInstance = RuntimeManager.CreateInstance(SnoringSound);
         RechargeInstance = RuntimeManager.CreateInstance(RechargeSound);

@@ -11,13 +11,13 @@ public class MomHealthManager : MonoBehaviour
     private float RechargeSpeed = 5;
 
     [SerializeField]
-    private float DrainAmount = 3;
+    private float DrainAmount = 2;
 
     [SerializeField]
-    private float DrainSpeed = 2;
+    private float DrainSpeed = 3;
 
     [SerializeField]
-    private float LowHealthThreshold = 20;
+    private float LowHealthThreshold = 40;
 
     private Coroutine healthLossRoutine;
     private Coroutine fadeRoutine;
