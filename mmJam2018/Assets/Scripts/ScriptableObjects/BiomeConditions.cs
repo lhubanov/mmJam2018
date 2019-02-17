@@ -45,33 +45,45 @@ namespace Assets.Scripts
     }
 
 
-    // FIXME: Add constructors etc.
     // Literally for the sake of encapsulation
     [System.Serializable]
     public class ForestProbabilities : IContainSpawnData
     {
         [Range(0, 100)]
-        public float treeSpawn = 20;
+        [SerializeField]
+        private float treeSpawn = 20;
+
+        // Note: Unity does not serialize C# properties, hence these
+        public float GetTreeSpawn() { return treeSpawn; }
     }
 
     [System.Serializable]
     public class GrasslandProbabilities : IContainSpawnData
     {
         [Range(0, 100)]
-        public float memberSpawn = 15;
+        [SerializeField]
+        private float memberSpawn = 15;
+
+        public float GetMemberSpawn() { return memberSpawn; }
     }
 
     [System.Serializable]
     public class RosepatchProbabilities : IContainSpawnData
     {
         [Range(0, 100)]
-        public float bushSpawn = 30;
+        [SerializeField]
+        private float bushSpawn = 30;
+
+        public float GetBushSpawn() { return bushSpawn; }
     }
 
     [System.Serializable]
     public class MarshProbabilities : IContainSpawnData
     {
         [Range(0, 100)]
-        public float bushSpawn = 15;
+        [SerializeField]
+        private float bushSpawn = 15;
+
+        public float GetBushSpawn() { return bushSpawn; }
     }
 }

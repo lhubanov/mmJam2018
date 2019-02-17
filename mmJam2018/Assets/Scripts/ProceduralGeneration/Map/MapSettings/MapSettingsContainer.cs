@@ -4,36 +4,80 @@ using ProceduralGeneration.Graph;
 
 namespace ProceduralGeneration.Map.MapSettings
 {
-    // Note: This is a bit basic in terms of the way its designed;
-    //       Segregate into interfaces and extend w/ Base, if different types of
-    //       containers need to be used at some point;
-    
-    //       Maybe at least add constructor and make all private, so they can be set to defaults if invalid;
-    //       Docu comments also.
-    //       
-    //       Separate into interfaces etc. also
+
     public class MapSettingsContainer
     {
-        public Vector2 MapBotLeft;
-        public Vector2 MapTopRight;
+        public Vector2 MapBotLeft { get; private set; }
+        public Vector2 MapTopRight { get; private set; }
 
-        public float TileSize;
+        public float TileSize { get; private set; }
 
-        public float OceanThreshold;
-        public float ChanceIslandTileIsWater;
+        public float OceanThreshold { get; private set; }
+        public float ChanceIslandTileIsWater { get; private set; }
 
-        public double ElevationIncreaseRate;
+        public double ElevationIncreaseRate { get; private set; }
 
-        public int MemberSpawningIterations;
+        public int MemberSpawningIterations { get; private set; }
 
-        public float NoiseScale;
-        public int MaxNoiseOffset;
+        public float NoiseScale { get; private set; }
+        public int MaxNoiseOffset { get; private set; }
 
-        public string RngSeed;
-        public TileLookup TileLookup;
-        public BiomeConditions Conditions;
-        public Transform ParentGameObject;
+        public string RngSeed { get; private set; }
+        public TileLookup TileLookup { get; private set; }
+        public BiomeConditions Conditions { get; private set; }
+        public Transform ParentGameObject { get; private set; }
 
         public GRAPH_TRAVERSAL_METHOD GraphTraversalMethod;
+
+        public MapSettingsContainer()
+        {
+            MapBotLeft = new Vector2(0, 0);
+            MapTopRight = new Vector2(0, 0);
+            TileSize = 0;
+            OceanThreshold = 0;
+            ChanceIslandTileIsWater = 0;
+            ElevationIncreaseRate = 0;
+            MemberSpawningIterations = 0;
+            NoiseScale = 0;
+            MaxNoiseOffset = 0;
+            RngSeed = "";
+            TileLookup = null;
+            Conditions = null;
+            ParentGameObject = null;
+            GraphTraversalMethod = GRAPH_TRAVERSAL_METHOD.BFS;
+        }
+
+        public MapSettingsContainer(
+            Vector2 mapBotLeft,
+            Vector2 mapTopRight,
+            float tileSize,
+            float oceanThreshold,
+            float chanceIslandTileIsWater,
+            double elevationIncreaseRate,
+            int memberSpawningIterations,
+            float noiseScale,
+            int maxNoiseOffset,
+            string rngSeed,
+            TileLookup tileLookup,
+            BiomeConditions biomeConditions,
+            Transform parent,
+            GRAPH_TRAVERSAL_METHOD graphTraversalMethod
+            )
+        {
+            MapBotLeft = mapBotLeft;
+            MapTopRight = mapTopRight;
+            TileSize = tileSize;
+            OceanThreshold = oceanThreshold;
+            ChanceIslandTileIsWater = chanceIslandTileIsWater;
+            ElevationIncreaseRate = elevationIncreaseRate;
+            MemberSpawningIterations = memberSpawningIterations;
+            NoiseScale = noiseScale;
+            MaxNoiseOffset = maxNoiseOffset;
+            RngSeed = rngSeed;
+            TileLookup = tileLookup;
+            Conditions = biomeConditions;
+            ParentGameObject = parent;
+            GraphTraversalMethod = graphTraversalMethod;
+        }
     }
 }

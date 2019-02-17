@@ -72,9 +72,6 @@ namespace ProceduralGeneration.Map
             }
         }
 
-
-        //  FIXME: I hate this constructor now
-        //         Review if its necessary to be able to set all these actually!
         public Center(bool water, 
                     bool ocean, 
                     bool coast, 

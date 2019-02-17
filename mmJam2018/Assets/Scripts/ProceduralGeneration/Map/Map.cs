@@ -12,7 +12,6 @@ namespace ProceduralGeneration.Map
 {
     public class Map : Graph.Graph
     {
-        // FIXME:   Find best constructional pattern to use w/ this many parameters;
         private float mapWidth;
         private float mapHeight;
 
