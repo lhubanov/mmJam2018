@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace ProceduralGeneration.Node
 {
     public interface INode
     {
-        int Index { get; set; }
         Vector2 Position { get; set; }
+        HashSet<INode> Neighbours { get; set; }
     }
 }

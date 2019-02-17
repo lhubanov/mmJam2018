@@ -27,7 +27,6 @@ namespace Assets.Scripts.Steering
             if(Physics.Raycast(steeringData.Position.Value, steeringData.Target.Value * AvoidanceRangeScale, out hitInfo, 2))
             {
                 // There is probably a better way to do this than just any firm colliders
-                // Interface, as usual?
                 if(!hitInfo.collider.isTrigger && hitInfo.transform != transform)
                 {
                     //Debug.Log("Raycast detected collision w/ " + hitInfo.collider.name);
@@ -44,7 +43,7 @@ namespace Assets.Scripts.Steering
                     // 90 or -90 degrees around x, maybe?
                     //
                     // Because now it keeps within bounds by backing up,
-                    // not by trying to collision avoid, but maintain course.
+                    // not by trying to collision avoid and maintain course.
                     direction.z = 0;
                     //Debug.Log("New direction " + direction);
                 }

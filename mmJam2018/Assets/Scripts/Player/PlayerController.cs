@@ -43,22 +43,22 @@ public class PlayerController : MonoBehaviour
 
         if (!Input.GetButton("DrainEnergy"))
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
 
-            if (moveVertical < 0) {
+            if (verticalInput < 0) {
                 animationManager.MoveDownwards();
-            } else if (moveVertical > 0) {
+            } else if (verticalInput > 0) {
                 animationManager.MoveUpwards();
             }
 
-            if (moveHorizontal < 0) {
+            if (horizontalInput < 0) {
                 animationManager.MoveLeft();
-            } else if (moveHorizontal > 0) {
+            } else if (horizontalInput > 0) {
                 animationManager.MoveRight();
             }
 
-            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+            Vector2 movement = new Vector2(horizontalInput, verticalInput);
             float movementSpeed = speed - stateMachine.PlayerMovementSlowdown;
 
             rbody.AddForce(movement * movementSpeed);

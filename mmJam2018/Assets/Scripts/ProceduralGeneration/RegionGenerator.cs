@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts;
 
+using ProceduralGeneration.Graph;
 using ProceduralGeneration.Map;
 using ProceduralGeneration.Map.MapSettings;
 

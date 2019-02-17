@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
-using Assets.Scripts.States;
+﻿using UnityEngine;
+using Assets.Scripts;
 
-//FIXME: Mom should be of IDie, but this causes a case where the player can kill Mom :D
-public class Mom : MonoBehaviour //, IDie
+public class Mom : MonoBehaviour, IDie
 {
     [SerializeField]
     private StateMachine World;
@@ -26,5 +24,10 @@ public class Mom : MonoBehaviour //, IDie
         if (other.GetComponent<PlayerController>() != null) {
             World.CurrentState.PlayDialogue(World);
         }
+    }
+
+    public void Die()
+    {
+        healthManager.Die();
     }
 }

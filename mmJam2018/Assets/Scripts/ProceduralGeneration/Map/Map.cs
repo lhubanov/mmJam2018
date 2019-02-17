@@ -10,34 +10,25 @@ using ProceduralGeneration.Map.MapSettings;
 
 namespace ProceduralGeneration.Map
 {
-    public enum GRAPH_TRAVERSAL_METHOD
-    {
-        BFS = 0,
-        DFS = 1
-    }
-
-    // Note: Expose the serialized settings below to editor
     public class Map : Graph.Graph
     {
         // FIXME:   Find best constructional pattern to use w/ this many parameters;
-        //          Add defaults that currently get set via a default constructor.
         private float mapWidth;
         private float mapHeight;
 
         private readonly Vector2 mapBotLeft;
         private readonly Vector2 mapTopRight;
 
-        private float tileSize; // = 10f;
+        private float tileSize;
 
-        private float oceanThreshold; // = 0.85f;
-        private float chanceIslandTileIsWater; // = 0.5f;
+        private float oceanThreshold;
+        private float chanceIslandTileIsWater;
 
         private double elevationIncreaseRate;
-        //private double elevationIncreaseMultiplier; // = 12;
-        private int spawningIterations; // = 2;
+        private int spawningIterations;
 
-        private float noiseScale; // = 1f;
-        private int maxNoiseOffset; // = 100;
+        private float noiseScale;
+        private int maxNoiseOffset;
 
         private string rngSeed;
         private System.Random rng;
@@ -45,7 +36,7 @@ namespace ProceduralGeneration.Map
 
         private Transform parentGameObject;
 
-        private GRAPH_TRAVERSAL_METHOD graphTraversalMethod; //= GRAPH_TRAVERSAL_METHOD.BFS;
+        private Graph.GRAPH_TRAVERSAL_METHOD graphTraversalMethod;
 
         private BiomeFactory biomeFactory;
         private BiomeConditions conditions;
@@ -92,7 +83,7 @@ namespace ProceduralGeneration.Map
             return (node.Position.x == mapBotLeft.x || node.Position.x == mapTopRight.x);
         }
 
-        private bool IsOceanTile(Vector2 pos)
+        private bool IsAroundMapEdge(Vector2 pos)
         {
             var xMaxThreshold = mapTopRight.x  - (mapWidth * (1 - oceanThreshold));
             var xMinThreshold = mapBotLeft.x + (mapWidth * (1 - oceanThreshold));
@@ -103,7 +94,7 @@ namespace ProceduralGeneration.Map
         public void Generate()
         {
             CreateDefaultNodes();
-            HashSet<Center> centers = TraverseGraph(Root as Center, graphTraversalMethod);
+            HashSet<INode> centers = TraverseGraph(Root as Center, graphTraversalMethod);
 
             HashSet<Center> islandTiles = GenerateOcean(centers);
             GenerateIsland(islandTiles);
@@ -118,12 +109,11 @@ namespace ProceduralGeneration.Map
             SpawnMembers(centers, spawningIterations);
         }
 
-        // FIXME:   Can use clean up;
-        //          Does not need to return anything actually
+        // Creates map of tiles withe default values/settings
         private void CreateDefaultNodes()
         {
             List<List<Center>> nodesMap = new List<List<Center>>();
-            Root = new Center(true, true, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, 0, new Vector2(mapBotLeft.x, mapBotLeft.y), tileLookup, biomeFactory);
+            Root = new Center(true, true, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, new Vector2(mapBotLeft.x, mapBotLeft.y), tileLookup, biomeFactory);
 
             float x = mapBotLeft.x;
             float y = mapBotLeft.y;
@@ -131,31 +121,34 @@ namespace ProceduralGeneration.Map
             int mapWidthInTiles = Convert.ToInt32(mapWidth / tileSize);
             int mapHeightInTiles = Convert.ToInt32(mapHeight / tileSize);
 
-            for (int i = 0 ; i < mapHeightInTiles; i++)
+            for (int heightIndex = 0 ; heightIndex < mapHeightInTiles; heightIndex++)
             {
                 List<Center> row = new List<Center>();
                 x = mapBotLeft.x;
 
-                for (int j = 0; j < mapWidthInTiles; j++)
+                for (int widthIndex = 0; widthIndex < mapWidthInTiles; widthIndex++)
                 {
-                    if (i == 0 && j == 0) {
+                    if (heightIndex == 0 && widthIndex == 0) {
                         row.Add(Root as Center);
                         continue;
                     }
 
-                    Center node = new Center(false, false, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, Convert.ToInt32(x + y), new Vector2(x, y), tileLookup, biomeFactory);
+                    Center node = new Center(false, false, false, biomeFactory.CreateBiome(BiomeType.None) as Biome.Biome, 0, new Vector2(x, y), tileLookup, biomeFactory);
 
                     if (IsOnMapEdge(node)) {
-                        node.Water = true;
-                        node.Ocean = true;
+                        node.SetToOceanTile();
                     }
 
-                    if (j - 1 >= 0) {
-                        node.Edges.Add(new Edge(node, row[j - 1], (node.Index + row[j - 1].Index)));
+                    // If nodes on the left and bottom are not outside the map (i.e. >= 0),
+                    // create edges between current node and them. This makes sure, while
+                    // traversing to create defaults, the neighbour relationship between the
+                    // neighbouring tiles is established.
+                    if (widthIndex - 1 >= 0) {
+                        node.Edges.Add(new Edge(node, row[widthIndex - 1]));
                     }
 
-                    if (i - 1 >= 0) {
-                        node.Edges.Add(new Edge(node, nodesMap[i - 1][j], (node.Index + nodesMap[i - 1][j].Index)));
+                    if (heightIndex - 1 >= 0) {
+                        node.Edges.Add(new Edge(node, nodesMap[heightIndex - 1][widthIndex]));
                     }
 
                     row.Add(node);
@@ -167,60 +160,16 @@ namespace ProceduralGeneration.Map
             }
         }
 
-
-        private delegate Center TraversalGetter();
-        private delegate void TraversalSetter(Center center);
-
-        // This seems a bit over-engineered for what I intended to do, review later
-        private HashSet<Center> TraverseGraph(Center root, GRAPH_TRAVERSAL_METHOD method)
-        {
-            IEnumerable<Center> collection;
-            TraversalGetter traversalGetter;
-            TraversalSetter traversalSetter;
-
-            if (method == GRAPH_TRAVERSAL_METHOD.BFS) {
-                collection = new Queue<Center>();
-                traversalGetter = new TraversalGetter((collection as Queue<Center>).Dequeue);
-                traversalSetter = new TraversalSetter((collection as Queue<Center>).Enqueue);
-            } else {
-                collection = new Stack<Center>();
-                traversalGetter = new TraversalGetter((collection as Stack<Center>).Pop);
-                traversalSetter = new TraversalSetter((collection as Stack<Center>).Push);
-            }
-
-            var visited = new HashSet<Center>();
-            traversalSetter(root);
-
-            while(collection.Count() > 0)
-            {
-                Center node = traversalGetter();
-
-                if (visited.Contains(node)) {
-                    continue;
-                }
-
-                visited.Add(node);
-                foreach(Center neighbour in node.Centers)
-                {
-                    if (!visited.Contains(neighbour)) {
-                        traversalSetter(neighbour);
-                    }
-                }
-            }
-
-            return visited;
-        }
         
         // Returns Island tiles
-        private HashSet<Center> GenerateOcean(IEnumerable<Center> centers)
+        private HashSet<Center> GenerateOcean(IEnumerable<INode> centers)
         {
             HashSet<Center> islandTiles = new HashSet<Center>();
 
             foreach (Center center in centers)
             {
-                if (IsOceanTile(center.Position)) {
-                    center.Water = true;
-                    center.Ocean = true;
+                if (IsAroundMapEdge(center.Position)) {
+                    center.SetToOceanTile();
                 }  else {
                     islandTiles.Add(center);
                 }
@@ -236,6 +185,7 @@ namespace ProceduralGeneration.Map
                 if (center.Ocean) {
                     continue;
                 }
+
                 center.Water = (GetNoiseValFromPosition(center.Position.x, center.Position.y)) < chanceIslandTileIsWater;
             }
         }
@@ -244,9 +194,10 @@ namespace ProceduralGeneration.Map
         private void GenerateMarsh(IEnumerable<Center> nonOceanTiles)
         {
             foreach(Center center in nonOceanTiles) {
-                center.SetToMarshTile();
+                center.SetToMarshTileIfWater();
             }
         }
+
 
         private float GetNoiseValFromPosition(float x, float y)
         {
@@ -260,7 +211,7 @@ namespace ProceduralGeneration.Map
         }
 
 
-        private HashSet<Center> InitializeTiles(IEnumerable<Center> centers)
+        private HashSet<Center> InitializeTiles(IEnumerable<INode> centers)
         {
             HashSet<Center> coast = new HashSet<Center>();
 
@@ -284,7 +235,7 @@ namespace ProceduralGeneration.Map
             {
                 if (!visitedTiles.Contains(tile))
                 {
-                    foreach (Center neighbour in tile.Centers)
+                    foreach (Center neighbour in tile.Neighbours)
                     {
                         if (neighbour.Elevation == 0)
                         {
@@ -295,7 +246,7 @@ namespace ProceduralGeneration.Map
                 }
             }
 
-            // TODO: Review this, as the 5 value was selected arbitrarily
+            // TODO: Review this, as the 5 value was selected arbitrarily; or move to constant
             if (visitedTiles.Count > 5) {
                 SetElevation(visitedTiles);
             }
@@ -313,7 +264,7 @@ namespace ProceduralGeneration.Map
         }
 
 
-        private void SpawnMembers(IEnumerable<Center> tiles, int iterations)
+        private void SpawnMembers(IEnumerable<INode> tiles, int iterations)
         {
             for (int i = 0; i < iterations; i++)
             {
@@ -323,10 +274,10 @@ namespace ProceduralGeneration.Map
             }
         }
 
-        private void SpawnSprites(IEnumerable<Center> map)
+        private void SpawnSprites(IEnumerable<INode> map)
         {
             foreach (Center center in map) {
-                center.SpawnSprite();
+                center.SpawnSpriteWrtBiome();
             }
         }
     }

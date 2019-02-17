@@ -11,15 +11,8 @@ namespace ProceduralGeneration.Map
 {
     public class Center : INode
     {
-        private int index;
         private Vector2 position;
         private BiomeFactory BiomeFactory;
-
-        public int Index
-        {
-            get { return index; }
-            set { index = value; }
-        }
 
         public Vector2 Position
         {
@@ -27,65 +20,55 @@ namespace ProceduralGeneration.Map
             set { position = value; }
         }
 
-        // FIXME:   Review the accessors of all these (surely biomes need not be public)
+        public bool Ocean { get; private set; }
+        public bool Coast { get; private set; }
 
-        public bool Water;
-        public bool Ocean;
-        public bool Coast;
+        public Biome.IBiome Biome { get; private set; }
 
-        public Biome.IBiome Biome;
-        public double Elevation;
+        // The only two publicly settable, as there's an elevetion calculation
+        // happening on a Map-level and the Water-PerlinNoise calculation uses several
+        // editor-settable values, available to map, but not to center. 
+        // Leaving as is for now- there is a neater way to do it without exposing these. 
+        // Property should at least introduce some basic decoupling, for now, between centers and map.
+        public bool     Water       { get; set; }
+        public double   Elevation   { get; set; }
+
 
         private TileLookup lookup;
 
+        private HashSet<INode> neighbours;
+        public HashSet<INode> Neighbours
+        {
+            get
+            {
+                if (neighbours == null) {
+                    neighbours = new HashSet<INode>();
+                }
+
+                return neighbours;
+            }
+
+            set
+            {
+                neighbours = value;
+            }
+        }
+
         private HashSet<Edge> edges;
-        private HashSet<Center> centers;
-
-        //private List<Corner> corners;
-        //public List<Corner> Corners
-        //{
-        //    get
-        //    {
-        //        if(corners == null) {
-        //            corners = new List<Corner>();
-        //        }
-        //        return corners;
-        //    }
-
-        //    set => corners = value;
-        //}
-
-
         public HashSet<Edge> Edges
         {
             get
             {
-                if (edges == null)
-                {
+                if (edges == null) {
                     edges = new HashSet<Edge>();
                 }
+
                 return edges;
             }
 
-            set {
-                edges = value;
-            }
-        }
-
-        public HashSet<Center> Centers
-        {
-            get
+            set
             {
-                if (centers == null)
-                {
-                    centers = new HashSet<Center>();
-                }
-
-                return centers;
-            }
-
-            set {
-                centers = value;
+                edges = value;
             }
         }
 
@@ -96,8 +79,7 @@ namespace ProceduralGeneration.Map
                     bool ocean, 
                     bool coast, 
                     Biome.Biome biome, 
-                    double elevation, 
-                    int ind, 
+                    double elevation,
                     Vector2 pos,
                     TileLookup tileLookup,
                     BiomeFactory biomeFactory)
@@ -110,7 +92,6 @@ namespace ProceduralGeneration.Map
 
             lookup = tileLookup;
 
-            index = ind;
             position = pos;
 
             BiomeFactory = biomeFactory;
@@ -129,7 +110,8 @@ namespace ProceduralGeneration.Map
 
         public Edge GetEdgeWith(Center center)
         {
-            foreach(Edge edge in edges) {
+            foreach(Edge edge in edges)
+            {
                 if(edge.D0 == center || edge.D1 == center) {
                     return edge;
                 }
@@ -138,7 +120,6 @@ namespace ProceduralGeneration.Map
             return null;
         }
 
-        // FIXME: This is a bit weird - review and refactor - is the ocean bool actually needed?
         // Assigns first-pass biome/conditions
         public void Initialize()
         {
@@ -166,19 +147,19 @@ namespace ProceduralGeneration.Map
             }
         }
 
-        public void SetToMarshTile()
-        {
-            if(Water) { 
-                Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
-                Elevation = 0;
-            }
-        }
 
-        // i.e. all neighbours are of ocean type
+        // Note:    The foreach loops on "Neighbours", below
+        //          do an internal explicit conversion, which, currently, is safe,
+        //          as there is only one type of INode - Center. If ever different
+        //          INodes are introduced, this kind of operation will start throwing
+        //          exceptions. However, currently this is quicker than doing a soft cast
+        //          on each INode, so I'm leaving it as is for the time being.
+
+        // IsStrayIslandTile if all neighbours are of ocean type
         private bool IsStrayIslandTile()
         {
             bool val = true;
-            foreach(Center center in centers) {
+            foreach(Center center in Neighbours) {
                 val &= center.Ocean;
             }
 
@@ -187,7 +168,7 @@ namespace ProceduralGeneration.Map
 
         private bool HasLandNeighbours()
         {
-            foreach(Center center in centers) {
+            foreach(Center center in Neighbours) {
                 if(!center.Ocean || !center.Water) {
                     return true;
                 }
@@ -198,7 +179,7 @@ namespace ProceduralGeneration.Map
 
         private bool HasOceanNeighbours()
         {
-            foreach(Center center in centers) {
+            foreach(Center center in Neighbours) {
                 if (center.Ocean) {
                     return true;
                 }
@@ -207,10 +188,9 @@ namespace ProceduralGeneration.Map
             return false;
         }
 
-
         public bool HasNeighbourWithSpawnedMembers(Type biomeType)
         {
-            foreach(Center c in centers)
+            foreach(Center c in Neighbours)
             {
                 if((c.Biome.GetType() == biomeType) && c.Biome.HasSpawned) {
                     return true;
@@ -221,8 +201,23 @@ namespace ProceduralGeneration.Map
         }
 
         public void SetBiomeBasedOnElevation()
-        {
+        { 
             Biome = BiomeFactory.CreateBiomeFromElevation(Elevation);
+        }
+
+        public void SetToMarshTileIfWater()
+        {
+            if (Water)
+            {
+                Biome = BiomeFactory.CreateBiome(BiomeType.MarshBiome);
+                Elevation = 0;
+            }
+        }
+
+        public void SetToOceanTile()
+        {
+            Water = true;
+            Ocean = true;
         }
 
         public void SpawnMembers()
@@ -230,11 +225,13 @@ namespace ProceduralGeneration.Map
             Biome.SpawnMembers(this);
         }
 
-        public void SpawnSprite()
+        public void SpawnSpriteWrtBiome()
         {
-            if(Biome != null) { 
-                Biome.SpawnSprite(this);
+            if (Biome == null) {
+                return;
             }
+
+            Biome.SpawnSprite(this);
         }      
     }
 }

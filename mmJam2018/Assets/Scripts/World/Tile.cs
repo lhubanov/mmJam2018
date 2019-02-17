@@ -7,11 +7,6 @@ using Assets.Scripts;
 
 public class Tile : MonoBehaviour, IDie, IHoldEnergy
 {
-    // FIXME: Run analysis to find all unreferenced properties
-    [EventRef]
-    public string DrainSound;
-    private EventInstance drainInstance;
-
     [SerializeField]
     private bool isDead = false;
 
