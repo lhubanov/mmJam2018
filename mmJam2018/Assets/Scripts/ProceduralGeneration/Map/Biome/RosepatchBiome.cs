@@ -22,7 +22,7 @@ namespace ProceduralGeneration.Biome
         {
             HasSpawned = false;
 
-            bushSpawnProbability = (spawnData as RosepatchProbabilities).bushSpawn;
+            bushSpawnProbability = (spawnData as RosepatchProbabilities).GetBushSpawn();
         }
 
         public override void SpawnMembers(Center tile)

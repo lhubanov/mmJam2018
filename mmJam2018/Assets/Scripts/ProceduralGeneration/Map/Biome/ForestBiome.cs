@@ -24,7 +24,7 @@ namespace ProceduralGeneration.Biome
         {
             HasSpawned = false;
 
-            treeSpawnProbability = (spawnData as ForestProbabilities).treeSpawn;
+            treeSpawnProbability = (spawnData as ForestProbabilities).GetTreeSpawn();
         }
 
         public override void SpawnMembers(Center tile)

@@ -123,6 +123,7 @@
     <Compile Include="Assets\Scripts\World\Branch.cs" />
     <Compile Include="Assets\Scripts\World\EnemyAnimationManager.cs" />
     <Compile Include="Assets\Scripts\World\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\World\FinalBranch.cs" />
     <Compile Include="Assets\Scripts\World\Interface\IDie.cs" />
     <Compile Include="Assets\Scripts\World\Interface\IHoldEnergy.cs" />
     <Compile Include="Assets\Scripts\World\Mom.cs" />

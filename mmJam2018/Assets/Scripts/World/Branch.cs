@@ -6,15 +6,15 @@ using FMODUnity;
 public class Branch : MonoBehaviour, IDie, IHoldEnergy
 {
     [SerializeField]
-    private StateMachine stateMachine;
+    protected StateMachine stateMachine;
 
     [SerializeField]
     private float heldEnergy;
     private Animator animator;
 
-    // FIXME: Try playing via HashCode (see docu)
+    // Apparently using the StateHashName is also unreliable. Stuck with strings for now, I guess.
     [SerializeField]
-    private string animation;
+    protected string animation;
 
     [EventRef]
     public string DestructionSound;
@@ -37,15 +37,9 @@ public class Branch : MonoBehaviour, IDie, IHoldEnergy
         return heldEnergy;
     }
 
-    public void Die()
+    public virtual void Die()
     {
         animator.Play(animation);
         RuntimeManager.PlayOneShot(DestructionSound);
-
-        // This goes alongside with above FIXME comment
-        if(animation == "BranchDisappear3") {
-            stateMachine.FadeAmount = 255;
-            stateMachine.CurrentState.AdvanceState(stateMachine);
-        }
     }
 }

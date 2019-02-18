@@ -55,7 +55,7 @@ public class HeldEnergyManager : MonoBehaviour
                 IncreaseHeldEnergy(energyHolder.GetHeldEnergy());
             }
 
-            if (dying != null) {
+            if (dying != null && !(dying is Mom)) {
                 dying.Die();
             }
         }

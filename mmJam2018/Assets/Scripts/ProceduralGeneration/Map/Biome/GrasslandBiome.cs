@@ -29,7 +29,7 @@ namespace ProceduralGeneration.Biome
         {
             HasSpawned = false;
 
-            memberSpawnProbability = (spawnData as GrasslandProbabilities).memberSpawn;
+            memberSpawnProbability = (spawnData as GrasslandProbabilities).GetMemberSpawn();
         }
 
         public override void SpawnMembers(Center tile)

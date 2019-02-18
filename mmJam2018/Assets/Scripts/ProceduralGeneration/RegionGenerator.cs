@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts;
 
+using ProceduralGeneration.Graph;
 using ProceduralGeneration.Map;
 using ProceduralGeneration.Map.MapSettings;
 
@@ -82,31 +83,22 @@ public class RegionGenerator : MonoBehaviour
 
     private MapSettingsContainer PackageSettings()
     {
-        MapSettingsContainer settings = new MapSettingsContainer()
-        {
-            MapBotLeft = new Vector2(RegionTopLeft.position.x, RegionBotRight.position.y),
-            MapTopRight = new Vector2(RegionBotRight.position.x, RegionTopLeft.position.y),
-
-            TileSize = tileSize,
-
-            OceanThreshold = oceanThreshold,
-            ChanceIslandTileIsWater = chanceIslandTileIsWater,
-            ElevationIncreaseRate = elevationIncreaseRate,
-
-            MemberSpawningIterations = spawningIterations,
-
-            NoiseScale = noiseScale,
-            MaxNoiseOffset = maxNoiseOffset,
-
-            RngSeed = Seed,
-
-            TileLookup = TileLookup,
-            Conditions = BiomeConditions,
-
-            ParentGameObject = transform,
-
-            GraphTraversalMethod = graphTraversalMethod
-        };
+        MapSettingsContainer settings = new MapSettingsContainer(
+            new Vector2(RegionTopLeft.position.x, RegionBotRight.position.y),
+            new Vector2(RegionBotRight.position.x, RegionTopLeft.position.y),
+            tileSize,
+            oceanThreshold,
+            chanceIslandTileIsWater,
+            elevationIncreaseRate,
+            spawningIterations,
+            noiseScale,
+            maxNoiseOffset,
+            Seed,
+            TileLookup,
+            BiomeConditions,
+            transform,
+            graphTraversalMethod
+        );
 
         return settings;
     }
