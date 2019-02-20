@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\UI\MomHealthUI.cs" />
     <Compile Include="Assets\Scripts\UI\SliderControl.cs" />
     <Compile Include="Assets\Scripts\UI\StartMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\WhiteScreenFadeControl.cs" />
     <Compile Include="Assets\Scripts\World\Branch.cs" />
     <Compile Include="Assets\Scripts\World\EnemyAnimationManager.cs" />
     <Compile Include="Assets\Scripts\World\EnemyController.cs" />

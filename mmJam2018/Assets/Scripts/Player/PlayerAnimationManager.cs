@@ -6,6 +6,9 @@ public class PlayerAnimationManager : MonoBehaviour
     private SpriteRenderer sprite;
 
     [SerializeField]
+    private StateMachine world;
+
+    [SerializeField]
     private float animationTimeout = 0;
 
     [SerializeField]
@@ -45,7 +48,7 @@ public class PlayerAnimationManager : MonoBehaviour
 
     public void AnimateTeleport()
     {
-        // Add teleport animation
+        animator.Play("drainLife");
     }
 
     public void MoveUpwards()

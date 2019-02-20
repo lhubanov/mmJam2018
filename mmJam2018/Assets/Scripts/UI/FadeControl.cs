@@ -13,7 +13,7 @@ public class FadeControl : MonoBehaviour
         blackImage = GetComponent<Image>();
     }
 
-    void Update()
+    public void Update()
     {
         blackImage.color = new Color32(0, 0, 0, (byte)stateMachine.FadeAmount);
     }
