@@ -41,7 +41,6 @@ Most notably:
 
 
 ## Features/refactoring I intend to add
-* Unit tests
 * Footsteps and Snoring SFX
 * Noise sprite mask kills framerate - pending investigation if can still be included
 * Enemy collision avoidance is buggy, due to reliance on colliders
