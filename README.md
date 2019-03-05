@@ -11,7 +11,7 @@ The playable latest build of the game can be downloaded from [itch.io](https://e
 ## Credits
 [Ioana Iulia Cazacu](https://twitter.com/GreenStorm27) : Design and Art
 
-Mike Everett : Design
+[Mike Everett](https://twitter.com/mikegrahamever1) : Design
 
 [Alex Jones](https://twitter.com/Alyx_Jones) : Composition & Sound Design
 
